@@ -1,0 +1,89 @@
+@import 'scss/variables.scss';
+@import 'scss/mixin.scss';
+
+.main {
+    .productApp {
+        margin: 80px;
+        &__fillters {
+            border-radius: 5px;
+            padding: 15px;
+            border: 1px solid grey;
+            &__head {
+                font-size: 10px;
+                h1 {
+                    font-size: $fontSizeMain;
+                    border-radius: 5px;
+                    background-color: $backgroundMain;
+                    padding: 8px;
+                    color: white;
+                    text-transform: uppercase;
+                }
+            }
+            &__body {
+                margin: 15px;
+                section {
+                    font-size: 10px;
+                    h1 {
+                        font-size: $fontSizeMain;
+                        border-radius: 5px;
+                        background-color: $backgroundMain;
+                        padding: 8px;
+                        color: white;
+                        text-transform: uppercase;
+                    }
+                    ul {
+                        // margin-top: 20px;
+                        font-size: $fontSizeMain;
+                        li {
+                            margin-top: 15px;
+                            input {
+
+                            }
+                            span {
+                                margin-left: 8px;
+                            }
+                        }
+                    }
+
+                }
+                section+section {
+                    margin-top: 15px;
+                }
+            }
+        }
+        &__product {
+            display: flex;
+            a {
+                &:hover {
+                    color: black;
+                }
+            }
+            .productItem{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                box-shadow: 0 0 5px 1px grey;
+                border-radius: 5px;
+                padding: 20px;
+                font-size: 10px;
+                cursor: pointer;
+                img {
+                    width: 100%;
+                    display: block;
+                    margin: 0 auto;
+                }
+                p{
+                    margin: 20px 0;
+                    font-size: 1.5em;
+                    font-weight: bold;
+                }
+                h1 { 
+                    font-size: 2em;
+                    margin-top: auto;
+                    color: red;
+                }
+
+            }
+        }
+    }
+}

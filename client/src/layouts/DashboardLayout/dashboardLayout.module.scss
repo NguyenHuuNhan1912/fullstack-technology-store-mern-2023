@@ -1,0 +1,155 @@
+@import "scss/mixin";
+@import "scss/variables";
+.dashBoard {
+    .mainHeaderOutlet {
+        background-color: #121317;
+    }
+    .header {
+        background-color: #1a1c23;
+        color: $backgroundMain;
+        // display: none;
+        .navHeader {
+            @include flexCenter();
+            justify-content: flex-end;
+            padding: 20px;
+            .theme {
+                .icon {
+                    font-size: 25px;
+                }
+            }
+            .noti {
+                margin: 0 20px;
+                &__head {
+                    .icon {
+                        font-size: 20px;
+                        color: $backgroundMain;
+                    }
+                }
+                &__body {
+                }
+            }
+            .avatar {
+                &__head {
+                    img {
+                        display: block;
+                        width: 35px;
+                        border-radius: 100px;
+                    }
+                }
+                &__body {
+                }
+            }
+        }
+    }
+    .aside {
+        // display: none;
+        font-size: 10px;
+        background-color: #1a1c23;
+        overflow: hidden;
+        height: 100vh;
+        @include flexCenter();
+        align-items: initial;
+        flex-direction: column;
+        &__head {
+            font-size: 1.8em;
+            // border: 1px solid white;
+            margin: 20px;
+            margin-bottom: 0;
+            padding: 0 10px;
+            img {
+                width: 20px;
+            }
+            span {
+                color: white;
+                font-size: 1.5em;
+                margin-left: 8px;
+                font-weight: bold;
+            }
+        }
+        &__body {
+            font-size: 1.8em;
+            border: 1px solid #1a1c23;
+            background-color: #1a1c23;
+            color: white;
+            .navList {
+                .navItem {
+                    margin: 20px;
+                    a {
+                        border: 1px solid white;
+                        padding: 10px;
+                        border-radius: 4px;
+                        color: inherit;
+                        @include flexCenter();
+                        transition: all 0.3s ease-in-out;
+                        span {
+                            margin-left: 8px;
+                            font-weight: bold;
+                        }
+                    }
+                    .style {
+                        background-color: $test;
+                        border: 1px solid $test;
+                        box-shadow: 0 0 5px $test, 0 0 10px $test;
+                    }
+                }
+            }
+        }
+        &__logout {
+            font-size: 1.8em;
+            margin-top: auto;
+            a {
+                // border: 1px solid white;
+                margin: 20px;
+                padding: 10px;
+                border-radius: 4px;
+                color: white;
+                @include flexCenter();
+                justify-content: center;
+                background-color: $backgroundMain;
+                transition: all 0.3s ease-in-out;
+                .icon {
+                }
+                span {
+                    margin-left: 10px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.checkAdmin {
+    @include flexCenter();
+    justify-content: center;
+    position: relative;
+    background-color: $backgroundDb;
+    height: 100vh;
+    &__head {
+        img {
+            display: block;
+            width: 100%;
+        }
+        margin-right: 20px;
+    }
+    &__body {
+        font-size: 10px;
+        text-align: center;
+        h1 {
+            font-size: 2.5em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            color: white;
+        }
+        a {
+            font-size: 2em;
+            button {
+                // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
+                @include button($backgroundMain, white, inherit, 10px, 20px, 5px, 0.3s);
+                &:hover {
+                    box-shadow: 0 0 5px #0aeff7, 0 0 25px #0aeff7, 0 0 50px #0aeff7, 0 0 100px #0aeff7;
+                    background-color: #0aeff7;
+                }
+            }
+        }
+    }
+}

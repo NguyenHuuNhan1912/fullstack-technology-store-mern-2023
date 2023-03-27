@@ -1,0 +1,81 @@
+@import 'scss/variables.scss';
+@import 'scss/mixin.scss';
+
+.main {
+    .contact {
+        // display: none;
+        margin: 80px;
+        padding: 0 80px;
+        // border: 1px solid red;
+        box-shadow: 0 0 5px 2px grey;
+        border-radius: 5px;
+        background-image: linear-gradient(to right, #1e1616, #d1392e);
+        &__form {
+            // border: 1px solid red;
+            .formGroup {
+                font-size: 10px;
+                color: white;
+                h1 {
+                    font-size: 3.3em;
+                    text-transform: uppercase;
+                }
+                p {
+                    font-size: 1.7em;
+                    margin-top: 8px;
+                    color: red;
+                    font-weight: bold;
+                }
+                input, textarea {
+                    // @mixin input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize) {
+                        @include input(8px, 2px, white, 4px, $fontSizeMain);
+                        width: 100%;
+                        color: white;
+                        border: transparent;
+                        border-bottom: 1px solid white;
+                        padding-left: 0;
+                        &::placeholder {
+                            color: white;
+                        }
+                }
+                .submit {
+                    width: 150px;
+                    // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
+                    @include button(white, black, $fontSizeMain, 8px, 16px, 5px, 0.4s);
+                    font-weight: bold;
+                    &:hover {
+                        box-shadow: 0 0 25px #0aeff7, 0 0 50px #0aeff7, 0 0 75px #0aeff7, 0 0 100px #0aeff7;
+                        background-color: #0aeff7;
+                        color: white;
+                    }
+                }   
+            }
+            .formGroup + .formGroup {
+                margin-top: 30px;
+            }
+        }   
+        &__me {
+            img {
+                width: 400px;
+                height: 664px;
+                display: block;
+                margin:0 auto;
+                
+            }
+        }
+    }
+    .map {
+        // display: none;
+        margin: 80px;
+        margin-top: 0;
+        iframe {
+            border-radius: 5px;
+            width: 100%;
+            height: 500px;
+           box-shadow: 0 0 5px 2px grey;
+        }
+    }
+    .slider {
+        margin: 100px;
+        border: 1px solid red;
+    }
+}

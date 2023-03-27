@@ -1,0 +1,225 @@
+
+@import './variables.scss';
+@mixin flexCenter() {
+    display: flex;
+    align-items: center;
+}
+// Swiper button next - prev
+@mixin swiperButton($ml, $mr, $br-t, $br-r, $br-b, $br-l, $swiper-button-icon) {
+    margin-left: $ml;
+    margin-right: $mr;
+    border-radius: $br-t $br-r $br-b $br-l;
+    &::after {
+        content: $swiper-button-icon;
+    }
+}
+@mixin line($width, $fontSize, $bgColor, $marginTB, $marginLR) {
+    width: $width;
+    font-size: $fontSize;
+    background-color: $bgColor;
+    margin: $marginTB $marginLR;
+}
+@mixin input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize) {
+    background-color: transparent;
+    outline: none;
+    border: $borderWidth solid $borderColor;
+    padding: $pd;
+    font-size: $fontSize;
+    border-radius: $borderRadius;
+}
+@mixin inputLegend() {
+    width: 100%;
+    font-size: 1.8em;
+    padding: 15px;
+    display: block;
+    border: 1px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    outline: none;
+}
+
+@mixin labelLegend() {
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    background-color: $backgroundDb;
+    padding: 1px 5px;
+    font-size: 1.5em;
+    transform: translateY(-50%);
+    color: white;
+}
+@mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: $bg-color;
+    color: $color;
+    font-family: inherit;
+    text-transform: uppercase;
+    padding: $pd-tb $pd-lr;
+    font-size: $fs;
+    border-radius: $border-rd;
+    transition: all $time linear;
+}
+// Animation button
+@mixin buttonAnimation($fs, $pd-tb, $pd-lr, $pc, $bodyBg, $clf, $cll) {
+    // --btn-gradient: linear-gradient(to right, #049c62, #036d44);
+    --btn-txt-color: #ffffff;
+    position: relative;
+    border: none;
+    outline: none;
+    display: block;
+    border-radius: 5px;
+    font-family: inherit !important;
+    &:hover {
+        cursor: pointer;
+        & span:nth-child(4) {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+    }
+    span {
+        display: block;
+        &:nth-child(1) {
+            // padding: 2rem 6.5rem;
+            padding: $pd-tb $pd-lr;
+            background-image: linear-gradient(to right, $clf, $cll);
+            border-radius: 4px;
+            // border: 1px solid black;
+        }
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4) {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &:nth-child(4) {
+            width: calc(100% - 16px);
+            height: calc(100% - 16px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(to right, $clf, $cll);
+            color: var(--btn-txt-color);
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: $fs;
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+        &:nth-child(3) {
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            background-color: $bodyBg;
+            border-radius: 4px;
+        }
+        &:nth-child(2) {
+            height: 60%;
+            // width: 60%;
+            width: $pc;
+            background-color: $bodyBg;
+            animation: rotate 2s linear infinite;
+            // border: 1px solid black;
+        }
+    }
+    @keyframes rotate {
+        0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        100% {
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+    }
+}
+// Button skew
+@mixin buttonSkew($color, $left, $width, $deg, $start) {
+    border: 1px solid $color;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: $left;
+        width: $width;
+        height: 100%;
+        background-color: $color;
+        transform: scaleX(0) skew($deg);
+        transform-origin: $start;
+        z-index: -1;
+        transition: transform 0.6s ease-in-out;
+    }
+    &:hover {
+        color: white;
+    }
+    &:hover::before {
+        transform: scaleX(1) skewX(45deg);
+    }
+}
+
+// Mixin Responsive
+@mixin responsiveMainLg__() {
+    @media #{$resMainLg__} {
+        @content;
+    }
+}
+
+@mixin responsiveMainMd__() {
+    @media #{$resMainMd__} {
+        @content;
+    }
+}
+
+@mixin responsiveMainSm__() {
+    @media #{$resMainSm__} {
+        @content;
+    }
+}
+
+@mixin responsiveMainXs__ {
+    @media #{$resMainXs__} {
+        @content;
+    }
+}
+
+// Large
+@mixin responsiveLg() {
+    @media #{$resLg} {
+        @content;
+    }
+}
+
+// Medium
+@mixin responsiveMd() {
+    @media #{$resMd} {
+        @content;
+    }
+}
+
+// Small
+@mixin responsiveSm() {
+    @media #{$resSm} {
+        @content;
+    }
+}
+
+// Extra small
+@mixin responsiveXs() {
+    @media #{$resXs} {
+        @content;
+    }
+}
+// Extra Extra small
+@mixin responsiveXxs() {
+    @media #{$resXxs} {
+        @content;
+    }
+}

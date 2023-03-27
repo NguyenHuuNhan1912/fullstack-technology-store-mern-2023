@@ -1,0 +1,195 @@
+@import "scss/mixin.scss";
+@import "scss/variables.scss";
+.main {
+    .login {
+        padding: 80px;
+        background-color: $backgroundDb;
+        &__head {
+
+            img {
+                display: block;
+                width: 100%;
+                height: 500px;
+            }
+        }
+        &__body {
+            color: white;
+            text-align: center;
+            font-size: 10px;
+            h1 {
+                font-size: 2.5em;
+                text-transform: uppercase;
+                margin-bottom: 30px;
+            }
+            a {
+
+                button {
+                    // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
+                    @include button($backgroundMain, white, 2em, 10px, 20px, 5px, 0.3s);
+                    font-weight: bold;
+                    &:hover {
+                        box-shadow: 0 0 5px #0aeff7, 0 0 25px #0aeff7, 0 0 50px #0aeff7, 0 0 100px #0aeff7;
+                        background-color: #0aeff7;
+                    }
+                }
+            }
+        }
+    }
+    .cart {
+        margin: 80px;
+        &__title {
+            @include flexCenter();
+            justify-content: center;
+            div {
+                @include flexCenter();
+                font-size: 10px;
+                background-color: $backgroundMain;
+                background-image: linear-gradient(to right, blue, blueviolet);
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                h1 {
+                    font-size: 2.5em;
+                    text-transform: uppercase;
+                }
+                .icon {
+                    font-size: 20px;
+                    margin-right: 10px;
+                }
+                box-shadow: 0 0 5px 2px grey;
+            }
+        }
+        &__cartEmpty {
+            text-align: center;
+            font-size: 10px;
+            div {
+                background-image: url('../../assets/images/svg/emptyCart.svg');
+                background-repeat: no-repeat;
+                height: 400px;
+                background-position: center;
+            }
+            h1 {
+                font-size: 2.5em;
+                text-transform: uppercase;
+                margin: 30px 0;
+                color: $backgroundMain;
+            }
+            a {
+                button {
+                    // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
+                    @include button($backgroundMain, white, 2em, 8px, 16px, 5px, 0.3s);
+                    font-weight: bold;
+                    &:hover {
+                        box-shadow: 0 0 5px $backgroundMain, 0 0 25px $backgroundMain, 0 0 50px $backgroundMain, 0 0 100px $backgroundMain;
+                        background-color: $backgroundMain;
+                    }
+                }
+            }
+        }
+        &__list {
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                font-size: 10px;
+                thead {
+                    font-size: $fontSizeMain;
+                    tr {
+                        th {
+                            padding: 15px 0;
+                            border-bottom: 1px solid grey;
+                            // border: 1px solid white
+                            text-align: center;
+                        }
+                    }
+                }
+                tbody {
+                    font-size: $fontSizeMain;
+                    tr {
+                        td {
+                            padding: 15px 0;
+                            border-bottom: 1px solid grey;
+                            img {
+                                width: 60px;
+                                display: block;
+                                margin: 0 auto;
+                            }
+                            .quantity, .delete {
+                                @include flexCenter();
+                                justify-content: center;
+                                .icon {
+                                    font-size: 20px;
+                                    cursor: pointer;
+                                    transition: all 0.3s linear;
+                                    &:hover {
+                                        color: $backgroundMain;
+                                        transform: scale(1.1);
+                                    }
+                                }
+                                span {
+                                    margin: 0 8px;
+                                }
+                            }
+                            .delete {
+                                .icon {
+                                    &:hover {
+                                        color: red;
+                                    }
+                                }
+
+                            }
+                        }
+                        .price {
+                            text-align: center;
+                            color: red;
+                            font-weight: bold;
+                        }
+                        .name {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+        &__order {
+            border: 1px solid grey;
+            padding: 15px;
+            border-radius: 5px;
+            .formOrder {
+                font-size: 10px;
+                h1 {
+                    text-align: center;
+                    font-size: 2.2em;
+                    text-transform: uppercase;                    
+                }
+                .formGroup {
+                    @include flexCenter();
+                    flex-direction: column;
+                    align-items: initial;
+                    // border: 1px solid red;
+                    margin-top: 15px;
+                    label {
+                        font-size: $fontSizeMain;
+                        margin-bottom: 5px;
+                    }
+                    input {
+                        // @mixin input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize) {
+                            @include input(8px, 1px, grey, 5px, 1.8em);
+                    }
+                    select {
+                        @include input(8px, 1px, grey, 5px, 1.8em);
+                    }
+                    .errorMessage {
+                        color: red;
+                        font-size: 1.6em;
+                        margin-top: 5px;
+                    }
+                    .submit {
+                        cursor: pointer;
+                    }
+                }
+               
+            }
+        }
+    }
+}

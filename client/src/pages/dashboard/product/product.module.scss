@@ -1,0 +1,149 @@
+@import "scss/variables.scss";
+@import "scss/mixin.scss";
+
+.dbProductWrapper {
+    height: 88vh;
+    overflow-y: auto;
+    .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .dbProduct {
+        padding: 20px;
+        &__upload {
+            border-radius: 5px;
+            padding: 20px;
+            background-color: $backgroundDb;
+            .formGroup {
+                font-size: 10px;
+                color: white;
+                // border: 1px solid white;
+                input {
+                    width: 100%;
+                    // input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize ) {
+                    @include input(12px, 1px, grey, 4px, 1.5em);
+                    color: white;
+                }
+                select {
+                    width: 100%;
+                    @include input(12px, 1px, grey, 4px, 1.4em);
+                    background-color: $backgroundDb;
+                    color: white;
+                }
+                .addProduct {
+                    button {
+                        width: 100%;
+                        @include flexCenter();
+                        justify-content: center;
+                        @include button($backgroundMain, white, 1.3em, 12px, 12px, 4px, 0.3s);
+                        font-weight: bold;
+                        // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
+                        .icon {
+                            font-size: 1.6em;
+                        }
+                        span {
+                            margin-left: 8px;
+                        }
+                        &:hover {
+                            background-color: white;
+                            color: $backgroundMain;
+                        }
+                    }
+                }
+            }
+        }
+        &__list {
+            color: #d5d6d7;
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                font-size: 10px;
+                thead {
+                    font-size: 1.6em;
+                    tr {
+                        th {
+                            padding: 15px 0;
+                            border-bottom: 1px solid grey;
+                            // border: 1px solid white;
+
+                            text-align: left;
+                        }
+                        .edit {
+                            text-align: center;
+                        }
+                    }
+                }
+                tbody {
+                    font-size: 1.6em;
+                    tr {
+                        td {
+                            padding: 15px 0;
+                            border-bottom: 1px solid grey;
+                            // border: 1px solid white;
+                            // border: 1px solid red;
+
+                            .nameProduct {
+                                @include flexCenter();
+                                justify-content: center;
+                                img {
+                                    width: 40px;
+                                    border-radius: 100px;
+                                }
+                                p {
+                                    margin-left: 10px;
+                                    // border: 1px solid red;
+                                    width: 200px;
+                                }
+                            }
+                            .editProduct {
+                                @include flexCenter();
+                                justify-content: space-evenly;
+                                // border: 1px solid white;
+                                .icon {
+                                    cursor: pointer;
+                                    color: #d5d6d7;
+                                    font-size: 1.1em;
+                                }
+                            }
+                        }
+                        .selling,
+                        .soldOut {
+                            text-align: center;
+                            span {
+                                padding: 5px;
+                                border-radius: 20px;
+                            }
+                        }
+                        .selling {
+                            span {
+                                background-color: $backgroundMain;
+                            }
+                        }
+                        .soldOut {
+                            span {
+                                background-color: red;
+                            }
+                        }
+                    }
+                }
+            }
+            &__productEmpty {
+                img {
+                    display: block;
+                    height: 100%;
+                    margin: 0 auto;
+                    border-radius: 8px;
+                    margin-top: 10%;
+                    box-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px white;
+                }
+            }
+        }
+       
+    }
+
+    .show {
+        display: block;
+    }
+}

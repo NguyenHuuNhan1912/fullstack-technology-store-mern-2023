@@ -1,0 +1,142 @@
+@import "scss/mixin.scss";
+@import "scss/variables.scss";
+.main {
+    .recruit {
+        overflow: hidden;
+        &__intro {
+            margin: 80px;
+            margin-bottom: 50px;
+            // border: 1px solid red;
+            &__head {
+                font-size: 10px;
+                h1 {
+                    font-size: 3.5em;
+                    text-transform: uppercase;
+                    color: $backgroundMain;
+                }
+                p {
+                    font-size: $fontSizeMain;
+                    text-align: justify;
+                    margin: 30px 0;
+                    line-height: 1.3;
+                }
+                a {
+                    .btnAnimation {
+                        @include buttonAnimation(18px, 3rem, 10rem, 60%, white, $backgroundMain, rgb(13, 173, 66));
+                    }
+                }
+                // @include button($backgroundMain, white, $fontSizeMain, 10px, 20px, 5px, 0.5s);
+            }
+            &__body {
+                img {
+                    border-radius: 600px;
+                    display: block;
+                }
+            }
+        }
+        &__benefits {
+            margin: 80px;
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            &__content {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                font-size: 10px;
+                padding: 20px;
+                background-color: $backgroundMain;
+                border-radius: 5px;
+                color: white;
+                box-shadow: 0 0 5px 2px $backgroundMain;
+                img {
+                    width: 100%;
+                    display: block;
+                    width: 100px;
+                    margin: 0 auto;
+                }
+                h1 {
+                    text-align: center;
+                    font-size: 2em;
+                    margin: 20px 0;
+                }
+                p {
+                    text-align: center;
+                    font-size: $fontSizeMain;
+                }
+            }
+        }
+        &__slider {
+            margin: 50px 80px 80px;
+            padding: 30px;
+            // border: 1px solid red;
+            position: relative;
+            .card {
+                // background-color: green;
+                border: 1px solid grey;
+                border-radius: 5px;
+                &__head {
+                    img {
+                        width: 100%;
+                        height: 200px;
+                        display: block;
+                    }
+                }
+                &__body {
+                    padding: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 10px;
+                    h1 {
+                        font-size: $fontSizeMain;
+                        text-transform: uppercase;
+                        color: red;
+                    }
+                    .des {
+                        margin: 15px 0;
+                        p {
+                            font-size: 18px;
+                        }
+                        p + p {
+                            margin-top: 15px;
+                        }
+                    }
+                    button {
+                        margin-top: auto;
+                        // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
+                        // @include button($backgroundMain, white, $fontSizeMain, 5px, 10px, 5px, 0.5s);
+                        @include button(transparent, $backgroundMain, $fontSizeMain, 10px, 10px, 5px, 0.6s);
+                        @include buttonSkew($backgroundMain, -30px, 150%, 45deg, left);
+                        margin-right: auto;
+                    }
+                }
+            }
+            // .sliderController {
+            //     .sliderArrow {
+            //         font-size: 25px;
+            //         color: $backgroundMain;
+            //         &::after {
+            //             content: "" !important;
+            //         }
+            //     }
+            //     .swiperButtonPrev {
+            //         position: absolute;
+            //         top: 50%;
+            //         left: 0;
+            //         transform: translateX(-50%);
+            //     }
+            //     .swiperButtonNext {
+            //         position: absolute;
+            //         top: 50%;
+            //         right: 0;
+            //         transform: translateX(50%);
+            //     }
+
+            //     .swiperPagination {
+            //         position: relative !important;
+            //         bottom: -20px !important;
+            //     }
+            // }
+        }
+    }
+}

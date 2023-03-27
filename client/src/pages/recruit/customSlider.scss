@@ -1,0 +1,35 @@
+// custom
+@import 'scss/mixin.scss';
+@import 'scss/variables.scss';
+.slider-controller--recruit {
+    .slider-arrow {
+        font-size: 25px;
+        color: $backgroundMain;
+        position: absolute;
+        top: 50%;
+        &::after {
+            content: '' !important;
+        }
+    }
+    .swiper-button-prev {
+        left: 0;
+        transform: translateX(-50%);
+    }
+    .swiper-button-next {
+        right: 0;
+        transform: translateX(50%);
+    }
+
+    .swiper-pagination {
+        position: relative !important;
+        bottom: -20px !important;
+        // border: 1px solid red !important;
+    }
+    .swiper-pagination-bullet {
+        width: 10px !important;
+        height: 10px !important;
+    }
+    .swiper-pagination-bullet-active {
+       background-color: $backgroundMain !important;
+    }
+}

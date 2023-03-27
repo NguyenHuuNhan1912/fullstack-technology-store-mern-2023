@@ -1,0 +1,141 @@
+@import "scss/mixin.scss";
+@import "scss/variables.scss";
+
+.main {
+    .detail {
+        margin: 80px;
+        &__img {
+            // overflow: hidden;
+            img {
+                display: block;
+                width: 100%;
+                transition: all 0.3s linear;
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+            // display: none;
+        }
+        &__infor {
+            // border: 1px solid red;
+            font-size: 10px;
+            ul {
+                font-size: $fontSizeMain;
+                li {
+                    text-align: justify;
+                    &:first-child {
+                        font-weight: bold;
+                        font-size: 1.5em;
+                    }
+                    &:last-child {
+                        margin: 27px 0;
+                        span {
+                            color: red;
+                            font-weight: bold;
+                            font-size: 1.7em;
+                            &:first-child {
+                                text-decoration: line-through;
+                            }
+                            &:last-child {
+                                margin-left: 20px;
+                            }
+                        }
+                    }
+                }
+                .discount {
+                    margin-top: 27px;
+                    span {
+                        padding: 8px 16px;
+                        background-color: red;
+                        color: white;
+                        border-radius: 5px;
+                    }
+                    span:last-child {
+                        margin-left: 10px;
+                    }
+                }
+                li + li {
+                    margin-top: 10px;
+                }
+            }
+            &__add {
+                margin-top: 10px;
+                @include flexCenter();
+                section {
+                    .btnAnimation {
+                        @include buttonAnimation(18px, 3rem, 10rem, 60%, white, $backgroundMain, rgb(13, 173, 66));
+                    }
+                    &:last-child {
+                        margin-left: 20px;
+                    }
+                    &:last-child {
+                        .btnAnimation {
+                            @include buttonAnimation(18px, 3rem, 10rem, 60%, white, blue, rgb(16, 243, 232));
+                        }
+                    }
+                }
+                
+            }
+        }
+        &__policy {
+            // border: 1px solid red;
+            &__head {
+                font-size: 10px;
+                @include flexCenter();
+                border: 1px solid grey;
+                padding: 5px;
+                border-radius: 5px;
+                img {
+                    width: 30px;
+                    margin-right: 8px;
+                }
+                section {
+                    img {
+                        width: 12px;
+                        margin-left: 4px;
+                    }
+                    span {
+                        font-size: $fontSizeMain;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
+                }
+            }
+            &__body {
+                font-size: 10px;
+                margin-top: 10px;
+                border: 1px solid grey;
+                padding: 10px;
+                border-radius: 5px;
+                &__title {
+                    h1 {
+                        font-size: $fontSizeMain;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        color: $backgroundMain;
+                        text-align: center;
+                    }
+                }
+                &__content {
+                    ul {
+                        li {
+                            background-color: $backgroundMain;
+                            color: white;
+                            margin-top: 10px;
+                            padding: 5px;
+                            border-radius: 5px;
+                            @include flexCenter();
+                            span {
+                                font-size: $fontSizeMain;
+                            }
+                            .icon {
+                                font-size: 2.2em;
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,101 @@
+@import 'scss/mixin.scss';
+@import 'scss/variables.scss';
+
+.main {
+    .discount {
+        &__intro {
+            img {
+                width: 100%;
+                display: block;
+                height: 500px;
+            }
+            
+        }
+        &__type {
+            margin: 80px;
+            section {
+                
+                cursor: pointer;
+                font-size: 10px;
+                border-radius: 5px;
+                @include flexCenter();
+                justify-content: center;
+                padding: 10px;
+                box-shadow: 0 0 5px 2px grey;
+                img {
+                    display: block;
+                    width: 70px;
+                }
+                h1 {
+                    font-size: $fontSizeMain;
+                    color: $backgroundMain;
+                    text-transform: uppercase;
+                    margin-left: 10px;
+                }
+            }
+        }
+        &__product {
+            margin: 80px;
+            &__title {
+                h1 {
+                    font-size: 2em;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color: white;
+                    background-color: $backgroundMain;
+                    border-radius: 5px;
+                    padding: 8px;
+                }
+            }
+            
+            &__body {
+                
+                border: 1px solid grey;
+                border-radius: 5px;
+                box-shadow: 0 0 5px 2px grey;
+                font-size: 10px;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                img {
+                    display: block;
+                    margin: 0 auto;
+                    margin-top: 23px;
+                    width: 100%;
+                    background-color: transparent;
+                    // border: 1px solid red;
+                }
+                p {
+                    margin: 23px 23px 23px 23px;
+                    font-size: $fontSizeMain;
+                    font-weight: bold;
+                    
+                }
+                del, h1 {
+                    color: red;
+                    font-size: 2em;
+                }
+                del {
+                    text-decoration: line-through;
+                    margin: auto 23px 23px;
+                }
+                h1 {
+                    margin: 0 23px 23px;
+                }
+                span {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: $backgroundMain;
+                    color: white;
+                    font-size: 2em;
+                    padding: 5px 10px;
+                    border-radius: 0 0 5px 0;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

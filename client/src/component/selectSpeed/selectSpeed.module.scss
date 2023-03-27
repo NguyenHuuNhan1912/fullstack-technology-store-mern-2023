@@ -1,0 +1,61 @@
+@import 'scss/mixin';
+@import 'scss/variables';
+
+.selectSpeed {
+    // border: 1px solid red;
+    position: fixed;
+    top: 240px;
+    right: 20px;
+    z-index: 1;
+    .navList {
+        .navItem {
+            transition: all 0.3s linear;
+            a {
+                img {
+                    width: 35px;
+                }
+            }
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+        .navItem + .navItem {
+            margin-top: 15px;
+        }
+    }
+    .btn {
+        position: fixed;
+        bottom: 18px;
+        right: 18px;
+        @include button(transparent, initial, initial, 0, 0, 0, 0.3s);
+        animation: smooth 1.5s linear 1;
+        transform: translateX(150%);
+        @keyframes smooth {
+            0% {opacity: 0;}
+            50% {opacity: 0.5;}
+            100% {opacity: 1;}
+        }
+        @keyframes smoothBack {
+            0% {opacity: 1;}
+            50% {opacity: 0.5;}
+            100% {opacity: 0;}
+        }
+        // Animation: name-animaition second kieuchay delay chaymaylan alternall;
+        &:hover {
+            // transform: scale(1.1);
+            filter:hue-rotate(100deg);
+        }
+        img {
+            width: 37px;
+        }
+    }
+}
+
+// Responsive
+@include responsiveMainLg__ {
+    .selectSpeed {
+        .navList {
+            display: none;
+        }
+    }
+}

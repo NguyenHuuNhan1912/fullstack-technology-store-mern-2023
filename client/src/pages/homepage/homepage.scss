@@ -1,0 +1,63 @@
+@import "scss/mixin.scss";
+@import "scss/variables.scss";
+
+.main {
+    .homepage {
+        &__introSlider {
+            // display: none;
+            position: relative;
+            // border: 1px solid red;
+            overflow: hidden;
+            z-index: 0;
+            margin-bottom: 80px;
+            
+            &__content {
+                height: 100%;
+                // border: 1px solid red;
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 550px;
+                }
+            }
+            .swiper {
+                &:hover [class^="swiper-button-"] {
+                    opacity: 0.5;
+                }
+                [class^="swiper-button-"] {
+                    transition: all 0.2s linear;
+                    padding: 20px;
+                    background-color: white;
+                    opacity: 0;
+                    &:hover {
+                        opacity: 1;
+                    }
+                    &::after {
+                        font-size: 20px;
+                        color: $backgroundMain;
+                        font-weight: bold;
+                    }
+                }
+                .swiper-button-prev {
+                    @include swiperButton(150px, 0, 0, 50px, 50px, 0, '◄');
+                }
+        
+                .swiper-button-next {
+                    @include swiperButton(0, 150px, 50px, 0, 0, 50px, "▶");
+                }
+                .swiper-pagination {
+                    transform: translateY(-380%);
+                }
+    
+                .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+                .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+                    background-color: white;
+                    width: 11px;
+                    height: 11px;
+                }
+            }
+        }
+       
+    }
+}
+

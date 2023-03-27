@@ -1,0 +1,104 @@
+@import "scss/variables.scss";
+@import "scss/mixin.scss";
+
+.sliderProduct {
+    // border: 1px solid red;
+    border-radius: 5px;
+    position: relative;
+    margin: 50px 80px 80px;
+    padding: 20px;
+    overflow: hidden;
+    z-index: 0;
+    background-image: linear-gradient(to right, grey, rgb(107, 82, 82));
+    // border: 1px solid red;
+    &__head {
+        font-size: 10px;
+        @include flexCenter();
+        justify-content: space-between;
+        margin-bottom: 20px;
+        h1 {
+            font-size: 2.5em;
+            text-transform: uppercase;
+            background-color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            color: $backgroundMain;
+        }
+        ul {
+            @include flexCenter();
+            li {
+                a {
+                    background-color: white;
+                    padding: 3px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    transition: all linear 0.3s;
+                    display: block;
+                    img {
+                        width: 120px;
+                        display: block;
+                    }
+                    &:hover {
+                        box-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px white, 0 0 30px white;
+                    }
+                }
+            }
+            li + li {
+                margin-left: 20px;
+            }
+        }
+    }
+    &__body {
+        display: flex;
+        section {
+            // border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 5px;
+            color: black;
+            background-color: white;
+            padding: 15px;
+            font-size: 10px;
+            img {
+                width: 100%;
+            }
+            p {
+                margin: 15px 0;
+                font-size: $fontSizeMain;
+                font-weight: bold;
+            }
+            h1 {
+                font-size: 2em;
+                margin-top: auto;
+                color: red;
+            }
+        }
+        .swiper {
+            &:hover [class^="swiper-button-"] {
+                opacity: 0.5;
+            }
+            [class^="swiper-button-"] {
+                transition: all 0.2s linear;
+                padding: 20px;
+                background-color: $backgroundMain;
+                opacity: 0;
+                &:hover {
+                    opacity: 1;
+                }
+                &::after {
+                    font-size: 20px;
+                    color: white;
+                    font-weight: bold;
+                }
+            }
+            .swiper-button-prev {
+                @include swiperButton(-10px, 0, 0, 50px, 50px, 0, "◄");
+            }
+
+            .swiper-button-next {
+                @include swiperButton(0, -10px, 50px, 0, 0, 50px, "▶");
+            }
+        }
+    }
+}

@@ -1,0 +1,132 @@
+@import "scss/variables.scss";
+@import "scss/mixin.scss";
+.Toastify__toast-icon {
+    div {
+        font-size: 20px;
+    }
+}
+.productAdd {
+
+    width: 100%;
+    height: 100vh;
+    background-color: $backgroundDb;
+    transition: all 0.6s ease-in-out;
+    &__head {
+        padding: 20px;
+        color: white;
+        @include flexCenter();
+        justify-content: space-between;
+        font-size: 10px;
+        // border: 1px solid white;
+        background-color: $backgroundDbContent;
+        &__name {
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 2em;
+                margin-top: 8px;
+            }
+        }
+        &__exit {
+            .icon {
+                font-size: 3em;
+                cursor: pointer;
+                transition: all 0.3s linear;
+                &:hover {
+                    color: red;
+                }
+            }
+        }
+    }
+    &__body {
+        // border: 1px solid white;
+        overflow-y: auto;
+        height: 445px;
+        font-size: 10px;
+        input,
+        select,
+        label {
+            font-size: inherit;
+            font-size: 1.8em;
+        }
+        .formAdd {
+            padding: 20px;
+            .formGroup {
+                font-size: 10px;
+                // border: 1px solid white;
+                position: relative;
+                input, label, select {
+                    font-size: $fontSizeMain;
+                }
+                input {
+                    @include inputLegend();
+                }
+                label {
+                    @include labelLegend();
+                }
+                select {
+                    @include inputLegend();
+                    background-color: $backgroundDb;
+                    
+                }
+                div {
+                    img {
+                        width: 80px;
+                        display: block;
+                        margin-top: 20px;
+                        border-radius: 5px;
+                        border: 1px solid white;
+                    }
+                }
+                .errorMessage {
+                    color: red;
+                    margin-top: 8px;
+                    font-size: 1.5em;
+                }
+                
+            }
+            .formGroup + .formGroup {
+                // margin-top: 20px;
+            }
+        }
+    }
+    &__foot {
+        font-size: 10px;
+        // border: 1px solid white;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        @include flexCenter();
+        justify-content: center;
+        background-color: $backgroundDbContent;
+        &__cancel,
+        &__add {
+            font-size: 1.8em;
+            flex-grow: 1;
+            button {
+                transition: all 0.3s linear;
+                width: 100%;
+                @include button($backgroundDb, white, 0.9em, 10px, 10px, 5px, 0.3s);
+                font-weight: bold;
+                &:hover {
+                    background-color: white;
+                    color: red;
+                }
+            }
+        }
+        &__add {
+            button {
+                transition: all 0.3s linear;
+                @include button($backgroundMain, white, 0.9em, 10px, 10px, 5px, 0.3s);
+                &:hover {
+                    background-color: white;
+                    color: $backgroundMain;
+                }
+            }
+            margin-left: 20px;
+        }
+    }
+    
+}

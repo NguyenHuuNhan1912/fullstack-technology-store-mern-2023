@@ -1,0 +1,134 @@
+@import 'scss/variables.scss';
+@import 'scss/mixin.scss';
+.dbCategoryWrapper {
+    height: 88vh;
+    overflow-y: auto;
+    position: relative;
+    .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .dbCategory {
+        padding: 20px;
+        // display: none;
+        &__upload {
+            // border: 1px solid white;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: $backgroundDb;
+            .formGroup {
+                font-size: 10px;
+                color: white;
+                input {
+                    width: 100%;
+                    // input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize ) {
+                    @include input(12px, 1px, grey, 4px, 1.5em);
+                    color: white;
+                }
+                .addCategory {
+                    button {
+                        width: 100%;
+                        @include flexCenter();
+                        justify-content: center;
+                        @include button($backgroundMain, white, 1.3em, 12px, 12px, 4px, 0.3s);
+                        font-weight: bold;
+                        // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
+                        .icon {
+                            font-size: 1.6em;
+                        }
+                        span {
+                            margin-left: 8px;
+                        }
+                        &:hover {
+                            background-color: white;
+                            color: $backgroundMain;
+                        }
+                    }
+                }
+            }
+        }
+        &__list {
+            // border: 1px solid white;
+            margin-top: 20px;
+            color: #d5d6d7;
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                font-size: 10px;
+                thead {
+                    font-size: 1.6em;
+                    tr {
+                        th {
+                            padding: 15px 0;
+                            border-bottom: 1px solid grey;
+                            // border: 1px solid white;
+
+                            text-align: left;
+                        }
+                        .edit {
+                            text-align: center;
+                        }
+                    }
+                }
+                tbody {
+                    font-size: 1.6em;
+                    tr {
+                        td {
+                            width: 5px;
+                            // border: 1px solid white;
+                            ul {
+                                @include flexCenter();
+                                flex-wrap: wrap;
+                                li {
+                                    padding: 3px;
+                                    background-color: $backgroundMain;
+                                    color: white;
+                                    border-radius: 4px;
+                                    margin: 5px;
+                                }
+                            }
+                            // border: 1px solid white;
+                            img {
+                                width: 40px;
+                                border-radius:5px;
+                            }
+                            padding: 15px 0;
+                            border-bottom: 1px solid grey;
+                            .editProduct {
+                                @include flexCenter();
+                                justify-content: center;
+                                .icon {
+                                    cursor: pointer;
+                                    color:  #d5d6d7;
+                                    font-size: 1.1em;
+                                }
+                                .icon + .icon {
+                                    margin-left: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &__categoryEmpty {
+            img {
+                display: block;
+                height: 100%;
+                margin: 0 auto;
+                border-radius: 8px;
+                margin-top: 10%;
+                box-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px white;
+            }
+        }
+    }
+    .show {
+        display: block;
+    }
+}
+// Custom modal antsesign
+.ant-modal-close-x {
+    color: red; 
+}

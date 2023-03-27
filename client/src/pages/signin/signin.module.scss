@@ -1,0 +1,236 @@
+@import 'scss/mixin';
+@import 'scss/variables';
+.signin {
+    // margin: 60px;
+    // line-height: 2;
+    padding: 80px;
+    background-image: url('../../assets/images/svg/pattern.svg');
+    background-repeat: no-repeat;
+    .row {
+        @include flexCenter();
+        
+    }
+    &__introduce {
+        
+        img {
+            display: block;
+            width: 100%;
+        }
+        // display: none;
+    }
+    &__formSignin {
+        transition: all 0.3s linear;
+        border: 1px solid white;
+        padding: 20px;
+        
+        border-radius: 5px;
+        background-color: white;
+        font-size: 10px;
+        &:hover {
+            box-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px white,
+            0 0 50px white;
+        }
+        .formTitle {
+            h1 {
+                font-size: 3em;
+                text-transform: uppercase;
+                text-align: center;
+                color: $backgroundMain;
+            }
+        }
+        .formGroupUsername {
+            margin: 20px 0;
+        }
+        .formGroup {
+            position: relative;
+            input {
+                // @mixin input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize ) {
+                @include input(8px, 1px, $backgroundMain, 4px, $fontSizeMain);
+                width: 100%;
+                padding-left: 33px;
+            }
+            
+            p {
+                font-size: 1.7em;
+                margin-top: 8px;
+                color: red;
+                // font-weight: bold;
+            }
+            .icon {
+                font-size: 20px;
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                color: grey;
+            }
+            .submit {
+                text-transform: uppercase;
+                margin: 20px 0;
+                font-weight: bold;
+                color: inherit;
+                padding-left: 0;
+                cursor: pointer;
+                color: $backgroundMain;
+                &:hover {
+                    background-color: $backgroundMain;
+                    color: white;
+                }
+            }
+        }
+        .signup {
+            @include flexCenter();
+            justify-content: space-between;
+            a {
+                font-size: 1.7em;
+                font-weight: bold;
+                &:hover {
+                    color: $backgroundMain;
+                }
+            }
+            a + a {
+                margin-left: 10px;
+            }
+        }
+        .signinWith {
+            &__title {
+                color: black;
+                position: relative;
+                margin: 20px 0;
+                @include flexCenter();
+                justify-content: center;
+                font-size: 1.7em;
+                h1 {
+                    text-transform: uppercase;
+                    font-size: inherit;
+                    text-align: center;
+                    @include flexCenter();
+                    justify-content: center;
+                    &::after, &::before {
+                        content: '.';
+                        @include line(80px, 4px, $backgroundMain, 0, 5px);
+                    }
+                }
+            }
+            &__wrapper {
+                font-size: 1.8em;
+                .facebook, .google {
+                    @include flexCenter();
+                    text-transform: uppercase;
+                    border: 1px solid transparent;
+                    padding: 8px;
+                    border-radius: 4px;
+                    font-weight: bold;
+                    transition: all 0.3s linear;
+                    color: white;
+                    cursor: pointer;
+
+                    .icon {
+                        font-size: 20px;
+                    }
+                    span {
+                        width: 100%;
+                        text-align: center;
+                    }
+                    &:hover {
+                        border: 1px solid $backgroundMain;
+                        background-color: $backgroundMain;
+                    }
+                }
+                .facebook {
+                    background-color: blue;
+                    border: 1px solid blue;
+                }
+                .google {
+                    margin-top: 20px;
+                    border: 1px solid  red;
+                    background-color: red;
+                }
+            }
+        }
+    }
+}
+
+
+// Responsive
+@include responsiveMainLg__ {
+    .signin {
+        padding: 60px;
+        &__formSignin {
+            .signinWith {
+                &__title {
+                    .first, .last {
+                        width: 85px;
+                    }
+                }
+            } 
+        }
+    }
+}
+@include responsiveMainMd__ {
+    .signin {
+        padding: 40px;
+        &__formSignin {
+            .signinWith {
+                &__title {
+                    .first, .last {
+                        width: 220px;
+                    }
+                }
+            } 
+        }
+    }
+}
+
+@include responsiveMainSm__ {
+    .signin {
+        padding: 30px;
+        &__introduce {
+            display: none;
+        }
+        .row {
+            justify-content: center;
+        }
+        &__formSignin {
+            .signinWith {
+                &__title {
+                    .first, .last {
+                        width: 170px;
+                    }
+                }
+            } 
+        }
+    }
+}
+
+@include responsiveMainXs__ {
+    .signin {
+        padding: 20px;
+        &__formSignin {
+            font-size: 9px;
+            &:hover {
+                box-shadow: initial;
+            }
+            .signinWith {
+                &__title {
+                    .first, .last {
+                        width: 60px;
+                    }
+                }
+            } 
+        }
+    }
+}
+@include responsiveXxs {
+    .signin {
+        &__formSignin {
+            font-size: 7px;
+            .signinWith {
+                &__title {
+                    .first, .last {
+                        width: 50px;
+                    }
+                }
+            }
+        }
+    }
+}

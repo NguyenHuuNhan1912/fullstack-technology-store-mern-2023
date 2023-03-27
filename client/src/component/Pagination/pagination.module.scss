@@ -1,0 +1,43 @@
+@import "scss/variables.scss";
+@import "scss/mixin.scss";
+.pagination {
+    @include flexCenter();
+    justify-content: center;
+    font-size: 10px;
+    &__head {
+        // border: 1px solid red;
+        flex-grow: 1;
+        @include flexCenter();
+        justify-content: center;
+        font-size: 2em;
+        button {
+            font-size: inherit;
+            @include flexCenter();
+            // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
+            @include button(white, black, inherit, 8px , 16px, 4px, 0.4s);
+            text-transform: initial;
+            span {
+                margin-right: 10px;
+            }
+            &:hover {
+                background-color: $backgroundMain;
+                color: white;
+                box-shadow: 0 0 5px $backgroundMain, 0 0 10px $backgroundMain, 0 0 15px $backgroundMain;
+            }
+        }
+        button:last-child {
+            margin-left: 10px;
+        }
+    }
+    &__body {
+        font-size: $fontSizeMain;
+        // border: 1px solid red;
+        margin-left: auto;
+        p {
+            background-color: $backgroundMain;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+    }
+}

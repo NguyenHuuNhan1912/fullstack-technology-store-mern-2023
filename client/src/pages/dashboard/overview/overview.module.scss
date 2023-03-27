@@ -1,0 +1,111 @@
+@import "scss/mixin";
+@import "scss/variables";
+
+.dbOverview {
+    &__numberOrder {
+        // border: 1px solid white;
+        margin: 20px;
+        text-align: center;
+        color: white;
+        &__todayOrder,
+        &__monthOrder,
+        &__totalOrder {
+            font-size: 10px;
+            padding: 20px;
+            h1 {
+                margin: 20px 0;
+                font-size: $fontSizeMain;
+                // text-transform: uppercase;
+                font-weight: bold;
+            }
+            strong {
+                font-size: 2.1em;
+            }
+            .icon {
+                font-size: 3em;
+            }
+            border-radius: 5px;
+        }
+        &__titleOrder {
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 10px;
+            h1 {
+                font-size: 2.2em;
+            }
+        }
+        &__todayOrder {
+            background-color: rgb(105, 105, 206);
+        }
+        &__monthOrder {
+            background-color: #3f83f8;
+        }
+        &__totalOrder {
+            background-color: $backgroundMain;
+        }
+    }
+    &__managementOrder {
+        // border: 1px solid white;
+        margin: 20px;
+        margin-top: 40px;
+        color: white;
+        
+        &__titleOrder {
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 10px;
+            h1 {
+                font-size: 2.2em;
+            }
+        }
+        &__totalOrder, &__orderPending, &__orderProcessing, &__orderDelivered {
+            font-size: 10px;
+            padding: 20px;
+            border: 1px solid $test;
+            border-radius: 5px;
+            background-color: $backgroundDb;
+            @include flexCenter();
+            &__head {
+                // border: 1px solid red;
+                padding: 15px;
+                border-radius: 100px;
+                .icon {
+                   display: block;
+                   color: white;
+                   font-size: 2em;
+                }
+            }
+            &__body {
+                margin-left: 10px;
+                p {
+                    font-size: $fontSizeMain;
+                }
+                strong {
+                    display: block;
+                    font-size: 2.1em;
+                    margin-top: 5px;
+                }
+            }
+        }
+        &__totalOrder {
+            &__head {
+                background-color: rgb(255, 94, 0);
+            }
+        }
+        &__orderPending {
+            &__head {
+                background-color: rgb(0, 47, 255);
+            }
+        }
+        &__orderProcessing {
+            &__head {
+                background-color: rgb(245, 12, 109);
+            }
+        }
+        &__orderDelivered {
+            &__head {
+                background-color: $backgroundMain;
+            }
+        }
+    }
+}

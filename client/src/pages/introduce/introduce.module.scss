@@ -1,0 +1,292 @@
+@import "scss/mixin.scss";
+@import "scss/variables.scss";
+.main {
+    .introduceWrapper {
+        .introduce {
+            padding: 80px;
+            align-items: center;
+            background-color: #37517e;
+            background-color: #00015e;
+            color: white;
+            &__head {
+                font-size: 10px;
+                // border: 1px solid red;
+                h1 {
+                    font-size: 4em;
+                }
+                p {
+                    font-size: 3.2em;
+                    margin: 30px 0;
+                }
+                div {
+                    .btnAnimation {
+                        @include buttonAnimation(18px, 3rem, 10rem, 60%, #00015e, rgb(0, 174, 255), rgb(30, 183, 221));
+                    }
+                }
+            }
+            &__body {
+                // border: 1px solid red;
+                position: relative;
+                animation: up 3s ease-in-out infinite alternate;
+                @keyframes up {
+                    0% {
+                        top: 0;
+                        left: 0;
+                    }
+                    50% {
+                        top: 40px;
+                        left: 0;
+                    }
+                    100% {
+                        top: 0;
+                        left: 0;
+                    }
+                }
+                img {
+                    // Animation: name-animaition second kieuchay delay chaymaylan alternall;
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+        .statistical {
+            margin: 80px;
+            overflow: hidden;
+            &__head {
+                // border: 1px solid red;
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+            &__body {
+                // border: 1px solid red;
+                &__title {
+                    font-size: 10px;
+                    text-transform: uppercase;
+                    color: $backgroundMain;
+                    h1 {
+                        font-size: 2.8em;
+                        text-align: center;
+                        @include flexCenter();
+                        justify-content: center;
+                        &::before, &::after {
+                            content: ".";
+                            @include line(100px, 5px, $backgroundMain, 0, 10px);
+                        }
+                    }
+                }
+                &__progress {
+                    margin-top: 30px;
+                    font-size: 10px;
+                    p {
+                        font-size: $fontSizeMain;
+                    }
+                }
+            }
+        }
+        .steps {
+            margin: 0 80px 80px 80px;
+            &__head {
+                font-size: 10px;
+                h1 {
+                    text-align: center;
+                    text-transform: uppercase;
+                    color: $backgroundMain;
+                    font-size: 2.8em;
+                    // border: 1px solid red;
+                    @include flexCenter();
+                    justify-content: center;
+                    &::before, &::after {
+                        content: ".";
+                        @include line(200px, 5px, $backgroundMain, 0, 10px);
+                    }
+                }
+            }
+            &__body {
+                font-size: $fontSizeMain;
+                // border: 1px solid red;
+                margin-top: 30px;
+            }
+        }
+        .card {
+            margin: 80px;
+            margin-top: 0;
+            &__head {
+                font-size: 10px;
+                // border: 1px solid red;
+                h1 {
+                    font-size: 2.8em;
+                    text-transform: uppercase;
+                    text-align: center;
+                    color: $backgroundMain;
+                    @include flexCenter();
+                    justify-content: center;
+                    &::before, &::after {
+                        content: ".";
+                        @include line(200px, 5px, $backgroundMain, 0, 10px);
+                    }
+                }
+                margin-bottom: 5px;
+            }
+            &__content {
+                font-size: 10px;
+                position: relative;
+                // border: 1px solid red;
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 250px;
+                    border-radius: 5px;
+                }
+                h1 {
+                    font-size: $fontSizeMain;
+                    background-color: #00015e;
+                    color: white;
+                    padding: 5px 10px;
+                    position: absolute;
+                    border-radius: 5px;
+                    left: 10px;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+        .achievement {
+            margin: 80px;
+            &__head {
+                font-size: 10px;
+                // border: 1px solid red;
+                h1 {
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-size: 2.8em;
+                    color: $backgroundMain;
+                    @include flexCenter();
+                    justify-content: center;
+                    &::before, &::after {
+                        content: ".";
+                        @include line(200px, 5px, $backgroundMain, 0, 10px);
+                    }
+                }
+            }
+            &__img {
+                img {
+                    // border: 1px solid red;
+                    display: block;
+                    width: 100%;
+                    height: 450px;
+                }
+            }
+            &__content {
+                font-size: 10px;
+                @include flexCenter();
+                &__head {
+                    .icon {
+                        font-size: 3.5em;
+                        color: $backgroundMain;
+                    }
+                    margin-right: 10px;
+                }
+                &__body {
+                    h1 {
+                        font-size: 2em;
+                        color: $backgroundMain;
+                    }
+                    p {
+                        font-size: $fontSizeMain;
+                        text-align: justify;
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+        .values {
+            margin: 80px;
+            margin-top: 0;
+            font-size: 10px;
+            &__head {
+                // border: 1px solid red;
+                h1 {
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-size: 2.8em;
+                    color: $backgroundMain;
+                    @include flexCenter();
+                    justify-content: center;
+                    &::before, &::after {
+                        content: ".";
+                        @include line(200px, 5px, $backgroundMain, 0, 10px);
+                    }
+                }
+                margin-bottom: 30px;
+            }
+            &__content {
+                // border: 1px solid red;
+                border-radius: 5px;
+                text-align: center;
+                height: 160px;
+                background-color: rgb(127, 72, 179);
+                background-image: linear-gradient(to right, blue, blueviolet);
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                color: white;
+                font-size: 10px;
+                img {
+                    width: 60px;
+                }
+                h1 {
+                    font-size: 2em;
+                    margin: 5px 0;
+                }
+                p {
+                    font-size: $fontSizeMain;
+                }
+            }
+        }
+        .organization {
+            margin: 80px;
+            margin-top: 0;
+            // border: 1px solid red;
+
+            &__head {
+                font-size: 10px;
+                text-align: center;
+                // border: 1px solid red;
+                h1 {
+                    font-size: 2.8em;
+                    text-transform: uppercase;
+                    color: $backgroundMain;
+                    @include flexCenter();
+                    justify-content: center;
+                    &::before, &::after {
+                        content: ".";
+                        @include line(200px, 5px, $backgroundMain, 0, 10px);
+                    }
+                }
+            }
+            &__body {
+                // border: 1px solid red;
+
+                @include flexCenter();
+                justify-content: center;
+                font-size: 10px;
+                padding: 10px;
+                border-radius: 5px;
+                background-image: linear-gradient(to right, blue, blueviolet);
+                color: white;
+                box-shadow: 0 0 5px 2px grey;
+                .icon {
+                    margin-right: 10px;
+                    font-size: 23px;
+                }
+                h1 {
+                    font-size: $fontSizeMain;
+                    min-width: 200px;
+                    // border: 1px solid red;
+                }
+            }
+        }
+    }
+}
