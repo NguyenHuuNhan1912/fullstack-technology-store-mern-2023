@@ -13,11 +13,11 @@ app.use(express.urlencoded({ limit: '70mb', extended: true }));
 app.use('/api', router);
 
 const PORT = process.env.PORT || 3004;
+app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {
     console.log("Connect to MongoDB successfully!!!");
-    app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
   })
   .catch((err) => {
     console.log({ err });
