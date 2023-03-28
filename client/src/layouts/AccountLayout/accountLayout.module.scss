@@ -1,0 +1,42 @@
+@import 'scss/mixin.scss';
+@import 'scss/variables.scss';
+
+
+.accountLayout {
+    .main {
+        margin: 80px;
+        .navInfo {
+            border: 1px solid grey;
+            border-radius: 5px;
+            padding: 20px;
+            ul {
+                font-size: 10px;
+                li {
+                    font-size: $fontSizeMain;
+                    @include flexCenter();
+                    
+                    .infor {
+                        @include flexCenter();
+                        
+                        &__head {
+                            margin-right: 10px;
+                            img {
+                                display: block;
+                                width: 100%;
+                                width: 50px;
+                                border-radius: 5px;
+                            }
+                        }
+                    }
+                    .icon {
+                        font-size: 20px;
+                        margin-right: 10px;
+                    }
+                }
+                li+li  {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}

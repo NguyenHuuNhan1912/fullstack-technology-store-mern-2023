@@ -11,9 +11,7 @@ const AppLayout = () => {
     }, [url]);
     return (
         <div className="appLayout">
-            <Header 
-                
-            />
+            <Header />
                 <Outlet
                 />
             <Footer />

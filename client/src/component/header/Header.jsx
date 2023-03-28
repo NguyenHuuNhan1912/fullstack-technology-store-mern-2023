@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { AiOutlineSearch, AiFillHome, AiFillInfoCircle, AiFillDollarCircle, AiFillContacts } from 'react-icons/ai'
 import { BiCategory } from 'react-icons/bi';
 import { RiUserAddFill, RiLogoutCircleLine, RiDeleteBack2Fill } from 'react-icons/ri';
-import { BsCartFill, BsFillBellFill } from 'react-icons/bs';
+import { BsCartFill, BsFillBellFill, BsNewspaper } from 'react-icons/bs';
 
 // import { useRef, useState } from 'react';
 import { Dropdown, Modal } from 'antd';
@@ -14,9 +14,12 @@ import style from './header.module.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import cartApi from 'api/modules/cart.api';
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import toastNotification from 'handler/toast.handler';
+import userApi from 'api/modules/user.api';
+
+
 const path = [
     { icon: AiFillHome, component: 'Trang chủ', path: '/' },
     { icon: AiFillInfoCircle, component: 'Giới thiệu', path: '/introduce' },
@@ -24,12 +27,15 @@ const path = [
     { icon: RiUserAddFill, component: 'Tuyển dụng', path: '/recruit' },
     { icon: AiFillContacts, component: 'Liên hệ', path: '/contact' },
 ];
-
 const Header = () => {
     const [userName, setUserName] = useState(JSON.parse(localStorage.getItem("userName")));
     const [admin, setAdmin] = useState(JSON.parse(localStorage.getItem("admin")));
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [user, setUser] = useState({});
+    
     let navi = useNavigate();
+    const checkUpdateAccount = JSON.parse(localStorage.getItem("updateAccount"));
+    console.log(checkUpdateAccount);
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -37,12 +43,11 @@ const Header = () => {
         setIsModalOpen(false);
         localStorage.removeItem("userName");
         localStorage.removeItem("idUser");
-        localStorage.removeItem("admin");
         setUserName(JSON.parse(localStorage.getItem("userName")));
         toastNotification('success', 'Tài khoản của bạn đã được đăng xuất !', 1000);
         setTimeout(() => {
             navi('/');
-        },1000)
+        }, 1000)
     };
     const handleCancel = () => {
         setIsModalOpen(false);
@@ -51,78 +56,74 @@ const Header = () => {
         {
             key: '1',
             label: (
-                <a 
-                target="_blank" 
-                style={
-                    { 
-                        display: 'flex', alignItems: 'center', 
-                        fontSize: 18,
-                           
+                <Link
+
+                    style={
+                        { display: 'flex', alignItems: 'center', fontSize: 18, }
                     }
-                } 
-                rel="noopener noreferrer" href="https://www.antgroup.com"
+                    rel="noopener noreferrer"
+                    href="https://www.antgroup.com"
+                    to="/account"
                 >
                     <FaUserEdit />
                     <span style={{ marginLeft: 8 }}>Thông tin tài khoản</span>
-                </a>
+                </Link>
             ),
         },
         {
             key: '2',
             label: (
-                <a 
-                    target="_blank" 
+                <Link
                     style={
-                        { 
-                            display: 'flex', alignItems: 'center', 
-                            fontSize: 18,
-                            
-                        }
-                    } 
-                    rel="noopener noreferrer" href="https://www.aliyun.com"
+                        { display: 'flex', alignItems: 'center', fontSize: 18, }
+                    }
+                    rel="noopener noreferrer"
+                    to="/account/order"
                 >
                     <BsCartFill />
                     <span style={{ marginLeft: 8 }}>Quản lý đơn hàng</span>
-                </a>
+                </Link>
             ),
         },
         {
             key: '3',
             label: (
-                <a 
-                    target="_blank" 
+                <Link
                     style={
-                        { 
-                            display: 'flex', alignItems: 'center', 
-                            fontSize: 18,
-                            
-                        }
-                    } 
-                    rel="noopener noreferrer" href="https://www.luohanacademy.com"
+                        { display: 'flex', alignItems: 'center', fontSize: 18, }
+                    }
+                    rel="noopener noreferrer"
+                    to="/account/noti"
                 >
                     <BsFillBellFill />
                     <span style={{ marginLeft: 8 }}>Thông báo</span>
-                </a>
+                </Link>
             ),
         },
         {
             key: '4',
             label: (
-                <section
-                    target="_blank"
+                <Link
                     style={
-                        { 
-                            display: 'flex', alignItems: 'center', 
-                            fontSize: 18,
-                            
-                        }
-                    } 
+                        { display: 'flex', alignItems: 'center', fontSize: 18, }
+                    }
+                    rel="noopener noreferrer"
+                    to="/account/news"
+                >
+                    <BsNewspaper />
+                    <span style={{ marginLeft: 8 }}>Bảng tin</span>
+                </Link>
+            ),
+        },
+        {
+            key: '5',
+            label: (
+                <section
+                    style={
+                        { display: 'flex', alignItems: 'center', fontSize: 18, }
+                    }
                     rel="noopener noreferrer"
                     href="https://www.luohanacademy.com"
-                    // onClick={() => {
-                    //     localStorage.removeItem("userName");
-                    //     setUserName(JSON.parse(localStorage.getItem("userName")));
-                    // }}
                     onClick={showModal}
                 >
                     <RiLogoutCircleLine />
@@ -131,6 +132,22 @@ const Header = () => {
             ),
         },
     ];
+    const getUserApi = async () => {
+        if(JSON.parse(localStorage.getItem("idUser")) !== null) {
+            console.log('call component header !');
+            try {
+                const response = await userApi.getOne(JSON.parse(localStorage.getItem("idUser")));
+                setUser(response);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    }
+    useEffect(() => {
+        getUserApi();
+    }, [checkUpdateAccount]);
+    console.log('re-render');
     return (
         <div>
             <header className={clsx(style.header)}>
@@ -167,7 +184,18 @@ const Header = () => {
                                         >
                                             <section className={clsx(style.signSystem)}>
                                                 <div className={clsx(style.signSystem__head)}>
-                                                    <img src={images.header.user} alt="alt" />
+                                                    {
+                                                        !user?.img 
+                                                        ?
+                                                        (
+                                                            <img src={images.header.user} alt="img" />
+                                                        )
+                                                        : 
+                                                        (
+                                                            <img src={`data:image/png;base64,${user.img}`} alt="img" />
+
+                                                        )
+                                                    }
                                                 </div>
                                                 <div className={clsx(style.signSystem__body)}>
                                                     <p>Xin chào</p>

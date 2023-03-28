@@ -11,7 +11,7 @@ export default mongoose.model(
     slug: {type: String, slug: "name", unique: true},
     type: {type: String},
     brand: {type: String},
-    price: {type: String},
+    price: {type: Number},
     quantity: {type: String},
     discount: {type: String},
     information: {type: Object},

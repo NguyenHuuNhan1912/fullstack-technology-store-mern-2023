@@ -41,7 +41,6 @@ const Signin = () => {
                 else {
                     localStorage.setItem("userName", JSON.stringify(response.username));
                     localStorage.setItem("idUser", JSON.stringify(response._id));
-                    localStorage.setItem("admin", JSON.stringify(response.admin));
                     toastNotification('success', 'Đăng nhập thành công trở về trang chủ mua hàng nhénhé!', 1500);
                     setTimeout(() => {
                         resetForm();

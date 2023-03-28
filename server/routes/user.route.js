@@ -16,5 +16,6 @@ router
 router
   .route('/:id')
   .get(user.getOne)
+  .put(user.updateOne)
 
 export default router;

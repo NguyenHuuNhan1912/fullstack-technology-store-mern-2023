@@ -15,7 +15,16 @@ export const create = async (req, res) => {
     res.status(500).json({ msg: "Internal server error!!!" });
   }
 }
+export const updateOne = async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, req.body).then(user => {
+      res.send("updated");
+    })
 
+  } catch (err) {
+    res.status(500).json({ msg: "Internal server error!!!" });
+  }
+};
 export const getAll = async (req, res) => {
   console.log(`Yêu cầu client: ${req.body}`);
   console.log(req.body);
@@ -33,7 +42,7 @@ export const getAll = async (req, res) => {
 
 export const getOne = async (req, res) => {
   try {
-    User.findById(req.params.id).then(user => {
+    User.findById(req.params.id, {password: 0}).then(user => {
       res.send(user);
     })
   }

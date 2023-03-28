@@ -25,6 +25,11 @@ import ProductDetail from 'pages/dashboard/ProductDetail/ProductDetail';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductApp from 'pages/productApp/ProductApp';
 import Detail from 'pages/detail/Detail';
+import AccountLayout from 'layouts/AccountLayout/AccountLayout';
+import OverviewAccount from 'pages/account/overviewAccount/OverviewAccount';
+import OrderAccount from 'pages/account/orderAccount/OrderAccount';
+import NotiAccount from 'pages/account/notiAccount/NotiAccount';
+import NewsAccount from 'pages/account/newsAccount/NewsAccount';
 const App = () => {
   return (
     <Router>
@@ -56,6 +61,12 @@ const App = () => {
               <Route path="category" element={<Category/>}/>
               <Route path="customers" element={<Customers/>}/>
               <Route path="orders" element={<Orders/>}/>
+          </Route>
+          <Route path="account" element={<AccountLayout />}>
+            <Route index element={<OverviewAccount/>}/>
+            <Route path="order" element={<OrderAccount/>}/>
+            <Route path="noti" element={<NotiAccount/>}/>
+            <Route path="news" element={<NewsAccount/>}/>
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

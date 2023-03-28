@@ -34,113 +34,65 @@ export const getAll = async (req, res) => {
   const type = req.query.type;
   const page = (skip / limit) + 1
   const price = req.query.price;
+  let checkSort;
+  let product;
   let totalProduct;
+  if (price !== '') {
+    if (price === 'low') {
+      checkSort = 1;
+    }
+    else {
+      checkSort = -1;
+    }
+  }
+  else {
+    checkSort = null;
+  }
+  console.log(checkSort);
   try {
     if (type !== '') {
       console.log('case 1');
       totalProduct = await Product.find({ type: type });
-      await Product.find({ type: type }).skip(skip).limit(limit).then(product => {
-        let resProduct = product;
-        if (price !== '') {
-          if (price === 'low') {
-            let temp;
-            for (let i = 0; i < resProduct.length - 1; i++) {
-              for (let j = resProduct.length - 1; j >= i + 1; j--) {
-                if (Number(resProduct[j].price) < Number(resProduct[j - 1].price)) {
-                  temp = resProduct[j]
-                  resProduct[j] = resProduct[j - 1];
-                  resProduct[j - 1] = temp;
-                }
-              }
-            }
-          }
-          else {
-            let temp;
-            for (let i = 0; i < resProduct.length - 1; i++) {
-              for (let j = resProduct.length - 1; j >= i + 1; j--) {
-                if (Number(resProduct[j].price) > Number(resProduct[j - 1].price)) {
-                  temp = resProduct[j]
-                  resProduct[j] = resProduct[j - 1];
-                  resProduct[j - 1] = temp;
-                }
-              }
-            }
-          }
-          setTimeout(() => {
-            res.send({
-              product: resProduct,
-              skip: Number(skip),
-              limit: Number(limit),
-              length: totalProduct.length,
-              page: page,
-              totalProduct: totalProduct.length,
-              totalPages: Math.ceil(totalProduct.length / limit),
-              type: type,
-              productsPrice: resProduct
-            });
-          }, 500);
-        }
-        else {
-          setTimeout(() => {
-            res.send({
-              product: resProduct,
-              skip: Number(skip),
-              limit: Number(limit),
-              length: totalProduct.length,
-              page: page,
-              totalProduct: totalProduct.length,
-              totalPages: Math.ceil(totalProduct.length / limit),
-              type: type,
-              productsPrice: resProduct
-            });
-          }, 500);
-        }
-      });
+      if(checkSort === null) {
+        product =  await Product.find({type: type}).skip(skip).limit(limit);
+      }
+      else {
+        product = await Product.find({type: type}).skip(skip).limit(limit).sort({price: Number(checkSort)});
+      }
+      setTimeout(() => {
+        res.send({
+          product: product,
+          skip: Number(skip),
+          limit: Number(limit),
+          length: totalProduct.length,
+          page: page,
+          totalProduct: totalProduct.length,
+          totalPages: Math.ceil(totalProduct.length / limit),
+          type: type,
+        });
+      }, 500);
     }
     else {
       console.log('case 2');
       totalProduct = await Product.find({});
-      await Product.find({}).skip(skip).limit(limit).then(product => {
-        let resProduct = product;
-        if (price !== '') {
-          if (price === 'low') {
-            let temp;
-            for (let i = 0; i < resProduct.length - 1; i++) {
-              for (let j = resProduct.length - 1; j >= i + 1; j--) {
-                if (Number(resProduct[j].price) < Number(resProduct[j - 1].price)) {
-                  temp = resProduct[j]
-                  resProduct[j] = resProduct[j - 1];
-                  resProduct[j - 1] = temp;
-                }
-              }
-            }
-          }
-          else {
-            let temp;
-            for (let i = 0; i < resProduct.length - 1; i++) {
-              for (let j = resProduct.length - 1; j >= i + 1; j--) {
-                if (Number(resProduct[j].price) > Number(resProduct[j - 1].price)) {
-                  temp = resProduct[j]
-                  resProduct[j] = resProduct[j - 1];
-                  resProduct[j - 1] = temp;
-                }
-              }
-            }
-          }
-        }
-        setTimeout(() => {
-          res.send({
-            product: resProduct,
-            skip: Number(skip),
-            limit: Number(limit),
-            length: totalProduct.length,
-            page: page,
-            totalProduct: totalProduct.length,
-            totalPages: Math.ceil(totalProduct.length / limit),
-            type: type,
-          });
-        }, 500);
-      });
+      if(checkSort === null) {
+        product =  await Product.find({}).skip(skip).limit(limit);
+      }
+      else {
+        product = await Product.find({}).skip(skip).limit(limit).sort({price: Number(checkSort)});
+      }
+      setTimeout(() => {
+        res.send({
+          product: product,
+          skip: Number(skip),
+          limit: Number(limit),
+          length: totalProduct.length,
+          page: page,
+          totalProduct: totalProduct.length,
+          totalPages: Math.ceil(totalProduct.length / limit),
+          type: type,
+        });
+      }, 500);
     }
   }
   catch (err) {

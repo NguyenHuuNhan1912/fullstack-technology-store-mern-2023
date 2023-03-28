@@ -117,6 +117,7 @@ const Product = () => {
     setSearchProduct('');
     DEFAULT_TYPE = e.target.value;
     getApiFilter(e.target.value);
+    setShowPagination(true);
   }
   const handleSortPrice = (e) => {
     setSearchProduct('');
@@ -124,6 +125,7 @@ const Product = () => {
     DEFAULT_PRICE = e.target.value;
     setSortPrice(e.target.value);
     getApi();
+    setShowPagination(true);
   }
   const handlePageChange = (newPage, type) => {
     console.log(newPage, type);

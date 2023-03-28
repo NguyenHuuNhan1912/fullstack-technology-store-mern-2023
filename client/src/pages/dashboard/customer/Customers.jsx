@@ -25,6 +25,10 @@ const Customers = () => {
     }
     setLoading(false);
   }
+  const handleString = (str) => {
+      const newStr = str.slice(0, str.indexOf("T"));
+      return newStr;
+  }
   useEffect(() => {
     getApiCustomers();
   }, []);
@@ -63,8 +67,11 @@ const Customers = () => {
                     <thead>
                       <tr>
                         <th>STT</th>
-                        <th>Tên khách hàng</th>
+                        <th style={{textAlign: 'center'}}>Ảnh</th>
+                        <th style={{textAlign: 'center'}}>Tên</th>
                         <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th>Giới tính</th>
                         <th>Ngày đăng kí</th>
                         <th style={{ textAlign: 'center' }}>Trạng thái</th>
                         <th style={{ textAlign: 'center' }}>Hiệu chỉnh</th>
@@ -76,9 +83,14 @@ const Customers = () => {
                           return (
                             <tr key={index}>
                               <td>{index + 1}</td>
-                              <td>{item.username}</td>
+                              <td>
+                                <img src={`data:image/png;base64,${item.img}`} alt="img" />
+                              </td>
+                              <td style={{textAlign: 'center'}}>{item.username}</td>
                               <td>{item.numberPhone}</td>
-                              <td>{item.createdAt}</td>
+                              <td>{item.email}</td>
+                              <td style={{textTransform: 'capitalize'}}>{item.sex}</td>
+                              <td>{`${handleString(item.createdAt)}`}</td>
                               <td style={{ textAlign: 'center' }}>
                                 <Switch
                                   defaultChecked onChange={onChange}

@@ -10,6 +10,9 @@ export default mongoose.model(
             numberPhone: { type: String},
             password: { type: String },
             img: {type: String},
+            birthDay: {type: String},
+            sex: {type: String},
+            email: {type: String},
             admin: {type: Boolean, default: false}
         },
         { timestamps: true }
