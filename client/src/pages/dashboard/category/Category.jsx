@@ -8,7 +8,6 @@ import { useState, useEffect, useRef } from 'react';
 import images from 'assets/images/index'
 import CategoryForm from 'component/categoryForm/CategoryForm';
 import { Drawer } from 'antd';
-import { toast } from 'react-toastify';
 import { Bars } from 'react-loader-spinner';
 import { Modal, Switch } from 'antd';
 import toastNotification from 'handler/toast.handler';

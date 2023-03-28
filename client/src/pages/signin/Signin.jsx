@@ -30,10 +30,8 @@ const Signin = () => {
             console.log(values);
             try {
                 const response = await userApi.signIn({ username: values.username, password: values.password });
-                localStorage.setItem("userName", JSON.stringify(response.username));
-                localStorage.setItem("idUser", JSON.stringify(response._id));
-                localStorage.setItem("admin", JSON.stringify(response.admin));
-                if (response.admin === true) {
+                if(response.admin === true) {
+                    localStorage.setItem("admin", JSON.stringify(response.admin));
                     toastNotification('success', 'Đăng nhập vào tài tài khoản quản trị thành công !', 1500);
                     setTimeout(() => {
                         resetForm();
@@ -41,12 +39,16 @@ const Signin = () => {
                     }, 1500);
                 }
                 else {
-                    toastNotification('success', 'Đăng nhập thành công, trở về trang chủ để mua sản phẩm nhé !', 1500);
+                    localStorage.setItem("userName", JSON.stringify(response.username));
+                    localStorage.setItem("idUser", JSON.stringify(response._id));
+                    localStorage.setItem("admin", JSON.stringify(response.admin));
+                    toastNotification('success', 'Đăng nhập thành công trở về trang chủ mua hàng nhénhé!', 1500);
                     setTimeout(() => {
                         resetForm();
                         window.location.replace("http://localhost:3000");
                     }, 1500);
                 }
+               
             }
             catch (err) {
                 if (err === "notUsername") {

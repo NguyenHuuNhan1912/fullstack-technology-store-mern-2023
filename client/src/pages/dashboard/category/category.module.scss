@@ -75,9 +75,10 @@
                 tbody {
                     font-size: 1.6em;
                     tr {
+                        // border: 1px solid white;
                         td {
                             width: 5px;
-                            // border: 1px solid white;
+                            
                             ul {
                                 @include flexCenter();
                                 flex-wrap: wrap;

@@ -27,6 +27,7 @@ const path = [
 
 const Header = () => {
     const [userName, setUserName] = useState(JSON.parse(localStorage.getItem("userName")));
+    const [admin, setAdmin] = useState(JSON.parse(localStorage.getItem("admin")));
     const [isModalOpen, setIsModalOpen] = useState(false);
     let navi = useNavigate();
     const showModal = () => {
@@ -146,7 +147,7 @@ const Header = () => {
                     </section>
                     <section className={clsx(style.navFunction)}>
                         {
-                            userName === null ?
+                            (userName === null) ?
                                 (
                                     <Link to="/signin" className={clsx(style.signSystem)}>
                                         <div className={clsx(style.signSystem__head)}>

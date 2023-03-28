@@ -16,7 +16,7 @@ import NotFound from 'pages/notFound/NotFound';
 import Overview from 'pages/dashboard/overview/Overview';
 import Product from 'pages/dashboard/product/Product';
 import Category from 'pages/dashboard/category/Category';
-import Customers from 'pages/dashboard/Customers';
+import Customers from 'pages/dashboard/customer/Customers';
 import Orders from 'pages/dashboard/Orders';
 import AuthLayout from './layouts/AuthLayout/AuthLayout';
 import DashBoardLayout from './layouts/DashboardLayout/DashboardLayout';

@@ -20,10 +20,10 @@ export const getAll = async (req, res) => {
   console.log(`Yêu cầu client: ${req.body}`);
   console.log(req.body);
   try {
-    await User.find({}).then(user => {
+    await User.find({admin: 'false'}, {password: 0}).then(user => {
       setTimeout(() => {
         res.send({ user });
-      }, 800)
+      }, 800);
     });
   }
   catch (err) {
