@@ -8,24 +8,76 @@
     .orderAccount {
         &__head {
             font-size: 10px;
+            @include flexCenter();
+            justify-content: center;
             h1 {
                 font-size: 2.3em;
                 text-transform: uppercase;
                 color: $backgroundMain;
                 text-align: center;
+                padding: 10px;
+                border: 1px solid $backgroundMain;
+                border-radius: 5px;
             }
         }
         &__body {
             margin-top: 20px;
             .inforProduct {
-                border: 1px solid red;
-                font-size: 10px;
+                // border: 1px solid grey;
+                border-radius: 5px;
                 &__head {
-                    font-size: $fontSizeMain;
+                    border-radius: 5px;
+                    font-size: 10px;
+                    @include flexCenter();
+
+                    h1 {
+                        border: 1px solid $backgroundMain;
+                        color: $backgroundMain;
+                        border-radius: 5px;
+                        padding: 10px;
+                        font-size: $fontSizeMain;
+                        text-transform: uppercase;
+                    }
                 }
                 &__body {
-                    font-size: $fontSizeMain;
+                    border: 1px solid grey;
+                    border-radius: 5px;
+                    padding: 10px;
+                    font-size: 10px;
+                    background-color: rgb(58, 54, 54);
+                    color: white;
+                    * {
+                        font-size: $fontSizeMain;
+                        // margin-top: 10px;
+                    }
+                    h1 {
+                        color: red;
+                    }
+                    p+p {
+                        margin-top: 10px;
+                    }
+                    img {
+                        display: block;
+                        width: 80px;
+                        margin-bottom: 10px;
+                        border-radius: 5px;
+                    }
+                    .price {
+                        color: red;
+                        font-weight: bold;
+                    }
+                    p:last-child {
+                        background-color: white;
+                        color: black;
+                        display: inline-block;
+                        padding: 5px;
+                        margin-top: 10px;
+                        border-radius: 3px;
+                    }
                 }
+            }
+            .inforProduct +  .inforProduct {
+                margin-top: 20px;
             }
         }
     }

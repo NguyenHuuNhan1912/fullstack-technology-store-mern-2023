@@ -36,34 +36,43 @@ const OrderAccount = () => {
                     <h1>Các sản phẩm bạn đã mua</h1>
                 </section>
                 <section className={clsx(style.orderAccount__body)}>
-                    <Row gutter={[{ xl: 20, }, { xl: 20 }]}>
-                        {
-                            orders.map((item, index) => {
-                                return (
-                                    <Col xl={8}>
-                                        <section key={index} className={clsx(style.inforProduct)}>
-                                            <h1 className={clsx(style.inforProduct__head)}>{`Ngày mua: ${handleString(item.cart.createdAt)}`}</h1>
-                                            <section className={clsx(style.inforProduct__body)}>
-                                                {
-                                                    item.cart.product.map((item, index) => {
-                                                        return (
-                                                            <section key={index}>
-                                                                <h1>{`Tên sản phẩm: ${item.idRef.name}`}</h1>
-                                                                <h1>{`Giá sản phẩm: ${item.idRef.price}`}</h1>
-                                                                <h1>{`Số lượng ${item.quantity}`}</h1>
-                                                                <h1>Đã giao</h1>
-                                                            </section>
 
-                                                        )
-                                                    })
-                                                }
+                    {
+                        orders.map((item, index) => {
+                            return (
+                                <section key={index} className={clsx(style.inforProduct)}>
+                                    <Row 
+                                        gutter={[{ xl: 20 }, { xl: 20 }]}
+                                        align={"middle"}
+                                    >
+                                        <Col xl={24}>
+                                            <section className={clsx(style.inforProduct__head)}>
+                                                <h1>{`Ngày mua: ${handleString(item.cart.createdAt)}`}</h1>
                                             </section>
-                                        </section>
-                                    </Col>            
-                                )
-                            })
-                        }
-                    </Row>
+                                        </Col>
+                                        {
+                                            item.cart.product.map((item, index) => {
+                                                return (
+                                                    <Col xl={12}>
+                                                        <section key={index} className={clsx(style.inforProduct__body)}>
+                                                            <img src={`data:image/png;base64,${item.idRef.img}`} alt="" />
+                                                            <p>{`Tên sản phẩm: ${item.idRef.name}`}</p>
+                                                            <p className={clsx(style.price)}>{`Giá sản phẩm: ${handlePercent(Number(item.idRef.price), Number(item.idRef.discount)).toLocaleString()} đ`}</p>
+                                                            <p>{`Số lượng: ${item.quantity}`}</p>
+                                                            <p>Đã giao</p>
+                                                        </section>
+                                                    </Col>
+                                                )
+                                            })
+                                        }
+
+                                    </Row>
+                                </section>
+
+                            )
+                        })
+                    }
+
                 </section>
             </section>
         </main>
