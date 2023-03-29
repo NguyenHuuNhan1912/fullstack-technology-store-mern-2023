@@ -23,6 +23,17 @@ export const getAll = async (req, res) => {
         res.status(500).json({ msg: "Internal server error!!!" });
     }
 }
+export const searchCart = async (req, res) => {
+    const idUder = req.query.idUser;
+    try {
+        await Order.find({idUser: idUder}, {cart: 1}).then(order => {
+            res.send({ order });
+        });
+    }
+    catch (err) {
+        res.status(500).json({ msg: "Internal server error!!!" });
+    }
+}
 
 export const updateOne = async (req, res) => {
     try {

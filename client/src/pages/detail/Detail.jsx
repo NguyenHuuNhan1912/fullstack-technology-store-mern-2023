@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import style from './detail.module.scss';
 import images from 'assets/images/index';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import productApi from 'api/modules/product.api';
 import { Row, Col } from 'antd';
@@ -14,6 +14,7 @@ import SelectSpeed from 'component/selectSpeed/SelectSpeed';
 import { toast } from 'react-toastify';
 import cartApi from 'api/modules/cart.api';
 import toastNotification from 'handler/toast.handler';
+import { QuantityCart } from 'layouts/AppLayout/AppLayout';
 const dataPolicy = [
   { icon: AiFillLike, title: 'Sản phẩm đạt chuẩn' },
   { icon: SiSpringsecurity, title: 'Cam kết chính hãng 100%' },
@@ -30,6 +31,7 @@ const Detail = () => {
   const [keysInfor, setKeysInfor] = useState([]);
   const [valuesInfor, setValuesInfor] = useState([]);
   const [cart, setCart] = useState({});
+  const updateQuantityCart = useContext(QuantityCart);
   const handlePercent = (price, discount) => {
     return price - (price * (discount / 100));
   }
@@ -126,6 +128,8 @@ const Detail = () => {
         const response = await cartApi.update(idCart, cart);
         getIdUserApi();
         toastNotification('success', "Sản phẩm đã được thêm vào giỏ hàng !", 1000);
+        updateQuantityCart();
+
       }
       catch (err) {
         console.log(err);

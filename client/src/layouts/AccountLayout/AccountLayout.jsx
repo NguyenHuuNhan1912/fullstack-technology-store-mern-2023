@@ -44,7 +44,7 @@ const AccountLayout = () => {
                 />
                 <main className={clsx(style.main)}>
                     <Row gutter={[{xl: 30}, {xl:30}]}>
-                        <Col xl={8}>
+                        <Col xl={6}>
                             <section className={clsx(style.navInfo)}>
                                 <ul className={clsx(style.navList)}>
                                     <li className={clsx(style.navItem)}>
@@ -83,7 +83,7 @@ const AccountLayout = () => {
                                 </ul>
                             </section>
                         </Col>
-                        <Col xl={16}>
+                        <Col xl={18}>
                             <Outlet /> 
                         </Col>
                     </Row>

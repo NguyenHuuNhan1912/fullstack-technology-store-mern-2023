@@ -12,14 +12,11 @@ import images from 'assets/images/index';
 import 'scss/_globalstyle.scss';
 import style from './header.module.scss';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import cartApi from 'api/modules/cart.api';
-import { useEffect} from 'react';
+import { useEffect, createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toastNotification from 'handler/toast.handler';
 import userApi from 'api/modules/user.api';
-
-
+import cartApi from 'api/modules/cart.api';
 const path = [
     { icon: AiFillHome, component: 'Trang chủ', path: '/' },
     { icon: AiFillInfoCircle, component: 'Giới thiệu', path: '/introduce' },
@@ -27,15 +24,28 @@ const path = [
     { icon: RiUserAddFill, component: 'Tuyển dụng', path: '/recruit' },
     { icon: AiFillContacts, component: 'Liên hệ', path: '/contact' },
 ];
-const Header = () => {
+const Header = ({call}) => {
     const [userName, setUserName] = useState(JSON.parse(localStorage.getItem("userName")));
     const [admin, setAdmin] = useState(JSON.parse(localStorage.getItem("admin")));
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [user, setUser] = useState({});
-    
+    const [cart, setCart] = useState({});
+    const [product, setProduct] = useState([]);
+    const getCartApi = async () => {
+        try {
+            const response = await cartApi.searchIdUser({
+                idUser: JSON.parse(localStorage.getItem("idUser")),
+            });
+            setCart(response.cart);
+            setProduct(response.cart.product);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
     let navi = useNavigate();
     const checkUpdateAccount = JSON.parse(localStorage.getItem("updateAccount"));
-    console.log(checkUpdateAccount);
+    const checkUpdateQuantityCart = call;
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -133,8 +143,7 @@ const Header = () => {
         },
     ];
     const getUserApi = async () => {
-        if(JSON.parse(localStorage.getItem("idUser")) !== null) {
-            console.log('call component header !');
+        if (JSON.parse(localStorage.getItem("idUser")) !== null) {
             try {
                 const response = await userApi.getOne(JSON.parse(localStorage.getItem("idUser")));
                 setUser(response);
@@ -146,8 +155,10 @@ const Header = () => {
     }
     useEffect(() => {
         getUserApi();
-    }, [checkUpdateAccount]);
-    console.log('re-render');
+        getCartApi();
+    }, [checkUpdateAccount, checkUpdateQuantityCart]);
+    console.log('re-render-header');
+    console.log(checkUpdateQuantityCart);
     return (
         <div>
             <header className={clsx(style.header)}>
@@ -185,16 +196,16 @@ const Header = () => {
                                             <section className={clsx(style.signSystem)}>
                                                 <div className={clsx(style.signSystem__head)}>
                                                     {
-                                                        !user?.img 
-                                                        ?
-                                                        (
-                                                            <img src={images.header.user} alt="img" />
-                                                        )
-                                                        : 
-                                                        (
-                                                            <img src={`data:image/png;base64,${user.img}`} alt="img" />
+                                                        !user?.img
+                                                            ?
+                                                            (
+                                                                <img src={images.header.user} alt="img" />
+                                                            )
+                                                            :
+                                                            (
+                                                                <img src={`data:image/png;base64,${user.img}`} alt="img" />
 
-                                                        )
+                                                            )
                                                     }
                                                 </div>
                                                 <div className={clsx(style.signSystem__body)}>
@@ -236,7 +247,7 @@ const Header = () => {
                             </div>
                             <div className={clsx(style.cart__body)}>
                                 <p>Giỏ hàng</p>
-                                <p>{`(0) Sản phẩm`}</p>
+                                <p>{`(${(product.length===0) ? 0 : product.length}) Sản phẩm`}</p>
                             </div>
                         </Link>
                     </section>
@@ -266,7 +277,6 @@ const Header = () => {
             </header>
 
         </div>
-
     )
 }
 

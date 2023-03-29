@@ -6,6 +6,7 @@ export default mongoose.model(
     Schema(
       {
       name: {type: String},
+      idUser: {type: String},
       numberPhone: {type: String},
       province: {type: String},
       districts: {type: String},

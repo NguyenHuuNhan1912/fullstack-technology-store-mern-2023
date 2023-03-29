@@ -3,7 +3,7 @@ import style from './cart.module.scss';
 import images from 'assets/images/index';
 import { Row, Col } from 'antd';
 import cartApi from 'api/modules/cart.api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { AiFillPlusCircle, AiFillMinusCircle, AiFillDelete } from 'react-icons/ai';
 import { ImCart } from 'react-icons/im';
 import productApi from 'api/modules/product.api';
@@ -12,6 +12,7 @@ import * as Yup from 'yup';
 import toastNotification from 'handler/toast.handler';
 import orderApi from 'api/modules/order.api';
 import { Link } from 'react-router-dom';
+import { QuantityCart } from 'layouts/AppLayout/AppLayout';
 const Cart = () => {
     const [cart, setCart] = useState({});
     const [productCart, setProductCart] = useState([]);
@@ -19,7 +20,7 @@ const Cart = () => {
     const [apiDistricts, setApiDistricts] = useState([]);
     const [apiHometowns, setApiHometowns] = useState([]);
     const [checkLogin, setCheckLogin] = useState(JSON.parse(localStorage.getItem("idUser")));
-    console.log(checkLogin);
+    const updateQuantityCart = useContext(QuantityCart);
     const [address, setAddress] = useState(
         {
             province: '',
@@ -29,12 +30,14 @@ const Cart = () => {
     );
     const getCartApi = async () => {
         if (checkLogin !== null) {
+            console.log("call thanh toan");
             try {
                 const response = await cartApi.searchIdUser({
                     idUser: JSON.parse(localStorage.getItem("idUser")),
                 })
                 setCart(response.cart);
                 setProductCart(response.cart.product);
+                updateQuantityCart();
             }
             catch (err) {
                 console.log(err);
@@ -54,6 +57,8 @@ const Cart = () => {
         try {
             const response = await cartApi.update(cart._id, cart);
             console.log(response);
+            getCartApi();
+            
         }
         catch (err) {
             console.log(err);
@@ -112,13 +117,13 @@ const Cart = () => {
         }
     }
     const handleDelete = (id) => {
+        
         console.log('delete');
         const product = cart.product.filter((item, index) => (id !== item.idRef._id));
         cart.product = product;
         cart.total = totalCart();
         updateCart();
         toastNotification("success", "Đã xóa sản phẩm ra khỏi giỏ hàng !", 1000);
-        getCartApi();
     }
     const handleChangeProvince = (e) => {
         const name = e.target.value;
@@ -178,7 +183,6 @@ const Cart = () => {
         cart.product = [];
         cart.total = "0";
         updateCart();
-        getCartApi();
         toastNotification("success", "Đơn hàng của bạn đã được thanh toán !", 1500);
     }
 
@@ -200,6 +204,7 @@ const Cart = () => {
                 ...address,
                 total: cart.total,
                 cart: cart,
+                idUser: JSON.parse(localStorage.getItem("idUser")),
             }
             handleOrder(inforOrder);
         }

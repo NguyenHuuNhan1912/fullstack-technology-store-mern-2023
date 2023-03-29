@@ -7,7 +7,10 @@ router
   .route("/")
   .post(order.create)
   .get(order.getAll)
-
+router
+  .route("/searchCart")
+  .get(order.searchCart)
+  
 router
   .route('/:id')
   .put(order.updateOne)
