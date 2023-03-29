@@ -123,9 +123,9 @@ export const deleteOne = async (req, res) => {
 export const getOne = async (req, res) => {
   try {
     Product.findById(req.params.id).then(product => {
-      setTimeout(() => {
-        res.send(product);
-      }, 500);
+      res.send(product);
+      // setTimeout(() => {
+      // }, 500);
     })
   }
   catch (err) {

@@ -9,7 +9,6 @@ const AppLayout = () => {
     const [call, setCall] = useState(true);
     const url = useParams();
     const callAppLayout =  () => {
-        console.log('call applayout');
         setCall(!call);
     }
     console.log(call);

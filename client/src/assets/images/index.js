@@ -128,6 +128,10 @@ const images = {
     },
     detail: {
         check: require('./detail/check.png')
+    },
+    account: {
+        noNoti: require('./account/noNoti.png'),
+        emptyOrder: require('./account/emptyOrder.avif'),
     }
 }
 

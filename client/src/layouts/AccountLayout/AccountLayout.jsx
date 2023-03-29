@@ -4,46 +4,45 @@ import { Outlet } from 'react-router-dom';
 import { clsx } from 'clsx';
 import style from './accountLayout.module.scss';
 import { BsCartFill, BsFillBellFill, BsNewspaper } from 'react-icons/bs';
-import { FaUserEdit } from 'react-icons/fa';
-import {Row, Col} from 'antd';
+import { FaUserAlt } from 'react-icons/fa';
+import { Row, Col } from 'antd';
 import { useEffect, useState, createContext } from 'react';
 import userApi from 'api/modules/user.api';
 import images from 'assets/images';
 import { Link } from 'react-router-dom';
 
 const dataNav = [
-    { icon: FaUserEdit, title: 'Thông tin tài khoản', path: '/account' },
-    { icon: BsCartFill, title: 'Quản lý đơn hàng', path: '/account/order' },
-    { icon: BsFillBellFill, title: 'Thông báo',  path: '/account/noti' },
-    { icon: BsNewspaper, title: 'Bảng tin',  path: '/account/news' },
+    { icon: FaUserAlt, title: 'Thông tin tài khoản', path: '/account', type: 'account' },
+    { icon: BsCartFill, title: 'Quản lý đơn hàng', path: '/account/order', type: 'order' },
+    { icon: BsFillBellFill, title: 'Thông báo', path: '/account/noti', type: 'noti' },
+    { icon: BsNewspaper, title: 'Bảng tin', path: '/account/news', type: 'news' },
 ]
 export const UpdateAccount = createContext();
 const AccountLayout = () => {
     const [user, setUser] = useState({});
-    const [reset, setReset] = useState(false);
-    const getUserApi  = async () => {
-       console.log('call component account');
-       try {
+    const [type, setType] = useState(window.location.pathname.slice(window.location.pathname.lastIndexOf('/') + 1, window.location.pathname.length));
+    console.log(type);
+    const getUserApi = async () => {
+        try {
             const response = await userApi.getOne(JSON.parse(localStorage.getItem("idUser")));
             setUser(response);
-       }
-       catch(err) {
-        console.log(err);
-       } 
-    //    localStorage.removeItem("updateAccount");
-       
-    }   
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+    }
     useEffect(() => {
         getUserApi();
     }, []);
     return (
         <UpdateAccount.Provider value={getUserApi}>
             <div className={clsx(style.accountLayout)}>
-                <Header 
-                    
+                <Header
+
                 />
                 <main className={clsx(style.main)}>
-                    <Row gutter={[{xl: 30}, {xl:30}]}>
+                    <Row gutter={[{ xl: 30 }, { xl: 30 }]}>
                         <Col xl={6}>
                             <section className={clsx(style.navInfo)}>
                                 <ul className={clsx(style.navList)}>
@@ -51,15 +50,15 @@ const AccountLayout = () => {
                                         <section className={clsx(style.infor)}>
                                             <section className={clsx(style.infor__head)}>
                                                 {
-                                                    !user?.img 
-                                                    ?
-                                                    (
-                                                        <img src={images.header.user} alt="img" />
-                                                    )
-                                                    : 
-                                                    (
-                                                        <img src={`data:image/png;base64,${user?.img}`} alt="img" />
-                                                    )
+                                                    !user?.img
+                                                        ?
+                                                        (
+                                                            <img src={images.header.user} alt="img" />
+                                                        )
+                                                        :
+                                                        (
+                                                            <img src={`data:image/png;base64,${user?.img}`} alt="img" />
+                                                        )
                                                 }
                                             </section>
                                             <section className={clsx(style.infor__body)}>
@@ -71,9 +70,20 @@ const AccountLayout = () => {
                                     {
                                         dataNav.map((item, index) => {
                                             return (
-                                                <li className="nav-item" key={index}>
-                                                    <Link to={item.path}>
-                                                        <item.icon className={clsx(style.icon)}/>
+                                                <li className={clsx(style.navItem)} key={index}>
+                                                    <Link
+                                                        to={item.path}
+                                                        style=
+                                                        {
+                                                            type === item.type
+                                                                ?
+                                                                { backgroundColor: `#049c62`, color: 'white' }
+                                                                :
+                                                                {}
+                                                        }
+                                                        onClick={() => setType(item.type)}
+                                                    >
+                                                        <item.icon className={clsx(style.icon)} />
                                                         <span>{item.title}</span>
                                                     </Link>
                                                 </li>
@@ -84,7 +94,7 @@ const AccountLayout = () => {
                             </section>
                         </Col>
                         <Col xl={18}>
-                            <Outlet /> 
+                            <Outlet />
                         </Col>
                     </Row>
                 </main>

@@ -56,7 +56,7 @@ const Header = ({call}) => {
         setUserName(JSON.parse(localStorage.getItem("userName")));
         toastNotification('success', 'Tài khoản của bạn đã được đăng xuất !', 1000);
         setTimeout(() => {
-            navi('/');
+            window.location.reload();
         }, 1000)
     };
     const handleCancel = () => {
@@ -157,8 +157,7 @@ const Header = ({call}) => {
         getUserApi();
         getCartApi();
     }, [checkUpdateAccount, checkUpdateQuantityCart]);
-    console.log('re-render-header');
-    console.log(checkUpdateQuantityCart);
+
     return (
         <div>
             <header className={clsx(style.header)}>

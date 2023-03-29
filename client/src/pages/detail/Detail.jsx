@@ -32,6 +32,7 @@ const Detail = () => {
   const [valuesInfor, setValuesInfor] = useState([]);
   const [cart, setCart] = useState({});
   const updateQuantityCart = useContext(QuantityCart);
+
   const handlePercent = (price, discount) => {
     return price - (price * (discount / 100));
   }
@@ -47,7 +48,7 @@ const Detail = () => {
     }
   }
   const getIdUserApi = async () => {
-    if(JSON.parse(localStorage.getItem("idUser")) !== null) {
+    if (JSON.parse(localStorage.getItem("idUser")) !== null) {
       try {
         const response = await cartApi.searchIdUser({
           idUser: JSON.parse(localStorage.getItem("idUser")),
@@ -159,95 +160,102 @@ const Detail = () => {
       <SelectSpeed />
       <section className={clsx(style.detail)}>
         <Row gutter={[{ xl: 20 }, { xl: 20 }]}>
-          <Col xl={7}>
-            <div className={clsx(style.detail__img)}>
-              {
-                (product.img === undefined) ? (
-                  <></>
-                ) :
-                  (
-                    <img src={`data:image/png;base64,${product?.img}`} alt="" />
-                  )
-              }
-
-            </div>
-          </Col>
-          <Col xl={11}>
-            <div className={clsx(style.detail__infor)}>
-              <ul>
-                <li style={{ textAlign: 'initial' }}>{product?.name}</li>
-                <li>
-                  <span>Thương hiệu | </span>
-                  <span style={{ textTransform: 'capitalize' }}>{product?.brand}</span>
-                </li>
-                <li>Thông số kĩ thuật</li>
-                {
-                  keysInfor.length > 0 &&
-                  keysInfor.map((item, index) => {
-                    return (
-                      <li key={index} style={{ textTransform: 'capitalize' }}>{`${item}: ${valuesInfor[index]}`}</li>
-                    )
-                  })
-                }
-                <li className={clsx(style.discount)}>
-                  <span>{`Chỉ còn ${product?.quantity} sản phẩm`}</span>
-                  <span>{`Khuyến mãi ${product?.discount}%`}</span>
-                </li>
-                <li>
-                  <span>{`${Number(product?.price).toLocaleString()} đ`}</span>
-                  <span>{`${handlePercent(Number(product?.price), Number(product?.discount)).toLocaleString()} đ`}</span>
-                </li>
-              </ul>
-              <section className={clsx(style.detail__infor__add)}>
-                <section onClick={checkLogin}>
-                  <button className={clsx(style.btnAnimation)}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span>Thêm vào giỏ hàng</span>
-                  </button>
-                </section>
-                <section >
-                  <button className={clsx(style.btnAnimation)}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span>Mua ngay</span>
-                  </button>
-                </section>
-              </section>
-            </div>
-          </Col>
-          <Col xl={6}>
-            <div className={clsx(style.detail__policy)}>
-              <div className={clsx(style.detail__policy__head)}>
-                <img src={images.footer.logon} alt="img" />
-                <section>
-                  <span>Công ty cổ phần thương mại dịch vụ Hữu Nhân</span>
-                  <img src={images.detail.check} alt="img" />
-                </section>
-              </div>
-              <div className={clsx(style.detail__policy__body)}>
-                <div className={clsx(style.detail__policy__body__title)}>
-                  <h1>Chính sách bán hàng</h1>
-                </div>
-                <div className={clsx(style.detail__policy__body__content)}>
-                  <ul>
+          {
+            product?.img &&
+            (
+              <>
+                <Col xl={7}>
+                  <div className={clsx(style.detail__img)}>
                     {
-                      dataPolicy.map((item, index) => {
-                        return (
-                          <li key={index}>
-                            <item.icon className={clsx(style.icon)} />
-                            <span>{item.title}</span>
-                          </li>
+                      (product.img === undefined) ? (
+                        <></>
+                      ) :
+                        (
+                          <img src={`data:image/png;base64,${product?.img}`} alt="" />
                         )
-                      })
                     }
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </Col>
+
+                  </div>
+                </Col>
+                <Col xl={11}>
+                  <div className={clsx(style.detail__infor)}>
+                    <ul>
+                      <li style={{ textAlign: 'initial' }}>{product?.name}</li>
+                      <li>
+                        <span>Thương hiệu | </span>
+                        <span style={{ textTransform: 'capitalize' }}>{product?.brand}</span>
+                      </li>
+                      <li>Thông số kĩ thuật</li>
+                      {
+                        keysInfor.length > 0 &&
+                        keysInfor.map((item, index) => {
+                          return (
+                            <li key={index} style={{ textTransform: 'capitalize' }}>{`${item}: ${valuesInfor[index]}`}</li>
+                          )
+                        })
+                      }
+                      <li className={clsx(style.discount)}>
+                        <span>{`Còn ${product?.quantity} sản phẩm`}</span>
+                        <span>{`Khuyến mãi ${product?.discount}%`}</span>
+                      </li>
+                      <li>
+                        <span>{`${Number(product?.price).toLocaleString()} đ`}</span>
+                        <span>{`${handlePercent(Number(product?.price), Number(product?.discount)).toLocaleString()} đ`}</span>
+                      </li>
+                    </ul>
+                    <section className={clsx(style.detail__infor__add)}>
+                      <section onClick={checkLogin}>
+                        <button className={clsx(style.btnAnimation)}>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span>Thêm vào giỏ hàng</span>
+                        </button>
+                      </section>
+                      <section >
+                        <button className={clsx(style.btnAnimation)}>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span>Mua ngay</span>
+                        </button>
+                      </section>
+                    </section>
+                  </div>
+                </Col>
+                <Col xl={6}>
+                  <div className={clsx(style.detail__policy)}>
+                    <div className={clsx(style.detail__policy__head)}>
+                      <img src={images.footer.logon} alt="img" />
+                      <section>
+                        <span>Công ty cổ phần thương mại dịch vụ Hữu Nhân</span>
+                        <img src={images.detail.check} alt="img" />
+                      </section>
+                    </div>
+                    <div className={clsx(style.detail__policy__body)}>
+                      <div className={clsx(style.detail__policy__body__title)}>
+                        <h1>Chính sách bán hàng</h1>
+                      </div>
+                      <div className={clsx(style.detail__policy__body__content)}>
+                        <ul>
+                          {
+                            dataPolicy.map((item, index) => {
+                              return (
+                                <li key={index}>
+                                  <item.icon className={clsx(style.icon)} />
+                                  <span>{item.title}</span>
+                                </li>
+                              )
+                            })
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              </>
+            )
+          }
         </Row>
       </section>
     </main>

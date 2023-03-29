@@ -3,7 +3,7 @@
 
 .main {
     padding: 20px;
-    border: 1px solid grey;
+    border: 1px solid $backgroundMain;
     border-radius: 5px;
     .orderAccount {
         &__head {
@@ -22,7 +22,7 @@
         }
         &__body {
             margin-top: 20px;
-            .inforProduct {
+            .inforOrder {
                 // border: 1px solid grey;
                 border-radius: 5px;
                 &__head {
@@ -31,8 +31,8 @@
                     @include flexCenter();
 
                     h1 {
-                        border: 1px solid $backgroundMain;
-                        color: $backgroundMain;
+                        background-color: $backgroundMain;
+                        color: white;
                         border-radius: 5px;
                         padding: 10px;
                         font-size: $fontSizeMain;
@@ -40,15 +40,12 @@
                     }
                 }
                 &__body {
-                    border: 1px solid grey;
                     border-radius: 5px;
                     padding: 10px;
                     font-size: 10px;
-                    background-color: rgb(58, 54, 54);
-                    color: white;
+                    border: 1px solid green;
                     * {
                         font-size: $fontSizeMain;
-                        // margin-top: 10px;
                     }
                     h1 {
                         color: red;
@@ -66,59 +63,63 @@
                         color: red;
                         font-weight: bold;
                     }
-                    p:last-child {
-                        background-color: white;
-                        color: black;
+                    .finish, a {
                         display: inline-block;
-                        padding: 5px;
+                        background-color: $backgroundMain;
+                        color: white;
+                        padding: 5px 10px;
                         margin-top: 10px;
                         border-radius: 3px;
                     }
+                    a {
+                        background-color: blue;
+                        margin-left: 10px;
+                        &:hover {
+                            background-color: $backgroundMain;
+                        }
+                    }
+
                 }
             }
-            .inforProduct +  .inforProduct {
+            .inforOrder +  .inforOrder {
                 margin-top: 20px;
+            }
+            
+        }
+        &__empty {
+            text-align: center;
+            font-size: 10px;
+            img {
+                display: block;
+                // border: 1px solid red;
+                width: 400px;
+                margin: 0 auto;
+            }
+            p {
+                font-size: 3em;
+                text-transform: uppercase;
+                color: $backgroundMain;
+                font-weight: bold;
+            }
+            a {
+                font-size: $fontSizeMain;
+                @include flexCenter();
+                justify-content: center;
+                margin-top: 30px;
+                button {
+                    @include flexCenter();
+                    @include button($backgroundMain, white, inherit, 10px, 20px, 5px, 0.3s);
+                    font-weight: bold;
+                    .icon {
+                        font-size: 25px;
+                        margin-right: 8px;
+                    }
+                    &:hover {
+                        background-color: rgb(177, 13, 13);
+                        color: white;
+                    }
+                }
             }
         }
     }
 }
-// table {
-//     border-collapse: collapse;
-//     width: 100%;
-//     font-size: 10px;
-//     thead {
-//         font-size: $fontSizeMain;
-//         tr {
-//             th {
-//                 padding: 15px 0;
-//                 border-bottom: 1px solid grey;
-//                 // border: 1px solid white
-//                 text-align: center;
-//             }
-//         }
-//     }
-//     tbody {
-//         font-size: $fontSizeMain;
-//         tr {
-//             td {
-//                 padding: 15px 0;
-//                 border-bottom: 1px solid grey;
-//                 text-align: center;
-//                 img {
-//                     width: 60px;
-//                     display: block;
-//                     margin: 0 auto;
-//                 }
-               
-//             }
-//             .price {
-//                 text-align: center;
-//                 color: red;
-//                 font-weight: bold;
-//             }
-//             .name {
-//                 text-align: center;
-//             }
-//         }
-//     }
-// }
