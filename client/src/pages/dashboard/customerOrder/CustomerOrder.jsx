@@ -1,29 +1,27 @@
 import { clsx } from 'clsx';
-import style from './orderAccount.module.scss';
+import style from './customerOrder.module.scss';
+import images from 'assets/images';
+import { useParams } from 'react-router-dom';
 import orderApi from 'api/modules/order.api';
 import { useEffect, useState } from 'react';
-import SelectSpeed from 'component/selectSpeed/SelectSpeed';
-import { Row, Col } from 'antd';
-import images from 'assets/images';
+import { Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
-import { AiOutlineRollback } from 'react-icons/ai';
-const status = ['pending-Đang xử lý', 'processing-Đang giao', 'delivered-Đã giao', 'cancel-Hủy đơn hàng'];
-const OrderAccount = (statusOrder) => {
+import {AiOutlineRollback} from 'react-icons/ai';
+const CustomersOrder = () => {
+    const idUser = useParams();
     const [orders, setOrders] = useState([]);
-    const handleStatus = (str) => {
-        const newStr = str.slice(str.indexOf("-")+1, str.length);
-        return newStr;
+    console.log(idUser.id);
+    const handlePercent = (price, discount) => {
+        return price - (price * (discount / 100));
     }
-    const convertStatus = (statusOrder) => {
-        const result = status.filter((item, index) => {
-            return item.includes(statusOrder);
-        });
-        return handleStatus(result[0]);
+    const handleString = (str) => {
+        const newStr = str.slice(0, str.indexOf("T"));
+        return newStr;
     }
     const getApiOrders = async () => {
         try {
             const response = await orderApi.searchCart({
-                idUser: JSON.parse(localStorage.getItem("idUser")),
+                idUser: idUser.id
             });
             setOrders(response.order);
         }
@@ -35,25 +33,23 @@ const OrderAccount = (statusOrder) => {
         getApiOrders();
     }, []);
     console.log(orders);
-    const handlePercent = (price, discount) => {
-        return price - (price * (discount / 100));
-    }
-    const handleString = (str) => {
-        const newStr = str.slice(0, str.indexOf("T"));
-        return newStr;
-    }
     return (
         <main className={clsx(style.main)}>
-            <SelectSpeed />
-            <section className={clsx(style.orderAccount)}>
+            <section className={clsx(style.customerOrder)}>
                 {
                     orders.length > 0 ?
                         (
                             <>
-                                <section className={clsx(style.orderAccount__head)}>
-                                    <h1>Các sản phẩm bạn đã mua</h1>
+                                <section className={clsx(style.customerOrder__head)}>
+                                    <h1>Quản lý đơn hàng</h1>
+                                    <Link to="/dashboard/customers">
+                                        <button>
+                                            <AiOutlineRollback className={clsx(style.icon)} />
+                                            <span>Trở về</span>
+                                        </button>
+                                    </Link>
                                 </section>
-                                <section className={clsx(style.orderAccount__body)}>
+                                <section className={clsx(style.customerOrder__body)}>
                                     {
                                         orders.map((item, index) => {
                                             return (
@@ -68,17 +64,17 @@ const OrderAccount = (statusOrder) => {
                                                             </section>
                                                         </Col>
                                                         {
-                                                            item.cart.product.map((cart, index) => {
+                                                            item.cart.product.map((item, index) => {
                                                                 return (
                                                                     <Col xl={12} key={index}>
                                                                         <section className={clsx(style.inforOrder__body)}>
-                                                                            <img src={`data:image/png;base64,${cart.idRef.img}`} alt="" />
-                                                                            <p>{`Tên sản phẩm: ${cart.idRef.name}`}</p>
-                                                                            <p className={clsx(style.price)}>{`Giá sản phẩm: ${handlePercent(Number(cart.idRef.price), Number(cart.idRef.discount)).toLocaleString()} đ`}</p>
-                                                                            <p>{`Số lượng: ${cart.quantity}`}</p>
-                                                                            <p className={clsx(style.finish)}>{`${convertStatus(item.status)}`}</p>
-                                                                            <Link to={`/product/detail/${cart.idRef._id}`}>
-                                                                                Mua lại
+                                                                            <img src={`data:image/png;base64,${item.idRef.img}`} alt="" />
+                                                                            <p>{`Tên sản phẩm: ${item.idRef.name}`}</p>
+                                                                            <p className={clsx(style.price)}>{`Giá sản phẩm: ${handlePercent(Number(item.idRef.price), Number(item.idRef.discount)).toLocaleString()} đ`}</p>
+                                                                            <p>{`Số lượng: ${item.quantity}`}</p>
+                                                                            <p className={clsx(style.finish)}>Đã giao</p>
+                                                                            <Link to={`/product/detail/${item.idRef._id}`}>
+                                                                                Xem chi tiết
                                                                             </Link>
                                                                         </section>
                                                                     </Col>
@@ -93,16 +89,17 @@ const OrderAccount = (statusOrder) => {
                                     }
                                 </section>
                             </>
+
                         )
                         :
                         (
-                            <section className={clsx(style.orderAccount__empty)}>
+                            <section className={clsx(style.customerOrder__empty)}>
                                 <img src={images.account.emptyOrder} alt="emptyProduct" />
-                                <p>Bạn chưa mua sản phẩm nào !</p>
-                                <Link to="/">
+                                <p>Khách hàng chưa mua sản phẩm nào !</p>
+                                <Link to="/dashboard/customers">
                                     <button>
                                         <AiOutlineRollback className={clsx(style.icon)} />
-                                        <span>Mua hàng ngay</span>
+                                        <span>Trở lại</span>
                                     </button>
                                 </Link>
                             </section>
@@ -113,4 +110,4 @@ const OrderAccount = (statusOrder) => {
     )
 }
 
-export default OrderAccount;
+export default CustomersOrder;

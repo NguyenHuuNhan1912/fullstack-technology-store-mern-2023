@@ -13,7 +13,8 @@ export default mongoose.model(
       hometown: {type: String},
       address: {type: String},
       total: {type: String},
-      cart: {type: Object}
+      cart: {type: Object},
+      status: {type: String, default: "delivered"} // delivered: da giao, pending: Chua giai quyet,processing: dang giao, cancel: huy don hang, 
       },
       { timestamps: true }
     )

@@ -1,0 +1,161 @@
+@import 'scss/variables.scss';
+@import 'scss/mixin.scss';
+
+.main {
+    height: 88vh;
+    overflow-y: auto;
+    position: relative;
+
+    .customerOrder {
+        padding: 20px;
+
+        &__head {
+            font-size: 10px;
+            @include flexCenter();
+            justify-content: center;
+            h1 {
+                font-size: 2.3em;
+                text-transform: uppercase;
+                color: $backgroundMain;
+                text-align: center;
+                padding: 10px;
+                border: 1px solid $backgroundMain;
+                border-radius: 5px;
+                margin-left: auto;
+            }
+            a {
+                font-size: $fontSizeMain;
+                margin-left: auto;
+                button {
+                    @include flexCenter();
+                    @include button($backgroundMain, white, inherit, 10px, 20px, 5px, 0.3s);
+                    font-weight: bold;
+                    .icon {
+                        font-size: 25px;
+                        margin-right: 8px;
+                    }
+                    &:hover {
+                        background-color: rgb(177, 13, 13);
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        &__body {
+            margin-top: 20px;
+            color: white;
+
+            .inforOrder {
+                // border: 1px solid grey;
+                border-radius: 5px;
+
+                &__head {
+                    border-radius: 5px;
+                    font-size: 10px;
+                    @include flexCenter();
+
+                    h1 {
+                        background-color: $backgroundMain;
+                        color: white;
+                        border-radius: 5px;
+                        padding: 10px;
+                        font-size: $fontSizeMain;
+                        text-transform: uppercase;
+                    }
+                }
+
+                &__body {
+                    border-radius: 5px;
+                    padding: 10px;
+                    font-size: 10px;
+                    border: 1px solid $backgroundMain;
+
+                    * {
+                        font-size: $fontSizeMain;
+                    }
+
+                    h1 {
+                        color: red;
+                    }
+
+                    p+p {
+                        margin-top: 10px;
+                    }
+
+                    img {
+                        display: block;
+                        width: 80px;
+                        margin-bottom: 10px;
+                        border-radius: 5px;
+                    }
+
+                    .price {
+                        color: red;
+                        font-weight: bold;
+                    }
+
+                    .finish,
+                    a {
+                        display: inline-block;
+                        background-color: $backgroundMain;
+                        color: white;
+                        padding: 5px 10px;
+                        margin-top: 10px;
+                        border-radius: 3px;
+                    }
+
+                    a {
+                        background-color: blue;
+                        margin-left: 10px;
+
+                        &:hover {
+                            background-color: $backgroundMain;
+                        }
+                    }
+
+                }
+            }
+
+            .inforOrder+.inforOrder {
+                margin-top: 20px;
+            }
+        }
+        &__empty {
+            text-align: center;
+            font-size: 10px;
+            img {
+                display: block;
+                // border: 1px solid red;
+                width: 400px;
+                margin: 0 auto;
+                border-radius: 20px;
+            }
+            p {
+                font-size: 3em;
+                text-transform: uppercase;
+                color: $backgroundMain;
+                font-weight: bold;
+                margin: 20px 0;
+            }
+            a {
+                font-size: $fontSizeMain;
+                @include flexCenter();
+                justify-content: center;
+                button {
+                    @include flexCenter();
+                    @include button($backgroundMain, white, inherit, 10px, 20px, 5px, 0.3s);
+                    font-weight: bold;
+                    .icon {
+                        font-size: 25px;
+                        margin-right: 8px;
+                    }
+                    &:hover {
+                        background-color: rgb(177, 13, 13);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -36,7 +36,8 @@
                         th {
                             padding: 15px 0;
                             border-bottom: 1px solid grey;
-                            text-align: left;
+                            text-align: center;
+
                         }
                     }
                 }
@@ -46,17 +47,28 @@
                         td {
                             padding: 15px 0;
                             border-bottom: 1px solid grey; 
-                            .editProduct {
+                            text-align: center;
+                            .actionCustomer {
                                 @include flexCenter();
+                                a {
+                                     @include flexCenter();
+                                     .icon {
+                                        &:hover {
+                                            color:$backgroundMain;
+                                        }
+                                     }
+                                }
                                 justify-content: center;
                                 .icon {
                                     cursor: pointer;
                                     color:  #d5d6d7;
                                     font-size: 1.1em;
+                                    margin-left: 8px;
+                                    &:hover {
+                                        color: $backgroundMain;
+                                    }
                                 }
-                                .icon + .icon {
-                                    margin-left: 10px;
-                                }
+                                
                             }
                             img {
                                 width: 40px;

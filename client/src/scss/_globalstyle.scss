@@ -2,7 +2,8 @@
 // @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600&family=Signika+Negative&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
 @import "./variables";
 * {
     margin: 0;
@@ -10,11 +11,8 @@
     box-sizing: border-box;
     list-style-type: none;
     text-decoration: none;
-    // font-family: 'Montserrat', sans-serif;
-    // font-family: 'Fira Sans', sans-serif;
-    // font-family: 'Fira Sans', sans-serif;
-    // font-family: 'Signika Negative', sans-serif;
-    font-family: "Play", sans-serif;
+    // font-family: "Play", sans-serif;
+    font-family: 'Lexend', sans-serif;
 }
 html {
     font-size: 62.5%;

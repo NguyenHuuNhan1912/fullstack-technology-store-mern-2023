@@ -17,7 +17,7 @@ import Overview from 'pages/dashboard/overview/Overview';
 import Product from 'pages/dashboard/product/Product';
 import Category from 'pages/dashboard/category/Category';
 import Customers from 'pages/dashboard/customer/Customers';
-import Orders from 'pages/dashboard/Orders';
+import Order from 'pages/dashboard/order/Order';
 import AuthLayout from './layouts/AuthLayout/AuthLayout';
 import DashBoardLayout from './layouts/DashboardLayout/DashboardLayout';
 import AppLayout from './layouts/AppLayout/AppLayout';
@@ -30,6 +30,8 @@ import OverviewAccount from 'pages/account/overviewAccount/OverviewAccount';
 import OrderAccount from 'pages/account/orderAccount/OrderAccount';
 import NotiAccount from 'pages/account/notiAccount/NotiAccount';
 import NewsAccount from 'pages/account/newsAccount/NewsAccount';
+import CustomersOrder from 'pages/dashboard/customerOrder/CustomerOrder';
+import OrderDetail from 'pages/dashboard/orderDetail/OrderDetail';
 const App = () => {
   return (
     <Router>
@@ -60,7 +62,9 @@ const App = () => {
               <Route path="product/:id" element={<ProductDetail/>}/>
               <Route path="category" element={<Category/>}/>
               <Route path="customers" element={<Customers/>}/>
-              <Route path="orders" element={<Orders/>}/>
+              <Route path="orders" element={<Order/>}/>
+              <Route path="orders/order-detail/:id" element={<OrderDetail/>}/>
+              <Route path="customers/customer-order/:id" element={<CustomersOrder/>}/>
           </Route>
           <Route path="account" element={<AccountLayout />}>
             <Route index element={<OverviewAccount/>}/>

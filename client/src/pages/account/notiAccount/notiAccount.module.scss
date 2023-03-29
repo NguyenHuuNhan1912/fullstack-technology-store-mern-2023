@@ -1,2 +1,27 @@
 @import 'scss/mixin.scss';
 @import 'scss/variables.scss';
+
+.main {
+    .notiAccount {
+        &__no {
+            border: 1px solid $backgroundMain;
+            font-size: 10px;
+            border-radius: 5px;
+            padding: 20px;
+            img {
+                display: block;
+                // border: 1px solid red;
+                width: 450px;
+                margin: 0 auto;
+            }
+            p {
+                text-align: center;
+                margin-top: 20px;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 2.2em;
+                color: $backgroundMain;
+            }
+        }
+    }
+}

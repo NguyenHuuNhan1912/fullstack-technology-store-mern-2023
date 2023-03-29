@@ -26,7 +26,7 @@ export const getAll = async (req, res) => {
 export const searchCart = async (req, res) => {
     const idUder = req.query.idUser;
     try {
-        await Order.find({idUser: idUder}, {cart: 1}).then(order => {
+        await Order.find({idUser: idUder}, {cart: 1, status: 1}).then(order => {
             res.send({ order });
         });
     }
