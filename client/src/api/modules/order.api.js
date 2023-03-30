@@ -7,9 +7,6 @@ const orderApi = {
     update: (id, data) =>  publicClient.put(`order/${id}`, data),
     delete: (id) => publicClient.delete(`order/${id}`),
     getOne: (id) => publicClient.get(`order/${id}`),
-    // update: (id, data) => publicClient.put(`product/${id}`, data),
-    // delete: id => publicClient.delete(`product/${id}`),
-    // search: value => publicClient.get('product/search', { params: { q: value } })
 };
 
 export default orderApi;

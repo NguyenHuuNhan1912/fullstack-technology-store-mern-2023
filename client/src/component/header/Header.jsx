@@ -32,15 +32,17 @@ const Header = ({call}) => {
     const [cart, setCart] = useState({});
     const [product, setProduct] = useState([]);
     const getCartApi = async () => {
-        try {
-            const response = await cartApi.searchIdUser({
-                idUser: JSON.parse(localStorage.getItem("idUser")),
-            });
-            setCart(response.cart);
-            setProduct(response.cart.product);
-        }
-        catch (err) {
-            console.log(err);
+        if(JSON.parse(localStorage.getItem("idUser")) !== null) {
+            try {
+                const response = await cartApi.searchIdUser({
+                    idUser: JSON.parse(localStorage.getItem("idUser")),
+                });
+                setCart(response.cart);
+                setProduct(response.cart.product);
+            }
+            catch (err) {
+                console.log(err);
+            }
         }
     }
     let navi = useNavigate();

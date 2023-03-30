@@ -26,8 +26,10 @@ const data = [
 const DashBoardLayout = () => {
     const [type, setType] = useState(window.location.pathname.slice(window.location.pathname.lastIndexOf('/')+1, window.location.pathname.length));
     const [admin, setAdmin] = useState(JSON.parse(localStorage.getItem("admin")));
-    const checkClick = (e) => {
-        e.preventDefault();
+    const handleLogout = (e) => {
+        console.log('log out');
+        localStorage.removeItem("admin");
+        toastNotification('success', 'Đăng xuất thành công !', 1000);
     }
     const checkAdmin = () => {
         if(admin !== null && admin===true) {
@@ -82,10 +84,10 @@ const DashBoardLayout = () => {
                                         </ul>
                                     </section>
                                     <section className={clsx(style.aside__logout)}>
-                                        <a href="/signin" onClick={checkClick}>
+                                        <Link to="/" onClick={handleLogout}>
                                             <BiLogOutCircle className={clsx(style.icon)}/>
                                             <span>Đăng xuất</span>
-                                        </a>
+                                        </Link>
                                     </section>
                                 </aside>
                             </Col>

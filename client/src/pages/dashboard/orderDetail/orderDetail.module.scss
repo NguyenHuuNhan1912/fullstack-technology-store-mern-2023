@@ -1,0 +1,168 @@
+@import 'scss/mixin.scss';
+@import 'scss/variables.scss';
+
+.main {
+    height: 88vh;
+    overflow-y: auto;
+    position: relative;
+
+    .orderDetail {
+        margin: 20px;
+        padding: 20px;
+        background-color: $backgroundDb;
+        font-size: 10px;
+        border-radius: 5px;
+
+        &__title {
+            font-size: inherit;
+            color: white;
+            @include flexCenter();
+            justify-content: center;
+            section {
+                background-color: $backgroundMain;
+                padding: 8px 16px;
+                @include flexCenter();
+                border-radius: 5px;
+
+                h1 {
+                    font-size: 2em;
+                    text-transform: uppercase;
+                }
+
+                .icon {
+                    font-size: 25px;
+                    margin-right: 8px;
+                }
+            }
+        }
+
+        &__infor {
+            color: white;
+            margin-top: 20px;
+
+            &__date,
+            &__customer,
+            &__address {
+                border: 1px solid $backgroundMain;
+                padding: 20px;
+                border-radius: 5px;
+                font-size: 10px;
+
+                &__head {
+                    font-size: $fontSizeMain;
+                    text-transform: uppercase;
+                    color: $backgroundMain;
+
+                }
+
+                &__body {
+                    font-size: $fontSizeMain;
+
+                    ul {
+                        li {
+                            margin-top: 20px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        &__product {
+            color: #d5d6d7;
+            margin: 20px 0;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            border: 1px solid $backgroundMain;
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                font-size: 10px;
+                thead {
+                    font-size: 1.6em;
+                    tr {
+                        th {
+                            padding: 15px 0;
+                            border-bottom: 1px solid $backgroundMain;
+                            text-align: center;
+                        }
+
+                    }
+                }
+
+                tbody {
+                    font-size: 1.6em;
+
+                    tr {
+                        td {
+                            padding: 15px 0;
+                            border-bottom: 1px solid $backgroundMain;
+                            text-align: center;
+                            img {
+                                display: block;
+                                width: 40px;
+                                border-radius: 5px;
+                                margin: 0 auto;
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        }
+
+        &__important {
+            &__status, &__code, &__total {
+                text-align: center;
+                font-size: 10px;
+                border: 1px solid $backgroundMain;
+                color: white;
+                padding: 20px;
+                border-radius: 5px;
+                h1 {
+                    font-size: $fontSizeMain;
+                    text-transform: uppercase;
+                    color: $backgroundMain;
+                }
+                p {
+                    font-size: $fontSizeMain;
+                    margin-top: 20px;
+                
+                   
+                }
+                .price {
+                    color: red;
+                }
+                .status {
+                    background-color: $backgroundMain;
+                    color: white;
+                    border-radius: 3px; 
+                    display: inline-block;
+                    padding: 4px 8px;
+                }
+            }
+        }
+        &__back {
+            margin-top: 20px;
+            a {
+                font-size: $fontSizeMain;
+                @include flexCenter();
+                justify-content: center;
+                button {
+                    @include flexCenter();
+                    @include button($backgroundMain, white, inherit, 10px, 20px, 5px, 0.3s);
+                    font-weight: bold;
+                    .icon {
+                        font-size: 25px;
+                        margin-right: 8px;
+                    }
+                    &:hover {
+                        background-color: rgb(177, 13, 13);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

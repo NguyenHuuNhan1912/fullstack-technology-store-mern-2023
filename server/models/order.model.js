@@ -14,7 +14,8 @@ export default mongoose.model(
       address: {type: String},
       total: {type: String},
       cart: {type: Object},
-      status: {type: String, default: "delivered"} // delivered: da giao, pending: Chua giai quyet,processing: dang giao, cancel: huy don hang, 
+      status: {type: String, default: "delivered"}, // delivered: da giao, pending: Chua giai quyet,processing: dang giao, cancel: huy don hang, 
+      method: {type: String , default: "COD"}
       },
       { timestamps: true }
     )

@@ -74,6 +74,7 @@ const Orders = () => {
                 <th>Số điện thoại</th>
                 <th>Ngày thanh toán</th>
                 <th>Chi phí</th>
+                <th>Phương thức</th>
                 <th>Trạng thái</th>
                 <th>Hiệu chỉnh</th>
                 <th>Chi tiết</th>
@@ -90,6 +91,7 @@ const Orders = () => {
                       <td>{item.numberPhone}</td>
                       <td>{`${handleString(item.createdAt)}`}</td>
                       <td>{`${Number(item.total).toLocaleString()}đ`}</td>
+                      <td>{`${item.method}`}</td>
                       <td className={clsx(style.status)}>
                           <span>{`${convertStatus(item.status)}`}</span>
                       </td>
