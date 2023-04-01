@@ -26,8 +26,7 @@
     * nodemon
 
 * MongoDB
-    * Mongoose
-        * mongoose
-        * mongoose-slug-generator
+    * mongoose
+    * mongoose-slug-generator
 
 
