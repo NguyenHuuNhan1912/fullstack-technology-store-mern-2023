@@ -1,6 +1,5 @@
-# Fullstack Technology Store MERN 2023 !
+# <img src="#" width="60" height="60" > Fullstack Technology Store MERN 2023 ! <br>
 ## Frontend
-
 * ReactJs
     * axios
     * antd
@@ -20,7 +19,6 @@
 ## Backend
 
 * NodeJs
-    * expressJs
     * bcrypt
     * cors
     * dotenv
