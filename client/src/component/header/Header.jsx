@@ -12,11 +12,13 @@ import images from 'assets/images/index';
 import 'scss/_globalstyle.scss';
 import style from './header.module.scss';
 import { Link } from 'react-router-dom';
-import { useEffect, createContext, useState } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toastNotification from 'handler/toast.handler';
 import userApi from 'api/modules/user.api';
 import cartApi from 'api/modules/cart.api';
+import { QuantityCart } from "layouts/AppLayout/AppLayout";
+
 const path = [
     { icon: AiFillHome, component: 'Trang chủ', path: '/' },
     { icon: AiFillInfoCircle, component: 'Giới thiệu', path: '/introduce' },
@@ -31,6 +33,9 @@ const Header = ({call}) => {
     const [user, setUser] = useState({});
     const [cart, setCart] = useState({});
     const [product, setProduct] = useState([]);
+    const [check, setCheck] = useState(false);
+    let callApi = call;
+    const updateQuantityCart = useContext(QuantityCart);
     const getCartApi = async () => {
         if(JSON.parse(localStorage.getItem("idUser")) !== null) {
             try {
@@ -47,7 +52,6 @@ const Header = ({call}) => {
     }
     let navi = useNavigate();
     const checkUpdateAccount = JSON.parse(localStorage.getItem("updateAccount"));
-    const checkUpdateQuantityCart = call;
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -58,7 +62,8 @@ const Header = ({call}) => {
         setUserName(JSON.parse(localStorage.getItem("userName")));
         toastNotification('success', 'Tài khoản của bạn đã được đăng xuất !', 1000);
         setTimeout(() => {
-            window.location.reload();
+            setProduct([]);
+            navi('/');
         }, 1000)
     };
     const handleCancel = () => {
@@ -146,9 +151,12 @@ const Header = ({call}) => {
     ];
     const getUserApi = async () => {
         if (JSON.parse(localStorage.getItem("idUser")) !== null) {
+            console.log('call user');
             try {
                 const response = await userApi.getOne(JSON.parse(localStorage.getItem("idUser")));
                 setUser(response);
+                console.log(response);
+                setUserName(response.username);
             }
             catch (err) {
                 console.log(err);
@@ -156,9 +164,10 @@ const Header = ({call}) => {
         }
     }
     useEffect(() => {
+        console.log("call call call");
         getUserApi();
         getCartApi();
-    }, [checkUpdateAccount, checkUpdateQuantityCart]);
+    }, [checkUpdateAccount, callApi]);
 
     return (
         <div>

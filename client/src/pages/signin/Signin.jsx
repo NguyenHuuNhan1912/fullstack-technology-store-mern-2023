@@ -2,7 +2,6 @@
 import { useFormik } from "formik";
 
 import { FaUserAlt, FaLock, FaFacebook, FaGoogle } from 'react-icons/fa';
-import { useNavigate } from "react-router-dom";
 import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Row, Col } from 'antd';
@@ -15,8 +14,12 @@ import SelectSpeed from "component/selectSpeed/SelectSpeed";
 import userApi from "api/modules/user.api";
 import { toast } from 'react-toastify';
 import toastNotification from "handler/toast.handler";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { QuantityCart } from "layouts/AppLayout/AppLayout";
 const Signin = () => {
     let navi = useNavigate();
+    const updateQuantityCart = useContext(QuantityCart);
     const formik = useFormik({
         initialValues: {
             username: '',
@@ -35,16 +38,20 @@ const Signin = () => {
                     toastNotification('success', 'Đăng nhập vào tài tài khoản quản trị thành công !', 1500);
                     setTimeout(() => {
                         resetForm();
-                        window.location.replace("http://localhost:3000/dashboard");
+                        updateQuantityCart();
+                        navi('/dashboard');
+                        // window.location.replace("http://localhost:3000/dashboard");
                     }, 1500);
                 }
                 else {
                     localStorage.setItem("userName", JSON.stringify(response.username));
                     localStorage.setItem("idUser", JSON.stringify(response._id));
-                    toastNotification('success', 'Đăng nhập thành công trở về trang chủ mua hàng nhénhé!', 1500);
+                    toastNotification('success', 'Đăng nhập thành công trở về trang chủ mua hàng nhé!', 1500);
                     setTimeout(() => {
                         resetForm();
-                        window.location.replace("http://localhost:3000");
+                        updateQuantityCart();
+                        navi('/');
+                        // window.location.replace("http://localhost:3000");
                     }, 1500);
                 }
                

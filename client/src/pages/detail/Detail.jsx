@@ -164,7 +164,7 @@ const Detail = () => {
             product?.img &&
             (
               <>
-                <Col xl={7}>
+                <Col xl={6}>
                   <div className={clsx(style.detail__img)}>
                     {
                       (product.img === undefined) ? (
@@ -177,7 +177,7 @@ const Detail = () => {
 
                   </div>
                 </Col>
-                <Col xl={11}>
+                <Col xl={10}>
                   <div className={clsx(style.detail__infor)}>
                     <ul>
                       <li style={{ textAlign: 'initial' }}>{product?.name}</li>
@@ -223,7 +223,7 @@ const Detail = () => {
                     </section>
                   </div>
                 </Col>
-                <Col xl={6}>
+                <Col xl={8}>
                   <div className={clsx(style.detail__policy)}>
                     <div className={clsx(style.detail__policy__head)}>
                       <img src={images.footer.logon} alt="img" />

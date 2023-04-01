@@ -95,11 +95,7 @@ const dataOrganization = [
     { icon: FaHandRock, title: 'Phấn đấu'},
 ];
 const Introduce = () => {
-    const [current, setCurrent] = useState(0);
-    const [dotPosition, setDotPosition] = useState('top');
-    const handlePositionChange = ({ target: { value } }) => {
-        setDotPosition(value);
-    };
+    const [current, setCurrent] = useState('');
     const onChange = (value) => {
         console.log('onChange:', value);
         setCurrent(value);
@@ -158,7 +154,7 @@ const Introduce = () => {
                                 {
                                     dataStatistical.map((item, index) => {
                                         return (
-                                            <div className={clsx(style.statistical__body__progress)}>
+                                            <div key={index}className={clsx(style.statistical__body__progress)}>
                                                 <p>{item.des}</p>
                                                 <Progress
                                                     percent={item.percent}
@@ -205,6 +201,7 @@ const Introduce = () => {
                                         data-aos="flip-left"
                                         data-aos-duration="1000"
                                         data-aos-easing="ease-in-sine"
+                                        key={index}
                                     >
                                         <section className={clsx(style.card__content)}>
                                             <h1>{item.title}</h1>
@@ -251,28 +248,6 @@ const Introduce = () => {
                         </Col>
                     </Row>
                 </section>
-                <section className={clsx(style.values)}>
-                    <div className={clsx(style.values__head)}>
-                        <h1>Giá trị cốt lõi</h1>
-                    </div>
-                    <Carousel
-                        dotPosition={"left"}
-                        autoplay
-                        effect="fade"
-                    >
-                        {
-                            dataValue.map((item, index) => {
-                                return (
-                                    <div key={index} className={clsx(style.values__content)}>
-                                        <img src={item.img} alt="img" />
-                                        <h1>{item.title}</h1>
-                                        <p>{item.des}</p>
-                                    </div>
-                                )
-                            })
-                        }
-                    </Carousel>
-                </section>
                 <section className={clsx(style.organization)}>
                     <Row gutter={[{xl:30},{xl: 30}]}>
                         <Col xl={24}>   
@@ -283,7 +258,7 @@ const Introduce = () => {
                         {
                             dataOrganization.map((item, index) => {
                                 return (
-                                    <Col xl={6}>
+                                    <Col xl={6} key={index}>
                                         <section className={clsx(style.organization__body)}>
                                             <item.icon className={clsx(style.icon)}/>
                                             <h1>{item.title}</h1>

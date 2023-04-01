@@ -13,6 +13,7 @@ import toastNotification from 'handler/toast.handler';
 import orderApi from 'api/modules/order.api';
 import { Link } from 'react-router-dom';
 import { QuantityCart } from 'layouts/AppLayout/AppLayout';
+import SelectSpeed from 'component/selectSpeed/SelectSpeed';
 const Cart = () => {
     const [cart, setCart] = useState({});
     const [productCart, setProductCart] = useState([]);
@@ -218,6 +219,7 @@ const Cart = () => {
     // console.log(apiHometowns);
     return (
         <main className={clsx(style.main)}>
+            <SelectSpeed />
             {
                 (checkLogin === null)
                     ?

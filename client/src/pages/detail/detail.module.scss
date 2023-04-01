@@ -63,14 +63,14 @@
                 @include flexCenter();
                 section {
                     .btnAnimation {
-                        @include buttonAnimation(18px, 3rem, 10rem, 60%, white, $backgroundMain, rgb(13, 173, 66));
+                        @include buttonAnimation(16px, 3rem, 10rem, 60%, white, $backgroundMain, rgb(13, 173, 66));
                     }
                     &:last-child {
                         margin-left: 20px;
                     }
                     &:last-child {
                         .btnAnimation {
-                            @include buttonAnimation(18px, 3rem, 10rem, 60%, white, blue, rgb(16, 243, 232));
+                            @include buttonAnimation(16px, 3rem, 10rem, 60%, white, blue, rgb(16, 243, 232));
                         }
                     }
                 }
