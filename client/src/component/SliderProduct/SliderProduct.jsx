@@ -18,6 +18,7 @@ const SliderProduct = ({ dataBrand, type }) => {
         skip: 0,
         limit: 20,
         type: type,
+        price: 'low',
       })
       setProduct(response.product);
     }
@@ -28,6 +29,7 @@ const SliderProduct = ({ dataBrand, type }) => {
   useEffect(() => {
     getApi();
   }, []);
+  console.log(type);
   // console.log(product);
   // console.log(dataBrand);
   return (

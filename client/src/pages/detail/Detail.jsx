@@ -60,21 +60,7 @@ const Detail = () => {
       }
     }
   }
-  const updateQuantityProduct = async () => {
-    product.quantity = Number(product.quantity) - 1;
-    if (product.quantity < 0) {
-      toastNotification('error', "Hiện sản phẩm đã bán hết !", 1000);
-    }
-    else {
-      try {
-        await productApi.update(product._id, { ...product, quantity: String(product.quantity) });
-        getApi();
-      }
-      catch (err) {
-        console.log(err);
-      }
-    }
-  }
+  
   const totalCart = () => {
     let total = 0;
     cart.product.forEach((item, index) => {
@@ -137,6 +123,21 @@ const Detail = () => {
       }
     }
   }
+  const updateQuantityProduct = async () => {
+    product.quantity = Number(product.quantity) - 1;
+    if (product.quantity < 0) {
+      toastNotification('error', "Hiện sản phẩm đã bán hết !", 1000);
+    }
+    else {
+      try {
+        await productApi.update(product._id, { ...product, quantity: String(product.quantity) });
+        getApi();
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+  }
   const addProductToCart = () => {
     updateQuantityProduct();
     updateCart();
@@ -154,7 +155,10 @@ const Detail = () => {
   useEffect(() => {
     getApi();
     getIdUserApi();
-  }, [])
+  }, []);
+  console.log("product quantity");
+  console.log(product);
+  console.log("product quantity");
   return (
     <main className={clsx(style.main)}>
       <SelectSpeed />

@@ -214,7 +214,10 @@ const Cart = () => {
         fectchProvince();
         getCartApi();
     }, []);
-    // console.log(cart);
+    console.log("CART");
+    console.log(cart);
+    console.log("CART");
+
     // console.log(productCart);
     // console.log(apiHometowns);
     return (
