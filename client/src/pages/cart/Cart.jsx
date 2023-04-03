@@ -14,6 +14,7 @@ import orderApi from 'api/modules/order.api';
 import { Link } from 'react-router-dom';
 import { QuantityCart } from 'layouts/AppLayout/AppLayout';
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
+import provincesApi from 'api/modules/provinces.api';
 const Cart = () => {
     const [cart, setCart] = useState({});
     const [productCart, setProductCart] = useState([]);
@@ -148,31 +149,43 @@ const Cart = () => {
         const name = e.target.value;
         setAddress({ ...address, hometown: name });
     }
-    const fetchHometown = (code) => {
-        fetch(`https://provinces.open-api.vn/api/d/${code}?depth=2`)
-            .then((res) => res.json())
-            .then((data) => {
-                setApiHometowns(data.wards);
-            })
+    const fetchHometown = async (code) => {
+        try {
+            const response = await provincesApi.getAll('d', String(code), {
+                depth: 2, 
+            });
+            setApiHometowns(response.data.wards);
+        }
+        catch(err ){
+            console.log(err);
+        }
     }
-    const fetchDistricts = (code) => {
-        fetch(`https://provinces.open-api.vn/api/p/${code}?depth=2`)
-            .then((res) => res.json())
-            .then((data) => {
-                setApiDistricts(data.districts);
+    const fetchDistricts = async (code) => {
+        try {
+            const response = await provincesApi.getAll('p', String(code), {
+                depth: 2
             })
+            setApiDistricts(response.data.districts);
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
-    const fectchProvince = () => {
-        fetch(`https://provinces.open-api.vn/api/p`)
-            .then((res) => res.json())
-            .then((data) => {
-                setApiProvinces(data);
+    const fectchProvince = async () => {
+        try {
+            const response = await provincesApi.getAll('p', '', {
+                depth: 2
             })
+            setApiProvinces(response.data);
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
     const createOrder = async (data) => {
         try {
             const response = await orderApi.create(data);
-            console.log(response);
+            console.log(response.data);
         }
         catch (err) {
             console.log(err);
