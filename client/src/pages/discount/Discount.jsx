@@ -17,8 +17,8 @@ const Discount = () => {
     const [product, setProduct] = useState([]);
     const getProduct = async () => {
         try {
-            const responve = await productApi.fillDiscount();
-            setProduct(responve.product);
+            const response = await productApi.fillDiscount();
+            setProduct(response.product);
         }
         catch (err) {
             console.log(err);
