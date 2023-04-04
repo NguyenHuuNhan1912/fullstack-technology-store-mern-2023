@@ -22,3 +22,20 @@ const useFetchApi = (typeApi, call) => {
 }
 
 export default useFetchApi;
+
+
+/**
+ * Custom hook
+ * 1. Khái niệm
+ *     - Là một function đặc biệt 
+ *     - Và function này có thể gọi các hooks khác 
+ *     - Trả về giá trị thay vì jsx
+ * 2.Tại sao sử dụng
+ *      - Khi có những đoạn code logic lặp đi lặp lại nhiều lần
+ *      - Giúp clean Code
+ * 3. Lưu ý
+ *      - Phải bắt đầu bằng chữ use để React nhận biết đây là một React hooks
+ *    
+ * 1. 
+ * 2. 
+ */
