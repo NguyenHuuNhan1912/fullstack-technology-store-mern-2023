@@ -5,6 +5,12 @@
     height: 88vh;
     overflow-y: auto;
     position: relative;
+    .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
     .order {
         &__head {
             padding: 20px;

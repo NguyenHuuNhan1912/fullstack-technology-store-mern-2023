@@ -32,7 +32,7 @@ export const getAll = async (req, res) => {
     await User.find({admin: 'false'}, {password: 0}).then(user => {
       setTimeout(() => {
         res.send({ user });
-      }, 500);
+      }, 300);
     });
   }
   catch (err) {

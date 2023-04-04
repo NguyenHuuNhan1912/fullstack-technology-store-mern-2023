@@ -3,11 +3,13 @@ import style from './categoryForm.module.scss';
 import { RiDeleteBack2Fill } from 'react-icons/ri';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { Row, Col } from 'antd';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import categoryApi from 'api/modules/category.api';
 import { toast } from 'react-toastify';
 import toastNotification from 'handler/toast.handler';
-const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField, setCateEdit, isEdit, setIsEdit, getApi, onClose}) => {
+import { UpdateCategory } from 'pages/dashboard/category/Category';
+const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField, setCateEdit, isEdit, setIsEdit, onClose}) => {
+    const updateCategory = useContext(UpdateCategory);
     const [brand, setBrand] = useState('');
     const [field, setField] = useState('');
     const [image, setImage] = useState('');
@@ -41,7 +43,7 @@ const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField
     const handleEdit = async (id, values) => {
         try {
             await categoryApi.update(id, values);
-            getApi();
+            updateCategory();
         }
         catch (err) {
             console.log(err);
@@ -54,7 +56,7 @@ const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField
     const handleCreate = async (values) => {
         try {
             await categoryApi.create(values);
-            getApi();
+            updateCategory();
         }
         catch (err) {
             console.log(err);

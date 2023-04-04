@@ -16,7 +16,9 @@ export const getAll = async (req, res) => {
     console.log(req.body);
     try {
         await Order.find({}).then(order => {
-            res.send({ order });
+            setTimeout(() => {
+                res.send({ order });
+            }, 300)
         });
     }
     catch (err) {

@@ -40,9 +40,7 @@ const Contact = () => {
             toastNotification('success', 'Phản hồi của bạn đã được chúng tôi ghi nhận', 1000);
         }
     });
-    console.log("Check Browser");
-    document.cookie = `name=NguyenHuuNhan; expires=${new Date('2024-05-06 10:00:00').toUTCString()}`
-    console.log(document.cookie);
+    
     return (
         <main className={clsx(style.main)}>
             <SelectSpeed />

@@ -9,32 +9,16 @@ import userApi from 'api/modules/user.api';
 import { Bars } from 'react-loader-spinner';
 import {FaSearch} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useFetchApi from 'hooks/useFectchApi';
 const Customers = () => {
-  const [customers, setCustomers] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+  const {loading, data} = useFetchApi(userApi);
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);
   };
-  const getApiCustomers = async () => {
-    setLoading(true);
-    try {
-      const response = await userApi.getAll();
-      setCustomers(response.user);
-    }
-    catch (err) {
-      console.log(err);
-    }
-    setLoading(false);
-  }
   const handleString = (str) => {
       const newStr = str.slice(0, str.indexOf("T"));
       return newStr;
   }
-  useEffect(() => {
-    getApiCustomers();
-  }, []);
-  console.log(customers);
   return (
     <main className={clsx(style.main)}>
       {
@@ -81,7 +65,7 @@ const Customers = () => {
                     </thead>
                     <tbody>
                       {
-                        customers.map((item, index) => {
+                        data.user.map((item, index) => {
                           return (
                             <tr key={index}>
                               <td>{index + 1}</td>

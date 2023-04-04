@@ -71,11 +71,11 @@ const Product = () => {
         totalPages: response.totalPages,
         length: response.length
       });
+      setLoading(false);
     }
     catch(err) {
       console.log(err);
     }
-    setLoading(false);
     setShowPagination(false);
   }
   const handleSearchEnter = (e) => {

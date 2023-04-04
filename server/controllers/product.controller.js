@@ -70,7 +70,7 @@ export const getAll = async (req, res) => {
           totalPages: Math.ceil(totalProduct.length / limit),
           type: type,
         });
-      }, 500);
+      }, 300);
     }
     else {
       console.log('case 2');
@@ -92,7 +92,7 @@ export const getAll = async (req, res) => {
           totalPages: Math.ceil(totalProduct.length / limit),
           type: type,
         });
-      }, 500);
+      }, 300);
     }
   }
   catch (err) {
@@ -124,8 +124,7 @@ export const getOne = async (req, res) => {
   try {
     Product.findById(req.params.id).then(product => {
       res.send(product);
-      // setTimeout(() => {
-      // }, 500);
+      
     })
   }
   catch (err) {
@@ -142,7 +141,7 @@ export const fillDiscount = async (req, res) => {
     await Product.find({ discount: '5', publish: '1' }, { name: 1, img: 1, price: 1, discount: 1, quantity: 1, publish: 1 }).then(product => {
       setTimeout(() => {
         res.send({ product, percent: percent });
-      }, 500)
+      }, 300)
     });
   }
   catch (err) {
@@ -180,7 +179,7 @@ export const filtersName = async (req, res) => {
           name: name,
           result: result,
         });
-      }, 500);
+      }, 300);
     });
   }
   catch (err) {

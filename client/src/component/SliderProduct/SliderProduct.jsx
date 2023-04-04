@@ -29,9 +29,6 @@ const SliderProduct = ({ dataBrand, type }) => {
   useEffect(() => {
     getApi();
   }, []);
-  console.log(type);
-  // console.log(product);
-  // console.log(dataBrand);
   return (
     <section className="sliderProduct">
       <section className="sliderProduct__head">

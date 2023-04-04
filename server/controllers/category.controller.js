@@ -20,7 +20,7 @@ export const getAll = async (req, res) => {
         await Category.find({}).then(category => {
             setTimeout(() => {
                 res.send({ category });
-            }, 500)
+            }, 300)
         });
     }
     catch (err) {
