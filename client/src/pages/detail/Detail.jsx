@@ -163,12 +163,12 @@ const Detail = () => {
     <main className={clsx(style.main)}>
       <SelectSpeed />
       <section className={clsx(style.detail)}>
-        <Row gutter={[{ xl: 20 }, { xl: 20 }]}>
+        <Row gutter={[{ xl: 20, sm: 20, xs: 15 }, {xl: 20, md: 60, sm: 30, xs: 15 }]}>
           {
             product?.img &&
             (
               <>
-                <Col xl={6}>
+                <Col xl={6} lg={12} md={8} xs={24}>
                   <div className={clsx(style.detail__img)}>
                     {
                       (product.img === undefined) ? (
@@ -181,7 +181,7 @@ const Detail = () => {
 
                   </div>
                 </Col>
-                <Col xl={10}>
+                <Col xl={10} lg={12} md={16} xs={24}>
                   <div className={clsx(style.detail__infor)}>
                     <ul>
                       <li style={{ textAlign: 'initial' }}>{product?.name}</li>
@@ -227,7 +227,7 @@ const Detail = () => {
                     </section>
                   </div>
                 </Col>
-                <Col xl={8}>
+                <Col xl={8} md={24} xs={24}>
                   <div className={clsx(style.detail__policy)}>
                     <div className={clsx(style.detail__policy__head)}>
                       <img src={images.footer.logon} alt="img" />

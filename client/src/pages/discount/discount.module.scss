@@ -125,6 +125,11 @@
             }
             &__product {
                 margin: 60px;
+                &__body {
+                    img {
+                        width: 250px;
+                    }
+                }
                 &__title {
                     h1 {
                         font-size: 1.7em;

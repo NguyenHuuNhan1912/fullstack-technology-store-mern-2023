@@ -64,3 +64,40 @@
         }
     }
 }
+
+// responsive 
+@include responsiveMainLg__ {
+    .accountLayout {
+        .main {
+            margin: 60px;
+        }
+
+    }
+}
+@include responsiveMainMd__ {
+    .accountLayout {
+        .main {
+            margin: 40px;
+        }
+
+    }
+}
+@include responsiveMainSm__ {
+    .accountLayout {
+        .main {
+            margin: 30px;
+        }
+
+    }
+}
+@include responsiveMainXs__ {
+    .accountLayout {
+        .main {
+            margin: 15px;
+            .navInfo {
+                padding: 15px;
+            }
+        }
+
+    }
+}

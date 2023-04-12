@@ -35,20 +35,31 @@
                     // input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize ) {
                     @include input(8px, 1px, grey, 4px, $fontSizeMain);
                 }
+
                 img {
                     display: block;
                     width: 100px;
                     border-radius: 5px;
                     margin-top: 20px;
                 }
+
                 input[type='submit'] {
                     cursor: pointer;
                 }
+
                 select {
                     width: 100%;
                     @include input(8px, 1px, grey, 4px, $fontSizeMain);
                 }
             }
         }
+    }
+}
+
+
+// responsive
+@include responsiveMainXs__ {
+    .main {
+        padding: 15px;
     }
 }

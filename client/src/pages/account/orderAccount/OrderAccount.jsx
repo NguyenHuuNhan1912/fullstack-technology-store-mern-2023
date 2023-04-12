@@ -59,10 +59,10 @@ const OrderAccount = (statusOrder) => {
                                             return (
                                                 <section key={index} className={clsx(style.inforOrder)}>
                                                     <Row
-                                                        gutter={[{ xl: 20 }, { xl: 20 }]}
+                                                        gutter={[{ sm: 20, xs: 15}, { sm: 20, xs: 15 }]}
                                                         align={"middle"}
                                                     >
-                                                        <Col xl={24}>
+                                                        <Col xs={24}>
                                                             <section className={clsx(style.inforOrder__head)}>
                                                                 <h1>{`Ngày mua: ${handleString(item.cart.createdAt)}`}</h1>
                                                             </section>
@@ -70,7 +70,7 @@ const OrderAccount = (statusOrder) => {
                                                         {
                                                             item.cart.product.map((cart, index) => {
                                                                 return (
-                                                                    <Col xl={12} key={index}>
+                                                                    <Col xl={12} xs={24} key={index}>
                                                                         <section className={clsx(style.inforOrder__body)}>
                                                                             <img src={`data:image/png;base64,${cart.idRef.img}`} alt="" />
                                                                             <p>{`Tên sản phẩm: ${cart.idRef.name}`}</p>

@@ -48,3 +48,16 @@
     }
 
 }
+
+@include responsiveMainXs__ {
+    .main {
+        .newsAccount {
+            padding: 15px;
+            &__body {
+                &__content, button {
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+}

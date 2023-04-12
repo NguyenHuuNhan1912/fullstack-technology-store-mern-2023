@@ -89,6 +89,7 @@
         &__empty {
             text-align: center;
             font-size: 10px;
+            overflow: hidden;
             img {
                 display: block;
                 // border: 1px solid red;
@@ -96,7 +97,7 @@
                 margin: 0 auto;
             }
             p {
-                font-size: 3em;
+                font-size: 2.5em;
                 text-transform: uppercase;
                 color: $backgroundMain;
                 font-weight: bold;
@@ -117,6 +118,61 @@
                     &:hover {
                         background-color: rgb(177, 13, 13);
                         color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// responsive
+@include responsiveMainMd__ {
+    .main {
+        .orderAccount {
+            &__empty {
+                font-size: 8px;
+            }
+        }
+    }
+}
+
+@include responsiveMainSm__ {
+    .main {
+        .orderAccount  {
+            &__head  {
+                font-size: 9px;
+            }
+            &__body {
+                .inforOrder {
+                    &__head {
+                        font-size: 9px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include responsiveMainXs__ {
+    .main {
+        padding: 15px;
+        .orderAccount  {
+            &__head  {
+                font-size: 8px;
+            }
+            &__body {
+                .inforOrder {
+                    &__head {
+                        font-size: 8px;
+                    }
+                }
+            }
+            &__empty {
+                font-size: 7px;
+                a {
+                    margin-top: 15px;
+                    button {
+                        @include button($backgroundMain, white, inherit, 8px, 16px, 5px, 0.3s);
                     }
                 }
             }

@@ -30,8 +30,8 @@ const ProductApp = () => {
     <main className={clsx(style.main)}>
       <SelectSpeed />
       <section className={clsx(style.productApp)}>
-        <Row gutter={[{ xl: 20, }, { xl: 20 }]}>
-          <Col xl={7}>
+        <Row gutter={[{ md: 20, }, { md: 20 }]}>
+          <Col md={7}>
             <div className={clsx(style.productApp__fillters)}>
               <div className={clsx(style.productApp__fillters__head)}>
                 <h1>Lọc sản phẩm</h1>
@@ -124,14 +124,14 @@ const ProductApp = () => {
               </div>
             </div>
           </Col>
-          <Col xl={17}>
+          <Col md={17}>
             <div className={clsx(style.productApp__product)}>
-              <Row gutter={[{ xl: 20 }, { xl: 20 }]}>
+              <Row gutter={[{ sm: 20, xs: 15 }, { sm: 20, xs: 15 }]}>
                 {
                   product.length > 0 &&
                   product.map((item, index) => {
                     return (
-                      <Col key={index} xl={6}>
+                      <Col key={index} xl={6} lg={8} sm={12} xs={24}>
                           <Link to={`/product/detail/${item._id}`}>
                             <div className={clsx(style.productItem)}>
                                 <img src={`data:image/png;base64,${item.img}`} alt="img" />

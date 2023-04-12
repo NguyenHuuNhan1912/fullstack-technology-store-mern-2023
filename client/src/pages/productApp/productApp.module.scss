@@ -87,3 +87,67 @@
         }
     }
 }
+
+
+// responsive 
+@include responsiveMainLg__ {
+    .main {
+        .productApp {
+            margin: 60px;
+            &__fillters {
+                &__head {
+                    font-size: 9px;
+                }
+                &__body {
+                    section {
+                        font-size: 9px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// responsive 
+@include responsiveMainMd__ {
+    .main {
+        .productApp {
+            margin: 40px;
+            &__fillters {
+                &__head {
+                    font-size: 8px;
+                }
+                &__body {
+                    section {
+                        font-size: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include responsiveMainSm__ {
+    .main {
+        .productApp {
+            margin: 30px;
+            &__fillters {
+                display: none;
+            }
+        }
+    }
+}
+@include responsiveMainSm__ {
+    .main {
+        .productApp {
+            margin: 15px;
+            &__product { 
+                .productItem {
+                    img {
+                        width: 250px;
+                    }
+                }
+            }
+        }
+    }
+}

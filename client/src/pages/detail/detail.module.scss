@@ -86,10 +86,13 @@
                 padding: 5px;
                 border-radius: 5px;
                 img {
-                    width: 30px;
+                    width: 45px;
                     margin-right: 8px;
                 }
                 section {
+                    margin: 0 auto;
+                    // border: 1px solid red;
+                    text-align: center;
                     img {
                         width: 12px;
                         margin-left: 4px;
@@ -131,6 +134,107 @@
                             .icon {
                                 font-size: 2.2em;
                                 margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Responsive
+@include responsiveMainLg__ {
+    .main {
+        .detail {
+            margin: 60px;
+        }
+    }
+}
+@include responsiveMainMd__ {
+    .main {
+        .detail {
+            margin: 40px;
+        }
+    }
+}
+
+@include responsiveMainSm__ {
+    .main {
+        .detail {
+            margin: 30px;
+            &__img {
+                img {
+                    width: 250px;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+@include responsiveMainXs__ {
+    .main {
+        .detail {
+            margin: 15px;
+            &__img {
+                img {
+                    width: 250px;
+                }
+            }
+            &__infor {
+                font-size: 8px;
+                &__add {
+                    section {
+                        .btnAnimation {
+                            @include buttonAnimation(12px, 2.5rem, 8rem, 50%, white, $backgroundMain, rgb(13, 173, 66));
+                        }
+                        &:last-child {
+                            .btnAnimation {
+                                @include buttonAnimation(12px, 2.5rem, 8rem, 50%, white, blue, rgb(16, 243, 232));
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            &__policy {
+                &__head, &__body {
+                    font-size: 8px;
+                    img {
+                        width: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
+@include responsiveXxs {
+    .main {
+        .detail {
+            &__infor {
+                ul {
+                    li {
+                        &:last-child {
+                            span {
+                                font-size: 1.3em;
+                            }
+                        }
+                    }
+                    .discount {
+                        span:first-child {
+                            display: none;
+                        }
+                        span:last-child {
+                            margin: 0;
+                        }
+                    }
+                }
+                &__add {
+                    section {
+                        &:last-child {
+                            .btnAnimation {
+                                display: none;
                             }
                         }
                     }

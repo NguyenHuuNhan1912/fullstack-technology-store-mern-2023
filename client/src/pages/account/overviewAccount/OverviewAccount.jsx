@@ -66,13 +66,13 @@ const OverviewAccount = () => {
         <main className={clsx(style.main)}>
             <section className={clsx(style.overviewAccount)}>
                 <form className={clsx(style.formAccount)}>
-                    <Row gutter={[{ xl: 20, }, { xl: 20 }]}>
-                        <Col xl={24}>
+                    <Row gutter={[{ sm: 20, xs: 15 }, { sm: 20, xs: 15 }]}>
+                        <Col xs={24}>
                             <section className={clsx(style.title)}>
                                 <h1>Thông tin tài khoản</h1>
                             </section>
                         </Col>
-                        <Col xl={24}>
+                        <Col xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <label htmlFor="username">Ảnh đại diện</label>
                                 <input
@@ -85,7 +85,7 @@ const OverviewAccount = () => {
                                 }
                             </section>
                         </Col>
-                        <Col xl={12}>
+                        <Col lg={12} xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <label htmlFor="username">Họ tên</label>
                                 <input
@@ -95,7 +95,7 @@ const OverviewAccount = () => {
                                 />
                             </section>
                         </Col>
-                        <Col xl={12}>
+                        <Col lg={12} xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <label htmlFor="numberPhone">Số điện thoại</label>
                                 <input
@@ -105,7 +105,7 @@ const OverviewAccount = () => {
                                 />
                             </section>
                         </Col>
-                        <Col xl={24}>
+                        <Col xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <label htmlFor="username">Email</label>
                                 <input
@@ -116,7 +116,7 @@ const OverviewAccount = () => {
                                 />
                             </section>
                         </Col>
-                        <Col xl={12}>
+                        <Col xs={12}>
                             <section className={clsx(style.formGroup)}>
                                 <label htmlFor="username">Ngày sinh</label>
                                 <input
@@ -126,7 +126,7 @@ const OverviewAccount = () => {
                                 />
                             </section>
                         </Col>
-                        <Col xl={12}>
+                        <Col xs={12}>
                             <section className={clsx(style.formGroup)}>
                                 <label htmlFor="sex">Giới tính</label>
                                 <select
@@ -141,7 +141,7 @@ const OverviewAccount = () => {
                                 </select>
                             </section>
                         </Col>
-                        <Col xl={24}>
+                        <Col xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <input
                                     type="submit"
