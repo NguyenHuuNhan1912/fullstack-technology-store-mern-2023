@@ -7,6 +7,7 @@
             margin: 0 80px;
             &__head {
                 font-size: 10px;
+
                 h1 {
                     font-size: 3.2em;
                     text-transform: uppercase;
@@ -24,7 +25,6 @@
                 }
             }
             &__body {
-                // border: 1px solid red;
                 img {
                     display: block;
                 }
@@ -65,5 +65,103 @@
                 }
             }
         }
+    }
+}
+// Responsive 
+@include responsiveMainLg__ {
+    .main {
+        .formRecruit {
+            &__intro {
+                margin: 0 60px;
+                &__head {
+                    font-size: 9px;
+                }
+            }
+            &__form {
+                margin: 60px;
+                .formGroup {
+                    h1 {
+                        font-size: 2.5em;
+                    }
+                }
+            }
+        }
+
+    }
+}
+@include responsiveMainMd__ {
+    .main {
+        .formRecruit {
+            &__intro {
+                margin: 0 40px;
+                margin-top: 40px;
+                &__body {
+                    display: none;
+                }
+            }
+            &__form {
+                margin: 40px;
+                
+            }
+        }
+
+    }
+}
+@include responsiveMainSm__ {
+    .main {
+        .formRecruit {
+            &__intro {
+                margin: 0 30px;
+                margin-top: 30px;
+                &__head {
+                    
+                    div {
+                        .btnAnimation {
+                            @include buttonAnimation(15px, 3rem, 10rem, 50%, white, $backgroundMain, rgb(13, 173, 66));
+                        }
+                    }
+                }
+            }
+            &__form {
+                margin: 30px;
+                .formGroup {
+                    h1 {
+                        font-size: 2.2em;
+                    }
+                }
+            }
+        }
+
+    }
+}
+@include responsiveMainXs__ {
+    .main {
+        .formRecruit {
+            &__intro {
+                margin: 0 15px;
+                margin-top: 15px;
+                &__head {
+                    font-size: 8px;
+                    p {
+                        margin: 20px 0;
+                    }
+                    div {
+                        .btnAnimation {
+                            @include buttonAnimation(15px, 2.5rem, 8rem, 40%, white, $backgroundMain, rgb(13, 173, 66));
+                        }
+                    }
+                }
+            }
+            &__form {
+                padding: 15px;
+                margin: 15px;
+                .formGroup {
+                    h1 {
+                        font-size: 2em;
+                    }
+                }
+            }
+        }
+
     }
 }

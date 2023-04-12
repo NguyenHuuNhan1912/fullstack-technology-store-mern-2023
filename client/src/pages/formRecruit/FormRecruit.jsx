@@ -61,8 +61,8 @@ const FormRecruit = () => {
             <SelectSpeed />
             <section className={clsx(style.formRecruit)}>
                 <section className={clsx(style.formRecruit__intro)}>
-                    <Row gutter={[{ xl: 0 }, { xl: 0 }]} align={'middle'}>
-                        <Col xl={12}>
+                    <Row gutter={[{ lg: 0 }, { lg: 0 }]} align={'middle'}>
+                        <Col lg={12}>
                             <div className={clsx(style.formRecruit__intro__head)}>
                                 <h1>Hãy là một phần của Hữu Nhân</h1>
                                 <p>Một môi trường không thể tốt hơn để bạn có thể phát triển. Đến với chúng tôi bạn sẽ đến với một môi trường thân thiện làm việc chuyên nghiệp. Đặc biệt hơn nữa là cùng với chúng tôi viết tiếp những hoài bão, sứ mệnh ở phía trước còn đang dang dỡ</p>
@@ -76,7 +76,7 @@ const FormRecruit = () => {
                                 </div>
                             </div>
                         </Col>
-                        <Col xl={12}>
+                        <Col lg={12}>
                             <div className={clsx(style.formRecruit__intro__body)}>
                                 <img src={images.recruit.formRecruit} alt="alt" />
                             </div>
@@ -84,13 +84,13 @@ const FormRecruit = () => {
                     </Row>
                 </section>
                 <form className={clsx(style.formRecruit__form)} onSubmit={formik.handleSubmit}>
-                    <Row gutter={[{ xl: 20 }, { xl: 20 }]}>
-                        <Col xl={24}>
+                    <Row gutter={[{ sm: 20, xs: 15 }, { sm: 20, xs: 15 }]}>
+                        <Col md={24}>
                             <section className={clsx(style.formGroup)}>
                                 <h1>Ứng viên ứng tuyển điền vào Form sau</h1>
                             </section>
                         </Col>
-                        <Col xl={8}>
+                        <Col md={8} xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <input
                                     type="text"
@@ -102,7 +102,7 @@ const FormRecruit = () => {
                                 {formik.errors.name && <p className={clsx(style.errMsg)}>{formik.errors.name}</p>}
                             </section>
                         </Col>
-                        <Col xl={8}>
+                        <Col sm={8} xs={24}>
                             <section 
                                 className={clsx(style.formGroup)}
                                 onChange={(e) => setDataRecruit({...dataRecruit, sex: e.target.value})}
@@ -115,7 +115,7 @@ const FormRecruit = () => {
                                 </select>
                             </section>
                         </Col>
-                        <Col xl={8}>
+                        <Col md={8} sm={16} xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <input
                                     type="text"
@@ -127,7 +127,7 @@ const FormRecruit = () => {
                                 {formik.errors.birthDay && <p className={clsx(style.errMsg)}>{formik.errors.birthDay}</p>}
                             </section>
                         </Col>
-                        <Col xl={8}>
+                        <Col md={8} sm={12} xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <input
                                     type="text"
@@ -140,7 +140,7 @@ const FormRecruit = () => {
 
                             </section>
                         </Col>
-                        <Col xl={16}>
+                        <Col md={16} sm={12} xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <input
                                     type="text"
@@ -152,7 +152,7 @@ const FormRecruit = () => {
                                 {formik.errors.address && <p className={clsx(style.errMsg)}>{formik.errors.address}</p>}
                             </section>
                         </Col>
-                        <Col xl={8}>
+                        <Col md={8} sm={12} xs={24}>
                             <section 
                                 className={clsx(style.formGroup)}
                                 onChange={(e) => setDataRecruit({...dataRecruit, level: e.target.value})}
@@ -165,7 +165,7 @@ const FormRecruit = () => {
                                 </select>
                             </section>
                         </Col>
-                        <Col xl={16}>
+                        <Col md={16} sm={12} xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <input
                                     type="text"
@@ -177,7 +177,7 @@ const FormRecruit = () => {
                                 {formik.errors.linkFb && <p className={clsx(style.errMsg)}>{formik.errors.linkFb}</p>}
                             </section>
                         </Col>
-                        <Col xl={24}>
+                        <Col xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <textarea
                                     name="exper"
@@ -191,7 +191,7 @@ const FormRecruit = () => {
                                 {formik.errors.exper && <p className={clsx(style.errMsg)}>{formik.errors.exper}</p>}
                             </section>
                         </Col>
-                        <Col xl={24}>
+                        <Col xs={24}>
                             <section className={clsx(style.formGroup)}>
                                 <input
                                     type="submit"
