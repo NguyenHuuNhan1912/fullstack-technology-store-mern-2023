@@ -58,6 +58,21 @@ const SliderProduct = ({ dataBrand, type }) => {
           spaceBetween={20}
           slidesPerView={4}
           slidesPerGroup={4}
+          breakpoints={{
+            992: {
+              slidesPerView: 4,
+              slidesPerGroup: 4
+            },
+            576: {
+              slidesPerView: 3,
+              slidesPerGroup: 3
+            },
+            320: {
+              slidesPerView: 1.5,
+              slidesPerGroup: 1,
+              spaceBetween: 15
+            }
+          }}
         >
           {
             product.length > 0 &&
@@ -71,7 +86,7 @@ const SliderProduct = ({ dataBrand, type }) => {
                       <h1>{`${Number(item.price).toLocaleString()} đ`}</h1>
                       {
                         Number(item.quantity) <= 0 &&
-                        <h1 style={{marginTop: 15}}>Hết hàng</h1>
+                        <h1 style={{ marginTop: 15 }}>Hết hàng</h1>
                       }
                     </section>
                   </Link>

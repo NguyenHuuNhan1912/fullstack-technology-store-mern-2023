@@ -4,20 +4,16 @@
 .main {
     .homepage {
         &__introSlider {
-            // display: none;
             position: relative;
-            // border: 1px solid red;
             overflow: hidden;
             z-index: 0;
-            margin-bottom: 80px;
-            
             &__content {
                 height: 100%;
-                // border: 1px solid red;
                 img {
                     display: block;
                     width: 100%;
                     height: 550px;
+                    
                 }
             }
             .swiper {
@@ -60,4 +56,34 @@
        
     }
 }
+@include responsiveMainLg__ {
+    .main {
+        .homepage {
+            &__introSlider {
+                &__content {
+                    img {
+                        height: initial;
+                    }
+                }
+            }
+            .swiper {
+                .swiper-pagination {
+                    transform: translateY(20%);
+                }
+            }
+        }
 
+    }
+}
+@include responsiveMainSm__ {
+    .main {
+        .homepage {
+            .swiper {
+                [class^="swiper-button-"] {
+                    display: none;
+                }
+            }
+        }
+
+    }
+}

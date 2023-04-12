@@ -54,7 +54,7 @@ const Footer = () => {
     
     return (
         <footer className={clsx(style.footer)}>
-            <Row gutter={[{md: 30, xs: 20}, {md: 30, xs: 40}]}>
+            <Row gutter={[{md: 30,sm:40, xs: 20}, {md: 30,sm: 40, xs: 40}]}>
                 <Col xl={8} md={24}>
                     <section className={clsx(style.footer__infor)}>
                         <div className={clsx(style.footer__infor__head)}>
@@ -89,7 +89,7 @@ const Footer = () => {
                                     footerPay.map((item, index) => {
                                         return (
                                             <li key={index} className={clsx(style.navItem)}>
-                                                <a href="https://dashtar-admin.vercel.app/dashboard">
+                                                <a href="#">
                                                     <item.icon className={clsx(style.icon)}/>
                                                     <span>{item.des}</span>
                                                 </a>
@@ -112,7 +112,7 @@ const Footer = () => {
                                     footerSupport.map((item, index) => {
                                         return (
                                             <li key={index} className={clsx(style.navItem)}>
-                                                <a href='https://dashtar-admin.vercel.app/dashboard'>
+                                                <a href='#'>
                                                     <item.icon className={clsx(style.icon)} />
                                                     <span>{item.des}</span>
                                                 </a>
@@ -135,7 +135,7 @@ const Footer = () => {
                                     footerBranch.map((item, index) => {
                                         return (
                                             <li key={index} className={clsx(style.navItem)}>
-                                                <a href="https://dashtar-admin.vercel.app/dashboard">
+                                                <a href="#">
                                                     <p>{item.des}</p>
                                                 </a>
                                             </li>
@@ -154,7 +154,7 @@ const Footer = () => {
                                     footerContact.map((item, index) => {
                                         return (
                                             <li key={index} className={clsx(style.navItem)}>
-                                                <a href="https://dashtar-admin.vercel.app/dashboard">
+                                                <a href="#">
                                                     <item.icon className={clsx(style.icon)} />
                                                 </a>
                                             </li>

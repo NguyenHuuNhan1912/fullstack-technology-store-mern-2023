@@ -170,7 +170,7 @@ const Header = ({call}) => {
     }, [checkUpdateAccount, callApi]);
 
     return (
-        <div>
+        <div className={clsx(style.main)}>
             <header className={clsx(style.header)}>
                 <nav className={clsx(style.navHeader)}>
                     <Link to="/" className={clsx(style.navLogo)}>
@@ -224,7 +224,7 @@ const Header = ({call}) => {
                                                 </div>
                                             </section>
                                         </Dropdown>
-                                        <section className="logoutQuestion">
+                                        <section className={clsx(style.logoutQuestion)}>
                                             <Modal
                                                 title="Đăng xuất"
                                                 open={isModalOpen}

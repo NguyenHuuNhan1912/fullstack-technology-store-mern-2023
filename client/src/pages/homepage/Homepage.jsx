@@ -5,7 +5,7 @@ import style from './homepage.scss';
 import images from 'assets/images/index';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
 // import Swiper core and required modules
-import { Navigation, Pagination, A11y, Autoplay, EffectCreative } from 'swiper';
+import { Navigation, Pagination, A11y, Autoplay, EffectCreative, EffectFade } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState, useEffect } from "react";
 // Import Swiper styles
@@ -13,7 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import 'swiper/css/effect-creative';
+import 'swiper/css/effect-fade';
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
 import SliderProduct from "component/SliderProduct/SliderProduct";
 
@@ -56,7 +56,7 @@ const dataBrand = {
         [images.homepage.brand.logitech, 'logitech'],
         [images.homepage.brand.microsoft, 'microsoft'],
         [images.homepage.brand.rapoo, 'rapoo'],
-        [images.homepage.brand.zadez,'zadez'],
+        [images.homepage.brand.zadez, 'zadez'],
     ],
     keyboard: [
         [images.homepage.brand.logitech, 'logitech'],
@@ -78,8 +78,9 @@ const Homepage = () => {
             <section className="homepage">
                 <div className="homepage__introSlider" onMouseOver={() => setShow(false)} onMouseOut={() => setShow(true)}>
                     <Swiper
-                        modules={[Navigation, Pagination, A11y, Autoplay, EffectCreative]}
+                        modules={[Navigation, Pagination, A11y, Autoplay, EffectFade]}
                         grabCursor={true}
+                        effect="fade"
                         speed={1200}
                         loop={true}
                         navigation={{ clickable: true }}
@@ -87,12 +88,18 @@ const Homepage = () => {
                         spaceBetween={0}
                         slidesPerView={1}
                         slidesPerGroup={1}
+                        autoplay={{
+                            delay: 1500,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true,
+                        }}
+
                     >
                         {
                             dataIntro.map((item, index) => {
                                 return (
                                     <SwiperSlide key={index}>
-                                        <section className={clsx(style.homepage__introSlider__content)}>
+                                        <section className="homepage__introSlider__content">
                                             <img src={item.img} alt="img" />
                                         </section>
                                     </SwiperSlide>
@@ -101,7 +108,7 @@ const Homepage = () => {
                         }
                     </Swiper>
                 </div>
-                <section className="homepage__productSlider"> 
+                <section className="homepage__productSlider">
                     {
                         dataType.map((item, index) => {
                             return (

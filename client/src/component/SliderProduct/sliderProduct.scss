@@ -5,7 +5,7 @@
     // border: 1px solid red;
     border-radius: 5px;
     position: relative;
-    margin: 50px 80px 80px;
+    margin: 80px;
     padding: 20px;
     overflow: hidden;
     z-index: 0;
@@ -100,5 +100,77 @@
                 @include swiperButton(0, -10px, 50px, 0, 0, 50px, "▶");
             }
         }
+    }
+}
+
+
+// Responsive
+
+@include responsiveMainLg__ {
+    .sliderProduct {
+        margin: 60px;
+        &__head {
+            flex-direction: column;
+            margin-bottom: 20px;
+            h1 {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@include responsiveMainMd__ {
+    .sliderProduct {
+        margin: 40px;
+        &__head {
+            font-size: 9px;
+            margin-bottom: 15px;
+            h1 {
+                margin-bottom: 15px;
+            }
+            ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: space-evenly;
+                li {
+                    a {
+                        margin: 5px;
+                    }
+                }
+                li + li {
+                    margin-left: 0px;
+                }
+            }
+        }
+        &__body {
+            section {
+                font-size: 9px;
+            }
+        }
+    }
+}
+
+@include responsiveMainSm__ {
+    .sliderProduct {
+        margin: 30px;
+        padding: 15px;
+        &__head {
+            font-size: 8px;
+            margin-bottom: 15px;
+            h1 {
+                margin-bottom: 15px;
+            }
+        }
+        &__body {
+            section {
+                font-size: 8px;
+            }
+        }
+    }
+}
+
+@include responsiveMainXs__ {
+    .sliderProduct {
+        margin: 15px;
     }
 }

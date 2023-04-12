@@ -1,33 +1,42 @@
 @import 'scss/mixin';
 @import 'scss/variables';
+
 .header {
     font-weight: bold;
+
     .navHeader {
         padding: 20px;
         font-size: 10px;
         @include flexCenter();
         justify-content: space-between;
+
         .navLogo {
             img {
                 width: 300px;
-                
+
             }
         }
+
         .navSearch {
             font-size: 10px;
             position: relative;
+
             input {
                 font-weight: bold;
                 width: 350px;
                 @include input(10px, 2px, $backgroundMain, 5px, $fontSizeMain);
                 transition: all 0.3s linear;
-                &::placeholder, &:focus {
+
+                &::placeholder,
+                &:focus {
                     color: $backgroundMain;
                 }
+
                 &:focus {
                     box-shadow: 0 0 10px 5px $backgroundMain;
                 }
             }
+
             .icon {
                 font-size: 25px;
                 color: $backgroundMain;
@@ -42,15 +51,20 @@
             @include flexCenter();
             font-size: 10px;
             color: $backgroundMain;
-            .signSystem, .hotline, .cart {
+
+            .signSystem,
+            .hotline,
+            .cart {
                 @include flexCenter();
-                
+
                 @include button(transparent, $backgroundMain, $fontSizeMain, 10px, 10px, 5px, 0.6s);
                 @include buttonSkew($backgroundMain, -30px, 150%, 45deg, center);
                 text-transform: capitalize;
+
                 &:hover {
-                    box-shadow: 0 0 2px 2px ;
+                    box-shadow: 0 0 2px 2px;
                 }
+
                 &__head {
                     img {
                         width: 35px;
@@ -58,18 +72,21 @@
                         // border: 1px solid red;
                     }
                 }
+
                 &__body {
                     margin-left: 10px;
                     // border: 1px solid red;
 
                 }
             }
-            .hotline { 
+
+            .hotline {
                 margin: 0 20px;
             }
-            
+
         }
     }
+
     .navHeaderPage {
         background-color: $backgroundMain;
         color: white;
@@ -77,15 +94,18 @@
         justify-content: space-between;
         padding: 20px;
         font-size: 10px;
+
         &__category {
             @include flexCenter();
             border: 1px solid white;
             padding: 10px;
             border-radius: 5px;
+
             h1 {
                 font-size: $fontSizeMain;
                 margin-left: 10px;
             }
+
             .icon {
                 font-size: 23px;
             }
@@ -94,6 +114,7 @@
         .navHeaderPage__path {
             .pathList {
                 @include flexCenter();
+
                 .pathItem {
                     a {
                         @include flexCenter();
@@ -103,22 +124,309 @@
                         border-radius: 5px;
                         color: inherit;
                         transition: all 0.4s linear;
+
                         &:hover {
                             transform: scale(1.1);
                             background-color: white;
                             color: $backgroundMain;
                             box-shadow: 0 0 2px 2px white;
                         }
+
                         span {
                             margin-left: 10px;
                         }
+
                         .icon {
-                            font-size: 23px;    
+                            font-size: 23px;
                         }
                     }
                 }
-                .pathItem + .pathItem {
+
+                .pathItem+.pathItem {
                     margin-left: 20px;
+                }
+            }
+        }
+    }
+}
+
+// Responsive
+@include responsiveMainLg__ {
+    .main {
+        .header {
+            .navFunction {
+
+                // border: 1px solid red;
+                .signSystem,
+                .hotline,
+                .cart {
+                    @include buttonSkew($backgroundMain, -30px, 300%, 45deg, center);
+                    border: none;
+                    background-color: $backgroundMain;
+
+                    &__head {
+                        img {
+                            display: block;
+                        }
+                    }
+
+                    &__body {
+                        display: none;
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            .navHeaderPage {
+                &__category {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@include responsiveMainMd__ {
+    .main {
+        .header {
+            .navHeader {
+                .navLogo {
+                    img {
+                        // border: 1px solid red;
+                        width: 200px;
+                    }
+                }
+
+                .navSearch {
+                    font-size: 8px;
+
+                    input {
+                        width: 280px;
+
+                    }
+                }
+            }
+
+            .navFunction {
+
+                .signSystem,
+                .hotline,
+                .cart {
+                    padding: 6px;
+
+                    &__head {
+                        img {
+                            width: 30px;
+                            // border: 1px solid red;
+                        }
+                    }
+
+                }
+            }
+
+            .navHeaderPage {
+                font-size: 8px;
+
+                &__path {
+                    margin: 0 auto;
+
+                    .pathList {
+                        .pathItem {
+                            a {
+                                padding: 8px;
+                                border-radius: 5px;
+
+                                .icon {
+                                    width: 20px;
+                                }
+
+                                span {
+                                    margin-left: 8px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include responsiveMainSm__ {
+    .main {
+        .header {
+            .navHeader {
+                padding: 15px;
+
+                .navLogo {
+                    img {
+                        // border: 1px solid red;
+                        width: 180px;
+                    }
+                }
+
+                .navSearch {
+                    input {
+                        width: 230px;
+                        padding: 8px;
+
+                    }
+                }
+            }
+
+            .navFunction {
+
+                .signSystem,
+                .hotline,
+                .cart {
+                    &__head {
+                        margin: 0;
+
+                        img {
+                            width: 30px;
+                            // border: 1px solid red;
+                        }
+                    }
+
+                }
+
+                .hotline {
+                    margin: 0 15px;
+                }
+            }
+
+            .navHeaderPage {
+                font-size: 8px;
+                padding: 15px;
+
+                &__path {
+                    .pathList {
+                        .pathItem+.pathItem {
+                            margin-left: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include responsiveMainXs__ {
+    .main {
+        .header {
+            .navHeader {
+                padding: 15px;
+                border-bottom: 1px solid $backgroundMain;
+
+                .navLogo {
+                    img {
+                        // border: 1px solid red;
+                        width: 170px;
+                    }
+                }
+
+                .navSearch {
+                    display: none;
+                }
+            }
+            .navFunction {
+
+                .signSystem,
+                .hotline,
+                .cart {
+                    &__head {
+                        margin: 0;
+                        img {
+                            width: 28px;
+                            // border: 1px solid red;
+                        }
+                    }
+
+                }
+            }
+            .navHeaderPage {
+                font-size: 7px;
+                padding: 15px;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+                z-index: 3;
+                box-shadow: 0 0 2px 1px grey;
+                &__path {
+                    .pathList {
+                        .pathItem {
+                            a {
+                                border: none;
+                                flex-direction: column;
+                                background-color: white;
+                                color: $backgroundMain;
+
+                                span {
+                                    margin-left: 0;
+                                    display: block;
+                                    text-align: center;
+                                    margin-top: 5px;
+                                }
+
+                                &:hover {
+                                    background-color: rgb(2, 36, 15);
+                                    // border: 1px solid white;
+                                    color: white;
+                                    box-shadow: initial;
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include responsiveXxs {
+    .main {
+        .header {
+            .navHeader {
+                padding: 15px;
+                border-bottom: 1px solid $backgroundMain;
+
+                .navLogo {
+                    img {
+                        // border: 1px solid red;
+                        width: 130px;
+                    }
+                }
+            }
+            .navFunction {
+
+                .signSystem,
+                .hotline,
+                .cart {
+                    &__head {
+                        margin: 0;
+                        img {
+                            width: 25px;
+                            // border: 1px solid red;
+                        }
+                    }
+
+                }
+            }
+            .navHeaderPage {
+                font-size: 6px;
+
+                &__path {
+                    .pathList {
+                        .pathItem {
+                            a {
+
+                                .icon {
+                                    width: 20px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -22,7 +22,7 @@ const AppLayout = () => {
                     call={call}
                 />
                 <Outlet/>
-                <Footer />
+                <Footer/>
             </div>
         </QuantityCart.Provider>
     )
