@@ -45,8 +45,8 @@ const Contact = () => {
         <main className={clsx(style.main)}>
             <SelectSpeed />
             <section className={clsx(style.contact)}>
-                <Row gutter={[{ xl: 80 }, { xl: 80 }]} align={"middle"}>
-                    <Col xl={12}>
+                <Row gutter={[{ lg: 60, md: 40, sm: 30, xs: 15 }, { lg: 60, md: 40, sm: 30, xs: 15 }]} className={clsx(style.row)}>
+                    <Col md={12} xs={24}>
                         <form className={clsx(style.contact__form)} onSubmit={formik.handleSubmit}>
                             <section className={clsx(style.formGroup)}>
                                 <h1>Liên hệ với chúng tôi</h1>
@@ -108,7 +108,7 @@ const Contact = () => {
                             </section>
                         </form>
                     </Col>
-                    <Col xl={12}>
+                    <Col md={12} xs={24}>
                         <section className={clsx(style.contact__me)}>
                             <img src={images.contact.me} alt="me" />
                         </section>

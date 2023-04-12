@@ -42,11 +42,11 @@ const Discount = () => {
                     <img src={images.discount.blackFriday} alt="images" />
                 </section>
                 <section className={clsx(style.discount__type)}>
-                    <Row gutter={[{ xl: 30 }, { xl: 30 }]} align="middle">
+                    <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]} align="middle">
                         {
                             dataType.map((item, index) => {
                                 return (
-                                    <Col xl={6} key={index}>
+                                    <Col lg={6} sm={12} xs={24} key={index}>
                                         <section>
                                             <img src={item.img} alt="img" />
                                             <h1>{item.title}</h1>
@@ -58,8 +58,8 @@ const Discount = () => {
                     </Row>
                 </section>
                 <section className={clsx(style.discount__product)}>
-                    <Row gutter={[{ xl: 30 }, { xl: 30 }]}>
-                        <Col xl={24}>
+                    <Row gutter={[{sm: 30, xs: 15 }, {sm: 30, xs: 15 }]}>
+                        <Col xs={24}>
                             <section className={clsx(style.discount__product__title)}>
                                 <h1>Các sản phẩm được giảm giá</h1>
                             </section>
@@ -69,7 +69,7 @@ const Discount = () => {
                             (
                                 product.map((item, index) => {
                                     return (
-                                        <Col xl={6} key={index}>
+                                        <Col xl={6} sm={12} xs={24} key={index}>
                                             <Link to={`/product/detail/${item._id}`}>
                                                 <section
                                                     className={clsx(style.discount__product__body)}

@@ -44,51 +44,51 @@ const Recruit = () => {
         {
             img: images.recruit.protect,
             title: 'Nhân viên bảo vệ',
-            request: ['Tuổi: từ 18 đến 40', 'Giới tính: Nam', 'Vui vẻ, nhanh nhẹn, trung thực', 'Thời gian làm việc cố định'],
+            request: ['Tuổi: từ 18 đến 40', 'Giới tính: Nam', 'Vui vẻ, trung thực', 'Thời gian làm việc cố định'],
             position: 'protect'
         },
         {
             img: images.recruit.manage,
             title: 'Quản lý',
-            request: ['Tuổi 30 đến 40 ', 'Có kinh nghiệm', 'Nghiêm khắc, quyết đoán', 'Thời gian làm việc cố định'],
+            request: ['Tuổi 30 đến 40 ', 'Có kinh nghiệm', 'quyết đoán', 'Thời gian làm việc cố định'],
             position: 'manager',
         },
         {
             img: images.recruit.adsive,
             title: 'Nhân viên tư vấn',
-            request: ['Tuổi từ 18 đến 29', 'Chuyên môn tốt', ' Vui vẻ, hoạt bát, sôi động', 'Thời gian làm việc cố định'],
+            request: ['Tuổi từ 18 đến 29', 'Chuyên môn tốt', ' Vui vẻ, sôi động', 'Thời gian làm việc cố định'],
             position: 'adsive',
         },
         {
-    
+
             img: images.recruit.shipper,
             title: 'Nhân viên giao hàng',
-            request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nam ', 'Nhanh nhẹn, chịu khó, rành đường ', 'Thời gian làm việc cố định '],
+            request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nam ', 'Nhanh nhẹn, rành đường ', 'Thời gian làm việc cố định '],
             position: 'shipper',
         },
         {
-    
+
             img: images.recruit.accountant,
             title: 'Kế toán',
-            request: ['Tuổi từ 18 đến 24', 'Có kinh nghiệm', 'Trung thực, nhạy bén, cẩn thận', 'Thời gian làm việc cố định '],
+            request: ['Tuổi từ 18 đến 24', 'Có kinh nghiệm', 'Trung thực, cẩn thận', 'Thời gian làm việc cố định '],
             position: 'accountant',
         },
         {
-    
+
             img: images.recruit.marketing,
             title: 'Nhân viên marketing',
-            request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nữ ', 'Vui vẻ, nhạy bén, sôi động', 'Thời gian làm việc cố định '],
+            request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nữ ', 'Vui vẻ, sôi động', 'Thời gian làm việc cố định '],
             position: 'marketing',
         },
-    
+
     ];
     return (
         <main className={clsx(style.main)}>
             <SelectSpeed />
             <section className={clsx(style.recruit)}>
                 <section className={clsx(style.recruit__intro)}>
-                    <Row gutter={[{ xl: 80 }, { xl: 80 }]} align={"middle"}>
-                        <Col xl={12}>
+                    <Row gutter={[{ lg: 60, md: 40, sm: 30, xs: 15}, { lg: 60, md: 40, sm: 30, xs: 15}]} align={"middle"}>
+                        <Col lg={12} xs={24}>
                             <section className={clsx(style.recruit__intro__head)}>
                                 <h1>Hữu Nhân tuyển dụng</h1>
                                 <p>
@@ -108,7 +108,7 @@ const Recruit = () => {
                                 </a>
                             </section>
                         </Col>
-                        <Col xl={12}>
+                        <Col lg={12} xs={24}>
                             <section className={clsx(style.recruit__intro__body)}>
                                 <img src={images.recruit.me} alt="" />
                             </section>
@@ -116,11 +116,11 @@ const Recruit = () => {
                     </Row>
                 </section>
                 <section className={clsx(style.recruit__benefits)} id="see-more">
-                    <Row gutter={[{ xl: 30 }, { xl: 30 }]}>
+                    <Row gutter={[{ sm: 30,xs: 15 }, { sm: 30 , xs: 15}]}>
                         {
                             dataBenefits.map((item, index) => {
                                 return (
-                                    <Col xl={6} key={index}>
+                                    <Col xl={6} lg={8} sm={12} xs={24} key={index}>
                                         <section className={clsx(style.recruit__benefits__content)}>
                                             <img src={item.img} alt="img" />
                                             <h1>{item.title}</h1>
@@ -153,9 +153,23 @@ const Recruit = () => {
                         spaceBetween={30}
                         slidesPerView={3}
                         slidesPerGroup={1}
-                        onSlideChange={() => console.log('slide change')}
-                        onSwiper={(swiper) => console.log(swiper)}
+                        breakpoints={{
+                            1199: {
+                                slidesPerView: 3,
+                                slidesPerGroup: 1
+                            },
+                            576: {
+                                slidesPerView: 2,
+                                slidesPerGroup: 1
+                            },
+                            320: {
+                                slidesPerView: 1.5,
+                                slidesPerGroup: 1,
+                                spaceBetween: 15
+                            }
+                        }}
                     >
+
                         {
                             dataPositionRecruit.map((item, index) => {
                                 return (
@@ -184,6 +198,7 @@ const Recruit = () => {
                                 )
                             })
                         }
+
                     </Swiper>
                     <div className="slider-controller slider-controller--recruit">
                         <div className="swiper-button-prev slider-arrow">

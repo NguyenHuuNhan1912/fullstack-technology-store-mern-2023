@@ -108,7 +108,7 @@ const Introduce = () => {
             <SelectSpeed />
             <section className={clsx(style.introduceWrapper)}>
                 <section className={clsx(style.introduce)}>
-                    <Row gutter={[{ xl: 30 }, { xl: 30 }]} align={"middle"}>
+                    <Row gutter={[{sm: 30, xs: 15}, {sm: 30, xs: 15 }]} className={clsx(style.row)}>
                         <Col xl={12}>
                             <div className={clsx(style.introduce__head)}>
                                 <h1>Cửa hàng công nghệ Hữu Nhân</h1>
@@ -131,9 +131,10 @@ const Introduce = () => {
                     </Row>
                 </section>
                 <section className={clsx(style.statistical)}>
-                    <Row gutter={[{ xl: 30 }, { xl: 30 }]} align={"middle"}>
+                    <Row gutter={[{sm: 30, xs: 15}, {sm: 30, xs: 15 }]} className={clsx(style.row)}>
                         <Col
-                            xl={12}
+                            lg={12}
+                            md={24}
                             data-aos="fade-right"
                             data-aos-duration="1000"
                             data-aos-easing="ease-in-sine"
@@ -142,7 +143,9 @@ const Introduce = () => {
                                 <img src={image.introduce.statistical} alt="sta" />
                             </div>
                         </Col>
-                        <Col xl={12}
+                        <Col 
+                            lg={12}
+                            md={24}
                             data-aos="fade-left"
                             data-aos-duration="1000"
                             data-aos-easing="ease-in-sine"
@@ -177,7 +180,7 @@ const Introduce = () => {
                     data-aos-easing="ease-in-sine"
                 >
                     <div className={clsx(style.steps__head)}>
-                        <h1>Quá trình phát triển của cửa hàng Hữu Nhân</h1>
+                        <h1>Quá trình phát triển</h1>
                     </div>
                     <div className={clsx(style.steps__body)}>
                         <Steps
@@ -188,8 +191,8 @@ const Introduce = () => {
                     </div>
                 </section>
                 <section className={clsx(style.card)}>
-                    <Row gutter={[{ xl: 30 }, { xl: 30 }]}>
-                        <Col xl={24}>
+                    <Row gutter={[{sm: 30, xs: 15 }, { sm: 30, xs: 30 }]}>
+                        <Col xs={24}>
                             <section className={clsx(style.card__head)}>
                                 <h1>Sứ mệnh</h1>
                             </section>
@@ -197,7 +200,10 @@ const Introduce = () => {
                         {
                             dataCard.map((item, index) => {
                                 return (
-                                    <Col xl={6}
+                                    <Col 
+                                        xl={6}
+                                        sm={12}
+                                        xs={24}
                                         data-aos="flip-left"
                                         data-aos-duration="1000"
                                         data-aos-easing="ease-in-sine"
@@ -214,23 +220,23 @@ const Introduce = () => {
                     </Row>
                 </section>
                 <section className={clsx(style.achievement)}>
-                    <Row align={"middle"} >
-                        <Col xl={24}>
+                    <Row className={clsx(style.row)} >
+                        <Col xs={24}>
                             <section className={clsx(style.achievement__head)}>
                                 <h1>Thành tựu</h1>
                             </section>
                         </Col>
-                        <Col xl={12}>
+                        <Col xl={12} xs={24}>
                             <section className={clsx(style.achievement__img)}>
                                 <img src={image.introduce.achievement} alt="alt" />
                             </section>
                         </Col>
-                        <Col xl={12}>
-                            <Row gutter={[{ xl: 30 }, { xl: 30 }]}>
+                        <Col xl={12} xs={24}>
+                            <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]}>
                                 {
                                     dataAchievement.map((item, index) => {
                                         return (
-                                            <Col xl={12} key={index}>
+                                            <Col md={12} sm={24} key={index}>
                                                 <section className={clsx(style.achievement__content)}>
                                                     <div className={clsx(style.achievement__content__head)}>
                                                         <item.icon className={clsx(style.icon)} />
@@ -249,8 +255,8 @@ const Introduce = () => {
                     </Row>
                 </section>
                 <section className={clsx(style.organization)}>
-                    <Row gutter={[{xl:30},{xl: 30}]}>
-                        <Col xl={24}>   
+                    <Row gutter={[{sm: 30, xs: 15},{ sm: 30, xs: 15}]} className={clsx(style.row)}>
+                        <Col xs={24}>   
                             <section className={clsx(style.organization__head)}>
                                 <h1>Cơ cấu tổ chức</h1>
                             </section>
@@ -258,7 +264,7 @@ const Introduce = () => {
                         {
                             dataOrganization.map((item, index) => {
                                 return (
-                                    <Col xl={6} key={index}>
+                                    <Col xl={6} lg={8} sm={12} xs={24} key={index}>
                                         <section className={clsx(style.organization__body)}>
                                             <item.icon className={clsx(style.icon)}/>
                                             <h1>{item.title}</h1>

@@ -5,6 +5,8 @@
 // @import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
 @import "./variables";
+@import "./mixin";
+
 * {
     margin: 0;
     padding: 0;
@@ -14,16 +16,19 @@
     // font-family: "Play", sans-serif;
     font-family: 'Lexend', sans-serif;
 }
+
 html {
     font-size: 62.5%;
 }
 
 a {
     color: inherit;
+
     &:hover {
         color: inherit;
     }
 }
+
 ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -44,6 +49,7 @@ a {
 
 .Toastify__toast-body {
     font-size: 2em;
+
     div {
         font-weight: bold;
     }
@@ -52,23 +58,29 @@ a {
 // Custom modal
 .ant-modal {
     color: white;
+
     .ant-modal-content {
         background-color: $backgroundDbContent;
+
         .ant-modal-close {
             color: white;
+
             .ant-modal-close-x {
                 font-size: 25px;
                 transition: all 0.3s linear;
+
                 &:hover {
                     color: red;
                 }
             }
         }
     }
+
     .ant-modal-header {
         display: flex;
         align-items: center;
         background-color: $backgroundDbContent;
+
         .ant-modal-title {
             color: red;
             background-color: white;
@@ -77,10 +89,12 @@ a {
             font-size: 18px;
         }
     }
+
     .ant-modal-body {
         font-size: 18px;
         font-family: inherit;
     }
+
     .ant-modal-footer {
         button {
             font-family: inherit;
@@ -88,18 +102,22 @@ a {
             font-size: 15px;
             border: none;
             outline: none;
+
             &:hover {
                 color: white;
             }
         }
+
         button:first-child {
             &:hover {
                 background-color: black;
             }
         }
+
         button:last-child {
             color: white;
             background-color: $backgroundMain;
+
             &:hover {
                 background-color: red;
             }
@@ -121,18 +139,27 @@ a {
 
 // Custom progress
 .ant-steps-item-container {
-    .ant-steps-item-icon {
-        // background-color: #049c62 !important;
-        // border: 1px solid #049c62 !important;
-        .ant-steps-icon {
-        }
-    }
     .ant-steps-item-content {
         .ant-steps-item-title {
             font-size: 18px !important;
         }
+
         .ant-steps-item-description {
             font-size: 18px !important;
+        }
+    }
+}
+
+@include responsiveMainLg__ {
+    .ant-steps-item-container {
+        .ant-steps-item-content {
+            .ant-steps-item-title {
+                font-size: 15px !important;
+            }
+
+            .ant-steps-item-description {
+                font-size: 15px !important;
+            }
         }
     }
 }
@@ -145,18 +172,22 @@ a {
     box-shadow: 0 0 5px 1px grey !important;
     margin-top: 10px !important;
 }
+
 .ant-dropdown-menu-item-only-child {
     border: 1px solid #049c62 !important;
     color: #049c62 !important;
+
     &:hover {
         background-color: #049c62 !important;
         color: white !important;
     }
-    
+
 }
-.ant-dropdown-menu-item-only-child + .ant-dropdown-menu-item-only-child {
+
+.ant-dropdown-menu-item-only-child+.ant-dropdown-menu-item-only-child {
     margin-top: 10px !important;
 }
+
 .ant-dropdown-menu-title-content {
     // border: 1px solid red !important;
 }

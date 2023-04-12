@@ -1,31 +1,38 @@
 @import "scss/mixin.scss";
 @import "scss/variables.scss";
+
 .main {
     .introduceWrapper {
         .introduce {
             padding: 80px;
-            align-items: center;
             background-color: #37517e;
             background-color: #00015e;
             color: white;
+
+            .row {
+                align-items: center;
+                justify-content: center;
+            }
+
             &__head {
                 font-size: 10px;
-                // border: 1px solid red;
                 h1 {
                     font-size: 4em;
                 }
+
                 p {
                     font-size: 3.2em;
                     margin: 30px 0;
                 }
+
                 div {
                     .btnAnimation {
                         @include buttonAnimation(18px, 3rem, 10rem, 60%, #00015e, rgb(0, 174, 255), rgb(30, 183, 221));
                     }
                 }
             }
+
             &__body {
-                // border: 1px solid red;
                 position: relative;
                 animation: up 3s ease-in-out infinite alternate;
                 @keyframes up {
@@ -33,15 +40,18 @@
                         top: 0;
                         left: 0;
                     }
+
                     50% {
                         top: 40px;
                         left: 0;
                     }
+
                     100% {
                         top: 0;
                         left: 0;
                     }
                 }
+
                 img {
                     // Animation: name-animaition second kieuchay delay chaymaylan alternall;
                     display: block;
@@ -49,75 +59,87 @@
                 }
             }
         }
+
         .statistical {
             margin: 80px;
             overflow: hidden;
-            
+
+            .row {
+                align-items: center;
+                justify-content: center;
+            }
+
             &__head {
-                // border: 1px solid red;
                 img {
                     display: block;
                     width: 100%;
                 }
             }
+
             &__body {
-                // border: 1px solid red;
                 &__title {
                     font-size: 10px;
                     text-transform: uppercase;
                     color: $backgroundMain;
+
                     h1 {
                         font-size: 2.5em;
                         text-align: center;
                         @include flexCenter();
                         justify-content: center;
-                        &::before, &::after {
+
+                        &::before,
+                        &::after {
                             content: ".";
                             @include line(100px, 5px, $backgroundMain, 0, 10px);
                         }
                     }
                 }
+
                 &__progress {
+                    // 
                     margin-top: 30px;
                     font-size: 10px;
+
                     p {
                         font-size: $fontSizeMain;
                     }
                 }
             }
         }
+
         .steps {
             margin: 0 80px 80px 80px;
-            
             &__head {
                 font-size: 10px;
+
                 h1 {
                     text-align: center;
                     text-transform: uppercase;
                     color: $backgroundMain;
                     font-size: 2.5em;
-                    // border: 1px solid red;
+                    // 
                     @include flexCenter();
                     justify-content: center;
-                    &::before, &::after {
+
+                    &::before,
+                    &::after {
                         content: ".";
                         @include line(200px, 5px, $backgroundMain, 0, 10px);
                     }
                 }
             }
+
             &__body {
-                font-size: $fontSizeMain;
-                // border: 1px solid red;
                 margin-top: 30px;
             }
         }
+
         .card {
             margin: 80px;
             margin-top: 0;
-            
             &__head {
                 font-size: 10px;
-                // border: 1px solid red;
                 h1 {
                     font-size: 2.5em;
                     text-transform: uppercase;
@@ -125,23 +147,29 @@
                     color: $backgroundMain;
                     @include flexCenter();
                     justify-content: center;
-                    &::before, &::after {
+
+                    &::before,
+                    &::after {
                         content: ".";
                         @include line(200px, 5px, $backgroundMain, 0, 10px);
                     }
                 }
+
                 margin-bottom: 5px;
             }
+
             &__content {
                 font-size: 10px;
                 position: relative;
-                // border: 1px solid red;
+
+                // 
                 img {
                     display: block;
                     width: 100%;
                     height: 250px;
                     border-radius: 5px;
                 }
+
                 h1 {
                     font-size: $fontSizeMain;
                     background-color: #00015e;
@@ -154,12 +182,18 @@
                 }
             }
         }
+
         .achievement {
             margin: 80px;
             
+            .row {
+                align-items: center;
+                justify-content: center;
+            }
             &__head {
                 font-size: 10px;
-                // border: 1px solid red;
+
+                // 
                 h1 {
                     text-align: center;
                     text-transform: uppercase;
@@ -167,35 +201,43 @@
                     color: $backgroundMain;
                     @include flexCenter();
                     justify-content: center;
-                    &::before, &::after {
+
+                    &::before,
+                    &::after {
                         content: ".";
                         @include line(200px, 5px, $backgroundMain, 0, 10px);
                     }
                 }
             }
+
             &__img {
                 img {
-                    // border: 1px solid red;
+                    // 
                     display: block;
                     width: 100%;
                     height: 450px;
                 }
             }
+
             &__content {
                 font-size: 10px;
                 @include flexCenter();
+
                 &__head {
                     .icon {
                         font-size: 3.5em;
                         color: $backgroundMain;
                     }
+
                     margin-right: 10px;
                 }
+
                 &__body {
                     h1 {
                         font-size: 2em;
                         color: $backgroundMain;
                     }
+
                     p {
                         font-size: $fontSizeMain;
                         text-align: justify;
@@ -204,30 +246,36 @@
                 }
             }
         }
-       
+
         .organization {
             margin: 80px;
             margin-top: 0;
-            // border: 1px solid red;
-            
+            .row {
+                align-items: center;
+                // justify-content: space-between;
+            }
             &__head {
                 font-size: 10px;
                 text-align: center;
-                // border: 1px solid red;
+
+                // 
                 h1 {
                     font-size: 2.5em;
                     text-transform: uppercase;
                     color: $backgroundMain;
                     @include flexCenter();
                     justify-content: center;
-                    &::before, &::after {
+
+                    &::before,
+                    &::after {
                         content: ".";
                         @include line(200px, 5px, $backgroundMain, 0, 10px);
                     }
                 }
             }
+
             &__body {
-                // border: 1px solid red;
+                // 
 
                 @include flexCenter();
                 justify-content: center;
@@ -237,16 +285,224 @@
                 background-image: linear-gradient(to right, blue, blueviolet);
                 color: white;
                 box-shadow: 0 0 5px 2px grey;
+
                 .icon {
                     margin-right: 10px;
                     font-size: 23px;
                 }
+
                 h1 {
                     font-size: $fontSizeMain;
                     min-width: 200px;
-                    // border: 1px solid red;
+                    // 
                 }
             }
         }
+    }
+}
+
+// Responsive
+@include responsiveMainLg__ {
+    .main {
+        .introduceWrapper {
+            .introduce {
+                padding: 60px;
+
+                &__head {
+                    font-size: 9px;
+                }
+            }
+            .statistical {
+                margin: 60px;
+                &__body {
+                    &__title {
+                        font-size: 9px;
+                        h1 {
+
+                            &::before,
+                            &::after {
+                                content: ".";
+                                @include line(30px, 5px, $backgroundMain, 0, 10px);
+                            }
+                        }
+                    }
+
+                    &__progress {
+                        font-size: 9px;
+                    }
+                }
+            }
+            .steps, .achievement, .card, .organization {
+                &__head {
+                    font-size: 9px;
+                    h1 {
+
+                        &::before,
+                        &::after {
+                            content: ".";
+                            @include line(30px, 5px, $backgroundMain, 0, 10px);
+                        }
+                    }
+                }
+            }
+            .steps {
+                margin: 0 60px 60px 60px;
+                &__body {
+                    font-size: 1.3em;
+                }
+            }
+
+            .card {
+                margin: 60px;
+                margin-top: 0;
+            }
+            .achievement {
+                margin: 60px;
+                &__content {
+                    font-size: 9px;
+                }
+            }
+            .organization {
+                margin: 60px;
+                &__body {
+                    font-size: 9px;
+                }
+            }
+        }
+
+    }
+}
+@include responsiveMainMd__ {
+    .main {
+        .introduceWrapper {
+            .introduce {
+                padding: 40px;
+                &__head {
+                    font-size: 8px;
+                }
+            }
+            .statistical {
+                margin: 40px;
+            }
+            .steps {
+                margin: 0 40px 40px 40px;
+            }
+
+            .card {
+                margin: 40px;
+                margin-top: 0;
+            }
+            .achievement {
+                margin: 40px;
+            }
+            .organization {
+                margin: 40px;
+            }
+        }
+
+    }
+}
+@include responsiveMainSm__ {
+    .main {
+        .introduceWrapper {
+            .introduce {
+                padding: 30px;
+                &__head {
+                    font-size: 7px;
+                }
+                &__body {
+                   animation:initial;
+                }
+            }
+            .statistical {
+                margin: 30px;
+            }
+            .steps {
+                margin: 0 30px 30px 30px;
+            }
+            .card, .achievement, .organization {
+                margin: 30px;
+            }
+            .cart {
+                margin-top: 0;
+            }
+        }
+
+    }
+}
+@include responsiveMainXs__ {
+    .main {
+        .introduceWrapper {
+            .introduce {
+                padding: 15px;
+                &__head {
+                    font-size: 5px;
+                    p {
+                        margin: 20px 0;
+                    }
+                    div {
+                        .btnAnimation {
+                            @include buttonAnimation(14px, 2.5rem, 8rem, 50%, #00015e, rgb(0, 174, 255), rgb(30, 183, 221));
+                        }
+                    }
+                }
+            }
+            .statistical {
+                margin: 15px;
+                &__body {
+                    &__title {
+                        font-size: 7px;
+                        h1 {
+
+                            &::before,
+                            &::after {
+                                content: ".";
+                                @include line(30px, 3px, $backgroundMain, 0, 10px);
+                            }
+                        }
+                    }
+
+                    &__progress {
+                        font-size: 8px;
+                    }
+                }
+            }
+            .steps {
+                margin: 0 15px 15px 15px;   
+            }
+            .steps, .achievement, .card, .organization {
+                &__head {
+                    font-size: 7px;
+                    h1 {
+
+                        &::before,
+                        &::after {
+                            content: ".";
+                            @include line(30px, 3px, $backgroundMain, 0, 10px);
+                        }
+                    }
+                }
+            }
+            .achievement {
+                &__content {
+                    font-size: 8px;
+                }
+            }
+            .card, .achievement, .organization {
+                margin: 15px;
+            }
+            .cart {
+                margin-top: 0;
+            }
+            .organization {
+                &__body {
+                    font-size: 8px;
+                    h1 {
+                        min-width: initial;
+                    }
+                }
+            }
+        }
+
     }
 }
