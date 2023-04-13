@@ -21,7 +21,6 @@ export const UpdateAccount = createContext();
 const AccountLayout = () => {
     const [user, setUser] = useState({});
     const [type, setType] = useState(window.location.pathname.slice(window.location.pathname.lastIndexOf('/') + 1, window.location.pathname.length));
-    console.log(type);
     const getUserApi = async () => {
         try {
             const response = await userApi.getOne(JSON.parse(localStorage.getItem("idUser")));
