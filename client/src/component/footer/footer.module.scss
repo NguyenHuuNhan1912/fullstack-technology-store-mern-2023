@@ -9,14 +9,12 @@
     &__infor {
         font-size: 10px;
 
-        // border: 1px solid red;  
         &__head {
             font-size: $fontSizeMain;
             @include flexCenter();
 
             img {
                 width: 40px;
-
             }
 
             h1 {
@@ -49,7 +47,6 @@
 
     &__pay,
     &__support {
-        // border: 1px solid red;  
         font-size: 10px;
 
         &__head {
@@ -69,7 +66,6 @@
                     margin-top: 18px;
 
                     a {
-                        // border: 1px solid red;
                         transition: all 0.3s linear;
                         @include flexCenter();
 
@@ -78,7 +74,6 @@
                             background-color: white;
                             color: $backgroundMain;
                             border-radius: 4px;
-                            // justify-content: center;
                         }
 
                         .icon {
@@ -95,7 +90,6 @@
     }
 
     &__branch {
-        // border: 1px solid red;   
         font-size: 10px;
 
         &__head {
@@ -114,12 +108,11 @@
             .navList {
                 .navItem {
                     margin-top: 15px;
+                    transition: all 0.3s linear;
 
                     a {
                         color: inherit;
                     }
-
-                    transition: all 0.3s linear;
 
                     &:hover {
                         color: $backgroundMain;
@@ -164,7 +157,6 @@
     }
 
     &__copyright {
-        // border: 1px solid red;  
         font-size: 10px;
         @include flexCenter();
         flex-direction: column;
@@ -209,14 +201,11 @@
 @include responsiveMainSm__ {
     .footer {
         padding: 40px;
-        
     }
 }
 
 @include responsiveMainXs__ {
     .footer {
         padding: 40px 20px;
-
-       
     }
 }

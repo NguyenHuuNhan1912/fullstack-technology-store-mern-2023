@@ -25,7 +25,6 @@ const ProductApp = () => {
   useEffect(() => {
     getApi();
   }, []);
-  console.log(product);
   return (
     <main className={clsx(style.main)}>
       <SelectSpeed />

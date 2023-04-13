@@ -1,22 +1,35 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './recruit.module.scss';
 import images from 'assets/images/index';
+import './customSlider.scss';
+
+// Antd
 import { Row, Col } from 'antd';
-import { Link } from 'react-router-dom';
+
+// Icon
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
-// import Swiper core and required modules
-import { Navigation, Pagination, A11y, Autoplay, EffectCoverflow } from 'swiper';
+
+// React
+import { Link } from 'react-router-dom';
+
+// Swiper modules
+import { Navigation, Pagination, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
+// Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-coverflow';
+
+// Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
 
-import './customSlider.scss';
+// Variables global
 const dataBenefits = [
     {
         img: images.recruit.profess,
@@ -39,55 +52,55 @@ const dataBenefits = [
         des: 'Chúng tôi luôn cho phép các bạn đóng góp ý kiến cá nhân, quan điểm của bản thân',
     }
 ];
+const dataPositionRecruit = [
+    {
+        img: images.recruit.protect,
+        title: 'Nhân viên bảo vệ',
+        request: ['Tuổi: từ 18 đến 40', 'Giới tính: Nam', 'Vui vẻ, trung thực', 'Thời gian làm việc cố định'],
+        position: 'protect'
+    },
+    {
+        img: images.recruit.manage,
+        title: 'Quản lý',
+        request: ['Tuổi 30 đến 40 ', 'Có kinh nghiệm', 'quyết đoán', 'Thời gian làm việc cố định'],
+        position: 'manager',
+    },
+    {
+        img: images.recruit.adsive,
+        title: 'Nhân viên tư vấn',
+        request: ['Tuổi từ 18 đến 29', 'Chuyên môn tốt', ' Vui vẻ, sôi động', 'Thời gian làm việc cố định'],
+        position: 'adsive',
+    },
+    {
+
+        img: images.recruit.shipper,
+        title: 'Nhân viên giao hàng',
+        request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nam ', 'Nhanh nhẹn, rành đường ', 'Thời gian làm việc cố định '],
+        position: 'shipper',
+    },
+    {
+
+        img: images.recruit.accountant,
+        title: 'Kế toán',
+        request: ['Tuổi từ 18 đến 24', 'Có kinh nghiệm', 'Trung thực, cẩn thận', 'Thời gian làm việc cố định '],
+        position: 'accountant',
+    },
+    {
+
+        img: images.recruit.marketing,
+        title: 'Nhân viên marketing',
+        request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nữ ', 'Vui vẻ, sôi động', 'Thời gian làm việc cố định '],
+        position: 'marketing',
+    },
+
+];
 const Recruit = () => {
-    const dataPositionRecruit = [
-        {
-            img: images.recruit.protect,
-            title: 'Nhân viên bảo vệ',
-            request: ['Tuổi: từ 18 đến 40', 'Giới tính: Nam', 'Vui vẻ, trung thực', 'Thời gian làm việc cố định'],
-            position: 'protect'
-        },
-        {
-            img: images.recruit.manage,
-            title: 'Quản lý',
-            request: ['Tuổi 30 đến 40 ', 'Có kinh nghiệm', 'quyết đoán', 'Thời gian làm việc cố định'],
-            position: 'manager',
-        },
-        {
-            img: images.recruit.adsive,
-            title: 'Nhân viên tư vấn',
-            request: ['Tuổi từ 18 đến 29', 'Chuyên môn tốt', ' Vui vẻ, sôi động', 'Thời gian làm việc cố định'],
-            position: 'adsive',
-        },
-        {
-
-            img: images.recruit.shipper,
-            title: 'Nhân viên giao hàng',
-            request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nam ', 'Nhanh nhẹn, rành đường ', 'Thời gian làm việc cố định '],
-            position: 'shipper',
-        },
-        {
-
-            img: images.recruit.accountant,
-            title: 'Kế toán',
-            request: ['Tuổi từ 18 đến 24', 'Có kinh nghiệm', 'Trung thực, cẩn thận', 'Thời gian làm việc cố định '],
-            position: 'accountant',
-        },
-        {
-
-            img: images.recruit.marketing,
-            title: 'Nhân viên marketing',
-            request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nữ ', 'Vui vẻ, sôi động', 'Thời gian làm việc cố định '],
-            position: 'marketing',
-        },
-
-    ];
     return (
         <main className={clsx(style.main)}>
             <SelectSpeed />
             <section className={clsx(style.recruit)}>
                 <section className={clsx(style.recruit__intro)}>
-                    <Row gutter={[{ lg: 60, md: 40, sm: 30, xs: 15}, { lg: 60, md: 40, sm: 30, xs: 15}]} align={"middle"}>
+                    <Row gutter={[{ lg: 60, md: 40, sm: 30, xs: 15 }, { lg: 60, md: 40, sm: 30, xs: 15 }]} align={"middle"}>
                         <Col lg={12} xs={24}>
                             <section className={clsx(style.recruit__intro__head)}>
                                 <h1>Hữu Nhân tuyển dụng</h1>
@@ -98,14 +111,16 @@ const Recruit = () => {
                                     một giấc mộng về công nghệ. Chàng trai ấy đã không ngừng nổ lực để hoàn thành giấc mộng
                                     ấy và ngày hôm nay cửa hàng Công nghệ Hữu Nhân đã ra đời cũng như đã thực hiện được ước mơ và sứ mệnh.
                                 </p>
-                                <a href="#see-more">
+                                <div
+                                    onClick={() => { window.scrollTo({ top: 800, behavior: 'smooth' }) }}
+                                >
                                     <button className={clsx(style.btnAnimation)}>
                                         <span></span>
                                         <span></span>
                                         <span></span>
                                         <span>Xem chi tiết</span>
                                     </button>
-                                </a>
+                                </div>
                             </section>
                         </Col>
                         <Col lg={12} xs={24}>
@@ -115,8 +130,8 @@ const Recruit = () => {
                         </Col>
                     </Row>
                 </section>
-                <section className={clsx(style.recruit__benefits)} id="see-more">
-                    <Row gutter={[{ sm: 30,xs: 15 }, { sm: 30 , xs: 15}]}>
+                <section className={clsx(style.recruit__benefits)}>
+                    <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]}>
                         {
                             dataBenefits.map((item, index) => {
                                 return (
@@ -198,7 +213,6 @@ const Recruit = () => {
                                 )
                             })
                         }
-
                     </Swiper>
                     <div className="slider-controller slider-controller--recruit">
                         <div className="swiper-button-prev slider-arrow">

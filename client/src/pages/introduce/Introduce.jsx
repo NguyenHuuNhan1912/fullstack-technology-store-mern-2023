@@ -1,21 +1,33 @@
+// Local
 import { clsx } from 'clsx';
 import style from './introduce.module.scss';
 import image from 'assets/images/index';
+
+// Antd
 import { Row, Col } from 'antd';
+import { Progress, Steps } from 'antd';
+
+// Aos
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
-import { Progress, Steps, Carousel } from 'antd';
-import { useState } from 'react';
-import { RiNumbersFill } from 'react-icons/ri';
+
+// Icon
+import { RiNumbersFill, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { MdOutline6FtApart } from 'react-icons/md';
 import { FaProductHunt, FaSearch, FaAssistiveListeningSystems, FaHandRock } from 'react-icons/fa'
 import { AiOutlineSearch, AiFillSetting } from 'react-icons/ai';
-import {GoLaw} from 'react-icons/go';
-import {RiMoneyDollarCircleFill} from 'react-icons/ri';
-import {BsFillBarChartFill, BsFillTelephonePlusFill, BsFillCartCheckFill, BsPieChartFill} from 'react-icons/bs'
-import {TbBuildingSkyscraper} from 'react-icons/tb'
+import { GoLaw } from 'react-icons/go';
+import { BsFillBarChartFill, BsFillTelephonePlusFill, BsFillCartCheckFill, BsPieChartFill } from 'react-icons/bs'
+import { TbBuildingSkyscraper } from 'react-icons/tb'
+
+// React
+import { useState } from 'react';
+import { useEffect } from 'react';
+
+// Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
+
+// Variables global
 const dataStatistical = [
     { des: '63 showroom trên khắp đất nước Việt Nam', percent: 63 },
     { des: '90.000 sản phẩm đã được bán tại Hữu Nhân', percent: 90 },
@@ -59,41 +71,21 @@ const dataAchievement = [
         des: 'Với sự uy tín của cửa hàng sản phẩm tốt luôn là thứ được cửa hàng rất chú trọng và cửa hàng sẽ cho ra các sản phẩm chất lượng hơn nữa',
     },
 ];
-const dataValue = [
-    {
-        img: image.introduce.customer,
-        title: 'Khách hàng',
-        des: 'Khách hàng luôn là cốt lõi và trọng tâm của mọi hoạt động',
-    },
-    {
-        img: image.introduce.integrity,
-        title: 'Chính trực',
-        des: 'Luôn làm điều đúng, tạo sự công bằng cho khách hàng',
-    }, {
-        img: image.introduce.care,
-        title: 'Quan tâm',
-        des: 'Luôn quan tâm và tin tưởng lẫn nhau',
-    },
-    {
-        img: image.introduce.team,
-        title: 'Đồng đội',
-        des: 'Phối hợp nhịp nhàng cùng tiến về phía trước',
-    },
-];
 const dataOrganization = [
-    { icon: GoLaw, title: 'Pháp chế'},
-    { icon: RiMoneyDollarCircleFill, title: 'Tài chính'},
-    { icon: BsFillBarChartFill, title: 'Marketing'},
-    { icon: BsFillTelephonePlusFill, title: 'Chăm sóc khách hàng'},
-    { icon: TbBuildingSkyscraper, title: 'Cơ sở vật chất'},
-    { icon: AiFillSetting, title: 'Ngành hàng'},
-    { icon: FaSearch, title: 'Hành chính nhân sự'},
-    { icon: BsFillCartCheckFill, title: 'Vận hành bán lẻ'},
-    { icon: FaProductHunt, title: 'Sản phẩm'},
-    { icon: FaAssistiveListeningSystems, title: 'Lắng nghe'},
-    { icon: BsPieChartFill, title: 'Tin tưởng'},
-    { icon: FaHandRock, title: 'Phấn đấu'},
+    { icon: GoLaw, title: 'Pháp chế' },
+    { icon: RiMoneyDollarCircleFill, title: 'Tài chính' },
+    { icon: BsFillBarChartFill, title: 'Marketing' },
+    { icon: BsFillTelephonePlusFill, title: 'Chăm sóc khách hàng' },
+    { icon: TbBuildingSkyscraper, title: 'Cơ sở vật chất' },
+    { icon: AiFillSetting, title: 'Ngành hàng' },
+    { icon: FaSearch, title: 'Hành chính nhân sự' },
+    { icon: BsFillCartCheckFill, title: 'Vận hành bán lẻ' },
+    { icon: FaProductHunt, title: 'Sản phẩm' },
+    { icon: FaAssistiveListeningSystems, title: 'Lắng nghe' },
+    { icon: BsPieChartFill, title: 'Tin tưởng' },
+    { icon: FaHandRock, title: 'Phấn đấu' },
 ];
+
 const Introduce = () => {
     const [current, setCurrent] = useState('');
     const onChange = (value) => {
@@ -108,12 +100,12 @@ const Introduce = () => {
             <SelectSpeed />
             <section className={clsx(style.introduceWrapper)}>
                 <section className={clsx(style.introduce)}>
-                    <Row gutter={[{sm: 30, xs: 15}, {sm: 30, xs: 15 }]} className={clsx(style.row)}>
+                    <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]} className={clsx(style.row)}>
                         <Col xl={12}>
                             <div className={clsx(style.introduce__head)}>
                                 <h1>Cửa hàng công nghệ Hữu Nhân</h1>
                                 <p>Cửa hàng kinh doanh sản phẩm công nghệ hàng đầu Việt Nam</p>
-                                <div onClick={() => {window.scrollTo({top: 800, behavior: 'smooth'})}}>
+                                <div onClick={() => { window.scrollTo({ top: 800, behavior: 'smooth' }) }}>
                                     <button className={clsx(style.btnAnimation)}>
                                         <span></span>
                                         <span></span>
@@ -131,7 +123,7 @@ const Introduce = () => {
                     </Row>
                 </section>
                 <section className={clsx(style.statistical)}>
-                    <Row gutter={[{sm: 30, xs: 15}, {sm: 30, xs: 15 }]} className={clsx(style.row)}>
+                    <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]} className={clsx(style.row)}>
                         <Col
                             lg={12}
                             md={24}
@@ -143,7 +135,7 @@ const Introduce = () => {
                                 <img src={image.introduce.statistical} alt="sta" />
                             </div>
                         </Col>
-                        <Col 
+                        <Col
                             lg={12}
                             md={24}
                             data-aos="fade-left"
@@ -157,7 +149,7 @@ const Introduce = () => {
                                 {
                                     dataStatistical.map((item, index) => {
                                         return (
-                                            <div key={index}className={clsx(style.statistical__body__progress)}>
+                                            <div key={index} className={clsx(style.statistical__body__progress)}>
                                                 <p>{item.des}</p>
                                                 <Progress
                                                     percent={item.percent}
@@ -191,7 +183,7 @@ const Introduce = () => {
                     </div>
                 </section>
                 <section className={clsx(style.card)}>
-                    <Row gutter={[{sm: 30, xs: 15 }, { sm: 30, xs: 30 }]}>
+                    <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 30 }]}>
                         <Col xs={24}>
                             <section className={clsx(style.card__head)}>
                                 <h1>Sứ mệnh</h1>
@@ -200,7 +192,7 @@ const Introduce = () => {
                         {
                             dataCard.map((item, index) => {
                                 return (
-                                    <Col 
+                                    <Col
                                         xl={6}
                                         sm={12}
                                         xs={24}
@@ -255,8 +247,8 @@ const Introduce = () => {
                     </Row>
                 </section>
                 <section className={clsx(style.organization)}>
-                    <Row gutter={[{sm: 30, xs: 15},{ sm: 30, xs: 15}]} className={clsx(style.row)}>
-                        <Col xs={24}>   
+                    <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]} className={clsx(style.row)}>
+                        <Col xs={24}>
                             <section className={clsx(style.organization__head)}>
                                 <h1>Cơ cấu tổ chức</h1>
                             </section>
@@ -266,7 +258,7 @@ const Introduce = () => {
                                 return (
                                     <Col xl={6} lg={8} sm={12} xs={24} key={index}>
                                         <section className={clsx(style.organization__body)}>
-                                            <item.icon className={clsx(style.icon)}/>
+                                            <item.icon className={clsx(style.icon)} />
                                             <h1>{item.title}</h1>
                                         </section>
                                     </Col>

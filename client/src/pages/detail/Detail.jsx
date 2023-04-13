@@ -1,20 +1,35 @@
+// Lib
 import { clsx } from 'clsx';
+
+// Local
 import style from './detail.module.scss';
 import images from 'assets/images/index';
+
+// React
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+
+// Api
 import productApi from 'api/modules/product.api';
+import cartApi from 'api/modules/cart.api';
+
+// Antd
 import { Row, Col } from 'antd';
+
+// Icon
 import { AiFillLike, AiFillSetting, AiFillDollarCircle, AiFillQuestionCircle } from 'react-icons/ai';
 import { SiSpringsecurity } from 'react-icons/si';
 import { FiRotateCw } from 'react-icons/fi';
 import { FaHandSparkles, FaHandHoldingUsd } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+
+// Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
-import { toast } from 'react-toastify';
-import cartApi from 'api/modules/cart.api';
+
+// Module
 import toastNotification from 'handler/toast.handler';
 import { QuantityCart } from 'layouts/AppLayout/AppLayout';
+
+// Variables Global
 const dataPolicy = [
   { icon: AiFillLike, title: 'Sản phẩm đạt chuẩn' },
   { icon: SiSpringsecurity, title: 'Cam kết chính hãng 100%' },
@@ -25,6 +40,7 @@ const dataPolicy = [
   { icon: AiFillQuestionCircle, title: 'Giải đáp thắc mắc khách hàng' },
   { icon: FaHandHoldingUsd, title: 'Hỗ trợ trả góp lãi suât 0%' },
 ];
+
 const Detail = () => {
   const id = useParams();
   const [product, setProduct] = useState({});
@@ -32,7 +48,6 @@ const Detail = () => {
   const [valuesInfor, setValuesInfor] = useState([]);
   const [cart, setCart] = useState({});
   const updateQuantityCart = useContext(QuantityCart);
-
   const handlePercent = (price, discount) => {
     return price - (price * (discount / 100));
   }
@@ -60,7 +75,7 @@ const Detail = () => {
       }
     }
   }
-  
+
   const totalCart = () => {
     let total = 0;
     cart.product.forEach((item, index) => {
@@ -78,9 +93,6 @@ const Detail = () => {
     if (!(product.quantity < 0)) {
       const idCart = cart._id;
       const productCart = cart.product;
-      console.log("obj se xu ly");
-      console.log(productCart);
-      console.log("obj se xu ly");
       const obj = {
         idRef: product._id,
         quantity: "1",
@@ -105,9 +117,6 @@ const Detail = () => {
 
         }
       }
-      console.log("obj sau khi xu ly");
-      console.log(productCart);
-      console.log("obj sau khi xu ly");
       cart.product = productCart;
       cart.total = totalCart();
 
@@ -116,7 +125,6 @@ const Detail = () => {
         getIdUserApi();
         toastNotification('success', "Sản phẩm đã được thêm vào giỏ hàng !", 1000);
         updateQuantityCart();
-
       }
       catch (err) {
         console.log(err);
@@ -156,14 +164,11 @@ const Detail = () => {
     getApi();
     getIdUserApi();
   }, []);
-  console.log("product quantity");
-  console.log(product);
-  console.log("product quantity");
   return (
     <main className={clsx(style.main)}>
       <SelectSpeed />
       <section className={clsx(style.detail)}>
-        <Row gutter={[{ xl: 20, sm: 20, xs: 15 }, {xl: 20, md: 60, sm: 30, xs: 15 }]}>
+        <Row gutter={[{ xl: 20, sm: 20, xs: 15 }, { xl: 20, md: 60, sm: 30, xs: 15 }]}>
           {
             product?.img &&
             (

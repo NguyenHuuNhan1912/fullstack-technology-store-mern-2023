@@ -16,6 +16,7 @@
 
             &__head {
                 font-size: 10px;
+
                 h1 {
                     font-size: 4em;
                 }
@@ -35,6 +36,7 @@
             &__body {
                 position: relative;
                 animation: up 3s ease-in-out infinite alternate;
+
                 @keyframes up {
                     0% {
                         top: 0;
@@ -53,7 +55,6 @@
                 }
 
                 img {
-                    // Animation: name-animaition second kieuchay delay chaymaylan alternall;
                     display: block;
                     width: 100%;
                 }
@@ -97,7 +98,6 @@
                 }
 
                 &__progress {
-                    // 
                     margin-top: 30px;
                     font-size: 10px;
 
@@ -110,6 +110,7 @@
 
         .steps {
             margin: 0 80px 80px 80px;
+
             &__head {
                 font-size: 10px;
 
@@ -118,7 +119,6 @@
                     text-transform: uppercase;
                     color: $backgroundMain;
                     font-size: 2.5em;
-                    // 
                     @include flexCenter();
                     justify-content: center;
 
@@ -138,8 +138,10 @@
         .card {
             margin: 80px;
             margin-top: 0;
+
             &__head {
                 font-size: 10px;
+
                 h1 {
                     font-size: 2.5em;
                     text-transform: uppercase;
@@ -162,7 +164,6 @@
                 font-size: 10px;
                 position: relative;
 
-                // 
                 img {
                     display: block;
                     width: 100%;
@@ -185,15 +186,15 @@
 
         .achievement {
             margin: 80px;
-            
+
             .row {
                 align-items: center;
                 justify-content: center;
             }
+
             &__head {
                 font-size: 10px;
 
-                // 
                 h1 {
                     text-align: center;
                     text-transform: uppercase;
@@ -212,7 +213,6 @@
 
             &__img {
                 img {
-                    // 
                     display: block;
                     width: 100%;
                     height: 450px;
@@ -250,15 +250,15 @@
         .organization {
             margin: 80px;
             margin-top: 0;
+
             .row {
                 align-items: center;
-                // justify-content: space-between;
             }
+
             &__head {
                 font-size: 10px;
                 text-align: center;
 
-                // 
                 h1 {
                     font-size: 2.5em;
                     text-transform: uppercase;
@@ -275,8 +275,6 @@
             }
 
             &__body {
-                // 
-
                 @include flexCenter();
                 justify-content: center;
                 font-size: 10px;
@@ -294,7 +292,6 @@
                 h1 {
                     font-size: $fontSizeMain;
                     min-width: 200px;
-                    // 
                 }
             }
         }
@@ -312,11 +309,14 @@
                     font-size: 9px;
                 }
             }
+
             .statistical {
                 margin: 60px;
+
                 &__body {
                     &__title {
                         font-size: 9px;
+
                         h1 {
 
                             &::before,
@@ -332,9 +332,14 @@
                     }
                 }
             }
-            .steps, .achievement, .card, .organization {
+
+            .steps,
+            .achievement,
+            .card,
+            .organization {
                 &__head {
                     font-size: 9px;
+
                     h1 {
 
                         &::before,
@@ -345,8 +350,10 @@
                     }
                 }
             }
+
             .steps {
                 margin: 0 60px 60px 60px;
+
                 &__body {
                     font-size: 1.3em;
                 }
@@ -356,14 +363,18 @@
                 margin: 60px;
                 margin-top: 0;
             }
+
             .achievement {
                 margin: 60px;
+
                 &__content {
                     font-size: 9px;
                 }
             }
+
             .organization {
                 margin: 60px;
+
                 &__body {
                     font-size: 9px;
                 }
@@ -372,18 +383,22 @@
 
     }
 }
+
 @include responsiveMainMd__ {
     .main {
         .introduceWrapper {
             .introduce {
                 padding: 40px;
+
                 &__head {
                     font-size: 8px;
                 }
             }
+
             .statistical {
                 margin: 40px;
             }
+
             .steps {
                 margin: 0 40px 40px 40px;
             }
@@ -392,9 +407,11 @@
                 margin: 40px;
                 margin-top: 0;
             }
+
             .achievement {
                 margin: 40px;
             }
+
             .organization {
                 margin: 40px;
             }
@@ -402,27 +419,36 @@
 
     }
 }
+
 @include responsiveMainSm__ {
     .main {
         .introduceWrapper {
             .introduce {
                 padding: 30px;
+
                 &__head {
                     font-size: 7px;
                 }
+
                 &__body {
-                   animation:initial;
+                    animation: initial;
                 }
             }
+
             .statistical {
                 margin: 30px;
             }
+
             .steps {
                 margin: 0 30px 30px 30px;
             }
-            .card, .achievement, .organization {
+
+            .card,
+            .achievement,
+            .organization {
                 margin: 30px;
             }
+
             .cart {
                 margin-top: 0;
             }
@@ -430,16 +456,20 @@
 
     }
 }
+
 @include responsiveMainXs__ {
     .main {
         .introduceWrapper {
             .introduce {
                 padding: 15px;
+
                 &__head {
                     font-size: 5px;
+
                     p {
                         margin: 20px 0;
                     }
+
                     div {
                         .btnAnimation {
                             @include buttonAnimation(14px, 2.5rem, 8rem, 50%, #00015e, rgb(0, 174, 255), rgb(30, 183, 221));
@@ -447,11 +477,14 @@
                     }
                 }
             }
+
             .statistical {
                 margin: 15px;
+
                 &__body {
                     &__title {
                         font-size: 7px;
+
                         h1 {
 
                             &::before,
@@ -467,12 +500,18 @@
                     }
                 }
             }
+
             .steps {
-                margin: 0 15px 15px 15px;   
+                margin: 0 15px 15px 15px;
             }
-            .steps, .achievement, .card, .organization {
+
+            .steps,
+            .achievement,
+            .card,
+            .organization {
                 &__head {
                     font-size: 7px;
+
                     h1 {
 
                         &::before,
@@ -483,20 +522,27 @@
                     }
                 }
             }
+
             .achievement {
                 &__content {
                     font-size: 8px;
                 }
             }
-            .card, .achievement, .organization {
+
+            .card,
+            .achievement,
+            .organization {
                 margin: 15px;
             }
+
             .cart {
                 margin-top: 0;
             }
+
             .organization {
                 &__body {
                     font-size: 8px;
+
                     h1 {
                         min-width: initial;
                     }

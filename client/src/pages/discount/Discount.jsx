@@ -1,18 +1,32 @@
+// Local
 import style from './discount.module.scss';
-import { clsx } from 'clsx';
 import images from 'assets/images/index';
+
+// Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
+
+// Antd
 import { Row, Col } from 'antd';
+
+// Library
+import { clsx } from 'clsx';
+
+// Api
 import productApi from 'api/modules/product.api';
+
+// React
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+// Variables global
 const dataType = [
     { img: images.discount.i1, title: 'Săn sale online', },
     { img: images.discount.i2, title: 'Laptop tụ trường', },
     { img: images.discount.i3, title: 'Ưu đãi ngập trời', },
     { img: images.discount.i4, title: 'Bão sale đồng hồ', }
 ];
+
 const Discount = () => {
     const [product, setProduct] = useState([]);
     const getProduct = async () => {
@@ -30,10 +44,6 @@ const Discount = () => {
     useEffect(() => {
         getProduct();
     }, []);
-    const handleClick = () => {
-        console.log('click');
-    }
-    console.log(product);
     return (
         <main className={clsx(style.main)}>
             <SelectSpeed />
@@ -47,10 +57,12 @@ const Discount = () => {
                             dataType.map((item, index) => {
                                 return (
                                     <Col lg={6} sm={12} xs={24} key={index}>
-                                        <section>
-                                            <img src={item.img} alt="img" />
-                                            <h1>{item.title}</h1>
-                                        </section>
+                                        <Link to={'/product/laptop/apple'}>
+                                            <section>
+                                                <img src={item.img} alt="img" />
+                                                <h1>{item.title}</h1>
+                                            </section>
+                                        </Link>
                                     </Col>
                                 )
                             })
@@ -58,7 +70,7 @@ const Discount = () => {
                     </Row>
                 </section>
                 <section className={clsx(style.discount__product)}>
-                    <Row gutter={[{sm: 30, xs: 15 }, {sm: 30, xs: 15 }]}>
+                    <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]}>
                         <Col xs={24}>
                             <section className={clsx(style.discount__product__title)}>
                                 <h1>Các sản phẩm được giảm giá</h1>
@@ -73,13 +85,11 @@ const Discount = () => {
                                             <Link to={`/product/detail/${item._id}`}>
                                                 <section
                                                     className={clsx(style.discount__product__body)}
-                                                    onClick={handleClick}
                                                     style={{
                                                         pointerEvents: `${Number(item.quantity) > 0 ? 'initial' : 'none'}`,
                                                         backgroundColor: `${Number(item.quantity) > 0 ? 'initial' : '#dddddd'}`,
                                                     }}
                                                 >
-
                                                     <img src={`data:image/png;base64,${item.img}`} alt="img" />
                                                     <p>{item.name}</p>
                                                     <del>{`${Number(item.price).toLocaleString()} đ`}</del>
@@ -91,7 +101,6 @@ const Discount = () => {
                                                     }
                                                 </section>
                                             </Link>
-
                                         </Col>
                                     )
                                 })

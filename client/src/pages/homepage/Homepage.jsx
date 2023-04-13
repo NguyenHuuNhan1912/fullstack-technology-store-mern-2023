@@ -1,22 +1,26 @@
-
-import { useParams } from "react-router-dom";
-import { clsx } from 'clsx';
-import style from './homepage.scss';
+// Local
+import './homepage.scss';
 import images from 'assets/images/index';
-import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
-// import Swiper core and required modules
-import { Navigation, Pagination, A11y, Autoplay, EffectCreative, EffectFade } from 'swiper';
+
+// React
+import { useState, } from "react";
+
+// Swiper modules
+import { Navigation, Pagination, A11y, Autoplay, EffectFade } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState, useEffect } from "react";
-// Import Swiper styles
+
+// Swiper style
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
+
+// Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
 import SliderProduct from "component/SliderProduct/SliderProduct";
 
+// Variables global
 const dataIntro = [
     { img: images.homepage.i1 },
     { img: images.homepage.i2 },
@@ -93,7 +97,6 @@ const Homepage = () => {
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}
-
                     >
                         {
                             dataIntro.map((item, index) => {

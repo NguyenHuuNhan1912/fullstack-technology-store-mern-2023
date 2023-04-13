@@ -7,44 +7,51 @@
             position: relative;
             overflow: hidden;
             z-index: 0;
+
             &__content {
                 height: 100%;
+
                 img {
                     display: block;
                     width: 100%;
                     height: 550px;
-                    
                 }
             }
+
             .swiper {
                 &:hover [class^="swiper-button-"] {
                     opacity: 0.5;
                 }
+
                 [class^="swiper-button-"] {
                     transition: all 0.2s linear;
                     padding: 20px;
                     background-color: white;
                     opacity: 0;
+
                     &:hover {
                         opacity: 1;
                     }
+
                     &::after {
                         font-size: 20px;
                         color: $backgroundMain;
                         font-weight: bold;
                     }
                 }
+
                 .swiper-button-prev {
                     @include swiperButton(150px, 0, 0, 50px, 50px, 0, '◄');
                 }
-        
+
                 .swiper-button-next {
                     @include swiperButton(0, 150px, 50px, 0, 0, 50px, "▶");
                 }
+
                 .swiper-pagination {
                     transform: translateY(-380%);
                 }
-    
+
                 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
                 .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
                     background-color: white;
@@ -53,9 +60,9 @@
                 }
             }
         }
-       
     }
 }
+
 @include responsiveMainLg__ {
     .main {
         .homepage {
@@ -66,6 +73,7 @@
                     }
                 }
             }
+
             .swiper {
                 .swiper-pagination {
                     transform: translateY(20%);
@@ -75,6 +83,7 @@
 
     }
 }
+
 @include responsiveMainSm__ {
     .main {
         .homepage {

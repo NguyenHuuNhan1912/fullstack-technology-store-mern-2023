@@ -1,14 +1,30 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './formRecruit.module.scss';
 import images from 'assets/images/index';
+
+// Antd
 import { Row, Col } from 'antd';
+
+// Validate
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+
+// Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
+
+// React
 import { useParams } from 'react-router-dom';
 import {useState} from 'react';
+
+// Api
 import recruitApi from 'api/modules/recruit.api';
+
+// Module
 import toastNotification from 'handler/toast.handler';
+
 const FormRecruit = () => {
     const position = useParams();
     const [dataRecruit, setDataRecruit] = useState({
@@ -16,9 +32,7 @@ const FormRecruit = () => {
         level: '',
         position: position.position
     })
-    console.log(dataRecruit);
     const handleClick = () => {
-        console.log('click')
         window.scrollTo({
             top: 600,
             behavior: "smooth"

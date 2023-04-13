@@ -1,60 +1,56 @@
-import {clsx} from 'clsx';
-import {Row, Col} from 'antd';
-import 
-    {
-        FaClock, 
-        FaPhoneSquareAlt,
-        FaQrcode,
-        FaMoneyBill,
-        FaCartArrowDown,
-        FaCompress,
-        FaFacebookSquare,
-        FaInstagramSquare,
-        FaYoutube,
-    } 
-from 'react-icons/fa';
-import {BsBank2, BsFillChatSquareTextFill, BsFillCheckCircleFill} from 'react-icons/bs';
-import {MdEmail} from 'react-icons/md';
-import {AiFillCopyrightCircle} from 'react-icons/ai';
+// Antd
+import { Row, Col } from 'antd';
+
+// Library
+import { clsx } from 'clsx';
+
+// Icon
+import { FaClock, FaPhoneSquareAlt, FaQrcode, FaMoneyBill, FaCartArrowDown, FaCompress, FaFacebookSquare, FaInstagramSquare, FaYoutube, } from 'react-icons/fa';
+import { BsBank2, BsFillChatSquareTextFill, BsFillCheckCircleFill } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
+import { AiFillCopyrightCircle } from 'react-icons/ai';
+
+// Local
 import style from './footer.module.scss';
 import images from 'assets/images'
+
+// Variables Gloabal
 const footerInfor = [
-    {des: 'Xem đường đi chi tiết'},
-    {des: 'Địa chỉ: Đường 1010, thị trấn Phú Hòa, huyện Thoại Sơn, tỉnh An Giang'},
-    {des: 'Điện thoại: 0342040063'},
-    {des: 'Thời gian mở cửa: 8h-22h các ngày trong tuần'},
+    { des: 'Xem đường đi chi tiết' },
+    { des: 'Địa chỉ: Đường 1010, thị trấn Phú Hòa, huyện Thoại Sơn, tỉnh An Giang' },
+    { des: 'Điện thoại: 0342040063' },
+    { des: 'Thời gian mở cửa: 8h-22h các ngày trong tuần' },
 ];
 const footerPay = [
-    {icon: FaQrcode, des: 'Qr code'},
-    {icon: FaMoneyBill, des: 'Tiền mặt'},
-    {icon: FaClock, des: 'Trả góp'},
-    {icon: BsBank2, des: 'Chuyển khoản'},
+    { icon: FaQrcode, des: 'Qr code' },
+    { icon: FaMoneyBill, des: 'Tiền mặt' },
+    { icon: FaClock, des: 'Trả góp' },
+    { icon: BsBank2, des: 'Chuyển khoản' },
 ];
 const footerSupport = [
-    {icon: FaCartArrowDown, des: 'Mua hàng: 0342040064'},
-    {icon: BsFillChatSquareTextFill, des: 'Hỗ trợ KH: 0342040065'},
-    {icon: FaCompress, des: 'Khiếu nại: 0342040066'},
-    {icon: BsFillCheckCircleFill, des: 'Bảo hành: 0342040067'},
+    { icon: FaCartArrowDown, des: 'Mua hàng: 0342040064' },
+    { icon: BsFillChatSquareTextFill, des: 'Hỗ trợ KH: 0342040065' },
+    { icon: FaCompress, des: 'Khiếu nại: 0342040066' },
+    { icon: BsFillCheckCircleFill, des: 'Bảo hành: 0342040067' },
 ];
 const footerBranch = [
-    {des: 'Thị trấn Phú Hòa - An Giang'},
-    {des: 'Thành phố Rạch Giá - Kiên Giang'},
-    {des: 'Thành phố Hồng Ngự - Đồng Tháp'},
-    {des: 'Thành phố Vĩnh Long - Vĩnh Long'},
-    {des: 'Thành phố Bến Tre - Bến Tre'},
+    { des: 'Thị trấn Phú Hòa - An Giang' },
+    { des: 'Thành phố Rạch Giá - Kiên Giang' },
+    { des: 'Thành phố Hồng Ngự - Đồng Tháp' },
+    { des: 'Thành phố Vĩnh Long - Vĩnh Long' },
+    { des: 'Thành phố Bến Tre - Bến Tre' },
 ];
 const footerContact = [
-    {icon: FaFacebookSquare},
-    {icon: FaPhoneSquareAlt},
-    {icon: FaInstagramSquare},
-    {icon: FaYoutube},
-    {icon: MdEmail},
+    { icon: FaFacebookSquare, path: 'https://www.facebook.com/nguyenhuunhan.frontend/'},
+    { icon: FaPhoneSquareAlt, path: 'tel: 0342040063' },
+    { icon: FaInstagramSquare, path: 'https://www.instagram.com/nhan.coder.1912/' },
+    { icon: FaYoutube, path: 'https://www.youtube.com/@NguyenHuuNhan1010' },
+    { icon: MdEmail, path: 'mailto: nguyenhuunhan.coder@gmail.com' },
 ];
 const Footer = () => {
-    
     return (
         <footer className={clsx(style.footer)}>
-            <Row gutter={[{md: 30,sm:40, xs: 20}, {md: 30,sm: 40, xs: 40}]}>
+            <Row gutter={[{ md: 30, sm: 40, xs: 20 }, { md: 30, sm: 40, xs: 40 }]}>
                 <Col xl={8} md={24}>
                     <section className={clsx(style.footer__infor)}>
                         <div className={clsx(style.footer__infor__head)}>
@@ -67,7 +63,7 @@ const Footer = () => {
                                     footerInfor.map((item, index) => {
                                         return (
                                             <li key={index} className={clsx(style.navItem)}>
-                                                <a href="/"> 
+                                                <a href="/">
                                                     <span>{item.des}</span>
                                                 </a>
                                             </li>
@@ -90,7 +86,7 @@ const Footer = () => {
                                         return (
                                             <li key={index} className={clsx(style.navItem)}>
                                                 <a href="#">
-                                                    <item.icon className={clsx(style.icon)}/>
+                                                    <item.icon className={clsx(style.icon)} />
                                                     <span>{item.des}</span>
                                                 </a>
                                             </li>
@@ -154,7 +150,7 @@ const Footer = () => {
                                     footerContact.map((item, index) => {
                                         return (
                                             <li key={index} className={clsx(style.navItem)}>
-                                                <a href="#">
+                                                <a href={item.path} target='_blank'>
                                                     <item.icon className={clsx(style.icon)} />
                                                 </a>
                                             </li>
@@ -168,7 +164,7 @@ const Footer = () => {
                 <Col xl={24} md={24}>
                     <section className={clsx(style.footer__copyright)}>
                         <section className={clsx(style.footer__copyright__mt)}>
-                                <span>DCMA | PROTECTED</span>
+                            <span>DCMA | PROTECTED</span>
                         </section>
                         <section className={clsx(style.footer__copyright__cp)}>
                             <AiFillCopyrightCircle className={clsx(style.icon)} />

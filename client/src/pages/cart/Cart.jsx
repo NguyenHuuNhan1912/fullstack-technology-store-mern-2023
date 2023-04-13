@@ -1,20 +1,38 @@
-import { clsx } from 'clsx';
-import style from './cart.module.scss';
+// local
 import images from 'assets/images/index';
+import style from './cart.module.scss';
+import { QuantityCart } from 'layouts/AppLayout/AppLayout';
+
+// Library
+import { clsx } from 'clsx';
+
+// Antd
 import { Row, Col } from 'antd';
+
+// Api
 import cartApi from 'api/modules/cart.api';
+import productApi from 'api/modules/product.api';
+import orderApi from 'api/modules/order.api';
+import provincesApi from 'api/modules/provinces.api';
+
+// React
 import { useState, useEffect, useContext } from 'react';
+
+// Icon
 import { AiFillPlusCircle, AiFillMinusCircle, AiFillDelete } from 'react-icons/ai';
 import { ImCart } from 'react-icons/im';
-import productApi from 'api/modules/product.api';
+
+// Validate
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+
+// Module
 import toastNotification from 'handler/toast.handler';
-import orderApi from 'api/modules/order.api';
 import { Link } from 'react-router-dom';
-import { QuantityCart } from 'layouts/AppLayout/AppLayout';
+
+// Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
-import provincesApi from 'api/modules/provinces.api';
+
 const Cart = () => {
     const [cart, setCart] = useState({});
     const [productCart, setProductCart] = useState([]);
@@ -32,7 +50,6 @@ const Cart = () => {
     );
     const getCartApi = async () => {
         if (checkLogin !== null) {
-            console.log("call thanh toan");
             try {
                 const response = await cartApi.searchIdUser({
                     idUser: JSON.parse(localStorage.getItem("idUser")),
@@ -49,7 +66,6 @@ const Cart = () => {
     const updateProduct = async (id, data) => {
         try {
             const response = await productApi.update(id, data);
-            console.log(response);
         }
         catch (err) {
             console.log(err);
@@ -58,9 +74,7 @@ const Cart = () => {
     const updateCart = async () => {
         try {
             const response = await cartApi.update(cart._id, cart);
-            console.log(response);
             getCartApi();
-            
         }
         catch (err) {
             console.log(err);
@@ -71,7 +85,7 @@ const Cart = () => {
     }
     const totalCart = () => {
         let total = 0;
-        cart.product.forEach((item, index) => {
+        cart.product.forEach((item) => {
             total += handlePercent(Number(item.idRef.price), Number(item.idRef.discount)) * Number(item.quantity);
         });
 
@@ -103,7 +117,6 @@ const Cart = () => {
             }
         }
         else {
-            console.log('type plus');
             if (product.idRef.quantity <= 0) {
                 toastNotification('success', "Số lượng sản phẩm đã được bạn mua hết, cảm ơn bạn !", 1000);
             }
@@ -119,9 +132,7 @@ const Cart = () => {
         }
     }
     const handleDelete = (id) => {
-        
-        console.log('delete');
-        const product = cart.product.filter((item, index) => (id !== item.idRef._id));
+        const product = cart.product.filter((item) => (id !== item.idRef._id));
         cart.product = product;
         cart.total = totalCart();
         updateCart();
@@ -131,32 +142,28 @@ const Cart = () => {
         const name = e.target.value;
         const province = apiProvinces.filter((item, index) => name === item.name);
         const codeDistricts = province[0].code;
-        console.log(codeDistricts);
         fetchDistricts(codeDistricts);
         setAddress({ ...address, province: name });
     }
     const handleChangeDistricts = (e) => {
         const name = e.target.value;
         const district = apiDistricts.filter((item, index) => name === item.name);
-
         const codeHometown = district[0].code;
-        console.log(codeHometown);
         fetchHometown(codeHometown);
         setAddress({ ...address, districts: name });
     }
     const handleChangeHometown = (e) => {
-        console.log(e.target.value);
         const name = e.target.value;
         setAddress({ ...address, hometown: name });
     }
     const fetchHometown = async (code) => {
         try {
             const response = await provincesApi.getAll('d', String(code), {
-                depth: 2, 
+                depth: 2,
             });
             setApiHometowns(response.data.wards);
         }
-        catch(err ){
+        catch (err) {
             console.log(err);
         }
     }
@@ -167,7 +174,7 @@ const Cart = () => {
             })
             setApiDistricts(response.data.districts);
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
         }
     }
@@ -178,7 +185,7 @@ const Cart = () => {
             })
             setApiProvinces(response.data);
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
         }
     }
@@ -212,7 +219,6 @@ const Cart = () => {
             address: Yup.string().required("Địa chỉ cụ thể không thể để trống"),
         }),
         onSubmit: async (values, { resetForm }) => {
-            // console.log(values);
             const inforOrder = {
                 ...values,
                 ...address,
@@ -227,12 +233,6 @@ const Cart = () => {
         fectchProvince();
         getCartApi();
     }, []);
-    console.log("CART");
-    console.log(cart);
-    console.log("CART");
-
-    // console.log(productCart);
-    // console.log(apiHometowns);
     return (
         <main className={clsx(style.main)}>
             <SelectSpeed />
@@ -241,7 +241,7 @@ const Cart = () => {
                     ?
                     (
                         <section className={clsx(style.login)}>
-                            <Row gutter={[{md: 0, sm: 30, xs: 15}, {md: 0, sm: 30, xs: 15}]} align="middle">
+                            <Row gutter={[{ md: 0, sm: 30, xs: 15 }, { md: 0, sm: 30, xs: 15 }]} align="middle">
                                 <Col md={12} xs={24}>
                                     <section className={clsx(style.login__body)}>
                                         <h1>Bạn cần đăng nhập để tiếp tục</h1>
@@ -261,7 +261,7 @@ const Cart = () => {
                     :
                     (
                         <section className={clsx(style.cart)}>
-                            <Row gutter={[{ md:40, sm: 30, xs: 15 }, { md: 40, sm: 30, xs: 15 }]}>
+                            <Row gutter={[{ md: 40, sm: 30, xs: 15 }, { md: 40, sm: 30, xs: 15 }]}>
                                 <Col xs={24}>
                                     <section className={clsx(style.cart__title)}>
                                         <div>
@@ -276,7 +276,6 @@ const Cart = () => {
                                         <Col xs={24}>
                                             <section className={clsx(style.cart__cartEmpty)}>
                                                 <div></div>
-                                                {/* <svg enable-background="new 0 0 320.37 354.98" viewBox="0 0 320.37 354.98" xmlns="http://www.w3.org/2000/svg"><path d="m230.26 281.3h-140.14c-6.6 0-12-5.4-12-12l-17-107.63c0-6.6 5.4-12 12-12h174.14c6.6 0 12 5.4 12 12l-17 107.63c0 6.6-5.4 12-12 12z" fill="#75c8ac"/><circle cx="116.4" cy="210.7" fill="#1f352d" r="8.86"/><circle cx="203.84" cy="210.7" fill="#1f352d" r="8.86"/><path d="m142.56 252.32c-.39 0-.78-.11-1.12-.35-.91-.62-1.15-1.87-.53-2.78 3.05-4.49 10.66-7.38 19.37-7.38 8.15 0 15.55 2.63 18.87 6.7.7.86.57 2.12-.29 2.81-.86.7-2.12.57-2.81-.29-2.54-3.13-8.88-5.23-15.76-5.23-7.2 0-13.81 2.32-16.07 5.63-.39.59-1.02.89-1.66.89z" fill="#1f352d"/><path d="m271.37 163.63h-222.93c-6.6 0-12-5.4-12-12v-15.19c0-6.6 5.4-11 12-11h222.93c6.6 0 12 4.4 12 11v15.19c0 6.6-5.4 12-12 12z" fill="#75c8ac"/><path d="m97.12 269.3-13.52-85.58h172.17l3.17-20.09h-178.52-19l16.7 105.67c0 6.6 5.4 12 12 12h19c-6.6 0-12-5.4-12-12z" opacity=".1"/><path d="m283.2 232.23-1.51 1.51c-2.93 2.93-7.73 2.93-10.66 0l-83.55-83.55c-2.93-2.93-2.93-7.73 0-10.66l1.51-1.51c2.93-2.93 7.73-2.93 10.66 0l83.55 83.55c2.93 2.93 2.93 7.73 0 10.66z" fill="#1f352d"/><path d="m37.92 233.74-1.51-1.51c-2.93-2.93-2.93-7.73 0-10.66l83.55-83.55c2.93-2.93 7.73-2.93 10.66 0l1.51 1.51c2.93 2.93 2.93 7.73 0 10.66l-83.55 83.55c-2.94 2.93-7.73 2.93-10.66 0z" fill="#1f352d"/><ellipse cx="160.19" cy="339.02" fill="#ededed" rx="90.7" ry="11.3"/><path d="m261.58 77.39c.02 5.13-4.17 9.27-9.35 9.23-4.94-.04-8.97-4.09-9.03-9.06-.06-5.16 4.09-9.38 9.2-9.36 5.03.02 9.16 4.16 9.18 9.19zm-9.16 2.88c1.8-.15 2.82-1.21 2.81-2.87-.01-1.69-1.14-2.73-2.83-2.88-1.51-.13-3.04 1.5-2.9 3.03.17 1.73 1.22 2.62 2.92 2.72z" fill="#acf2e5"/><path d="m23.85 108.39c.02 4.16-3.39 7.53-7.59 7.49-4.01-.03-7.28-3.32-7.33-7.36-.05-4.19 3.32-7.62 7.47-7.6 4.08.03 7.44 3.39 7.45 7.47zm-7.44 2.34c1.46-.12 2.29-.98 2.28-2.33-.01-1.37-.93-2.22-2.3-2.34-1.23-.11-2.47 1.22-2.35 2.46.14 1.41.99 2.13 2.37 2.21z" fill="#acf2e5"/><path d="m123.67 36.65c-7.13 0-12.33-5.16-12.36-12.24-.03-7.06 5.27-12.63 12.09-12.71 6.93-.08 12.96 5.89 12.86 12.75-.11 6.89-5.58 12.2-12.59 12.2zm.25-8.53c2.13-.01 3.35-1.52 3.72-3.73.31-1.87-1.75-3.94-3.79-4.05-2-.11-3.92 1.71-4.01 3.8-.08 2.19 1.55 3.92 4.08 3.98z" fill="#fddeff"/><path d="m80.67 78.57c-1.83.06-3.46-1.45-3.56-3.29-.1-1.92 1.5-3.64 3.41-3.66 1.86-.02 3.38 1.49 3.42 3.4.05 1.87-1.44 3.49-3.27 3.55z" fill="#acf2e5"/><path d="m202.67 39.57c-1.83.06-3.46-1.45-3.56-3.29-.1-1.92 1.5-3.64 3.41-3.66 1.86-.02 3.38 1.49 3.42 3.4.05 1.87-1.44 3.49-3.27 3.55z" fill="#acf2e5"/><path d="m302.69 122.39c-.07 3.41-3.06 6.24-6.44 6.07-3.11-.16-5.86-3.15-5.82-6.35.04-3.15 2.94-6.03 6.09-6.03 3.37-.02 6.22 2.9 6.17 6.31z" fill="#fddeff"/><path d="m170.69 83.39c-.07 3.41-3.06 6.24-6.44 6.07-3.11-.16-5.86-3.15-5.82-6.35.04-3.15 2.94-6.03 6.09-6.03 3.37-.02 6.22 2.9 6.17 6.31z" fill="#fddeff"/><path d="m56.84 125.44h-8.4c-6.6 0-12 4.4-12 11v15.19c0 6.6 5.4 12 12 12h8.4c-10.42-19.09 0-38.19 0-38.19z" opacity=".1"/><g fill="#fff"><path d="m217.65 247.73c4.53 0 4.53-7.04 0-7.04-4.52.01-4.53 7.04 0 7.04z"/><path d="m228.34 255.31c4.53 0 4.53-7.04 0-7.04-4.52.01-4.53 7.04 0 7.04z"/><path d="m217.78 263.45c4.53 0 4.53-7.04 0-7.04-4.53.01-4.54 7.04 0 7.04z"/><path d="m206.96 255.31c4.53 0 4.53-7.04 0-7.04-4.52.01-4.53 7.04 0 7.04z"/><path d="m102.67 247.73c4.53 0 4.53-7.04 0-7.04-4.53.01-4.53 7.04 0 7.04z"/><path d="m113.36 255.31c4.53 0 4.53-7.04 0-7.04-4.53.01-4.53 7.04 0 7.04z"/><path d="m102.79 263.45c4.53 0 4.53-7.04 0-7.04-4.52.01-4.53 7.04 0 7.04z"/><path d="m91.98 255.31c4.53 0 4.53-7.04 0-7.04-4.53.01-4.53 7.04 0 7.04z"/></g></svg> */}
                                                 <h1>Giỏ hàng chưa có sản phẩm</h1>
                                                 <Link to="/">
                                                     <button>Mua sắm ngay</button>

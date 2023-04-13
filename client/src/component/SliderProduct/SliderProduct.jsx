@@ -1,14 +1,23 @@
+//Local
+import './sliderProduct.scss';
+
+// Swiper modules
 import { Navigation, Pagination, A11y, Autoplay, EffectCreative } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Swiper style
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-creative';
+
+// Api
 import productApi from 'api/modules/product.api';
-import { useEffect, useState, useRef } from 'react';
+
+// React
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './sliderProduct.scss';
 
 const SliderProduct = ({ dataBrand, type }) => {
   const [product, setProduct] = useState([]);
@@ -49,7 +58,6 @@ const SliderProduct = ({ dataBrand, type }) => {
       </section>
       <section className="sliderProduct__body">
         <Swiper
-          // install Swiper modules
           modules={[Navigation, Pagination, A11y, Autoplay, EffectCreative]}
           grabCursor={true}
           speed={1200}

@@ -1,25 +1,30 @@
+// React
 import clsx from 'clsx';
-// import {SearchOutlined} from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+// Antd
+import { Dropdown, Modal } from 'antd';
+
+// Local
+import images from 'assets/images/index';
+import style from './header.module.scss';
+import toastNotification from 'handler/toast.handler';
+import 'scss/_globalstyle.scss';
+
+// Icon
 import { AiOutlineSearch, AiFillHome, AiFillInfoCircle, AiFillDollarCircle, AiFillContacts } from 'react-icons/ai'
 import { BiCategory } from 'react-icons/bi';
 import { RiUserAddFill, RiLogoutCircleLine, RiDeleteBack2Fill } from 'react-icons/ri';
 import { BsCartFill, BsFillBellFill, BsNewspaper } from 'react-icons/bs';
-
-// import { useRef, useState } from 'react';
-import { Dropdown, Modal } from 'antd';
 import { FaUserEdit } from 'react-icons/fa';
-import images from 'assets/images/index';
-import 'scss/_globalstyle.scss';
-import style from './header.module.scss';
-import { Link } from 'react-router-dom';
-import { useEffect, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import toastNotification from 'handler/toast.handler';
+
+// Api
 import userApi from 'api/modules/user.api';
 import cartApi from 'api/modules/cart.api';
-import { QuantityCart } from "layouts/AppLayout/AppLayout";
 import productAppApi from 'api/modules/productApp.api';
-import { useRef } from 'react';
+
 const path = [
     { icon: AiFillHome, component: 'Trang chủ', path: '/' },
     { icon: AiFillInfoCircle, component: 'Giới thiệu', path: '/introduce' },
@@ -27,6 +32,7 @@ const path = [
     { icon: RiUserAddFill, component: 'Tuyển dụng', path: '/recruit' },
     { icon: AiFillContacts, component: 'Liên hệ', path: '/contact' },
 ];
+
 const Header = ({ call }) => {
     const [userName, setUserName] = useState(JSON.parse(localStorage.getItem("userName")));
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,8 +43,8 @@ const Header = ({ call }) => {
     const [products, setProducts] = useState([]);
     const [productTemp, setProductTemp] = useState([]);
     const [searchText, setSearchText] = useState('');
-    const productName = useRef();
-    let callApi = call;
+    const checkUpdateAccount = JSON.parse(localStorage.getItem("updateAccount"));
+    let navi = useNavigate();
     const getCartApi = async () => {
         if (JSON.parse(localStorage.getItem("idUser")) !== null) {
             try {
@@ -53,8 +59,6 @@ const Header = ({ call }) => {
             }
         }
     }
-    let navi = useNavigate();
-    const checkUpdateAccount = JSON.parse(localStorage.getItem("updateAccount"));
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -77,10 +81,7 @@ const Header = ({ call }) => {
             key: '1',
             label: (
                 <Link
-
-                    style={
-                        { display: 'flex', alignItems: 'center', fontSize: 18, }
-                    }
+                    style={{ display: 'flex', alignItems: 'center', fontSize: 18, }}
                     rel="noopener noreferrer"
                     href="https://www.antgroup.com"
                     to="/account"
@@ -94,9 +95,7 @@ const Header = ({ call }) => {
             key: '2',
             label: (
                 <Link
-                    style={
-                        { display: 'flex', alignItems: 'center', fontSize: 18, }
-                    }
+                    style={{ display: 'flex', alignItems: 'center', fontSize: 18, }}
                     rel="noopener noreferrer"
                     to="/account/order"
                 >
@@ -109,9 +108,7 @@ const Header = ({ call }) => {
             key: '3',
             label: (
                 <Link
-                    style={
-                        { display: 'flex', alignItems: 'center', fontSize: 18, }
-                    }
+                    style={{ display: 'flex', alignItems: 'center', fontSize: 18, }}
                     rel="noopener noreferrer"
                     to="/account/noti"
                 >
@@ -124,9 +121,7 @@ const Header = ({ call }) => {
             key: '4',
             label: (
                 <Link
-                    style={
-                        { display: 'flex', alignItems: 'center', fontSize: 18, }
-                    }
+                    style={{ display: 'flex', alignItems: 'center', fontSize: 18, }}
                     rel="noopener noreferrer"
                     to="/account/news"
                 >
@@ -139,9 +134,7 @@ const Header = ({ call }) => {
             key: '5',
             label: (
                 <section
-                    style={
-                        { display: 'flex', alignItems: 'center', fontSize: 18, }
-                    }
+                    style={{ display: 'flex', alignItems: 'center', fontSize: 18, }}
                     rel="noopener noreferrer"
                     href="https://www.luohanacademy.com"
                     onClick={showModal}
@@ -154,11 +147,9 @@ const Header = ({ call }) => {
     ];
     const getUserApi = async () => {
         if (JSON.parse(localStorage.getItem("idUser")) !== null) {
-            console.log('call user');
             try {
                 const response = await userApi.getOne(JSON.parse(localStorage.getItem("idUser")));
                 setUser(response);
-                console.log(response);
                 setUserName(response.username);
             }
             catch (err) {
@@ -182,31 +173,25 @@ const Header = ({ call }) => {
     const handleHide = () => {
         setShowProduct(false);
     }
-    const handleKeyUp = (e) => {
-        console.log(e.keyCode);
-
-    }
     const handleChangeSearchText = (e) => {
         const productName = [];
         productTemp.forEach((item, index) => {
             productName.push(item.name.toLowerCase());
         });
-        const searchResult = productTemp.filter((item, index) => {
+        const searchResult = productTemp.filter((index) => {
             return productName[index].includes(e.target.value);
         })
         setProducts(searchResult);
         setSearchText(e.target.value);
-
     }
     const handleChangePath = () => {
         setShowProduct(false);
     }
     useEffect(() => {
-        console.log("call call call");
         getUserApi();
         getCartApi();
         getProductApi();
-    }, [checkUpdateAccount, callApi]);
+    }, [checkUpdateAccount, call]);
     return (
         <div className={clsx(style.main)}>
             <header className={clsx(style.header)}>
@@ -224,7 +209,6 @@ const Header = ({ call }) => {
                             placeholder='Nhập sản phẩm cần tìm . .  .'
                             value={searchText}
                             onChange={handleChangeSearchText}
-                            onKeyUp={handleKeyUp}
                         />
                         {
                             showProduct && (
@@ -240,17 +224,17 @@ const Header = ({ call }) => {
                                                 :
                                                 products.map((item, index) => {
                                                     return (
-                                                        <li 
+                                                        <li
                                                             key={index}
                                                             onClick={handleChangePath}
                                                         >
                                                             <a href={`/product/detail/${item._id}`}>
                                                                 {
-                                                                    item?.img ?
+                                                                    item?.img
+                                                                        ?
                                                                         <img src={`data:image/png;base64,${item.img}`} alt="img" />
                                                                         :
                                                                         <></>
-
                                                                 }
                                                                 <p>{item.name}</p>
                                                             </a>
@@ -288,15 +272,10 @@ const Header = ({ call }) => {
                                                 <div className={clsx(style.signSystem__head)}>
                                                     {
                                                         !user?.img
-                                                            ?
-                                                            (
-                                                                <img src={images.header.user} alt="img" />
-                                                            )
-                                                            :
-                                                            (
-                                                                <img src={`data:image/png;base64,${user.img}`} alt="img" />
-
-                                                            )
+                                                        ?
+                                                        <img src={images.header.user} alt="img" />
+                                                        :
+                                                        <img src={`data:image/png;base64,${user.img}`} alt="img" />
                                                     }
                                                 </div>
                                                 <div className={clsx(style.signSystem__body)}>
@@ -366,7 +345,6 @@ const Header = ({ call }) => {
                     </section>
                 </nav>
             </header>
-
         </div>
     )
 }

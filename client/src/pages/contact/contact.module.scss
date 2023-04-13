@@ -3,7 +3,6 @@
 
 .main {
     .contact {
-        // display: none;
         margin: 80px;
         padding: 0 80px;
         box-shadow: 0 0 5px 2px grey;
@@ -34,7 +33,6 @@
 
                 input,
                 textarea {
-                    // @mixin input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize) {
                     @include input(8px, 2px, white, 4px, $fontSizeMain);
                     width: 100%;
                     color: white;
@@ -49,7 +47,6 @@
 
                 .submit {
                     width: 150px;
-                    // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
                     @include button(white, black, $fontSizeMain, 8px, 16px, 5px, 0.4s);
                     font-weight: bold;
 
@@ -72,16 +69,13 @@
                 height: 664px;
                 display: block;
                 margin: 0 auto;
-
             }
         }
     }
 
     .map {
-        // display: none;
         margin: 80px;
         margin-top: 0;
-
         iframe {
             border-radius: 5px;
             width: 100%;
@@ -93,13 +87,11 @@
 
 
 // Responsive
-
 @include responsiveMainLg__ {
     .main {
         .contact {
             margin: 60px;
             padding: 0 60px;
-
             &__form {
                 .formGroup {
                     font-size: 9px;

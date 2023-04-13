@@ -6,10 +6,7 @@
         padding: 80px;
         background-color: $backgroundDb;
 
-        // border: 1px solid red;
         &__head {
-
-            // border: 1px solid red;
             img {
                 display: block;
                 width: 100%;
@@ -19,7 +16,6 @@
 
         &__body {
             color: white;
-            // border: 1px solid red;
             text-align: center;
             font-size: 10px;
 
@@ -30,9 +26,7 @@
             }
 
             a {
-
                 button {
-                    // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
                     @include button($backgroundMain, white, 2em, 10px, 20px, 5px, 0.3s);
                     font-weight: bold;
 
@@ -51,6 +45,7 @@
         &__title {
             @include flexCenter();
             justify-content: center;
+
             div {
                 @include flexCenter();
                 font-size: 10px;
@@ -94,7 +89,6 @@
 
             a {
                 button {
-                    // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
                     @include button($backgroundMain, white, 2em, 8px, 16px, 5px, 0.3s);
                     font-weight: bold;
 
@@ -120,7 +114,6 @@
                         th {
                             padding: 15px 0;
                             border-bottom: 1px solid grey;
-                            // border: 1px solid white
                             text-align: center;
                         }
                     }
@@ -203,7 +196,6 @@
                     @include flexCenter();
                     flex-direction: column;
                     align-items: initial;
-                    // border: 1px solid red;
                     margin-top: 15px;
 
                     label {
@@ -212,7 +204,6 @@
                     }
 
                     input {
-                        // @mixin input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize) {
                         @include input(8px, 1px, grey, 5px, 1.8em);
                     }
 
@@ -243,6 +234,7 @@
         .login {
             padding: 60px;
         }
+
         .cart {
             margin: 60px;
         }
@@ -264,6 +256,7 @@
                 font-size: 9px;
             }
         }
+
         .cart {
             margin: 40px;
         }
@@ -275,13 +268,16 @@
         .login {
             padding: 30px;
         }
+
         .cart {
             margin: 30px;
+
             &__title {
                 div {
                     font-size: 8px;
                 }
             }
+
             &__list {
                 table {
                     font-size: 8px;
@@ -295,32 +291,40 @@
     .main {
         .login {
             padding: 15px;
+
             &__body {
                 font-size: 7px;
+
                 h1 {
                     margin-bottom: 15px;
                 }
             }
         }
+
         .cart {
             margin: 15px;
+
             &__title {
                 div {
                     font-size: 6px;
                 }
             }
+
             &__list {
                 table {
                     font-size: 7px;
                 }
             }
+
             &__order {
                 .formOrder {
                     font-size: 8px;
                 }
             }
+
             &__cartEmpty {
                 font-size: 8px;
+
                 h1 {
                     margin: 15px 0;
                 }
