@@ -14,3 +14,15 @@ export const getAll = async (req, res) => {
     }
 }
 
+export const getProducts = async (req, res) => {
+
+    try {
+        await Product.find({}).then(product => {
+            res.send({product});
+        });
+    }
+    catch (err) {
+        res.status(500).json({ msg: "Internal server error!!!" });
+    }
+}
+

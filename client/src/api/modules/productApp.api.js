@@ -2,6 +2,7 @@ import publicClient from 'api/config/api.services';
 
 const productAppApi = {
     getAll: (params) => publicClient.get('productApp', {params}),
+    getProducts: () => publicClient.get('productApp/all'),
     // create: data => publicClient.post('products', data),
     // update: (id, data) =>  publicClient.put(`products/${id}`, data),
     // delete: (id) => publicClient.delete(`products/${id}`),

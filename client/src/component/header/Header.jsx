@@ -18,7 +18,8 @@ import toastNotification from 'handler/toast.handler';
 import userApi from 'api/modules/user.api';
 import cartApi from 'api/modules/cart.api';
 import { QuantityCart } from "layouts/AppLayout/AppLayout";
-
+import productAppApi from 'api/modules/productApp.api';
+import { useRef } from 'react';
 const path = [
     { icon: AiFillHome, component: 'Trang chủ', path: '/' },
     { icon: AiFillInfoCircle, component: 'Giới thiệu', path: '/introduce' },
@@ -26,18 +27,20 @@ const path = [
     { icon: RiUserAddFill, component: 'Tuyển dụng', path: '/recruit' },
     { icon: AiFillContacts, component: 'Liên hệ', path: '/contact' },
 ];
-const Header = ({call}) => {
+const Header = ({ call }) => {
     const [userName, setUserName] = useState(JSON.parse(localStorage.getItem("userName")));
-    const [admin, setAdmin] = useState(JSON.parse(localStorage.getItem("admin")));
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [user, setUser] = useState({});
     const [cart, setCart] = useState({});
     const [product, setProduct] = useState([]);
-    const [check, setCheck] = useState(false);
+    const [showProduct, setShowProduct] = useState(false);
+    const [products, setProducts] = useState([]);
+    const [productTemp, setProductTemp] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const productName = useRef();
     let callApi = call;
-    const updateQuantityCart = useContext(QuantityCart);
     const getCartApi = async () => {
-        if(JSON.parse(localStorage.getItem("idUser")) !== null) {
+        if (JSON.parse(localStorage.getItem("idUser")) !== null) {
             try {
                 const response = await cartApi.searchIdUser({
                     idUser: JSON.parse(localStorage.getItem("idUser")),
@@ -163,12 +166,47 @@ const Header = ({call}) => {
             }
         }
     }
+    const getProductApi = async () => {
+        try {
+            const response = await productAppApi.getProducts();
+            setProducts(response.product);
+            setProductTemp(response.product);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+    const handleShow = () => {
+        setShowProduct(true);
+    }
+    const handleHide = () => {
+        setShowProduct(false);
+    }
+    const handleKeyUp = (e) => {
+        console.log(e.keyCode);
+
+    }
+    const handleChangeSearchText = (e) => {
+        const productName = [];
+        productTemp.forEach((item, index) => {
+            productName.push(item.name.toLowerCase());
+        });
+        const searchResult = productTemp.filter((item, index) => {
+            return productName[index].includes(e.target.value);
+        })
+        setProducts(searchResult);
+        setSearchText(e.target.value);
+
+    }
+    const handleChangePath = () => {
+        setShowProduct(false);
+    }
     useEffect(() => {
         console.log("call call call");
         getUserApi();
         getCartApi();
+        getProductApi();
     }, [checkUpdateAccount, callApi]);
-
     return (
         <div className={clsx(style.main)}>
             <header className={clsx(style.header)}>
@@ -176,11 +214,54 @@ const Header = ({call}) => {
                     <Link to="/" className={clsx(style.navLogo)}>
                         <img src={images.header.logo} alt="logo" />
                     </Link>
-                    <section className={clsx(style.navSearch)}>
+                    <section
+                        className={clsx(style.navSearch)}
+                        onMouseOver={handleShow}
+                        onMouseOut={handleHide}
+                    >
                         <input
                             type="text"
                             placeholder='Nhập sản phẩm cần tìm . .  .'
+                            value={searchText}
+                            onChange={handleChangeSearchText}
+                            onKeyUp={handleKeyUp}
                         />
+                        {
+                            showProduct && (
+                                <div>
+                                    <ul>
+                                        {
+                                            products.length === 0
+                                                ?
+                                                <li className={clsx(style.emptyProduct)}>
+                                                    <div className={clsx(style.svg)}></div>
+                                                    <h1>Không có sản phẩm tương ứng !</h1>
+                                                </li>
+                                                :
+                                                products.map((item, index) => {
+                                                    return (
+                                                        <li 
+                                                            key={index}
+                                                            onClick={handleChangePath}
+                                                        >
+                                                            <a href={`/product/detail/${item._id}`}>
+                                                                {
+                                                                    item?.img ?
+                                                                        <img src={`data:image/png;base64,${item.img}`} alt="img" />
+                                                                        :
+                                                                        <></>
+
+                                                                }
+                                                                <p>{item.name}</p>
+                                                            </a>
+                                                        </li>
+                                                    )
+                                                })
+                                        }
+                                    </ul>
+                                </div>
+                            )
+                        }
                         <AiOutlineSearch className={clsx(style.icon)} />
                     </section>
                     <section className={clsx(style.navFunction)}>
@@ -257,7 +338,7 @@ const Header = ({call}) => {
                             </div>
                             <div className={clsx(style.cart__body)}>
                                 <p>Giỏ hàng</p>
-                                <p>{`(${(product.length===0) ? 0 : product.length}) Sản phẩm`}</p>
+                                <p>{`(${(product.length === 0) ? 0 : product.length}) Sản phẩm`}</p>
                             </div>
                         </Link>
                     </section>
