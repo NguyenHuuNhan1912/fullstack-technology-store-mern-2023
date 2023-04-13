@@ -6,13 +6,10 @@
     padding: 20px;
     border: 1px solid grey;
     border-radius: 5px;
-
     .overviewAccount {
         .formAccount {
-
             .title {
                 font-size: 10px;
-
                 h1 {
                     font-size: inherit;
                     text-transform: uppercase;
@@ -22,8 +19,6 @@
 
             .formGroup {
                 font-size: 10px;
-                // border: 1px solid red;
-
                 label {
                     margin-bottom: 5px;
                     display: block;
@@ -32,7 +27,6 @@
 
                 input {
                     width: 100%;
-                    // input($pd, $borderWidth, $borderColor, $borderRadius, $fontSize ) {
                     @include input(8px, 1px, grey, 4px, $fontSizeMain);
                 }
 

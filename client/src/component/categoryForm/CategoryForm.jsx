@@ -1,14 +1,26 @@
+// Library
 import clsx from 'clsx';
+
+// Local
 import style from './categoryForm.module.scss';
+
+// Icon
 import { RiDeleteBack2Fill } from 'react-icons/ri';
-import { AiFillCloseCircle } from 'react-icons/ai';
+
+// Antd
 import { Row, Col } from 'antd';
-import { useContext, useRef, useState } from 'react';
+
+// React
+import { useContext, useState } from 'react';
+
+// Api
 import categoryApi from 'api/modules/category.api';
-import { toast } from 'react-toastify';
+
+// Module
 import toastNotification from 'handler/toast.handler';
 import { UpdateCategory } from 'pages/dashboard/category/Category';
-const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField, setCateEdit, isEdit, setIsEdit, onClose}) => {
+
+const CategoryAdd = ({ cateEdit, cateBrand, cateField, setCateBrand, setCateField, setCateEdit, isEdit, setIsEdit, onClose }) => {
     const updateCategory = useContext(UpdateCategory);
     const [brand, setBrand] = useState('');
     const [field, setField] = useState('');
@@ -21,11 +33,9 @@ const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
-
             fileReader.onload = () => {
                 resolve(fileReader.result);
             };
-
             fileReader.onerror = (error) => {
                 reject(error);
             };
@@ -33,7 +43,6 @@ const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField
     }
     const handleChange = async (e) => {
         const file = e.target.files[0];
-        // console.log(file);
         if (file !== undefined) {
             const convertFile = await convertBase64(file);
             const imgBase64 = convertFile.slice(convertFile.indexOf(",") + 1);
@@ -61,7 +70,6 @@ const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField
         catch (err) {
             console.log(err);
         }
-        console.log('create');
         setTimeout(() => {
             toastNotification('success', 'Thêm danh mục thành công !', 1000);
             onClose();
@@ -76,7 +84,6 @@ const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField
         if (image) {
             values.img = image;
         }
-        // console.log(values);
         if (type === "edit") {
             handleEdit(cateEdit._id, values);
         }
@@ -86,19 +93,13 @@ const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField
     }
 
     const deleteBrand = (value) => {
-        // console.log(value);
         setCateBrand(cateBrand.filter((item, index) => index !== value));
 
     }
     const deleteField = (value) => {
-        // console.log(e); 
         setCateField(cateField.filter((item, index) => index !== value));
 
     }
-
-    // console.log(cateEdit);
-    // console.log(cateEdit?.img);
-    // console.log(cateBrand, cateField);
     return (
         <main className={clsx(style.categoryAdd)}>
             <section className={clsx(style.categoryAdd__head)}>
@@ -115,7 +116,6 @@ const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField
                                 <p>Thêm danh mục tại đây</p>
                             </>
                     }
-                    {/* <p>{des}</p> */}
 
                 </div>
                 <div className={clsx(style.categoryAdd__head__exit)}>
@@ -135,7 +135,6 @@ const CategoryAdd = ({cateEdit, cateBrand, cateField, setCateBrand, setCateField
                                 />
                                 <div>
                                     {
-                                        // null, 0, false, undefined 
                                         cateEdit && cateEdit.img &&
                                         <img src={`data:image/png;base64,${cateEdit.img}`} alt="img" />
                                     }

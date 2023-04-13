@@ -1,27 +1,26 @@
-import { UploadOutlined } from '@ant-design/icons';
-import { Button, Upload } from 'antd';
-import images from 'assets/images';
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './productForm.module.scss';
-import Form from 'antd/es/form/Form';
-import { useFormik } from "formik";
-import * as Yup from 'yup';
+
+// Icon
 import { RiDeleteBack2Fill } from 'react-icons/ri';
+
+// Antd
 import { Row, Col } from 'antd';
-import { useEffect, useRef } from "react";
+
+// React
+import { useState, memo, useEffect, useRef } from 'react';
+
+// Api
 import categoryApi from "api/modules/category.api";
 import productApi from "api/modules/product.api";
-import { toast } from 'react-toastify';
-import { useState } from 'react';
-import { memo } from 'react';
-import { BsChevronCompactLeft } from 'react-icons/bs';
-import { type } from '@testing-library/user-event/dist/type';
+
+
 import toastNotification from 'handler/toast.handler';
 const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProductEdit, brandProductEdit, setBrandProductEdit, productField, setProductField, labelField, setLabelField }) => {
     const [category, setCategory] = useState([]);
-    const [brand, setBrand] = useState([]);
-    const [field, setField] = useState('');
-    const [infor, setInfor] = useState([]);
     const [selectBrand, setSelectBrand] = useState('');
     const [selectType, setSelectType] = useState('');
     const [image, setImage] = useState('');
@@ -31,11 +30,11 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
         const result = category.find((item, index) => item.name === e.target.value);
         (result?.brand !== undefined && result?.brand !== null) ? setBrandProductEdit(result.brand) : setBrandProductEdit([]);
         (result?.field !== undefined && result?.field !== null) ? setLabelField(result.field) : setLabelField([]);
-        setProductEdit({...productEdit, type: e.target.value});
+        setProductEdit({ ...productEdit, type: e.target.value });
         setSelectType(e.target.value);
     }
     const handleChangeBrand = (e) => {
-        setProductEdit({...productEdit, brand: e.target.value});
+        setProductEdit({ ...productEdit, brand: e.target.value });
         setSelectBrand(e.target.value);
     }
     const handleClickBack = () => {
@@ -46,11 +45,9 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
-
             fileReader.onload = () => {
                 resolve(fileReader.result);
             };
-
             fileReader.onerror = (error) => {
                 reject(error);
             };
@@ -58,7 +55,6 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
     }
     const handleChangeFile = async (e) => {
         const file = e.target.files[0];
-        console.log(file);
         if (file !== undefined) {
             const convertFile = await convertBase64(file);
             const imgBase64 = convertFile.slice(convertFile.indexOf(",") + 1);
@@ -71,21 +67,21 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
         let objNote = {};
         var index = 0;
         for (const [key, value] of resultForm) {
-            if(index===2) {
-                objNote = {...objNote, [key]: value}
+            if (index === 2) {
+                objNote = { ...objNote, [key]: value }
             }
-            if(index===3) {
-                objNote = {...objNote, [key]: value}
+            if (index === 3) {
+                objNote = { ...objNote, [key]: value }
             }
-            if(index>=8) {
-                if(value === '') {
-                    objField = {...objField, [key]: productField[key]}
+            if (index >= 8) {
+                if (value === '') {
+                    objField = { ...objField, [key]: productField[key] }
                 }
                 else {
-                    objField = {...objField, [key]: value}
+                    objField = { ...objField, [key]: value }
                 }
             }
-            index+=1;
+            index += 1;
         }
 
         const values = {
@@ -101,18 +97,13 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
         if (image) {
             values.img = image;
         }
-        console.log('result:');
         if (type === "update") {
             handleEdit(productEdit._id, values);
-            console.log(values);
-            console.log('update');
         }
         else {
             handleCreate(values);
-            console.log(values);
         }
     }
-    // console.log(productEdit);
     const handleCreate = async (values) => {
         try {
             await productApi.create(values);
@@ -121,7 +112,6 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
         catch (err) {
             console.log(err);
         }
-        console.log('create');
         setTimeout(() => {
             toastNotification('success', 'Thêm sản phẩm thành công !', 1000);
             onClose();
@@ -135,7 +125,6 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
         catch (err) {
             console.log(err);
         }
-        console.log('edit');
         setTimeout(() => {
             toastNotification('success', 'Chỉnh sửa sản phẩm thành công !', 1000);
             onClose();
@@ -188,11 +177,10 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
                                         autoComplete="off"
                                     />
                                     <div>
-                                    {
-                                        // null, 0, false, undefined 
-                                        productEdit && productEdit.img &&
-                                        <img src={`data:image/png;base64,${productEdit.img}`} alt="img" />
-                                    }
+                                        {
+                                            productEdit && productEdit.img &&
+                                            <img src={`data:image/png;base64,${productEdit.img}`} alt="img" />
+                                        }
                                     </div>
                                 </section>
                             </Col>
@@ -216,7 +204,7 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
                                         <option value="">Loại sản phẩm</option>
                                         {
                                             (category.length > 0) && category.map((item, index) => {
-                                                return (<option key={index} value={item.name}>{item.name}</option>) 
+                                                return (<option key={index} value={item.name}>{item.name}</option>)
                                             })
                                         }
                                     </select>
@@ -225,7 +213,7 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
                             <Col xl={12}>
                                 <section className={clsx(style.formGroup)}>
                                     <label htmlFor="brand">Hãng sản phẩm</label>
-                                    <select name="brand" onChange={handleChangeBrand} value={productEdit?.brand|| ''}>
+                                    <select name="brand" onChange={handleChangeBrand} value={productEdit?.brand || ''}>
                                         <option value="" >Hãng sản phẩm</option>
                                         {
                                             (brandProductEdit?.length > 0) && brandProductEdit.map((item, index) => {

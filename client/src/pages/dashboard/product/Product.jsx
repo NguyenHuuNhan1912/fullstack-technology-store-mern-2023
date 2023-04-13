@@ -1,33 +1,48 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './product.module.scss';
+import images from 'assets/images';
+
+// Icon
 import { AiFillPlusCircle } from 'react-icons/ai';
-import { Row, Col } from 'antd';
-import { useEffect, useRef } from 'react';
-import { useState } from 'react';
 import { FaSearchPlus } from 'react-icons/fa';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 import { RiDeleteBack2Fill } from 'react-icons/ri';
-// import ProductAdd from 'component/productAdd/ProductAdd';
-import { toast } from 'react-toastify';
-import ProductForm from 'component/productForm/ProductForm';
-import { useNavigate, useParams } from 'react-router-dom';
+
+// Antd
+import { Row, Col } from 'antd';
+
+// React
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+// Component
+import ProductForm from 'component/productForm/ProductForm';
+import Pagination from 'component/Pagination/Pagination';
+
+// Antd
 import { Modal, Switch } from 'antd';
 import { Drawer } from 'antd';
+
+// Api
 import productApi from "api/modules/product.api";
 import categoryApi from "api/modules/category.api";
+
+// Loading
 import { Bars } from 'react-loader-spinner';
-import images from 'assets/images';
-import Pagination from 'component/Pagination/Pagination';
-import { responsiveArray } from 'antd/es/_util/responsiveObserver';
+
+// Module
 import toastNotification from 'handler/toast.handler';
 
+// Variables global
 var DEFAULT_SKIP = 0;
 var DEFAULT_LIMIT = 15;
 var DEFAULT_TYPE = '';
 var DEFAULT_PRICE = '';
+
 const Product = () => {
-  
   const [product, setProduct] = useState([]);
   const [productField, setProductField] = useState({});
   const [category, setCategory] = useState([]);
@@ -50,7 +65,6 @@ const Product = () => {
   })
   const [searchProduct, setSearchProduct] = useState('');
   const handleSearch = (e) => {
-    console.log(e.target.value);
     setSearchProduct(e.target.value);
   }
   const getApiFilterName = async (name) => {
@@ -73,18 +87,17 @@ const Product = () => {
       });
       setLoading(false);
     }
-    catch(err) {
+    catch (err) {
       console.log(err);
     }
     setShowPagination(false);
   }
   const handleSearchEnter = (e) => {
-    if(e.keyCode === 13) {
-      console.log(searchProduct);
+    if (e.keyCode === 13) {
       setProductType('');
       setSortPrice('');
       getApiFilterName(searchProduct);
-      
+
     }
   }
   const getApiFilter = async (type) => {
@@ -121,14 +134,12 @@ const Product = () => {
   }
   const handleSortPrice = (e) => {
     setSearchProduct('');
-    console.log(e.target.value);
     DEFAULT_PRICE = e.target.value;
     setSortPrice(e.target.value);
     getApi();
     setShowPagination(true);
   }
   const handlePageChange = (newPage, type) => {
-    console.log(newPage, type);
     if (type === 'next') {
       DEFAULT_SKIP = DEFAULT_SKIP + DEFAULT_LIMIT;
       if (DEFAULT_SKIP < pagination.totalProduct) {
@@ -200,7 +211,6 @@ const Product = () => {
   useEffect(() => {
     getApi();
     getApiCategory();
-    console.log('case usefeect');
   }, []);
 
   const handleClickAdd = () => {
@@ -223,7 +233,6 @@ const Product = () => {
     })
   }
   const handleDelete = async (id) => {
-    console.log(id);
     try {
       await productApi.delete(id);
       getApi();
@@ -306,7 +315,7 @@ const Product = () => {
                         </Col>
                         <Col xl={6}>
                           <div className={clsx(style.formGroup)}>
-                            <select 
+                            <select
                               name="price"
                               value={sortPrice}
                               onChange={handleSortPrice}
@@ -419,7 +428,7 @@ const Product = () => {
                     <Pagination
                       pagination={pagination}
                       onPageChange={handlePageChange}
-                      checkShow ={showPagination}
+                      checkShow={showPagination}
                     />
                   </Col>
                 </Row>

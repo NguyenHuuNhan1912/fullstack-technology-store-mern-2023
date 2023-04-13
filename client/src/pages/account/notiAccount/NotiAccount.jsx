@@ -1,6 +1,10 @@
+// Library
 import {clsx} from 'clsx';
+
+// Local
 import style from './notiAccount.module.scss';
 import images from 'assets/images';
+
 const NotiAccount = () => {
     return (
         <main className={clsx(style.main)}>

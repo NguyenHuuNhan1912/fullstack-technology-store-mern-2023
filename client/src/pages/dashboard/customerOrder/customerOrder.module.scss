@@ -13,6 +13,7 @@
             font-size: 10px;
             @include flexCenter();
             justify-content: center;
+
             h1 {
                 font-size: 2.3em;
                 text-transform: uppercase;
@@ -23,17 +24,21 @@
                 border-radius: 5px;
                 margin-left: auto;
             }
+
             a {
                 font-size: $fontSizeMain;
                 margin-left: auto;
+
                 button {
                     @include flexCenter();
                     @include button($backgroundMain, white, inherit, 10px, 20px, 5px, 0.3s);
                     font-weight: bold;
+
                     .icon {
                         font-size: 25px;
                         margin-right: 8px;
                     }
+
                     &:hover {
                         background-color: rgb(177, 13, 13);
                         color: white;
@@ -47,7 +52,6 @@
             color: white;
 
             .inforOrder {
-                // border: 1px solid grey;
                 border-radius: 5px;
 
                 &__head {
@@ -121,16 +125,18 @@
                 margin-top: 20px;
             }
         }
+
         &__empty {
             text-align: center;
             font-size: 10px;
+
             img {
                 display: block;
-                // border: 1px solid red;
                 width: 400px;
                 margin: 0 auto;
                 border-radius: 20px;
             }
+
             p {
                 font-size: 3em;
                 text-transform: uppercase;
@@ -138,18 +144,22 @@
                 font-weight: bold;
                 margin: 20px 0;
             }
+
             a {
                 font-size: $fontSizeMain;
                 @include flexCenter();
                 justify-content: center;
+
                 button {
                     @include flexCenter();
                     @include button($backgroundMain, white, inherit, 10px, 20px, 5px, 0.3s);
                     font-weight: bold;
+
                     .icon {
                         font-size: 25px;
                         margin-right: 8px;
                     }
+
                     &:hover {
                         background-color: rgb(177, 13, 13);
                         color: white;

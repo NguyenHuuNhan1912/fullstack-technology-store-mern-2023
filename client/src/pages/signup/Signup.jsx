@@ -1,33 +1,48 @@
-// Framework
+// Validate
 import { useFormik } from "formik";
+import * as Yup from 'yup';
 
+// Icon
 import { FaUserAlt, FaLock, FaFacebook, FaGoogle } from 'react-icons/fa';
 import { BsFillTelephoneForwardFill } from 'react-icons/bs';
 import { FiRotateCw } from 'react-icons/fi';
 import { BiArrowBack } from 'react-icons/bi';
+
+// Module
 import toastNotification from "handler/toast.handler";
+
+// React
 import { Link } from "react-router-dom";
+
+// Library
 import clsx from 'clsx';
-import * as Yup from 'yup';
+
+// Antd
 import { Row, Col } from 'antd';
+
+// Local
 import images from "assets/images";
 import style from './signup.module.scss';
+
+// Component
 import SelectSpeed from "component/selectSpeed/SelectSpeed";
-import { toast } from 'react-toastify';
+
+// Api
 import userApi from "api/modules/user.api";
-import { useState, useEffect } from "react";
 import cartApi from "api/modules/cart.api";
+
+// React
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+
 const Signup = () => {
     const [users, setUsers] = useState('');
     let navi = useNavigate();
     const postApi = async (values) => {
         try {
             const response = await userApi.create(values);
-            console.log(response);
-            // Server trả về id của user sau khi tạo user thành công
             createCart(response);
-            
         }
         catch (err) {
             console.log(err);
@@ -40,7 +55,7 @@ const Signup = () => {
                 product: [],
             })
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
         }
     }
@@ -58,7 +73,6 @@ const Signup = () => {
             passwordAgain: Yup.string().required("Mật khẩu không thể để trống").oneOf([Yup.ref("password"), null], "Mật khẩu nhập lại không khớp"),
         }),
         onSubmit: async (values, { resetForm }) => {
-            console.log(values);
             const valuesLast = {
                 username: values.username,
                 password: values.password,
@@ -68,12 +82,10 @@ const Signup = () => {
                 const response = await userApi.signUp({
                     username: valuesLast.username,
                 });
-                console.log('dang ki that bai');
                 toastNotification('error', 'Đăng kí tài khoản thất bại, tài khoản đã tồn tại !', 1500);
             }
             catch (err) {
                 console.log(err);
-                console.log('dang ki thanh cong');
                 postApi(valuesLast);
                 resetForm();
                 toastNotification('success', 'Đăng kí tài khoản thành công, trở về để đăng nhập nhé !', 1500);

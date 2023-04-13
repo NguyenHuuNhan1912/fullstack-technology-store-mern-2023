@@ -1,19 +1,41 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './category.module.scss';
+import images from 'assets/images/index'
+
+// Antd
 import { Row, Col } from 'antd';
+import { Drawer } from 'antd';
+import { Modal, Switch } from 'antd';
+
+// Icon
 import { RiDeleteBack2Fill } from 'react-icons/ri';
 import { AiFillPlusCircle, AiFillEdit, AiFillDelete } from 'react-icons/ai';
+
+// Api
 import categoryApi from "api/modules/category.api";
-import { useState, useEffect, useRef } from 'react';
-import images from 'assets/images/index'
+
+// React
+import { useState } from 'react';
+
+// Component
 import CategoryForm from 'component/categoryForm/CategoryForm';
-import { Drawer } from 'antd';
+
+// Loading
 import { Bars } from 'react-loader-spinner';
-import { Modal, Switch } from 'antd';
+
+// Hooks
 import useFetchApi from 'hooks/useFectchApi';
+
+// Module
 import toastNotification from 'handler/toast.handler';
 import { createContext } from 'react';
+
+// Context
 export const UpdateCategory = createContext();
+
 const Category = () => {
   const [call, setCall] = useState(true); 
   let {loading, data} = useFetchApi(categoryApi, call);
@@ -45,7 +67,6 @@ const Category = () => {
   const onClose = () => {
     setOpen(false);
   };
-  // console.log(category);
   const handleClickEdit = (item) => {
     setOpen(true);
     setIsEdit(true);
@@ -210,7 +231,6 @@ const Category = () => {
 
                 </section>
                 <Drawer
-                  // title="Basic Drawer" 
                   placement="right"
                   width={650}
                   onClose={onClose}

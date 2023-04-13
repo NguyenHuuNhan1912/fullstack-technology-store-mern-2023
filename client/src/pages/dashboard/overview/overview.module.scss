@@ -3,7 +3,6 @@
 
 .dbOverview {
     &__numberOrder {
-        // border: 1px solid white;
         margin: 20px;
         text-align: center;
         color: white;
@@ -15,7 +14,6 @@
             h1 {
                 margin: 20px 0;
                 font-size: $fontSizeMain;
-                // text-transform: uppercase;
                 font-weight: bold;
             }
             strong {
@@ -45,7 +43,6 @@
         }
     }
     &__managementOrder {
-        // border: 1px solid white;
         margin: 20px;
         margin-top: 40px;
         color: white;
@@ -66,7 +63,6 @@
             background-color: $backgroundDb;
             @include flexCenter();
             &__head {
-                // border: 1px solid red;
                 padding: 15px;
                 border-radius: 100px;
                 .icon {

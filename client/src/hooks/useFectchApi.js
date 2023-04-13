@@ -7,7 +7,6 @@ const useFetchApi = (typeApi, call) => {
         setLoading(true);
         try {
             const response = await typeApi.getAll();
-            console.log('call useFecthApi');
             setData(response);
             setLoading(false);
         }

@@ -7,38 +7,46 @@
         border-radius: 5px;
         padding: 20px;
         font-size: 10px;
+
         &__head {
             font-size: inherit;
+
             h1 {
                 font-size: 2.2em;
                 text-transform: uppercase;
                 color: $backgroundMain;
             }
         }
+
         &__body {
             font-size: inherit;
+
             &__content {
                 margin-top: 20px;
                 font-size: $fontSizeMain;
+
                 h1 {
                     color: $backgroundMain;
                 }
+
                 ul {
                     li {
                         line-height: 1.4;
                         text-align: justify;
+
                         span {
                             margin-left: 8px;
                         }
                     }
                 }
             }
+
             button {
                 margin-top: 20px;
-                // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
                 @include button(transparent, $backgroundMain, $fontSizeMain, 10px, 20px, 5px, 0.3s);
                 border: 1px solid $backgroundMain;
                 font-weight: bold;
+
                 &:hover {
                     background-color: $backgroundMain;
                     color: white;
@@ -53,8 +61,11 @@
     .main {
         .newsAccount {
             padding: 15px;
+
             &__body {
-                &__content, button {
+
+                &__content,
+                button {
                     margin-top: 15px;
                 }
             }

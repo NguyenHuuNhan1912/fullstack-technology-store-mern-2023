@@ -1,6 +1,13 @@
+// Library
 import { clsx } from 'clsx';
+
+// React
 import { useState } from 'react';
+
+// Local
 import style from './newsAccount.module.scss';
+
+// Variables global
 const dataNews = [
     {
         title: 'Bản tin khuyến mãi',

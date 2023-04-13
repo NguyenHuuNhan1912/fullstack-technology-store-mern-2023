@@ -1,12 +1,24 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './customerOrder.module.scss';
 import images from 'assets/images';
+
+// React
 import { useParams } from 'react-router-dom';
-import orderApi from 'api/modules/order.api';
 import { useEffect, useState } from 'react';
-import { Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
+
+// Api
+import orderApi from 'api/modules/order.api';
+
+// Antd
+import { Col, Row } from 'antd';
+
+// Icon
 import {AiOutlineRollback} from 'react-icons/ai';
+
 const CustomersOrder = () => {
     const idUser = useParams();
     const [orders, setOrders] = useState([]);

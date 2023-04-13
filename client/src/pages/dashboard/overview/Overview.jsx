@@ -1,10 +1,17 @@
-
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './overview.module.scss';
+
+// Icon
 import { BsStack, BsCartCheckFill, BsCreditCard2FrontFill, BsFillCheckCircleFill} from 'react-icons/bs';
 import {BiLoaderCircle} from 'react-icons/bi';
 import {FaShippingFast} from 'react-icons/fa';
+
+// Antd
 import { Row, Col } from 'antd';
+
 const Overview = () => {
   return (
     <main className={clsx(style.dbOverview)}>

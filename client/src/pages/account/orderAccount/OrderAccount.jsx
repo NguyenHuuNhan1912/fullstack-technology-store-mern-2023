@@ -1,17 +1,35 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './orderAccount.module.scss';
-import orderApi from 'api/modules/order.api';
-import { useEffect, useState } from 'react';
-import SelectSpeed from 'component/selectSpeed/SelectSpeed';
-import { Row, Col } from 'antd';
 import images from 'assets/images';
+
+// Api
+import orderApi from 'api/modules/order.api';
+
+// React
+import { useEffect, useState } from 'react';
+
+// Component
+import SelectSpeed from 'component/selectSpeed/SelectSpeed';
+
+// Antd
+import { Row, Col } from 'antd';
+
+// React
 import { Link } from 'react-router-dom';
+
+// Icon
 import { AiOutlineRollback } from 'react-icons/ai';
+
+// Variables global
+
 const status = ['pending-Đang xử lý', 'processing-Đang giao', 'delivered-Đã giao', 'cancel-Hủy đơn hàng'];
 const OrderAccount = (statusOrder) => {
     const [orders, setOrders] = useState([]);
     const handleStatus = (str) => {
-        const newStr = str.slice(str.indexOf("-")+1, str.length);
+        const newStr = str.slice(str.indexOf("-") + 1, str.length);
         return newStr;
     }
     const convertStatus = (statusOrder) => {
@@ -34,7 +52,6 @@ const OrderAccount = (statusOrder) => {
     useEffect(() => {
         getApiOrders();
     }, []);
-    console.log(orders);
     const handlePercent = (price, discount) => {
         return price - (price * (discount / 100));
     }
@@ -59,7 +76,7 @@ const OrderAccount = (statusOrder) => {
                                             return (
                                                 <section key={index} className={clsx(style.inforOrder)}>
                                                     <Row
-                                                        gutter={[{ sm: 20, xs: 15}, { sm: 20, xs: 15 }]}
+                                                        gutter={[{ sm: 20, xs: 15 }, { sm: 20, xs: 15 }]}
                                                         align={"middle"}
                                                     >
                                                         <Col xs={24}>

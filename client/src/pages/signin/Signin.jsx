@@ -1,21 +1,33 @@
-// Framework
+// Validate
 import { useFormik } from "formik";
-
-import { FaUserAlt, FaLock, FaFacebook, FaGoogle } from 'react-icons/fa';
-import clsx from 'clsx';
 import * as Yup from 'yup';
+
+// Library
+import clsx from 'clsx';
+
+// Icon
+import { FaUserAlt, FaLock, FaFacebook, FaGoogle } from 'react-icons/fa';
+
+// Antd
 import { Row, Col } from 'antd';
+
+// React
 import { Link } from "react-router-dom";
-// Local
-// import images from '../assets/images/index';
-import images from "assets/images";
-import style from './signin.module.scss';
-import SelectSpeed from "component/selectSpeed/SelectSpeed";
-import userApi from "api/modules/user.api";
-import { toast } from 'react-toastify';
-import toastNotification from "handler/toast.handler";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+
+// Local
+import images from "assets/images";
+import style from './signin.module.scss';
+
+// Component
+import SelectSpeed from "component/selectSpeed/SelectSpeed";
+
+// Api
+import userApi from "api/modules/user.api";
+
+// Module
+import toastNotification from "handler/toast.handler";
 import { QuantityCart } from "layouts/AppLayout/AppLayout";
 const Signin = () => {
     let navi = useNavigate();
@@ -30,17 +42,15 @@ const Signin = () => {
             password: Yup.string().required("Mật khẩu không thể để trống"),
         }),
         onSubmit: async (values, { resetForm }) => {
-            console.log(values);
             try {
                 const response = await userApi.signIn({ username: values.username, password: values.password });
-                if(response.admin === true) {
+                if (response.admin === true) {
                     localStorage.setItem("admin", JSON.stringify(response.admin));
                     toastNotification('success', 'Đăng nhập vào tài tài khoản quản trị thành công !', 1500);
                     setTimeout(() => {
                         resetForm();
                         updateQuantityCart();
                         navi('/dashboard');
-                        // window.location.replace("http://localhost:3000/dashboard");
                     }, 1500);
                 }
                 else {
@@ -51,10 +61,9 @@ const Signin = () => {
                         resetForm();
                         updateQuantityCart();
                         navi('/');
-                        // window.location.replace("http://localhost:3000");
                     }, 1500);
                 }
-               
+
             }
             catch (err) {
                 if (err === "notUsername") {

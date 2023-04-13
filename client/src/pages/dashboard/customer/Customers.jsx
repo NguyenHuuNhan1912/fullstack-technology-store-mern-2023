@@ -1,23 +1,34 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './customers.module.scss';
-import { Row, Col } from 'antd';
-import { Modal, Switch } from 'antd';
-import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 import images from 'assets/images';
-import { useEffect, useState } from 'react';
-import userApi from 'api/modules/user.api';
-import { Bars } from 'react-loader-spinner';
-import {FaSearch} from 'react-icons/fa';
+
+// Antd
+import { Switch } from 'antd';
+
+// Icon
+import { AiFillDelete } from 'react-icons/ai';
+import { FaSearch } from 'react-icons/fa';
+
+// React
 import { Link } from 'react-router-dom';
+
+// Api
+import userApi from 'api/modules/user.api';
+
+// Loading
+import { Bars } from 'react-loader-spinner';
+
+// Hooks
 import useFetchApi from 'hooks/useFectchApi';
+
 const Customers = () => {
-  const {loading, data} = useFetchApi(userApi);
-  const onChange = (checked) => {
-    console.log(`switch to ${checked}`);
-  };
+  const { loading, data } = useFetchApi(userApi);
   const handleString = (str) => {
-      const newStr = str.slice(0, str.indexOf("T"));
-      return newStr;
+    const newStr = str.slice(0, str.indexOf("T"));
+    return newStr;
   }
   return (
     <main className={clsx(style.main)}>
@@ -36,7 +47,7 @@ const Customers = () => {
               />
             </section>
           )
-          : 
+          :
           (
             <section className={clsx(style.customer)}>
               <section className={clsx(style.customer__filters)}>
@@ -71,28 +82,28 @@ const Customers = () => {
                               <td>{index + 1}</td>
                               <td>
                                 {
-                                  item?.img 
-                                  ? 
-                                  <img src={`data:image/png;base64,${item.img}`} alt="img" />
-                                  :
-                                  <img src={images.header.user} alt="img" />
+                                  item?.img
+                                    ?
+                                    <img src={`data:image/png;base64,${item.img}`} alt="img" />
+                                    :
+                                    <img src={images.header.user} alt="img" />
                                 }
                               </td>
                               <td>{item.username}</td>
                               <td>{item.numberPhone}</td>
                               <td>{item.email}</td>
-                              <td style={{textTransform: 'capitalize', textAlign: 'center'}}>{item.sex}</td>
+                              <td style={{ textTransform: 'capitalize', textAlign: 'center' }}>{item.sex}</td>
                               <td>{`${handleString(item.createdAt)}`}</td>
                               <td>
                                 <Switch
-                                  defaultChecked onChange={onChange}
+                                  defaultChecked
                                   size="small"
                                 />
                               </td>
                               <td>
                                 <section className={clsx(style.actionCustomer)}>
                                   <Link to={`customer-order/${item._id}`}>
-                                      <FaSearch className={clsx(style.icon)} /> 
+                                    <FaSearch className={clsx(style.icon)} />
                                   </Link>
                                   <AiFillDelete className={clsx(style.icon)} />
                                 </section>

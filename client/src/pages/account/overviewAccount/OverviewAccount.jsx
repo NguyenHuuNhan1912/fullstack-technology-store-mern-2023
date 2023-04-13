@@ -1,10 +1,22 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './overviewAccount.module.scss';
+
+// React
 import { useState, useEffect, useRef, useContext } from 'react';
+
+// Api
 import userApi from 'api/modules/user.api';
+
+// Antd
 import { Row, Col } from 'antd';
+
+// Module
 import { UpdateAccount } from 'layouts/AccountLayout/AccountLayout';
 import toastNotification from 'handler/toast.handler';
+
 const OverviewAccount = () => {
     const [user, setUser] = useState({});
     const updateAccountContext = useContext(UpdateAccount);
@@ -12,7 +24,6 @@ const OverviewAccount = () => {
     const updateUser = async (id, data) => {
         try {
             const response = await userApi.update(id, data);
-            console.log(response); //update
             localStorage.setItem("updateAccount", JSON.stringify(check));
             updateAccountContext();
             toastNotification('success', "Tài khoản đã được cập nhật thành công !", 1000);
@@ -20,7 +31,7 @@ const OverviewAccount = () => {
         catch (err) {
             console.log(err);
         }
-        
+
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,11 +42,9 @@ const OverviewAccount = () => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
-
             fileReader.onload = () => {
                 resolve(fileReader.result);
             };
-
             fileReader.onerror = (error) => {
                 reject(error);
             };
