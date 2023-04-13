@@ -219,6 +219,12 @@
 
                     .submit {
                         cursor: pointer;
+                        transition: all linear 0.3s;
+                        &:hover {
+                            background-color: $backgroundMain;
+                            color: white;
+                            border: 1px solid $backgroundMain;
+                        }
                     }
                 }
 
