@@ -178,7 +178,7 @@ const Header = ({ call }) => {
         productTemp.forEach((item, index) => {
             productName.push(item.name.toLowerCase());
         });
-        const searchResult = productTemp.filter((index) => {
+        const searchResult = productTemp.filter((item, index) => {
             return productName[index].includes(e.target.value);
         })
         setProducts(searchResult);
