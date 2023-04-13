@@ -1,11 +1,22 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './productApp.module.scss';
+
+// React
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useParams } from 'react';
+
+// Api
 import productAppApi from 'api/modules/productApp.api';
+
+// Antd
 import { Row, Col } from 'antd';
+
+// Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
+
 const ProductApp = () => {
   const type = useParams();
   const brand = useParams();
@@ -131,13 +142,13 @@ const ProductApp = () => {
                   product.map((item, index) => {
                     return (
                       <Col key={index} xl={6} lg={8} sm={12} xs={24}>
-                          <Link to={`/product/detail/${item._id}`}>
-                            <div className={clsx(style.productItem)}>
-                                <img src={`data:image/png;base64,${item.img}`} alt="img" />
-                                <p>{item.name}</p>
-                                <h1>{`${Number(item.price).toLocaleString()} đ`}</h1>
-                            </div>
-                          </Link>
+                        <Link to={`/product/detail/${item._id}`}>
+                          <div className={clsx(style.productItem)}>
+                            <img src={`data:image/png;base64,${item.img}`} alt="img" />
+                            <p>{item.name}</p>
+                            <h1>{`${Number(item.price).toLocaleString()} đ`}</h1>
+                          </div>
+                        </Link>
                       </Col>
                     )
                   })
