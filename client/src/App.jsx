@@ -1,14 +1,17 @@
+// Router
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Module
 import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-
+// Page
 import Homepage from 'pages/homepage/Homepage'
 import Introduce from 'pages/introduce/Introduce';
 import Cart from 'pages/cart/Cart';
 import Discount from 'pages/discount/Discount';
 import Recruit from 'pages/recruit/Recruit';
 import FormRecruit from 'pages/formRecruit/FormRecruit';
-
 import Contact from 'pages/contact/Contact';
 import Signin from 'pages/signin/Signin';
 import Signup from 'pages/signup/Signup';
@@ -22,7 +25,6 @@ import AuthLayout from './layouts/AuthLayout/AuthLayout';
 import DashBoardLayout from './layouts/DashboardLayout/DashboardLayout';
 import AppLayout from './layouts/AppLayout/AppLayout';
 import ProductDetail from 'pages/dashboard/ProductDetail/ProductDetail';
-import 'react-toastify/dist/ReactToastify.css';
 import ProductApp from 'pages/productApp/ProductApp';
 import Detail from 'pages/detail/Detail';
 import AccountLayout from 'layouts/AccountLayout/AccountLayout';
@@ -32,6 +34,7 @@ import NotiAccount from 'pages/account/notiAccount/NotiAccount';
 import NewsAccount from 'pages/account/newsAccount/NewsAccount';
 import CustomersOrder from 'pages/dashboard/customerOrder/CustomerOrder';
 import OrderDetail from 'pages/dashboard/orderDetail/OrderDetail';
+
 const App = () => {
   return (
     <Router>

@@ -1,20 +1,31 @@
+// Library
 import { clsx } from 'clsx';
+
+// Anrd
 import { Row, Col } from 'antd';
+
+// Local
 import style from './orderDetail.module.scss';
-import images from 'assets/images';
+
+// React
 import { useEffect, useState } from 'react';
-import orderApi from 'api/modules/order.api';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+// Api
+import orderApi from 'api/modules/order.api';
+
+// Icon
 import { FaFileInvoiceDollar } from 'react-icons/fa';
 import { AiOutlineRollback } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+
+// Variables global
 const status = ['pending-Đang xử lý', 'processing-Đang giao', 'delivered-Đã giao', 'cancel-Hủy đơn hàng'];
 
 const OrderDetail = () => {
     const [orderDetail, setOrderDetail] = useState({});
     const [product, setProduct] = useState([]);
     const idOrder = useParams();
-    console.log(idOrder.id);
     const handleStatus = (str) => {
         const newStr = str.slice(str.indexOf("-") + 1, str.length);
         return newStr;
@@ -43,8 +54,6 @@ const OrderDetail = () => {
     useEffect(() => {
         getApiOrderDetail();
     }, []);
-    console.log(orderDetail);
-    console.log(product);
     return (
         <main className={clsx(style.main)}>
             <section className={clsx(style.orderDetail)}>

@@ -22,7 +22,6 @@ import {AiOutlineRollback} from 'react-icons/ai';
 const CustomersOrder = () => {
     const idUser = useParams();
     const [orders, setOrders] = useState([]);
-    console.log(idUser.id);
     const handlePercent = (price, discount) => {
         return price - (price * (discount / 100));
     }
@@ -44,7 +43,6 @@ const CustomersOrder = () => {
     useEffect(() => {
         getApiOrders();
     }, []);
-    console.log(orders);
     return (
         <main className={clsx(style.main)}>
             <section className={clsx(style.customerOrder)}>

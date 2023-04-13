@@ -4,82 +4,92 @@
 .main {
     height: 88vh;
     overflow-y: auto;
+
     .loading {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
     .productDetail {
-        // border: 1px solid white;
         margin: 60px;
         color: white;
-        &__head {
-        // border: 1px solid white;
 
+        &__head {
             img {
                 display: block;
                 margin: 0 auto;
                 border-radius: 5px;
                 transition: all 0.3s linear;
-                // transform: scale(1.2);
                 width: 100%;
+
                 &:hover {
-                    // transform: scale(1.4);
                     box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
                 }
             }
         }
+
         &__body {
-            // border: 1px solid red;
             ul {
                 font-size: 10px;
+
                 li {
                     font-size: $fontSizeMain;
                     text-transform: capitalize;
                 }
-                li + li {
+
+                li+li {
                     margin-top: 15px;
                 }
+
                 li:first-child {
                     font-weight: bold;
                     font-size: 1.9em;
                 }
+
                 li:first-child {
                     span {
                         background-color: $backgroundMain;
-                        padding: 5px; 
+                        padding: 5px;
                         border-radius: 5px;
                     }
                 }
+
                 .typeBrand {
                     @include flexCenter();
+
                     span {
                         background-color: blueviolet;
                         padding: 5px;
                         border-radius: 5px;
                     }
+
                     span:first-child {
                         margin-right: 8px;
                     }
                 }
-                .price,.infor {
+
+                .price,
+                .infor {
                     span {
                         background-color: red;
-                        padding: 5px; 
+                        padding: 5px;
                         border-radius: 5px;
                     }
                 }
+
                 .infor {
                     span {
                         background-color: blue;
                     }
                 }
             }
+
             button {
                 margin-top: 15px;
-                // @mixin button($bg-color, $color, $fs, $pd-tb, $pd-lr, $border-rd, $time) {
                 @include button(rgb(63, 62, 62), white, 18px, 8px, 16px, 5px, 0.3s);
+
                 &:hover {
                     background-color: $backgroundMain;
                 }

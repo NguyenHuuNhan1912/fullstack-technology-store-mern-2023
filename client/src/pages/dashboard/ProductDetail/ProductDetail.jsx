@@ -1,13 +1,21 @@
+// Library
 import { clsx } from 'clsx';
+
+// Local
 import style from './productDetail.module.scss';
+
+// Antd
 import { Row, Col } from 'antd';
-import { AiFillPlusCircle, AiFillEdit, AiFillDelete } from 'react-icons/ai';
-import categoryApi from "api/modules/category.api";
-import { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import productApi from 'api/modules/product.api';
-import images from 'assets/images/index'
+
+// React
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
+// Api
+import productApi from 'api/modules/product.api';
+
+// Loading
 import { Bars } from 'react-loader-spinner';
 
 const ProductDetail = () => {
@@ -32,11 +40,6 @@ const ProductDetail = () => {
   useEffect(() => {
     getProductDetail(idProduct.id);
   }, []);
-  console.log('log');
-  console.log(product);
-  console.log(keyInfor);
-  console.log(valueInfor);
-  console.log('log');
 
   return (
     <main className={clsx(style.main)}>

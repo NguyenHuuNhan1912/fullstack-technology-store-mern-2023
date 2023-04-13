@@ -8,9 +8,6 @@ const productApi = {
     update: (id, data) =>  publicClient.put(`products/${id}`, data),
     delete: (id) => publicClient.delete(`products/${id}`),
     getOne: (id) => publicClient.get(`products/${id}`),
-    // update: (id, data) => publicClient.put(`product/${id}`, data),
-    // delete: id => publicClient.delete(`product/${id}`),
-    // search: value => publicClient.get('product/search', { params: { q: value } })
 };
 
 export default productApi;

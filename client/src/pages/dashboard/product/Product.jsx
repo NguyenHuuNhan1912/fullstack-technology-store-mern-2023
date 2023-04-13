@@ -146,9 +146,6 @@ const Product = () => {
         setPagination({ ...pagination, page: newPage });
         getApi();
       }
-      else {
-        console.log(DEFAULT_SKIP);
-      }
     }
     else {
       if (!(DEFAULT_SKIP <= 0)) {

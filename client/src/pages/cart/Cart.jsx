@@ -192,7 +192,6 @@ const Cart = () => {
     const createOrder = async (data) => {
         try {
             const response = await orderApi.create(data);
-            console.log(response.data);
         }
         catch (err) {
             console.log(err);
