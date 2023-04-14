@@ -6,7 +6,8 @@ import style from './productApp.module.scss';
 
 // React
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useParams } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 // Api
 import productAppApi from 'api/modules/productApp.api';

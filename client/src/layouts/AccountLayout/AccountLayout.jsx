@@ -10,6 +10,7 @@ import { useEffect, useState, createContext } from 'react';
 import userApi from 'api/modules/user.api';
 import images from 'assets/images';
 import { Link } from 'react-router-dom';
+import SelectSpeed from 'component/selectSpeed/SelectSpeed';
 
 const dataNav = [
     { icon: FaUserAlt, title: 'Thông tin tài khoản', path: '/account', type: 'account' },
@@ -36,6 +37,7 @@ const AccountLayout = () => {
     }, []);
     return (
         <UpdateAccount.Provider value={getUserApi}>
+            <SelectSpeed/>
             <div className={clsx(style.accountLayout)}>
                 <Header
 
