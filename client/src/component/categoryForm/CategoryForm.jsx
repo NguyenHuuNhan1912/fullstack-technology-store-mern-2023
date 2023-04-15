@@ -53,27 +53,24 @@ const CategoryAdd = ({ cateEdit, cateBrand, cateField, setCateBrand, setCateFiel
         try {
             await categoryApi.update(id, values);
             updateCategory();
+            toastNotification('success', 'Cập nhật danh mục thành công !', 1000);
+            onClose();
         }
         catch (err) {
             console.log(err);
         }
-        setTimeout(() => {
-            toastNotification('success', 'Cập nhật danh mục thành công !', 1000);
-            onClose();
-        }, 800);
     }
     const handleCreate = async (values) => {
         try {
             await categoryApi.create(values);
             updateCategory();
+            toastNotification('success', 'Thêm danh mục thành công !', 1000);
+            onClose();
         }
         catch (err) {
             console.log(err);
         }
-        setTimeout(() => {
-            toastNotification('success', 'Thêm danh mục thành công !', 1000);
-            onClose();
-        }, 800);
+        
     }
     const submitForm = (type) => {
         const values = {

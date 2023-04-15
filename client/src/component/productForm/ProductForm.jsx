@@ -108,27 +108,23 @@ const ProductForm = ({ getApi, onClose, isEdit, setIsEdit, productEdit, setProdu
         try {
             await productApi.create(values);
             getApi();
+            toastNotification('success', 'Thêm sản phẩm thành công !', 1000);
+            onClose();
         }
         catch (err) {
             console.log(err);
         }
-        setTimeout(() => {
-            toastNotification('success', 'Thêm sản phẩm thành công !', 1000);
-            onClose();
-        }, 800);
     }
     const handleEdit = async (id, data) => {
         try {
             await productApi.update(id, data);
             getApi();
+            toastNotification('success', 'Chỉnh sửa sản phẩm thành công !', 1000);
+            onClose();
         }
         catch (err) {
             console.log(err);
         }
-        setTimeout(() => {
-            toastNotification('success', 'Chỉnh sửa sản phẩm thành công !', 1000);
-            onClose();
-        }, 800);
     }
     const getApiCategory = async () => {
         try {
