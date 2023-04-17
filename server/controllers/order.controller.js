@@ -37,6 +37,19 @@ export const searchCart = async (req, res) => {
     }
 }
 
+export const filtersStatus = async (req, res) => {
+    const status = req.query.status;
+    console.log(status);
+    try {
+        await Order.find({status: status}).then(order => {
+            res.send({ order });
+        });
+    }
+    catch (err) {
+        res.status(500).json({ msg: "Internal server error!!!" });
+    }
+}
+
 export const updateOne = async (req, res) => {
     try {
         await Order.findByIdAndUpdate(req.params.id, req.body).then(order => {

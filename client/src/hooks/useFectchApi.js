@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 const useFetchApi = (typeApi, call) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [dataTemp, setDataTemp] = useState([]);
+    const [dataTempUser, setDataTempUser] = useState([]);
+    const [dataTempOrder, setDataTempOrder] = useState([]);
     const getApi = async () => {
         setLoading(true);
         try {
             const response = await typeApi.getAll();
             setData(response);
-            setDataTemp(response.user);
+            setDataTempUser(response.user);
+            setDataTempOrder(response.order);
             setLoading(false);
         }
         catch(err) {
@@ -19,7 +21,7 @@ const useFetchApi = (typeApi, call) => {
     useEffect(() => {
         getApi();
     }, [call])
-    return {loading, data, dataTemp }
+    return {loading, data, dataTempUser, dataTempOrder }
 }
 
 export default useFetchApi;

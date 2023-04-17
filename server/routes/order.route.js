@@ -10,7 +10,10 @@ router
 router
   .route("/searchCart")
   .get(order.searchCart)
-  
+
+router
+  .route("/filtersStatus")
+  .get(order.filtersStatus)
 router
   .route('/:id')
   .put(order.updateOne)

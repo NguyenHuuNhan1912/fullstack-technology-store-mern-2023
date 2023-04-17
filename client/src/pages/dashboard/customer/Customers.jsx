@@ -26,14 +26,14 @@ import useFetchApi from 'hooks/useFectchApi';
 import { useState } from 'react';
 
 const Customers = () => {
-  let { loading, data, dataTemp } = useFetchApi(userApi);
+  let { loading, data, dataTempUser } = useFetchApi(userApi);
   const [searchText, setSearchText] = useState('');
   const handleSearchText = (e) => {
     const productName = [];
-    dataTemp.forEach((item) => {
+    dataTempUser.forEach((item) => {
       productName.push(item.username.toLowerCase());
     });
-    const searchResult = dataTemp.filter((item, index) => {
+    const searchResult = dataTempUser.filter((item, index) => {
       return productName[index].includes(e.target.value.toLowerCase());
     })
     data.user = searchResult;
