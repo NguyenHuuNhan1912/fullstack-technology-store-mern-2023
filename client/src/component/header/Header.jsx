@@ -1,7 +1,7 @@
 // React
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Antd
@@ -179,7 +179,7 @@ const Header = ({ call }) => {
             productName.push(item.name.toLowerCase());
         });
         const searchResult = productTemp.filter((item, index) => {
-            return productName[index].includes(e.target.value);
+            return productName[index].includes(e.target.value.toLowerCase());
         })
         setProducts(searchResult);
         setSearchText(e.target.value);
