@@ -46,6 +46,12 @@ const images = {
             },
             product: {
                 productEmpty: require('./dashboard/main/product/productEmpty.avif'),
+            },
+            customers: {
+                emptyCustomer: require('./dashboard/main/customers/emptyCustomer.avif')
+            },
+            order: {
+                emptyOrder: require('./dashboard/main/order/emptyOrder.jpg'),
             }
         },
         aside: {

@@ -75,9 +75,13 @@ const Customers = () => {
                   />
                 </section>
                 {
-                    data.user.length === 0
+                  data.user.length === 0
                     ?
-                    <h1 style={{ color: 'white' }}>Không tìm thấy tên khách hàng tương ứng</h1>
+                    <section className={clsx(style.customer__customersEmpty)}>
+                      <img src={images.dashboard.main.customers.emptyCustomer} alt="empty" />
+
+                      <h1 style={{ color: 'white' }}>Không tìm thấy tên khách hàng tương ứng</h1>
+                    </section>
                     :
                     <section className={clsx(style.customer__list)}>
                       <table>

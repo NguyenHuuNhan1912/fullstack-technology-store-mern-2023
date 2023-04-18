@@ -81,12 +81,12 @@ const Orders = () => {
   }
   const updateStatus = async (id, status) => {
     try {
-        const response = await orderApi.update(id, {
-            status: status,
-        });
-        getApi();
+      const response = await orderApi.update(id, {
+        status: status,
+      });
+      getApi();
     }
-    catch(err) {
+    catch (err) {
       console.log(err);
     }
   }
@@ -143,73 +143,76 @@ const Orders = () => {
                   </Col>
                 </Row>
               </section>
-              {
-                orders.length === 0
-                  ?
-                  <h1>Không có đơn hàng tương ứng</h1>
-                  :
-                  <section className={clsx(style.order__body)}>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>STT</th>
-                          <th>Địa chỉ</th>
-                          <th>Tên</th>
-                          <th>Số điện thoại</th>
-                          <th>Ngày thanh toán</th>
-                          <th>Chi phí</th>
-                          <th>Phương thức</th>
-                          <th>Trạng thái</th>
-                          <th>Hiệu chỉnh</th>
-                          <th>Chi tiết</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {
-                          orders?.length &&
-                          orders.map((item, index) => {
-                            return (
-                              <tr key={index}>
-                                <td>{index + 1}</td>
-                                <td>{item.address}</td>
-                                <td>{item.name}</td>
-                                <td>{item.numberPhone}</td>
-                                <td>{`${handleString(item.createdAt)}`}</td>
-                                <td>{`${Number(item.total).toLocaleString()}đ`}</td>
-                                <td>{`${item.method}`}</td>
-                                <td className={clsx(style.status)}>
-                                  <span>{`${convertStatus(item.status)}`}</span>
-                                </td>
-                                <td>
-                                  <div className={clsx(style.statusUpdate)}>
-                                    <select
-                                      name='status'
-                                      value={item.status || editStatus}
-                                      onChange={(e) => {handleChangeEditStatus(e, item._id)}}
-                                    >
-                                      <option value=''>Trạng thái</option>
-                                      <option value="pending">Đang xử lý</option>
-                                      <option value="processing">Đang giao</option>
-                                      <option value="delivered">Đã giao</option>
-                                      <option value="cancel">Hủy đơn hàng</option>
-                                    </select>
-                                  </div>
-                                </td>
-                                <td>
-                                  <section className={clsx(style.actionCustomer)}>
-                                    <Link to={`order-detail/${item._id}`}>
-                                      <FaSearch className={clsx(style.icon)} />
-                                    </Link>
-                                  </section>
-                                </td>
-                              </tr>
-                            )
-                          })
-                        }
-                      </tbody>
-                    </table>
-                  </section>
-              }
+              <section className={clsx(style.order__body)}>
+                {
+                   orders.length === 0
+                   ?
+                   <section className={clsx(style.emptyOrder)}>
+                    <img src={images.dashboard.main.order.emptyOrder} alt="" />
+                    <h1>Không có đơn hàng tương ứng</h1>
+                   </section>
+                   :
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>STT</th>
+                        <th>Địa chỉ</th>
+                        <th>Tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Ngày thanh toán</th>
+                        <th>Chi phí</th>
+                        <th>Phương thức</th>
+                        <th>Trạng thái</th>
+                        <th>Hiệu chỉnh</th>
+                        <th>Chi tiết</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        orders?.length &&
+                        orders.map((item, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{index + 1}</td>
+                              <td>{item.address}</td>
+                              <td>{item.name}</td>
+                              <td>{item.numberPhone}</td>
+                              <td>{`${handleString(item.createdAt)}`}</td>
+                              <td>{`${Number(item.total).toLocaleString()}đ`}</td>
+                              <td>{`${item.method}`}</td>
+                              <td className={clsx(style.status)}>
+                                <span>{`${convertStatus(item.status)}`}</span>
+                              </td>
+                              <td>
+                                <div className={clsx(style.statusUpdate)}>
+                                  <select
+                                    name='status'
+                                    value={item.status || editStatus}
+                                    onChange={(e) => { handleChangeEditStatus(e, item._id) }}
+                                  >
+                                    <option value=''>Trạng thái</option>
+                                    <option value="pending">Đang xử lý</option>
+                                    <option value="processing">Đang giao</option>
+                                    <option value="delivered">Đã giao</option>
+                                    <option value="cancel">Hủy đơn hàng</option>
+                                  </select>
+                                </div>
+                              </td>
+                              <td>
+                                <section className={clsx(style.actionCustomer)}>
+                                  <Link to={`order-detail/${item._id}`}>
+                                    <FaSearch className={clsx(style.icon)} />
+                                  </Link>
+                                </section>
+                              </td>
+                            </tr>
+                          )
+                        })
+                      }
+                    </tbody>
+                  </table>
+                }
+              </section>
             </section>
           )
       }
