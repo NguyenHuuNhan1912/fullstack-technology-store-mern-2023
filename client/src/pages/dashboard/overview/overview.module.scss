@@ -55,7 +55,7 @@
                 font-size: 2.2em;
             }
         }
-        &__totalOrder, &__orderPending, &__orderProcessing, &__orderDelivered {
+        &__totalOrder, &__orderPending, &__orderProcessing, &__orderDelivered, &__orderCancel {
             font-size: 10px;
             padding: 20px;
             border: 1px solid $test;
@@ -101,6 +101,11 @@
         &__orderDelivered {
             &__head {
                 background-color: $backgroundMain;
+            }
+        }
+        &__orderCancel {
+            &__head {
+                background-color: red;
             }
         }
     }

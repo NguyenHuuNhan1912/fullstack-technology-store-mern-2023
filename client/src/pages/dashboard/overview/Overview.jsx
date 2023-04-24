@@ -8,11 +8,62 @@ import style from './overview.module.scss';
 import { BsStack, BsCartCheckFill, BsCreditCard2FrontFill, BsFillCheckCircleFill} from 'react-icons/bs';
 import {BiLoaderCircle} from 'react-icons/bi';
 import {FaShippingFast} from 'react-icons/fa';
+import {TiDelete} from 'react-icons/ti';
+
 
 // Antd
 import { Row, Col } from 'antd';
 
+// React
+import { useState, useEffect } from 'react';
+
+// Api
+import orderApi from 'api/modules/order.api';
+
+
 const Overview = () => {
+  const [orders, setOrders] = useState([]);
+  const getOrdersApi = async () => {
+    try {
+      const response = await orderApi.getAll();
+      setOrders(response.order);
+    } 
+    catch(err) {
+      console.log(err);
+    }
+  }
+  const getCountStatus  = (type) => {
+    const status = orders.filter(item => item.status === type);
+    return status.length;
+  }
+  const getMaxOrders = () => {
+    let max = 0;
+    orders.forEach((item, index) => {
+      let money = Number(item.cart.total);
+      if( money > max) {
+        max = money;
+      }
+    })
+    return max;
+  }
+  const getMinOrders = () => {
+    let min = 9999999999;
+    orders.forEach((item, index) => {
+      let money = Number(item.cart.total);
+      if( money < min) {
+        min = money;
+      }
+    })
+    return min;
+  }
+  const totalPriceOrders = () => {
+    let total = 0;
+    orders.forEach(item => total += Number(item.cart.total))
+    return total;
+  }
+  useEffect(() => {
+    getOrdersApi();
+  }, []);
   return (
     <main className={clsx(style.dbOverview)}>
       <section className={clsx(style.dbOverview__numberOrder)}>
@@ -25,22 +76,22 @@ const Overview = () => {
           <Col xl={8}>
             <div className={clsx(style.dbOverview__numberOrder__todayOrder)}>
               <BsStack className={clsx(style.icon)} />
-              <h1>Đặt hàng hôm nay</h1>
-              <strong>63.000.000 Đ</strong>
+              <h1>Đơn hàng giá trị nhất</h1>
+              <strong>{`${getMaxOrders().toLocaleString()} đ`}</strong>
             </div>
           </Col>
           <Col xl={8}>
             <div className={clsx(style.dbOverview__numberOrder__monthOrder)}>
               <BsCartCheckFill className={clsx(style.icon)} />
-              <h1>Đặt hàng tháng này</h1>
-              <strong>630.000.000 Đ</strong>
+              <h1>Đơn hàng thấp nhất</h1>
+              <strong>{`${getMinOrders().toLocaleString()} đ`}</strong>
             </div>
           </Col>
           <Col xl={8}>
             <div className={clsx(style.dbOverview__numberOrder__totalOrder)}>
               <BsCreditCard2FrontFill className={clsx(style.icon)} />
               <h1>Tổng đơn hàng</h1>
-              <strong>190.000.000 Đ</strong>
+              <strong>{`${totalPriceOrders().toLocaleString()} đ`}</strong>
             </div>
           </Col>
         </Row>
@@ -49,7 +100,7 @@ const Overview = () => {
         <Row gutter={[20,20]}>
           <Col xl={24}>
             <section className={clsx(style.dbOverview__managementOrder__titleOrder)}>
-              <h1>Quản lý đơn hàng</h1>
+              <h1>Trạng thái đơn hàng</h1>
             </section>
           </Col>
           <Col xl={6}>
@@ -59,7 +110,7 @@ const Overview = () => {
               </div>
               <div className={clsx(style.dbOverview__managementOrder__totalOrder__body)}>
                 <p>Số lượng</p>
-                <strong>248</strong>
+                <strong>{orders.length}</strong>
               </div>
             </section>
           </Col>
@@ -70,7 +121,7 @@ const Overview = () => {
               </div>
               <div className={clsx(style.dbOverview__managementOrder__orderPending__body)}>
                 <p>Đang xử lý</p>
-                <strong>63</strong>
+                <strong>{getCountStatus('pending')}</strong>
               </div>
             </section>
           </Col>
@@ -81,7 +132,7 @@ const Overview = () => {
               </div>
               <div className={clsx(style.dbOverview__managementOrder__orderProcessing__body)}>
                 <p>Đang giao</p>
-                <strong>91</strong>
+                <strong>{getCountStatus('processing')}</strong>
               </div>
             </section>
           </Col>
@@ -92,7 +143,18 @@ const Overview = () => {
               </div>
               <div className={clsx(style.dbOverview__managementOrder__orderDelivered__body)}>
                 <p>Đã giao</p>
-                <strong>19</strong>
+                <strong>{getCountStatus('delivered')}</strong>
+              </div>
+            </section>
+          </Col>
+          <Col xl={6}>
+            <section className={clsx(style.dbOverview__managementOrder__orderCancel)}>
+              <div className={clsx(style.dbOverview__managementOrder__orderCancel__head)}>
+                <TiDelete className={clsx(style.icon)} />
+              </div>
+              <div className={clsx(style.dbOverview__managementOrder__orderCancel__body)}>
+                <p>Hủy đơn hàng</p>
+                <strong>{getCountStatus('cancel')}</strong>
               </div>
             </section>
           </Col>

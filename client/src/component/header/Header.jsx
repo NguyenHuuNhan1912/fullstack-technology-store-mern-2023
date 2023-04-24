@@ -228,16 +228,21 @@ const Header = ({ call }) => {
                                                             key={index}
                                                             onClick={handleChangePath}
                                                         >
-                                                            <a href={`/product/detail/${item._id}`}>
-                                                                {
-                                                                    item?.img
-                                                                        ?
-                                                                        <img src={`data:image/png;base64,${item.img}`} alt="img" />
-                                                                        :
-                                                                        <></>
-                                                                }
-                                                                <p>{item.name}</p>
-                                                            </a>
+                                                            {
+                                                                item.publish!=='1' ?
+                                                                <></>
+                                                                :
+                                                                <a href={`/product/detail/${item._id}`}>
+                                                                    {
+                                                                        item?.img
+                                                                            ?
+                                                                            <img src={`data:image/png;base64,${item.img}`} alt="img" />
+                                                                            :
+                                                                            <></>
+                                                                    }
+                                                                    <p>{item.name}</p>
+                                                                </a>
+                                                            }
                                                         </li>
                                                     )
                                                 })
