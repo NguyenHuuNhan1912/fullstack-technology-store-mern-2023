@@ -14,40 +14,46 @@ import { AiFillCopyrightCircle } from 'react-icons/ai';
 import style from './footer.module.scss';
 import images from 'assets/images'
 
-// Variables Gloabal
-const footerInfor = [
-    { des: 'Xem đường đi chi tiết' },
-    { des: 'Địa chỉ: Đường 1010, thị trấn Phú Hòa, huyện Thoại Sơn, tỉnh An Giang' },
-    { des: 'Điện thoại: 0342040063' },
-    { des: 'Thời gian mở cửa: 8h-22h các ngày trong tuần' },
-];
-const footerPay = [
-    { icon: FaQrcode, des: 'Qr code' },
-    { icon: FaMoneyBill, des: 'Tiền mặt' },
-    { icon: FaClock, des: 'Trả góp' },
-    { icon: BsBank2, des: 'Chuyển khoản' },
-];
-const footerSupport = [
-    { icon: FaCartArrowDown, des: 'Mua hàng: 0342040064' },
-    { icon: BsFillChatSquareTextFill, des: 'Hỗ trợ KH: 0342040065' },
-    { icon: FaCompress, des: 'Khiếu nại: 0342040066' },
-    { icon: BsFillCheckCircleFill, des: 'Bảo hành: 0342040067' },
-];
-const footerBranch = [
-    { des: 'Thị trấn Phú Hòa - An Giang' },
-    { des: 'Thành phố Rạch Giá - Kiên Giang' },
-    { des: 'Thành phố Hồng Ngự - Đồng Tháp' },
-    { des: 'Thành phố Vĩnh Long - Vĩnh Long' },
-    { des: 'Thành phố Bến Tre - Bến Tre' },
-];
-const footerContact = [
-    { icon: FaFacebookSquare, path: 'https://www.facebook.com/nguyenhuunhan.frontend/'},
-    { icon: FaPhoneSquareAlt, path: 'tel: 0342040063' },
-    { icon: FaInstagramSquare, path: 'https://www.instagram.com/nhan.coder.1912/' },
-    { icon: FaYoutube, path: 'https://www.youtube.com/@NguyenHuuNhan1010' },
-    { icon: MdEmail, path: 'mailto: nguyenhuunhan.coder@gmail.com' },
-];
+// Translate
+import { useTranslation } from 'react-i18next';
+
+
 const Footer = () => {
+    const { t } = useTranslation(['information']);
+
+    // Variables Gloabal
+    const footerInfor = [
+        { des: t('information.street.title') },
+        { des: t('information.street.address') },
+        { des: t('information.street.number_phone') },
+        { des: t('information.street.time_open') },
+    ];
+    const footerPay = [
+        { icon: FaQrcode, des: t('information.payment.qr_code') },
+        { icon: FaMoneyBill, des: t('information.payment.cash') },
+        { icon: FaClock, des: t('information.payment.installment') },
+        { icon: BsBank2, des: t('information.payment.baking') },
+    ];
+    const footerSupport = [
+        { icon: FaCartArrowDown, des: t('information.support.buy_product') },
+        { icon: BsFillChatSquareTextFill, des: t('information.support.support_customer') },
+        { icon: FaCompress, des: t('information.support.feedback') },
+        { icon: BsFillCheckCircleFill, des: t('information.support.guarantee') },
+    ];
+    const footerBranch = [
+        { des: t('information.branch.ag') },
+        { des: t('information.branch.kg') },
+        { des: t('information.branch.dt') },
+        { des: t('information.branch.vl') },
+        { des: t('information.branch.sg') },
+    ];
+    const footerContact = [
+        { icon: FaFacebookSquare, path: 'https://www.facebook.com/nguyenhuunhan.frontend/' },
+        { icon: FaPhoneSquareAlt, path: 'tel: 0342040063' },
+        { icon: FaInstagramSquare, path: 'https://www.instagram.com/nhan.coder.1912/' },
+        { icon: FaYoutube, path: 'https://www.youtube.com/@NguyenHuuNhan1010' },
+        { icon: MdEmail, path: 'mailto: nguyenhuunhan.coder@gmail.com' },
+    ];
     return (
         <footer className={clsx(style.footer)}>
             <Row gutter={[{ md: 30, sm: 40, xs: 20 }, { md: 30, sm: 40, xs: 40 }]}>
@@ -55,7 +61,7 @@ const Footer = () => {
                     <section className={clsx(style.footer__infor)}>
                         <div className={clsx(style.footer__infor__head)}>
                             <img src={images.footer.logon} alt="logo" />
-                            <h1>Cửa hàng công nghệ Hữu Nhân</h1>
+                            <h1>{t('information.title')}</h1>
                         </div>
                         <div className={clsx(style.footer__infor__body)}>
                             <ul className={clsx(style.navList)}>
@@ -77,7 +83,7 @@ const Footer = () => {
                 <Col xl={4} md={8}>
                     <section className={clsx(style.footer__pay)}>
                         <div className={clsx(style.footer__pay__head)}>
-                            <h1>Thanh toán</h1>
+                            <h1>{t('information.street.title')}</h1>
                         </div>
                         <div className={clsx(style.footer__pay__body)}>
                             <ul className={clsx(style.navList)}>
@@ -100,7 +106,7 @@ const Footer = () => {
                 <Col xl={6} md={8}>
                     <section className={clsx(style.footer__support)}>
                         <section className={clsx(style.footer__support__head)}>
-                            <h1>Tổng đài hỗ trợ</h1>
+                            <h1>{t('information.support.title')}</h1>
                         </section>
                         <section className={clsx(style.footer__support__body)}>
                             <ul className={clsx(style.navList)}>
@@ -123,7 +129,7 @@ const Footer = () => {
                 <Col xl={6} md={8}>
                     <section className={clsx(style.footer__branch)}>
                         <section className={clsx(style.footer__branch__head)}>
-                            <h1>Các chi nhánh của cửa hàng</h1>
+                            <h1>{t('information.branch.title')}</h1>
                         </section>
                         <section className={clsx(style.footer__branch__body)}>
                             <ul className={clsx(style.navList)}>
@@ -164,11 +170,11 @@ const Footer = () => {
                 <Col xl={24} md={24}>
                     <section className={clsx(style.footer__copyright)}>
                         <section className={clsx(style.footer__copyright__mt)}>
-                            <span>DCMA | PROTECTED</span>
+                            <span>{t('information.dcma')}</span>
                         </section>
                         <section className={clsx(style.footer__copyright__cp)}>
                             <AiFillCopyrightCircle className={clsx(style.icon)} />
-                            <span>2019 - 2023 Hữu Nhân - Cửa hàng công nghệ hàng đầu Việt Nam</span>
+                            <span>{t('information.copyright')}</span>
                         </section>
                     </section>
                 </Col>

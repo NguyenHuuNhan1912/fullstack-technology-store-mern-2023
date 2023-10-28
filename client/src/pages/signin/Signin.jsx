@@ -29,6 +29,11 @@ import userApi from "api/modules/user.api";
 // Module
 import toastNotification from "handler/toast.handler";
 import { QuantityCart } from "layouts/AppLayout/AppLayout";
+
+// Authentication with google and facebook
+import { auth, fbProvider, ggProvider } from '../../firebase/config';
+import { signInWithPopup } from 'firebase/auth'
+
 const Signin = () => {
     let navi = useNavigate();
     const updateQuantityCart = useContext(QuantityCart);
@@ -76,6 +81,27 @@ const Signin = () => {
             }
         }
     });
+
+    const handleLoginWithFacebook = async () => {
+        try {
+            const result = await signInWithPopup(auth, fbProvider);
+            toastNotification('success', 'Đăng nhập với Facebook thành cồng !', 1000);
+        }
+        catch (err) {
+            console.log(`Error: ${err}`);
+        }
+    }
+
+    const handleLoginWithGoogle = async () => {
+        try {
+            const result = await signInWithPopup(auth, ggProvider);
+            toastNotification('success', 'Đăng nhập với Google thành cồng !', 1000);
+        }
+        catch (err) {
+            console.log(`Error: ${err}`);
+        }
+    }
+
     return (
         <section className={clsx(style.signin)}>
             <SelectSpeed />
@@ -131,11 +157,17 @@ const Signin = () => {
                                 <h1>Hoặc đăng nhập với</h1>
                             </div>
                             <div className={clsx(style.signinWith__wrapper)}>
-                                <div className={clsx(style.facebook)}>
+                                <div
+                                    className={clsx(style.facebook)}
+                                    onClick={handleLoginWithFacebook}
+                                >
                                     <FaFacebook className={clsx(style.icon)} />
                                     <span>facebook</span>
                                 </div>
-                                <div className={clsx(style.google)}>
+                                <div
+                                    className={clsx(style.google)}
+                                    onClick={handleLoginWithGoogle}
+                                >
                                     <FaGoogle className={clsx(style.icon)} />
                                     <span>google</span>
                                 </div>

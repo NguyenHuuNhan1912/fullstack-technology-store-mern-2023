@@ -203,7 +203,7 @@ const Cart = () => {
         cart.product = [];
         cart.total = "0";
         updateCart();
-        toastNotification("success", "Đơn hàng của bạn đã được thanh toán !", 1500);
+        toastNotification("success", "Đơn hàng của bạn đang được thanh toán !", 1500);
     }
 
     const formik = useFormik({

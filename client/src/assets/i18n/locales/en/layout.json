@@ -1,0 +1,29 @@
+{
+    "layout": {
+        "main": {
+            "home": "Home",
+            "introduce": "Introduce",
+            "discount": "Promotion",
+            "recruit": "Recruitment",
+            "contact": "Contact",
+            "cart": {
+                "title": "Cart",
+                "product": "Product"
+            },
+            "account": {
+                "title": "Account of",
+                "account_information": "Account information",
+                "manager_order": "Order management ",
+                "notification": "Notification",
+                "feed": "News"
+            }
+        },
+        "dashboard": {
+            "overview": "Overview",
+            "product": "Product",
+            "category": "Category",
+            "customer": "Client",
+            "order": "Order"
+        }
+    }
+}

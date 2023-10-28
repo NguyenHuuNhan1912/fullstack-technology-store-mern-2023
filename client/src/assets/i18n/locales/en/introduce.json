@@ -1,0 +1,97 @@
+{
+    "introduce": {
+        "number": {
+            "title": "Talking numbers",
+            "content": {
+                "showroom": "63 showrooms across Vietnam ",
+                "buy_product": "90,000 products were sold in Huu Nhan ",
+                "customer": "More than 70,000 business customers ",
+                "access": "85 million customers visit the Huu Nhan website every year ",
+                "feedback": "95% of customers respond to product satisfaction"
+            }
+        },
+        "develop": {
+            "title": "Development process ",
+            "content": {
+                "_2018": {
+                    "title": "Opening the first store"
+                },
+                "_2019": {
+                    "title": "Establish a warranty center"
+                },
+                "_2020": {
+                    "title": "Establishment of Huu Nhan Company"
+                },
+                "_2021": {
+                    "title": "Expanding some of the goods in the southern region"
+                },
+                "_2022": {
+                    "title": "Optimize the development of the production system"
+                },
+                "_2023": {
+                    "title": "Ready for the most powerful development"
+                }
+            }
+        },
+        "mission": {
+            "title": "Mission",
+            "content": {
+                "modern": "Modernization",
+                "digitizing": "Digitizing",
+                "ux": "Customer experience",
+                "steady": "Firm foothold"
+            }
+        },
+        "achivement": {
+            "title": "Achievement",
+            "content": {
+                "top_10": {
+                    "title": "Top 10 leading retailers in Vietnam ",
+                    "content": "Huu Nhan Technology Store has always been in the top 10 best retailers in recent years"
+                },
+                "high_class": {
+                    "title": "Senior partners ",
+                    "content": "The store always has high -class and quality partners shaking hands for both parties to develop and go up"
+                },
+                "search": {
+                    "title": "The most search ",
+                    "content": "From the early days of establishing Huu Nhan store, the most searched keyword"
+                },
+                "product": {
+                    "title": "The best product",
+                    "content": "With the reputation of a good product store, it is always a very focused store and the store will produce more quality products."
+                }
+            }
+        },
+        "organization": {
+            "title": "Organizational structure",
+            "content": {
+                "legislation": "Legislation",
+                "finance": "Finance",
+                "marketing": "marketing",
+                "care": "Customer care",
+                "infrastructure": "Infrastructure",
+                "industry": "Industry",
+                "administrative_personnel": "Administrative personnel",
+                "retail_operations": "Retail operating ",
+                "product": "Product",
+                "listen": "Listen",
+                "believe": "Trust",
+                "striving": "Striving"
+            }
+        },
+        "sales": {
+            "title": "Sales policy",
+            "content": {
+                "product_standards": "Products meet standard",
+                "commitment": "100%genuine commitment",
+                "return_within_30_days": "Return within 30 days",
+                "repair_costs": "Watch repair price of 150,000 VND",
+                "clean_laptop": "Computer hygiene ",
+                "extremely_preferential_price": "Extremely preferential price",
+                "trouble_shooting": "Answering customer questions",
+                "support": "0% interest installment installment support"
+            }
+        }
+    }
+}

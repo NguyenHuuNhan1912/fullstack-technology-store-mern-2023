@@ -16,6 +16,7 @@ export const getAll = async (req, res) => {
   console.log(req.body);
   try {
     await Cart.find({}).populate("product.idRef").populate("user").then(cart => {
+      console.log(cart);
       res.send({ cart });
     });
   }

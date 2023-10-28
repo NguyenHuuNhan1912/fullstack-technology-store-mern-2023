@@ -1,0 +1,103 @@
+{
+    "introduce": {
+        "number": {
+            "title": "Những con số biết nói",
+            "content": {
+                "showroom": "63 showroom trên khắp đất nước Việt Nam",
+                "buy_product": "90.000 sản phẩm đã được bán tại Hữu Nhân",
+                "customer": "Hơn 70.000 khách hàng doanh nghiệp",
+                "access": "85 triệu khách hàng truy cập website Hữu Nhân mỗi năm",
+                "feedback": "95% khách hàng phản hồi sự hài lòng về sản phẩm"
+            }
+        },
+        "develop": {
+            "title": "Quá trình phát triển",
+            "content": {
+                "_2018": {
+                    "year": "2018",
+                    "title": "Khai trương cửa hàng đầu tiên"
+                },
+                "_2019": {
+                    "year": "2019",
+                    "title": "Thành lập trung tâm bảo hành"
+                },
+                "_2020": {
+                    "year": "2020",
+                    "title": "Thành lập công ty Hữu Nhân"
+                },
+                "_2021": {
+                    "year": "2021",
+                    "title": "Mở rộng một số của hàng tại khu vực phía Nam"
+                },
+                "_2022": {
+                    "year": "2022",
+                    "title": "Tối ưu hệ thống sản xuất phát triển"
+                },
+                "_2023": {
+                    "year": "2023",
+                    "title": "Sẵng sàng cho các bước phát triển mạnh mẽ nhất"
+                }
+            }
+        },
+        "mission": {
+            "title": "Sứ mệnh",
+            "content": {
+                "modern": "Hiện đại hóa",
+                "digitizing": "Số hóa",
+                "ux": "Trải nghiệm khách hàng",
+                "steady": "Chỗ đứng vững chắc"
+            }
+        },
+        "achivement": {
+            "title": "Thành tựu",
+            "content": {
+                "top_10": {
+                    "title": "Top 10 nhà bán lẻ hàng đầu Việt Nam",
+                    "content": "Cửa hàng công nghệ Hữu Nhân luôn nằm trong top 10 những nhà bán lẻ tốt nhất trong những năm trở lại đây"
+                },
+                "high_class": {
+                    "title": "Đối tác cao cấp",
+                    "content": "Cửa hàng luôn có những đối tác cao cấp và chất lượng cùng nhau bắt tay để cả đôi bên cùng phát triển và đi lên"
+                },
+                "search": {
+                    "title": "Tìm kiếm nhiều nhất",
+                    "content": "Từ những ngày đầu thành lập cửa hàng Hữu Nhân luôn là từ khóa được tìm kiếm nhiều nhất"
+                },
+                "product": {
+                    "title": "Sản phẩm tốt nhất",
+                    "content": "Với sự uy tín của cửa hàng sản phẩm tốt luôn là thứ được cửa hàng rất chú trọng và cửa hàng sẽ cho ra các sản phẩm chất lượng hơn nữa"
+                }
+            }
+        },
+        "organization": {
+            "title": "Cơ cấu tổ chức",
+            "content": {
+                "legislation": "Pháp chế",
+                "finance": "Tài chính",
+                "marketing": "Marketing",
+                "care": "Chăm sóc khách hàng",
+                "infrastructure": "Cơ sở vật chất",
+                "industry": "Ngành hàng",
+                "administrative_personnel": "Hành chính nhân sự",
+                "retail_operations": "Vận hành bán lẻ",
+                "product": "Sản phẩm",
+                "listen": "Lắng nghe",
+                "believe": "Tin tưởng",
+                "striving": "Phấn đấu"
+            }
+        },
+        "sales": {
+            "title": "Chính sách bán hàng",
+            "content": {
+                "product_standards": "Sản phẩm đạt chuẩn",
+                "commitment": "Cam kết chính hãng 100%",
+                "return_within_30_days": "Đổi trả trong vòng 30 ngày",
+                "repair_costs": "Sửa chữa đồng hồ giá 150.000 đ",
+                "clean_laptop": "Vệ sinh máy tính",
+                "extremely_preferential_price": "Giá cực ưu đãi",
+                "trouble_shooting": "Giải đáp thắc mắc khách hàng",
+                "support": "Hỗ trợ trả góp lãi suất 0%"
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "btn": {
+        "add_cart": "Add to cart",
+        "add_cart_buy_now": "Buy now",
+        "cart": "Cart",
+        "update": "Update",
+        "buy_product_now": "Buy now",
+        "buy_product_now_cart": "Shopping now",
+        "buy_product_again": "Repurchase",
+        "send": "Send",
+        "see_detail": "See details",
+        "recruit": "Recruitment",
+        "add_product": "Add product",
+        "add_category": "Add category",
+        "back": "Return",
+        "add": "Add",
+        "delete": "delete",
+        "pay": "Pay",
+        "back_home": "On the homepage"
+    }
+}

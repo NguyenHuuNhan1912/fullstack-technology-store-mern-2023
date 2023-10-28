@@ -1,0 +1,26 @@
+{
+    "table": {
+        "no.": "stt",
+        "product_name": "Product's name",
+        "type": "Type",
+        "branch": "The firm",
+        "price": "Price",
+        "discount": "Discount",
+        "count": "Quantity",
+        "status": "Status",
+        "public": "Public",
+        "edit": "Correction",
+        "image": "Image",
+        "name": "Name",
+        "information": "Information",
+        "number_phone": "Phone number",
+        "email": "email",
+        "gender": "Gender",
+        "joining_date": "Joining date",
+        "address": "Address",
+        "date_payment": "Date of payment",
+        "cost": "Expense",
+        "method": "Method",
+        "detail": "Detail"
+    }
+}

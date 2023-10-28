@@ -1,0 +1,13 @@
+{
+    "category": {
+        "title": "Category type",
+        "type": {
+            "laptop": "Laptop",
+            "smart_phone": "Phone",
+            "tablet": "Tablet",
+            "mouse": "Mouse",
+            "keyboard": "Keyboard",
+            "smart_watch": "Smart watch"
+        }
+    }
+}

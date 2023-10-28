@@ -1,0 +1,188 @@
+@import "scss/variables.scss";
+@import "scss/mixin.scss";
+
+.comment {
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    padding: 30px;
+
+    .comment__show {
+        &__no_comment {
+            font-size: 1.8em;
+            color: $backgroundMain;
+        }
+
+        .row {
+            align-items: center;
+        }
+
+        &__item {
+            border: 1px solid grey;
+            border-radius: 5px;
+            padding: 15px;
+            position: relative;
+
+            img {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                top: 15px;
+                left: -20px;
+                border-radius: 100%;
+                padding: 5px;
+                border: 1px solid green;
+                box-shadow: 0 0 2px 2px green, 0 0 2px 2px green, ;
+            }
+
+            &__head {
+                margin-left: 40px;
+
+                h1 {
+                    font-size: 15px;
+                }
+            }
+
+            &__body {
+                margin-left: 40px;
+                margin-top: 15px;
+                text-align: justify;
+            }
+
+            &__rate, &__edit  {
+                margin-top: 15px;
+                margin-left: 40px;
+            }
+
+            .icon {
+                color: grey;
+                font-size: 30px;
+                cursor: pointer;
+                padding: 2px;
+                border: 1px solid grey;
+                border-radius: 100px;
+                position: absolute;
+                top: -15px;
+                right: -15px;
+            }
+            &__edit {
+                button:first-child {
+                    @include button($backgroundMain, white, 12px, 5px, 5px, 5px, 0.3s);
+                }
+                button:last-child {
+                    @include button(red, white, 12px, 5px, 5px, 5px, 0.3s);
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+    .comment__user_cmt {
+        box-shadow: 0 0 5px 5px grey, 0 0 10px 10px grey;
+        width: 400px;
+        font-size: 1.8em;
+        border: 1px solid grey;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 50px;
+
+        section:first-child {
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .icon {
+                color: grey;
+                font-size: 30px;
+                cursor: pointer;
+                padding: 2px;
+                border: 1px solid grey;
+                border-radius: 100px;
+
+                &:hover {
+                    border: 1px solid red;
+                    background-color: #ffe0e0;
+                    color: red;
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        section:last-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+
+            .rate {
+                margin-left: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                img {
+                    width: 30px;
+                }
+
+                .wrap {
+                    position: relative;
+                    position: relative;
+
+                    input {
+                        cursor: pointer;
+                        font-size: 15px;
+                        width: 300px;
+                        margin-top: 15px;
+                        padding: 12px;
+                        border-radius: 100px;
+                        outline: none;
+                        border: 1px solid grey;
+                        color: black;
+                        font-weight: bold;
+                        background-color: grey;
+                        color: white;
+                        padding-right: 40px;
+
+                        &::placeholder {
+                            color: white;
+                            font-weight: bold;
+                        }
+
+                        &:hover {
+                            background-color: $backgroundMain;
+                        }
+                    }
+
+                    .icon {
+                        font-size: 25px;
+                        display: block;
+                        position: absolute;
+                        top: 25px;
+                        right: 12px;
+                        cursor: pointer;
+                        color: white;
+
+                        &:hover {
+                            transform: scale(1.1);
+                            color: yellow;
+                        }
+                    }
+                }
+
+            }
+
+            .img {
+                width: 48px;
+                height: 48px;
+                border: 2px solid grey;
+                padding: 3px;
+                border-radius: 100%;
+            }
+        }
+    }
+}

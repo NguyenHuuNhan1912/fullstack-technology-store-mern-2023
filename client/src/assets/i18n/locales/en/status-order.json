@@ -1,0 +1,15 @@
+{
+    "status_order": {
+        "delivered": "Delivered",
+        "pending": "Pending",
+        "processing": "Processing",
+        "cancel": "Cancel"
+    },
+    "order": {
+        "title": "The order",
+        "title_status": "Order status",
+        "min_order": "The lowest order",
+        "max_order": "The most valuable order",
+        "total_order": "Total order"
+    }
+}

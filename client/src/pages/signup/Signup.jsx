@@ -63,12 +63,14 @@ const Signup = () => {
         initialValues: {
             username: '',
             numberPhone: '',
+            email: '',
             password: '',
             passwordAgain: '',
         },
         validationSchema: Yup.object({
             username: Yup.string().required("Tên tài khoản không được để trống").min(4, "Tên phải ít nhất 5 kí tự"),
             numberPhone: Yup.string().required("Số điện thoại không được để trống").matches(/((09|03|07|08|05)+([0-9]{8})\b)/g, "Số điện thoại không đúng định dạng"),
+            email: Yup.string().required("Email không thể để trống").matches(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm, "Email không đúng định dạng"),
             password: Yup.string().required("Mật khẩu không thể để trống").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/g, "Mật khẩu không đủ mạnh"),
             passwordAgain: Yup.string().required("Mật khẩu không thể để trống").oneOf([Yup.ref("password"), null], "Mật khẩu nhập lại không khớp"),
         }),
@@ -76,7 +78,8 @@ const Signup = () => {
             const valuesLast = {
                 username: values.username,
                 password: values.password,
-                numberPhone: values.numberPhone
+                numberPhone: values.numberPhone,
+                email: values.email,
             };
             try {
                 const response = await userApi.signUp({
@@ -131,6 +134,18 @@ const Signup = () => {
                             />
                             <BsFillTelephoneForwardFill className={clsx(style.icon)} />
                             {formik.errors.numberPhone && (<p className={clsx(style.errorMessage)}>{formik.errors.numberPhone}</p>)}
+                        </section>
+
+                        <section className={clsx(style.formGroup)} >
+                            <input
+                                type="text"
+                                name="email"
+                                value={formik.values.email}
+                                onChange={formik.handleChange}
+                                placeholder="Email"
+                            />
+                            <BsFillTelephoneForwardFill className={clsx(style.icon)} />
+                            {formik.errors.numberPhone && (<p className={clsx(style.errorMessage)}>{formik.errors.email}</p>)}
                         </section>
                         <section className={clsx(style.formGroup)} >
                             <input

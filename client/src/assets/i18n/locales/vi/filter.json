@@ -1,0 +1,19 @@
+{
+    "filter": {
+        "title": "Lọc sản phẩm",
+        "price": {
+            "title": "Theo giá",
+            "under_10M": "Dưới 10 triệu",
+            "from_10M_to_20M": "Từ 10 đến 20 triệu",
+            "from_20M_to_30M": "Từ 20 triệu đến 30 triệu",
+            "on_40M": "Trên 40 triệu"
+        },
+        "color": {
+            "title": "Màu sắc",
+            "yellow": "Màu vàng",
+            "siliver": "Màu bạc",
+            "black": "Màu đen",
+            "white": "Màu trắng"
+        }
+    }
+}

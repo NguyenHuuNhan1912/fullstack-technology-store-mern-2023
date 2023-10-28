@@ -1,0 +1,19 @@
+{
+    "common": {
+        "search_product": "Enter the product to find...",
+        "stocking": "Stocking",
+        "out_of_stock": "Out of stock",
+        "next_page": "Next page ",
+        "on": "Above",
+        "page": "Page",
+        "product": "Product",
+        "sale_online": "Hunting Online",
+        "laptop_sale": "Laptop school",
+        "endow": "Incidentally flooded",
+        "sale_clock": "Storm Sale clock",
+        "product_discount": "Products are discounted",
+        "product_portfolio": "Product portfolio",
+        "cart": "Cart",
+        "hello": "Hello"
+    }
+}

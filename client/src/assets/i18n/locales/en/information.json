@@ -1,0 +1,37 @@
+{
+    "information": {
+        "name_store": "Huu Nhan Technology Store",
+        "title": "Huu Nhan Service Trading Joint Stock Company",
+        "slogan": "Leading technology products in Vietnam",
+        "street": {
+            "title": "See the detailed path",
+            "address": "Address: 1010 Street, Phu Hoa Town, Thoai Son District, An Giang Province",
+            "number_phone": "Phone: 0342040063",
+            "time_open": "Opening time: 8h-22h on weekdays"
+        },
+        "payment": {
+            "title": "Pay",
+            "qr_code": "QR Code",
+            "cash": "Cash",
+            "installment": "Installment",
+            "baking": "Transfer" 
+        },
+        "support": {
+            "title": "Call center support",
+            "buy_product": "Buy: 0342040063 ",
+            "support_customer": "Support KH: 0903972403 ",
+            "feedback": "Complaints: 0342040019",
+            "guarantee": "Warranty: 0342493963"
+        },
+        "branch": {
+            "title": "Shop branches",
+            "ag": "Phu Hoa - An Giang town",
+            "kg": "Phuoc Long - Bac Lieu town",
+            "dt": "Hong Ngu City - Dong Thap",
+            "vl": "Vinh Long City - Vinh Long",
+            "sg": "Go Vap District - Ho Chi Minh City"
+        },
+        "dcma": "DCMA | Protected",
+        "copyright": "2019 - 2024 Huu Nhan - the leading technology store in Vietnam"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "status_order": {
+        "delivered": "Đã giao",
+        "pending": "Chưa giải quyết",
+        "processing": "Đang giao",
+        "cancel": "Hủy đơn hàng"
+    },
+    "order": {
+        "title": "Đơn đặt hàng",
+        "title_status": "Trạng thái đơn hàng",
+        "min_order": "Đơn hàng thấp nhất",
+        "max_order": "Đơn hàng giá trị nhất",
+        "total_order": "Tổng đơn hàng"
+    }
+}

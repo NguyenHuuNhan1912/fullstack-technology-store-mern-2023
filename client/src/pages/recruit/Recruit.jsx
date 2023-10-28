@@ -29,72 +29,77 @@ import 'swiper/css/effect-coverflow';
 // Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
 
-// Variables global
-const dataBenefits = [
-    {
-        img: images.recruit.profess,
-        title: 'Môi trường chuyên nghiệp',
-        des: 'Đến với chúng tôi bạn sẽ được rèn luyện để trở thành những người chuyên nghiệp nhất',
-    },
-    {
-        img: images.recruit.money,
-        title: 'Phúc lợi xã hội cao',
-        des: 'Hữu Nhân được biết đến là một đơn vị có chế độ đãi ngộ cao dành cho các nhân sự',
-    },
-    {
-        img: images.recruit.develop,
-        title: 'Thăng tiến sự nghiệp',
-        des: 'Sự nghiệp của bạn sẽ được phát triển và sẽ thật công bằng khi đó là năng lực của bạn',
-    },
-    {
-        img: images.recruit.creation,
-        title: 'Tự do sáng tạo',
-        des: 'Chúng tôi luôn cho phép các bạn đóng góp ý kiến cá nhân, quan điểm của bản thân',
-    }
-];
-const dataPositionRecruit = [
-    {
-        img: images.recruit.protect,
-        title: 'Nhân viên bảo vệ',
-        request: ['Tuổi: từ 18 đến 40', 'Giới tính: Nam', 'Vui vẻ, trung thực', 'Thời gian làm việc cố định'],
-        position: 'protect'
-    },
-    {
-        img: images.recruit.manage,
-        title: 'Quản lý',
-        request: ['Tuổi 30 đến 40 ', 'Có kinh nghiệm', 'quyết đoán', 'Thời gian làm việc cố định'],
-        position: 'manager',
-    },
-    {
-        img: images.recruit.adsive,
-        title: 'Nhân viên tư vấn',
-        request: ['Tuổi từ 18 đến 29', 'Chuyên môn tốt', ' Vui vẻ, sôi động', 'Thời gian làm việc cố định'],
-        position: 'adsive',
-    },
-    {
+// Translate
+import { useTranslation } from 'react-i18next';
 
-        img: images.recruit.shipper,
-        title: 'Nhân viên giao hàng',
-        request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nam ', 'Nhanh nhẹn, rành đường ', 'Thời gian làm việc cố định '],
-        position: 'shipper',
-    },
-    {
 
-        img: images.recruit.accountant,
-        title: 'Kế toán',
-        request: ['Tuổi từ 18 đến 24', 'Có kinh nghiệm', 'Trung thực, cẩn thận', 'Thời gian làm việc cố định '],
-        position: 'accountant',
-    },
-    {
-
-        img: images.recruit.marketing,
-        title: 'Nhân viên marketing',
-        request: ['Tuổi từ 18 đến 24 ', 'Giới tính: Nữ ', 'Vui vẻ, sôi động', 'Thời gian làm việc cố định '],
-        position: 'marketing',
-    },
-
-];
 const Recruit = () => {
+    const { t } = useTranslation(['recruit', 'btn']);
+    // Variables global
+    const dataBenefits = [
+        {
+            img: images.recruit.profess,
+            title: t('recruit.benefits.environment.title'),
+            des: t('recruit.benefits.environment.content'),
+        },
+        {
+            img: images.recruit.money,
+            title: t('recruit.benefits.social.title'),
+            des: t('recruit.benefits.social.content'),
+        },
+        {
+            img: images.recruit.develop,
+            title: t('recruit.benefits.develop.title'),
+            des: t('recruit.benefits.develop.content'),
+        },
+        {
+            img: images.recruit.creation,
+            title: t('recruit.benefits.creative.title'),
+            des: t('recruit.benefits.creative.content'),
+        }
+    ];
+    const dataPositionRecruit = [
+        {
+            img: images.recruit.protect,
+            title: t('recruit.candidates.protect.title'),
+            request: [t('recruit.candidates.protect.age'), t('recruit.candidates.protect.gender'), t('recruit.candidates.protect.request'), t('recruit.candidates.protect.time')],
+            position: 'protect'
+        },
+        {
+            img: images.recruit.manage,
+            title: t('recruit.candidates.manager.title'),
+            request: [t('recruit.candidates.manager.age'), t('recruit.candidates.manager.gender'), t('recruit.candidates.manager.request'), t('recruit.candidates.manager.time')],
+            position: 'manager',
+        },
+        {
+            img: images.recruit.adsive,
+            title: t('recruit.candidates.advise.title'),
+            request: [t('recruit.candidates.advise.age'), t('recruit.candidates.advise.gender'), t('recruit.candidates.advise.request'), t('recruit.candidates.advise.time')],
+            position: 'adsive',
+        },
+        {
+
+            img: images.recruit.shipper,
+            title: t('recruit.candidates.shipper.title'),
+            request:  [t('recruit.candidates.shipper.age'), t('recruit.candidates.shipper.gender'), t('recruit.candidates.shipper.request'), t('recruit.candidates.shipper.time')],
+            position: 'shipper',
+        },
+        {
+
+            img: images.recruit.accountant,
+            title: t('recruit.candidates.accountant.title'),
+            request: [t('recruit.candidates.accountant.age'), t('recruit.candidates.accountant.gender'), t('recruit.candidates.accountant.request'), t('recruit.candidates.accountant.time')],
+            position: 'accountant',
+        },
+        {
+
+            img: images.recruit.marketing,
+            title: t('recruit.candidates.accountant.title'),
+            request: [t('recruit.candidates.marketing.age'), t('recruit.candidates.marketing.gender'), t('recruit.candidates.marketing.request'), t('recruit.candidates.marketing.time')],
+            position: 'marketing',
+        },
+
+    ];
     return (
         <main className={clsx(style.main)}>
             <SelectSpeed />
@@ -103,13 +108,9 @@ const Recruit = () => {
                     <Row gutter={[{ lg: 60, md: 40, sm: 30, xs: 15 }, { lg: 60, md: 40, sm: 30, xs: 15 }]} align={"middle"}>
                         <Col lg={12} xs={24}>
                             <section className={clsx(style.recruit__intro__head)}>
-                                <h1>Hữu Nhân tuyển dụng</h1>
+                                <h1>{t('recruit.title')}</h1>
                                 <p>
-                                    Cửa hàng công nghệ Hữu Nhân là một câu chuyện khởi nghiệp đầy cảm xúc
-                                    từ anh chàng sinh viên năm cuối trường đại học Cần Thơ. Với khát vọng
-                                    vô cùng mãnh liệt và cháy bỗng, chàng sinh viên năm ấy mang cho mình một giấc mộng,
-                                    một giấc mộng về công nghệ. Chàng trai ấy đã không ngừng nổ lực để hoàn thành giấc mộng
-                                    ấy và ngày hôm nay cửa hàng Công nghệ Hữu Nhân đã ra đời cũng như đã thực hiện được ước mơ và sứ mệnh.
+                                    {t('recruit.introduce')}
                                 </p>
                                 <div
                                     onClick={() => { window.scrollTo({ top: 800, behavior: 'smooth' }) }}
@@ -118,7 +119,7 @@ const Recruit = () => {
                                         <span></span>
                                         <span></span>
                                         <span></span>
-                                        <span>Xem chi tiết</span>
+                                        <span>{t('btn.see_detail', { ns: 'btn' })}</span>
                                     </button>
                                 </div>
                             </section>
@@ -205,7 +206,7 @@ const Recruit = () => {
                                                     }
                                                 </div>
                                                 <Link to={`formrecruit/${item.position}`}>
-                                                    <button>Ứng tuyển</button>
+                                                    <button>{t('btn.recruit',{ns: 'btn'})}</button>
                                                 </Link>
                                             </div>
                                         </section>

@@ -1,0 +1,19 @@
+{
+    "filter": {
+        "title": "Product filter",
+        "price": {
+            "title": "At price",
+            "under_10M": "Under 10 million",
+            "from_10M_to_20M": "From 10 to 20 million",
+            "from_20M_to_30M": "From 20 million to 30 million",
+            "on_40M": "Over 40 million"
+        },
+        "color": {
+            "title": "Color",
+            "yellow": "Yellow",
+            "siliver": "Silver",
+            "black": "Black",
+            "white": "White"
+        }
+    }
+}

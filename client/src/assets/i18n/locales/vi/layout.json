@@ -1,0 +1,29 @@
+{
+    "layout": {
+        "main": {
+            "home": "Trang chủ",
+            "introduce": "Giới thiệu",
+            "discount": "Khuyến mãi",
+            "recruit": "Tuyển dụng",
+            "contact": "Liên hệ",
+            "cart": {
+                "title": "Giỏ hàng",
+                "product": "Sản phẩm"
+            },
+            "account": {
+                "title": "Tài khoản của",
+                "account_information": "Thông tin tài khoản",
+                "manager_order": "Quản lý đơn hàng",
+                "notification": "Thông báo",
+                "feed": "Bảng tin"
+            }
+        },
+        "dashboard": {
+            "overview": "Tổng quan",
+            "product": "Sản phẩm",
+            "category": "Danh mục",
+            "customer": "Khách hàng",
+            "order": "Đặt hàng"
+        }
+    }
+}

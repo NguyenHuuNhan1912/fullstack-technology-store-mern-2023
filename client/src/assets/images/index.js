@@ -1,4 +1,8 @@
 const images = {
+    nationalFlag: {
+        en: require('./nationalFlag/en.png'),
+        vi: require('./nationalFlag/vi.png'),
+    },
     header: {
         logo: require('./header/logo.png'),
         user: require('./header/user.png'),

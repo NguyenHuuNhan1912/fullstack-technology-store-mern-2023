@@ -1,0 +1,28 @@
+{
+    "notification": {
+        "cart": {
+            "add_cart_success": "The product has been added to cart !",
+            "out_of_stock": "Currently the product is out of stock !",
+            "quantity_out_of_stock": "The number of products has been purchased, thank you !",
+            "cannot_prev_quantiy": "The number of your products is 1, cannot be reduced anymore"
+        },
+        "product": {
+            "add_product_success": "Add successful products !",
+            "delete_product": {
+                "title": "Product deletion ",
+                "content_head": "Do you really want to delete this product ?",
+                "content_body": "You will not be able to review this product anymore if you delete !" 
+            },
+            "edit_product_success": "Modify product successfully !"
+        },
+        "category": {
+            "add_category_success": "Add a successful category !",
+            "delete_category": {
+                "title": "Delete the category",
+                "content_head": "Do you really want to delete this category ?",
+                "content_body": "You will not be able to review this category anymore if you delete !" 
+            },
+            "edit_category_success": "Modify a successful portfolio !"
+        }
+    }
+}

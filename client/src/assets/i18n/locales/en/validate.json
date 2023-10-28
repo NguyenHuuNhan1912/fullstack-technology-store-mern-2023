@@ -1,0 +1,78 @@
+{
+    "validate": {
+        "form": {
+            "candidates": {
+                "title": "Candidates fill in the following form",
+                "place": {
+                    "fullname": "Enter the full name",
+                    "gender": {
+                        "title": "Gender",
+                        "male": "nam",
+                        "famale": "Female",
+                        "other": "Other"
+                    },
+                    "birth_date": "Enter the date of birth",
+                    "number_phone": "Enter your phone number",
+                    "address": "Enter the address",
+                    "study_level": {
+                        "title": "Academic level",
+                        "university": "University",
+                        "college": "College",
+                        "high_school": "high schoolg"
+                    },
+                    "facebook_address": "Enter Facebook address",
+                    "experience": "Experience in the application position"
+                }
+            },
+            "contact": {
+                "title": "Contact us",
+                "place": {
+                    "fullname": "Enter your full name",
+                    "number_phone": "Enter your phone number",
+                    "private_email": "Enter personal email",
+                    "content": "Import content"
+                }
+            },
+            "order": {
+                "title": "Information line",
+                "place": {
+                    "recipient's_name": "Enter the recipient's name",
+                    "recipient's_number_phone": "Enter the recipient's phone number",
+                    "address": "Enter specific address (street name, house number...)"
+                }
+            }
+        },
+        "error": {
+            "fullname": {
+                "not_empty": "Full name cannot leave empty",
+                "at_least_5_character": "Full name at least 5 characters"
+            },
+            "birth_date": {
+                "not_empty": "Date of birth cannot leave blank"
+            },
+            "number_phone": {
+                "not_number_phone": "Phone number can not be left blank",
+                "invalid": "Phone number improperly formatted"
+            },
+            "address": {
+                "not_empty_address": "The address cannot be empty"
+            },
+            "experience": {
+                "not_empty_experience": "Experience cannot leave empty"
+            },
+            "email": {
+                "not_empty_email": "Email cannot be planted"
+            },
+            "content": {
+                "not_empty_content": "Content cannot be planted"
+            },
+            "address_detail": {
+                "not_empty_address_detail": "Specific address cannot leave empty"
+            },
+            "recipient's_name": {
+                "not_empty_recipient's_name": "The recipient's name cannot be empty"
+            }
+        }
+
+    }
+}

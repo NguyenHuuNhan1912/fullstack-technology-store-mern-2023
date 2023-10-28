@@ -1,0 +1,26 @@
+{
+    "table": {
+        "no.": "STT",
+        "product_name": "Tên sản phẩm",
+        "type": "Loại",
+        "branch": "Hãng",
+        "price": "Giá",
+        "discount": "Giảm giá",
+        "count": "Số lượng",
+        "status": "Trạng thái",
+        "public": "Công khai",
+        "edit": "Hiệu chỉnh",
+        "image": "Ảnh",
+        "name": "Tên",
+        "information": "Thông tin",
+        "number_phone": "Số điện thoại",
+        "email": "Email",
+        "gender": "Giới tính",
+        "joining_date": "Ngày tham gia",
+        "address": "Địa chỉ",
+        "date_payment": "Ngày thanh toán",
+        "cost": "Chi phí",
+        "method": "Phương thức",
+        "detail": "Chi tiết"
+    }
+}

@@ -1,0 +1,74 @@
+{
+    "recruit": {
+        "title": "Huu Nhan recruited",
+        "introduce": "Huu Nhan technology store is an emotional startup story from a senior student at Can Tho University. With an extremely strong and sudden desire, the student that year had a dream for himself, a dream about technology. That boy has continuously strived to fulfill that dream and today Huu Nhan Technology store was born and has fulfilled his dream and mission.",
+        "benefits": {
+            "environment": {
+                "title": "Professional environment",
+                "content": "Coming to us, you will be trained to become the most professional"
+            },
+            "social": {
+                "title": "High social benefits",
+                "content": "Huu Nhan is known as a unit with high remuneration for its employees"
+            },
+            "develop": {
+                "title": "Career advancement",
+                "content": "Your career will develop and it will be fair that that is your ability"
+            },
+            "creative": {
+                "title": "Creative freedom",
+                "content": "We always allow you to contribute your personal opinions and views"
+            }
+        },
+        "candidates": {
+            "protect": {
+                "title": "Guard",
+                "age": "Age: from 18 to 40",
+                "gender": "Gender: Male",
+                "request": "Fun, honest",
+                "time": "Fixed working time"
+            },
+            "manager": {
+                "title": "Manage",
+                "age": "Age: from 30 to 40",
+                "gender": "Gender: Female",
+                "request": "Decision",
+                "time": "Fixed working time"
+            },
+            "shipper": {
+                "title": "Shipper",
+                "age": "Age: from 18 to 24",
+                "gender": "Gender: Male",
+                "request": "Agile, fluent in sugar",
+                "time": "Fixed working time"
+            },
+            "marketing": {
+                "title": "Marketer",
+                "age": "Age: from 18 to 24 ",
+                "gender": "Gender: Female ",
+                "request": "Fun, exciting ",
+                "time": "Fixed working time"
+            },
+            "accountant": {
+                "title": "Accountant",
+                "age": "Age: from 18 to 29",
+                "gender": "Gender: Female",
+                "request": "Honesty, careful",
+                "time": "Fixed working time"
+            },
+            "advise": {
+                "title": "Counselor",
+                "age": "Age: from 18 to 29 ",
+                "gender": "Gender: Female ",
+                "request": "Fun, exciting ",
+                "time": "Fixed working time"
+            }
+        }
+    }, 
+    "recruit_detail": {
+        "introduce": {
+            "title": "Be a part of Huu Nhan ",
+            "content": "A better environment for you to develop.Coming to us you will come to a professional working environment.More specifically, we continue to write the ambitions and missions ahead and are still unloading"
+        }
+    }
+}

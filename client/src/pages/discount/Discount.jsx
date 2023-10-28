@@ -19,15 +19,19 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-// Variables global
-const dataType = [
-    { img: images.discount.i1, title: 'Săn sale online', },
-    { img: images.discount.i2, title: 'Laptop tụ trường', },
-    { img: images.discount.i3, title: 'Ưu đãi ngập trời', },
-    { img: images.discount.i4, title: 'Bão sale đồng hồ', }
-];
+// Translate
+import { useTranslation } from 'react-i18next';
 
 const Discount = () => {
+    const { t } = useTranslation(['common']);
+
+    // Variables global
+    const dataType = [
+        { img: images.discount.i1, title: t('common.sale_online')},
+        { img: images.discount.i2, title: t('common.laptop_sale')},
+        { img: images.discount.i3, title: t('common.endow')},
+        { img: images.discount.i4, title: t('common.sale_clock')}
+    ];
     const [product, setProduct] = useState([]);
     const getProduct = async () => {
         try {
@@ -73,7 +77,7 @@ const Discount = () => {
                     <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]}>
                         <Col xs={24}>
                             <section className={clsx(style.discount__product__title)}>
-                                <h1>Các sản phẩm được giảm giá</h1>
+                                <h1>{t('common.product_discount')}</h1>
                             </section>
                         </Col>
                         {
@@ -97,7 +101,7 @@ const Discount = () => {
                                                     <span>{`${item.discount}%`}</span>
                                                     {
                                                         Number(item.quantity) <= 0 &&
-                                                        <h1>Hết hàng</h1>
+                                                        <h1>{t('common.out_of_stock')}</h1>
                                                     }
                                                 </section>
                                             </Link>

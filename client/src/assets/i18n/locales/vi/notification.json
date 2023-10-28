@@ -1,0 +1,28 @@
+{
+    "notification": {
+        "cart": {
+            "add_cart_success": "Sản phẩm đã được thêm vào giỏ hàng !",
+            "out_of_stock": "Hiện tại sản phẩm đã hết hàng !",
+            "quantity_out_of_stock": "Số lượng sản phẩm đã được mua hết, cảm ơn bạn !",
+            "cannot_prev_quantiy": "Số lượng sản phẩm của bạn đang là 1, không thể giảm được nữa"
+        },
+        "product": {
+            "add_product_success": "Thêm sản phẩm thành công !",
+            "delete_product": {
+                "title": "Xóa sản phẩm",
+                "content_head": "Bạn có thật sự muốn xóa sản phẩm này ?",
+                "content_body": "Bạn sẽ không thể xem lại sản phẩm này nữa nếu bạn xóa !" 
+            },
+            "edit_product_success": "Chỉnh sửa sản phẩm thành công !"
+        },
+        "category": {
+            "add_category_success": "Thêm danh mục thành công !",
+            "delete_category": {
+                "title": "Xóa danh mục",
+                "content_head": "Bạn có thật sự muốn xóa danh mục này ?",
+                "content_body": "Bạn sẽ không thể xem lại danh mục này nữa nếu bạn xóa !" 
+            },
+            "edit_category_success": "Chỉnh sửa danh mục thành công !"
+        }
+    }
+}

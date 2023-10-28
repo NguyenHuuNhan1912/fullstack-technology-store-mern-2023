@@ -1,0 +1,21 @@
+{
+    "btn": {
+        "add_cart": "Thêm vào giỏ hàng",
+        "add_cart_buy_now": "Mua ngay",
+        "cart": "Giỏ hàng",
+        "update": "Cập nhật",
+        "buy_product_now": "Mua hàng ngay",
+        "buy_product_now_cart": "Mua sắm ngay",
+        "buy_product_again": "Mua lại",
+        "send": "Gửi",
+        "see_detail": "Xem chi tiết",
+        "recruit": "Ứng tuyển",
+        "add_product": "Thêm sản phẩm",
+        "add_category": "Thêm danh mục",
+        "back": "Trở lại",
+        "add": "Thêm",
+        "delete": "Xóa",
+        "pay": "Thanh toán",
+        "back_home": "Về trang chủ"
+    }
+}

@@ -27,66 +27,71 @@ import { useEffect } from 'react';
 // Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
 
-// Variables global
-const dataStatistical = [
-    { des: '63 showroom trên khắp đất nước Việt Nam', percent: 63 },
-    { des: '90.000 sản phẩm đã được bán tại Hữu Nhân', percent: 90 },
-    { des: 'Hơn 70.000 khách hàng doanh nghiệp', percent: 70 },
-    { des: '85 triệu khách hàng truy cập website Hữu Nhân mỗi năm', percent: 85 },
-    { des: '95% khách hàng phản hồi sự hài lòng về sản phẩm', percent: 95 },
-];
-const dataProgress = [
-    { title: '2018', description: 'Khai trương cửa hàng đầu tiên' },
-    { title: '2019', description: 'Thành lập trung tâm bảo hành' },
-    { title: '2020', description: 'Thành lập cồng ty Hữu Nhân' },
-    { title: '2021', description: 'Mở rộng một số cửa hàng tại khu vực phía Nam' },
-    { title: '2022', description: 'Tối ưu hệ thống sản xuất phát triển' },
-    { title: '2023', description: 'Sẵng sàng cho các bước phát triển mạnh mẽ nhất' },
-];
-const dataCard = [
-    { img: image.introduce.modernization, title: 'Hiện đại hóa' },
-    { img: image.introduce.digitizing, title: 'Số hóa' },
-    { img: image.introduce.experience, title: 'Trải ngiệm khách hàng' },
-    { img: image.introduce.strong, title: 'Chỗ đứng vững chắc' },
-];
-const dataAchievement = [
-    {
-        icon: RiNumbersFill,
-        title: 'Top 10 nhà bán lẻ hàng đầu Việt Nam',
-        des: 'Cửa hàng công nghệ Hữu Nhân luôn nằm trong top 10 những nhà bán lẻ tốt nhất trong những năm trở lại đây',
-    },
-    {
-        icon: MdOutline6FtApart,
-        title: 'Đối tác cao cấp',
-        des: 'Cửa hàng luôn có những đối tác cao cấp và chất lượng cùng nhau bắt tay để cả đôi bên cùng phát triển và đi lên',
-    },
-    {
-        icon: AiOutlineSearch,
-        title: 'Tìm kiếm nhiều nhất',
-        des: 'Từ những ngày đầu thành lập cửa hàng Hữu Nhân luôn là từ khóa được tìm kiếm nhiều nhất ',
-    },
-    {
-        icon: FaProductHunt,
-        title: 'Sản phẩm tốt nhất',
-        des: 'Với sự uy tín của cửa hàng sản phẩm tốt luôn là thứ được cửa hàng rất chú trọng và cửa hàng sẽ cho ra các sản phẩm chất lượng hơn nữa',
-    },
-];
-const dataOrganization = [
-    { icon: GoLaw, title: 'Pháp chế' },
-    { icon: RiMoneyDollarCircleFill, title: 'Tài chính' },
-    { icon: BsFillBarChartFill, title: 'Marketing' },
-    { icon: BsFillTelephonePlusFill, title: 'Chăm sóc khách hàng' },
-    { icon: TbBuildingSkyscraper, title: 'Cơ sở vật chất' },
-    { icon: AiFillSetting, title: 'Ngành hàng' },
-    { icon: FaSearch, title: 'Hành chính nhân sự' },
-    { icon: BsFillCartCheckFill, title: 'Vận hành bán lẻ' },
-    { icon: FaProductHunt, title: 'Sản phẩm' },
-    { icon: FaAssistiveListeningSystems, title: 'Lắng nghe' },
-    { icon: BsPieChartFill, title: 'Tin tưởng' },
-    { icon: FaHandRock, title: 'Phấn đấu' },
-];
+// Translate
+import { useTranslation } from 'react-i18next';
+
+
 
 const Introduce = () => {
+    const { t } = useTranslation('introduce', 'information', 'btn');
+    // Variables global
+    const dataStatistical = [
+        { des: t('introduce.number.content.showroom'), percent: 63 },
+        { des: t('introduce.number.content.buy_product'), percent: 90 },
+        { des: t('introduce.number.content.customer'), percent: 70 },
+        { des: t('introduce.number.content.access'), percent: 85 },
+        { des: t('introduce.number.content.feedback'), percent: 95 },
+    ];
+    const dataProgress = [
+        { title: '2018', description: t('introduce.develop.content._2018.title')},
+        { title: '2019', description: t('introduce.develop.content._2018.title')},
+        { title: '2020', description: t('introduce.develop.content._2019.title') },
+        { title: '2021', description: t('introduce.develop.content._2020.title') },
+        { title: '2022', description: t('introduce.develop.content._2021.title') },
+        { title: '2023', description: t('introduce.develop.content._2022.title') },
+    ];
+    const dataCard = [
+        { img: image.introduce.modernization, title: t('introduce.mission.content.modern') },
+        { img: image.introduce.digitizing, title:  t('introduce.mission.content.digitizing') },
+        { img: image.introduce.experience, title:  t('introduce.mission.content.ux') },
+        { img: image.introduce.strong, title:  t('introduce.mission.content.steady') },
+    ];
+    const dataAchievement = [
+        {
+            icon: RiNumbersFill,
+            title: t('introduce.achivement.content.top_10.title'),
+            des: t('introduce.achivement.content.top_10.content'),
+        },
+        {
+            icon: MdOutline6FtApart,
+            title: t('introduce.achivement.content.high_class.title'),
+            des: t('introduce.achivement.content.high_class.content'),
+        },
+        {
+            icon: AiOutlineSearch,
+            title: t('introduce.achivement.content.search.title'),
+            des: t('introduce.achivement.content.search.content'),
+        },
+        {
+            icon: FaProductHunt,
+            title: t('introduce.achivement.content.product.title'),
+            des: t('introduce.achivement.content.product.content'),
+        },
+    ];
+    const dataOrganization = [
+        { icon: GoLaw, title: t('introduce.organization.content.legislation') },
+        { icon: RiMoneyDollarCircleFill, title: t('introduce.organization.content.finance') },
+        { icon: BsFillBarChartFill, title: t('introduce.organization.content.marketing') },
+        { icon: BsFillTelephonePlusFill, title: t('introduce.organization.content.care') },
+        { icon: TbBuildingSkyscraper, title: t('introduce.organization.content.infrastructure') },
+        { icon: AiFillSetting, title: t('introduce.organization.content.industry') },
+        { icon: FaSearch, title: t('introduce.organization.content.administrative_personnel') },
+        { icon: BsFillCartCheckFill, title: t('introduce.organization.content.retail_operations') },
+        { icon: FaProductHunt, title: t('introduce.organization.contentproduct') },
+        { icon: FaAssistiveListeningSystems, title: t('introduce.organization.content.listen') },
+        { icon: BsPieChartFill, title: t('introduce.organization.content.believe') },
+        { icon: FaHandRock, title: t('introduce.organization.content.striving') },
+    ];
     const [current, setCurrent] = useState('');
     const onChange = (value) => {
         setCurrent(value);
@@ -102,14 +107,14 @@ const Introduce = () => {
                     <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]} className={clsx(style.row)}>
                         <Col xl={12}>
                             <div className={clsx(style.introduce__head)}>
-                                <h1>Cửa hàng công nghệ Hữu Nhân</h1>
-                                <p>Cửa hàng kinh doanh sản phẩm công nghệ hàng đầu Việt Nam</p>
+                                <h1>{t('information.name_store',{ns: 'information'})}</h1>
+                                <p>{t('information.slogan',{ns: 'information'})}</p>
                                 <div onClick={() => { window.scrollTo({ top: 800, behavior: 'smooth' }) }}>
                                     <button className={clsx(style.btnAnimation)}>
                                         <span></span>
                                         <span></span>
                                         <span></span>
-                                        <span>Xem chi tiết</span>
+                                        <span>{t('btn.see_detail',{ns: 'btn'})}</span>
                                     </button>
                                 </div>
                             </div>
@@ -143,7 +148,7 @@ const Introduce = () => {
                         >
                             <div className={clsx(style.statistical__body)}>
                                 <div className={clsx(style.statistical__body__title)}>
-                                    <h1>Những con số biết nói</h1>
+                                    <h1>{t('introduce.number.title')}</h1>
                                 </div>
                                 {
                                     dataStatistical.map((item, index) => {
@@ -171,7 +176,7 @@ const Introduce = () => {
                     data-aos-easing="ease-in-sine"
                 >
                     <div className={clsx(style.steps__head)}>
-                        <h1>Quá trình phát triển</h1>
+                        <h1>{t('introduce.develop.title')}</h1>
                     </div>
                     <div className={clsx(style.steps__body)}>
                         <Steps
@@ -185,7 +190,7 @@ const Introduce = () => {
                     <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 30 }]}>
                         <Col xs={24}>
                             <section className={clsx(style.card__head)}>
-                                <h1>Sứ mệnh</h1>
+                                <h1>{t('introduce.mission.title')}</h1>
                             </section>
                         </Col>
                         {
@@ -214,7 +219,7 @@ const Introduce = () => {
                     <Row className={clsx(style.row)} >
                         <Col xs={24}>
                             <section className={clsx(style.achievement__head)}>
-                                <h1>Thành tựu</h1>
+                                <h1>{t('introduce.achivement.title')}</h1>
                             </section>
                         </Col>
                         <Col xl={12} xs={24}>
@@ -249,7 +254,7 @@ const Introduce = () => {
                     <Row gutter={[{ sm: 30, xs: 15 }, { sm: 30, xs: 15 }]} className={clsx(style.row)}>
                         <Col xs={24}>
                             <section className={clsx(style.organization__head)}>
-                                <h1>Cơ cấu tổ chức</h1>
+                                <h1>{t('introduce.organization.title')}</h1>
                             </section>
                         </Col>
                         {

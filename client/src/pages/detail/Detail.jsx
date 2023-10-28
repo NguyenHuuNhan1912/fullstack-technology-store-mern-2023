@@ -24,6 +24,7 @@ import { FaHandSparkles, FaHandHoldingUsd } from 'react-icons/fa';
 
 // Component
 import SelectSpeed from 'component/selectSpeed/SelectSpeed';
+import Comment from 'component/comment/Comment';
 
 // Module
 import toastNotification from 'handler/toast.handler';
@@ -48,6 +49,8 @@ const Detail = () => {
   const [valuesInfor, setValuesInfor] = useState([]);
   const [cart, setCart] = useState({});
   const updateQuantityCart = useContext(QuantityCart);
+  const [userFacebook, setUserFacebook] = useState(null);
+
   const handlePercent = (price, discount) => {
     return price - (price * (discount / 100));
   }
@@ -266,6 +269,7 @@ const Detail = () => {
             )
           }
         </Row>
+        <Comment />
       </section>
     </main>
   )

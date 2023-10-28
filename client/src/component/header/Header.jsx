@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Antd
-import { Dropdown, Modal } from 'antd';
+import { Dropdown, Modal, Button, Select } from 'antd';
 
 // Local
 import images from 'assets/images/index';
@@ -25,13 +25,16 @@ import userApi from 'api/modules/user.api';
 import cartApi from 'api/modules/cart.api';
 import productAppApi from 'api/modules/productApp.api';
 
-const path = [
-    { icon: AiFillHome, component: 'Trang chủ', path: '/' },
-    { icon: AiFillInfoCircle, component: 'Giới thiệu', path: '/introduce' },
-    { icon: AiFillDollarCircle, component: 'Khuyến mãi', path: '/discount' },
-    { icon: RiUserAddFill, component: 'Tuyển dụng', path: '/recruit' },
-    { icon: AiFillContacts, component: 'Liên hệ', path: '/contact' },
-];
+
+// Translate
+import { useTranslation } from 'react-i18next';
+import i18n from 'assets/i18n/i18n';
+
+// Authentication with google and facebook
+import { auth } from '../../firebase/config';
+import { signOut } from 'firebase/auth'
+
+
 
 const Header = ({ call }) => {
     const [userName, setUserName] = useState(JSON.parse(localStorage.getItem("userName")));
@@ -45,6 +48,7 @@ const Header = ({ call }) => {
     const [searchText, setSearchText] = useState('');
     const checkUpdateAccount = JSON.parse(localStorage.getItem("updateAccount"));
     let navi = useNavigate();
+    const { t } = useTranslation(['auth', 'lng', 'layout', 'common']);
     const getCartApi = async () => {
         if (JSON.parse(localStorage.getItem("idUser")) !== null) {
             try {
@@ -59,6 +63,13 @@ const Header = ({ call }) => {
             }
         }
     }
+    const path = [
+        { icon: AiFillHome, component: t('layout.main.home',{ns: 'layout'}), path: '/' },
+        { icon: AiFillInfoCircle, component: t('layout.main.introduce',{ns: 'layout'}), path: '/introduce' },
+        { icon: AiFillDollarCircle, component: t('layout.main.discount',{ns: 'layout'}), path: '/discount' },
+        { icon: RiUserAddFill, component: t('layout.main.recruit',{ns: 'layout'}), path: '/recruit' },
+        { icon: AiFillContacts, component: t('layout.main.contact',{ns: 'layout'}), path: '/contact' },
+    ];
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -67,11 +78,11 @@ const Header = ({ call }) => {
         localStorage.removeItem("userName");
         localStorage.removeItem("idUser");
         setUserName(JSON.parse(localStorage.getItem("userName")));
-        toastNotification('success', 'Tài khoản của bạn đã được đăng xuất !', 1000);
         setTimeout(() => {
+            handleLogoutWith();
             setProduct([]);
             navi('/');
-        }, 1000)
+        }, 1000);
     };
     const handleCancel = () => {
         setIsModalOpen(false);
@@ -87,7 +98,7 @@ const Header = ({ call }) => {
                     to="/account"
                 >
                     <FaUserEdit />
-                    <span style={{ marginLeft: 8 }}>Thông tin tài khoản</span>
+                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.account_information',{ns: 'layout'})}</span>
                 </Link>
             ),
         },
@@ -100,7 +111,7 @@ const Header = ({ call }) => {
                     to="/account/order"
                 >
                     <BsCartFill />
-                    <span style={{ marginLeft: 8 }}>Quản lý đơn hàng</span>
+                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.manager_order',{ns: 'layout'})}</span>
                 </Link>
             ),
         },
@@ -113,7 +124,7 @@ const Header = ({ call }) => {
                     to="/account/noti"
                 >
                     <BsFillBellFill />
-                    <span style={{ marginLeft: 8 }}>Thông báo</span>
+                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.notification',{ns: 'layout'})}</span>
                 </Link>
             ),
         },
@@ -126,7 +137,7 @@ const Header = ({ call }) => {
                     to="/account/news"
                 >
                     <BsNewspaper />
-                    <span style={{ marginLeft: 8 }}>Bảng tin</span>
+                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.feed',{ns: 'layout'})}</span>
                 </Link>
             ),
         },
@@ -140,11 +151,16 @@ const Header = ({ call }) => {
                     onClick={showModal}
                 >
                     <RiLogoutCircleLine />
-                    <span style={{ marginLeft: 8 }}>Đăng xuất</span>
+                    <span style={{ marginLeft: 8 }}>{t('auth.sign_out')}</span>
                 </section>
             ),
         },
     ];
+    const handleChange = (value) => {
+        console.log(value);
+        i18n.changeLanguage(value);
+    };
+
     const getUserApi = async () => {
         if (JSON.parse(localStorage.getItem("idUser")) !== null) {
             try {
@@ -187,6 +203,17 @@ const Header = ({ call }) => {
     const handleChangePath = () => {
         setShowProduct(false);
     }
+
+    const handleLogoutWith = async (type) => {
+        try {
+            const logout = await signOut(auth);
+            toastNotification('success', 'Tài khoản của bạn đã được đăng xuất !', 1000);
+        }
+        catch (err) {
+            console.log(`Error: ${err}`);
+        }
+    }
+
     useEffect(() => {
         getUserApi();
         getCartApi();
@@ -206,7 +233,7 @@ const Header = ({ call }) => {
                     >
                         <input
                             type="text"
-                            placeholder='Nhập sản phẩm cần tìm . .  .'
+                            placeholder={t('common.search_product',{ns: 'common'})}
                             value={searchText}
                             onChange={handleChangeSearchText}
                         />
@@ -229,19 +256,19 @@ const Header = ({ call }) => {
                                                             onClick={handleChangePath}
                                                         >
                                                             {
-                                                                item.publish!=='1' ?
-                                                                <></>
-                                                                :
-                                                                <a href={`/product/detail/${item._id}`}>
-                                                                    {
-                                                                        item?.img
-                                                                            ?
-                                                                            <img src={`data:image/png;base64,${item.img}`} alt="img" />
-                                                                            :
-                                                                            <></>
-                                                                    }
-                                                                    <p>{item.name}</p>
-                                                                </a>
+                                                                item.publish !== '1' ?
+                                                                    <></>
+                                                                    :
+                                                                    <a href={`/product/detail/${item._id}`}>
+                                                                        {
+                                                                            item?.img
+                                                                                ?
+                                                                                <img src={`data:image/png;base64,${item.img}`} alt="img" />
+                                                                                :
+                                                                                <></>
+                                                                        }
+                                                                        <p>{item.name}</p>
+                                                                    </a>
                                                             }
                                                         </li>
                                                     )
@@ -262,8 +289,8 @@ const Header = ({ call }) => {
                                             <img src={images.header.user} alt="alt" />
                                         </div>
                                         <div className={clsx(style.signSystem__body)}>
-                                            <p>Đăng nhập</p>
-                                            <p>Đăng kí</p>
+                                            <p>{t('auth.sign_in')}</p>
+                                            <p>{t('auth.sign_out')}</p>
                                         </div>
                                     </Link>
                                 ) :
@@ -277,14 +304,14 @@ const Header = ({ call }) => {
                                                 <div className={clsx(style.signSystem__head)}>
                                                     {
                                                         !user?.img
-                                                        ?
-                                                        <img src={images.header.user} alt="img" />
-                                                        :
-                                                        <img src={`data:image/png;base64,${user.img}`} alt="img" />
+                                                            ?
+                                                            <img src={images.header.user} alt="img" />
+                                                            :
+                                                            <img src={`data:image/png;base64,${user.img}`} alt="img" />
                                                     }
                                                 </div>
                                                 <div className={clsx(style.signSystem__body)}>
-                                                    <p>Xin chào</p>
+                                                    <p>{t('common.hello',{ns: 'common'})}</p>
                                                     <p>{userName}</p>
                                                 </div>
                                             </section>
@@ -321,16 +348,45 @@ const Header = ({ call }) => {
                                 <img src={images.header.cart} alt="cart" />
                             </div>
                             <div className={clsx(style.cart__body)}>
-                                <p>Giỏ hàng</p>
-                                <p>{`(${(product.length === 0) ? 0 : product.length}) Sản phẩm`}</p>
+                                <p>{t('common.cart',{ns: 'common'})}</p>
+                                <p>{`(${(product.length === 0) ? 0 : product.length}) ${t('common.product',{ns: 'common'})}`}</p>
                             </div>
                         </Link>
+                        <div>
+                            <Select
+                                defaultValue="vi"
+                                style={{
+                                    marginLeft: 20,
+                                }}
+                                onChange={handleChange}
+                                options={[
+                                    {
+                                        value: "vi",
+                                        label: (
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                <img style={{ width: '30px', marginRight: '5px' }} src={images.nationalFlag.vi} />
+                                                <p>VIE</p>
+                                            </div>
+                                        ),
+                                    },
+                                    {
+                                        value: "en",
+                                        label: (
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                <img style={{ width: '30px', marginRight: '5px' }} src={images.nationalFlag.en} />
+                                                <p>ENG</p>
+                                            </div>
+                                        ),
+                                    },
+                                ]}
+                            />
+                        </div>
                     </section>
                 </nav>
                 <nav className={clsx(style.navHeaderPage)}>
                     <section className={clsx(style.navHeaderPage__category)}>
                         <BiCategory className={clsx(style.icon)} />
-                        <h1>Danh mục sản phẩm</h1>
+                        <h1>{t('common.product_portfolio',{ns: 'common'})}</h1>
                     </section>
                     <section className={clsx(style.navHeaderPage__path)}>
                         <ul className={clsx(style.pathList)}>

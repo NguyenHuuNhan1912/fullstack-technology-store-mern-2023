@@ -20,6 +20,7 @@ import { Col, Row } from 'antd';
 import {AiOutlineRollback} from 'react-icons/ai';
 
 const CustomersOrder = () => {
+    const status = ['pending-Đang xử lý', 'processing-Đang giao', 'delivered-Đã giao', 'cancel-Hủy đơn hàng'];
     const idUser = useParams();
     const [orders, setOrders] = useState([]);
     const handlePercent = (price, discount) => {
@@ -39,6 +40,16 @@ const CustomersOrder = () => {
         catch (err) {
             console.log(err);
         }
+    }
+    const handleStatus = (str) => {
+        const newStr = str.slice(str.indexOf("-") + 1, str.length);
+        return newStr;
+    }
+    const convertStatus = (statusOrder) => {
+        const result = status.filter((item, index) => {
+            return item.includes(statusOrder);
+        });
+        return handleStatus(result[0]);
     }
     useEffect(() => {
         getApiOrders();
@@ -74,16 +85,16 @@ const CustomersOrder = () => {
                                                             </section>
                                                         </Col>
                                                         {
-                                                            item.cart.product.map((item, index) => {
+                                                            item.cart.product.map((item2, index) => {
                                                                 return (
                                                                     <Col xl={12} key={index}>
                                                                         <section className={clsx(style.inforOrder__body)}>
-                                                                            <img src={`data:image/png;base64,${item.idRef.img}`} alt="" />
-                                                                            <p>{`Tên sản phẩm: ${item.idRef.name}`}</p>
-                                                                            <p className={clsx(style.price)}>{`Giá sản phẩm: ${handlePercent(Number(item.idRef.price), Number(item.idRef.discount)).toLocaleString()} đ`}</p>
-                                                                            <p>{`Số lượng: ${item.quantity}`}</p>
-                                                                            <p className={clsx(style.finish)}>Đã giao</p>
-                                                                            <Link to={`/product/detail/${item.idRef._id}`}>
+                                                                            <img src={`data:image/png;base64,${item2.idRef.img}`} alt="" />
+                                                                            <p>{`Tên sản phẩm: ${item2.idRef.name}`}</p>
+                                                                            <p className={clsx(style.price)}>{`Giá sản phẩm: ${handlePercent(Number(item2.idRef.price), Number(item2.idRef.discount)).toLocaleString()} đ`}</p>
+                                                                            <p>{`Số lượng: ${item2.quantity}`}</p>
+                                                                            <p className={clsx(style.finish)}>{convertStatus(item.status)}</p>
+                                                                            <Link to={`/product/detail/${item2.idRef._id}`} target='_blank'>
                                                                                 Xem chi tiết
                                                                             </Link>
                                                                         </section>

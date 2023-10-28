@@ -1,0 +1,80 @@
+{
+    "recruit": {
+        "title": "Hữu Nhân tuyển dụng",
+        "introduce": "Cửa hàng công nghệ Hữu Nhân là một câu chuyện khởi nghiệp đầy cảm xúc từ anh chàng sinh viên năm cuối trường đại học Cần Thơ. Với khát vọng vô cùng mãnh liệt và cháy bỗng, chàng sinh viên năm ấy mang cho mình một giấc mộng, một giấc mộng về công nghệ. Chàng trai ấy đã không ngừng nổ lực để hoàn thành giấc mộng ấy và ngày hôm nay cửa hàng Công nghệ Hữu Nhân đã ra đời cũng như đã thực hiện được ước mơ và sứ mệnh.",
+        "benefits": {
+            "environment": {
+                "title": "Môi trường chuyên nghiệp",
+                "content": "Đến với chúng tôi bạn sẽ được rèn luyện để trở thành những người chuyên nghiệp nhất"
+            },
+            "social": {
+                "title": "Phúc lợi xã hội cao",
+                "content": "Hữu Nhân được biết đến là một đơn vị có chế độ đãi ngộ cao dành cho các nhân sự"
+            },
+            "develop": {
+                "title": "Thăng tiến sự nghiệp",
+                "content": "Sự nghiệp của bạn sẽ được phát triển và sẽ thật công bằng khi đó là năng lực của bạn"
+            },
+            "creative": {
+                "title": "Tự do sáng tạo",
+                "content": "Chúng tôi luôn cho phép các bạn đóng góp ý kiến cá nhân, quan điểm của bản thân"
+            }
+        },
+        "candidates": {
+            "protect": {
+                "title": "Nhân viên bảo vệ",
+                "age": "Tuổi: từ 18 đến 40",
+                "gender": "Giới tính: Nam",
+                "request": "Vui vẻ, trung thực",
+                "time": "Thời gian làm việc cố định"
+            },
+            "manager": {
+                "title": "Quản lý",
+                "age": "Tuổi: từ 30 đến 40",
+                "gender": "Giới tính: Nữ",
+                "request": "Quyết doán",
+                "time": "Thời gian làm việc cố định"
+            },
+            "shipper": {
+                "title": "Nhân viên giao hàng",
+                "age": "Tuổi: từ 18 đến 24",
+                "gender": "Giới tính: Nam",
+                "request": "Nhanh nhẹn, rành đường",
+                "time": "Thời gian làm việc cố định"
+            },
+            "marketing": {
+                "title": "Nhân viên marketing",
+                "age": "Tuổi: từ 18 đến 24",
+                "gender": "Giới tính: Nữ",
+                "request": "Vui vẻ, sôi động",
+                "time": "Thời gian làm việc cố định"
+            },
+            "accountant": {
+                "title": "Kế toán",
+                "age": "Tuổi: từ 18 đến 29",
+                "gender": "Giới tính: Nữ",
+                "request": "Trung thực, cẩn thận",
+                "time": "Thời gian làm việc cố định"
+            },
+            "advise": {
+                "title": "Nhân viên tư vấn",
+                "age": "Tuổi: từ 18 đến 29",
+                "gender": "Giới tính: Nữ",
+                "request": "Vui vẻ, sôi động",
+                "time": "Thời gian làm việc cố định"
+            }
+        }
+    },
+    "recruit_detail": {
+        "introduce": {
+            "title": "Hãy là một phần của Hữu Nhân",
+            "content": "Một môi trường không thể tốt hơn để bạn có thể phát triển. Đến với chúng tôi bạn sẽ đến với một môi trường thân thiện làm việc chuyên nghiệp. Đặc biệt hơn nữa là cùng với chúng tôi viết tiếp những hoài bão, sứ mệnh ở phía trước còn đang dang dỡ"
+        }
+    }
+}
+
+
+
+
+
+

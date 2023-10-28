@@ -10,7 +10,7 @@ import productAppRoute from './productApp.route.js';
 import userRoute from './user.route.js';
 import orderRoute from './order.route.js';
 import recruitRoute from './recruit.route.js';
-
+import commentRoute from './comment.route.js';
 
 router.use("/cart", cartRoute);
 router.use("/category", categoryRoute);
@@ -21,9 +21,7 @@ router.use("/productApp", productAppRoute);
 router.use("/user", userRoute);
 router.use("/order", orderRoute);
 router.use("/recruit", recruitRoute);
-
-
-
+router.use("/comment", commentRoute);
 
 
 export default router;

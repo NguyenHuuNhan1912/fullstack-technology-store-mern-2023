@@ -1,0 +1,19 @@
+{
+    "common": {
+        "search_product": "Nhập sản phẩm cần tìm...",
+        "stocking": "Còn hàng",
+        "out_of_stock": "Hết hàng",
+        "next_page": "Trang kế tiếp",
+        "on": "Trên",
+        "page": "Trang",
+        "product": "Sản phẩm",
+        "sale_online": "Săn sale online",
+        "laptop_sale": "Laptop tựu trường",
+        "endow": "Ưu đãi ngập trời",
+        "sale_clock": "Bão sale đồng hồ",
+        "product_discount": "Các sản phẩm được giảm giá",
+        "product_portfolio": "Danh mục sản phẩm",
+        "cart": "Giỏ hàng",
+        "hello": "Xin chào"
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "validate": {
+        "form": {
+            "candidates": {
+                "Title": "Ứng viên ứng tuyển điền vào form sau",
+                "place": {
+                    "fullname": "Nhập họ và tên",
+                    "gender": {
+                        "title": "Giới tính",
+                        "male": "Nam",
+                        "famale": "Nữ",
+                        "other": "Khác"
+                    },
+                    "birth_date": "Nhập ngày tháng năm sinh",
+                    "number_phone": "Nhập số điện thoại",
+                    "address": "Nhập địa chỉ",
+                    "study_level": {
+                        "title": "Trình độ học vấn",
+                        "university": "Đại học",
+                        "college": "Cao đẳng",
+                        "high_school": "Trung học phổ thông"
+                    },
+                    "facebook_address": "Nhập địa chỉ Facebook",
+                    "experience": "Kinh nghiệm ở vị trí ứng tuyển"
+                }
+            },
+            "contact": {
+                "title": "Liên hệ với chúng tôi",
+                "place": {
+                    "fullname": "Nhập họ tên",
+                    "number_phone": "Nhập số điện thoại",
+                    "private_email": "Nhập email cá nhân",
+                    "content": "Nhập nội dung"
+                }
+            },
+            "order": {
+                "title": "Thông tin đơn hàng",
+                "place": {
+                    "recipient's_name": "Nhập tên người nhận",
+                    "recipient's_number_phone": "Nhập số điện thoại người nhận",
+                    "address": "Nhập địa chỉ cụ thể(Tên đường, số nhà...)"
+                }
+            }
+        },
+        "error": {
+            "fullname": {
+                "not_empty": "Họ tên không thể để trống",
+                "at_least_5_character": "Họ tên ít nhất 5 kí tự"
+            },
+            "birth_date": {
+                "not_empty": "Ngày tháng năm sinh không thể để trống"
+            },
+            "number_phone": {
+                "not_number_phone": "Số điện thoại không được để trống",
+                "invalid": "Số điện thoại không đúng định dạng"
+            },
+            "address": {
+                "not_empty_address": "Địa chỉ không thể để trống"
+            },
+            "experience": {
+                "not_empty_experience": "Kinh nghiệm không thể để trống"
+            },
+            "email": {
+                "not_empty_email": "Email không thể để trống",
+                "invalid": "Email không đúng định dạng"
+            },
+            "content": {
+                "not_empty_content": "Content cannot be planted"
+            },
+            "address_detail": {
+                "not_empty_address_detail": "Địa chỉ cụ thể không thể để trống"
+            },
+            "recipient's_name": {
+                "not_empty_recipient's_name": "Tên người nhận không thể đế trống"
+            }
+        }
+    }
+}

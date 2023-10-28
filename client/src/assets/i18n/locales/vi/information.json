@@ -1,0 +1,37 @@
+{
+    "information": {
+        "name_store": "Cửa hàng công nghệ Hữu Nhân",
+        "title": "Công ty cổ phần thương mại dịch vụ Hữu Nhân",
+        "slogan": "Cửa hàng kinh doanh sản phẩm công nghệ hàng đầu Việt Nam",
+        "street": {
+            "title": "Xem đường đi chi tiết",
+            "address": "Địa chỉ: Đường 1010, thị trấn Phú Hòa, huyện Thoại Sơn, tỉnh An Giang",
+            "number_phone": "Điện thoại: 0342040063",
+            "time_open": "Thời gian mở cửa: 8h-22h các ngày trong tuần"
+        },
+        "payment": {
+            "title": "Thanh toán",
+            "qr_code": "Qr code",
+            "cash": "Tiền mặt",
+            "installment": "Trả góp",
+            "baking": "Chuyển khoản"            
+        },
+        "support": {
+            "title": "Tổng đài hỗ trợ",
+            "buy_product": "Mua hàng: 0342040063",
+            "support_customer": "Hỗ trợ KH: 0903972403",
+            "feedback": "Khiếu nại: 0342040019",
+            "guarantee": "Bảo hành: 0342493963"
+        },
+        "branch": {
+            "title": "Các chi nhánh cửa hàng",
+            "ag": "Thị trấn Phú Hòa - An Giang",
+            "kg": "Thị xã Phước Long - Bạc Liêu",
+            "dt": "Thành phố Hồng Ngự - Đồng Tháp",
+            "vl": "Thành phố Vĩnh Long - Vĩnh Long",
+            "sg": "Quận Gò Vấp - Thành phố Hồ Chí Minh"
+        },
+        "dcma": "DCMA | Protected",
+        "copyright": "2019 - 2024 Hữu Nhân - Cửa hàng công nghệ hàng đầu Việt Nam"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "category": {
+        "title": "Loại danh mục",
+        "type": {
+            "laptop": "Máy tính",
+            "smart_phone": "Điện thoại",
+            "tablet": "Máy tính bảng",
+            "mouse": "Chuột",
+            "keyboard": "Bàn phím",
+            "smart_watch": "Đồng hồ"
+        }
+    }
+}
