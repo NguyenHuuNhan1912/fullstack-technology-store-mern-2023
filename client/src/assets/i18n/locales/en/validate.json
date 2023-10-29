@@ -61,7 +61,8 @@
                 "not_empty_experience": "Experience cannot leave empty"
             },
             "email": {
-                "not_empty_email": "Email cannot be planted"
+                "not_empty_email": "Email cannot be planted",
+                "invalid": "Email invalidate"
             },
             "content": {
                 "not_empty_content": "Content cannot be planted"

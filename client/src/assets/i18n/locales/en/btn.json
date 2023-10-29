@@ -16,6 +16,7 @@
         "add": "Add",
         "delete": "delete",
         "pay": "Pay",
-        "back_home": "On the homepage"
+        "back_home": "On the homepage",
+        "sign_out": "Sign out"
     }
 }

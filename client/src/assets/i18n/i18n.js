@@ -29,6 +29,10 @@ import BTN_VI from './locales/vi/btn.json';
 import RECRUIT_EN from './locales/en/recruit.json';
 import RECRUIT_VI from './locales/vi/recruit.json';
 
+// Validate
+import VALIDATE_EN from './locales/en/validate.json';
+import VALIDATE_VI from './locales/vi/validate.json';
+
 export const locales = {
     en: 'English',
     vi: 'Tiếng Việt'
@@ -43,7 +47,8 @@ const resources = {
         introduce: INTRODUCE_EN,
         information: INFORMATION_EN,
         btn: BTN_EN,
-        recruit: RECRUIT_EN
+        recruit: RECRUIT_EN,
+        validate: VALIDATE_EN
     },
     vi: {
         auth: AUTH_VI,
@@ -53,7 +58,8 @@ const resources = {
         introduce: INTRODUCE_VI,
         information: INFORMATION_VI,
         btn: BTN_VI,
-        recruit: RECRUIT_VI
+        recruit: RECRUIT_VI,
+        validate: VALIDATE_VI
 
     }
 };
@@ -66,7 +72,7 @@ i18n
         resources,
         lng: "vi", 
         fallbackLng: 'vi',
-        ns: ['auth', 'lng', 'layout', 'common', 'introduce', 'information', 'btn', 'recruit'],
+        ns: ['auth', 'lng', 'layout', 'common', 'introduce', 'information', 'btn', 'recruit', 'validate'],
         defaultNs,
         interpolation: {
             escapeValue: false // react already safes from xss

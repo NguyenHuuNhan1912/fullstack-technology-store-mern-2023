@@ -37,6 +37,7 @@ import { signOut } from 'firebase/auth'
 
 
 const Header = ({ call }) => {
+    const [userAuth, setUserAuth] = useState(null);
     const [userName, setUserName] = useState(JSON.parse(localStorage.getItem("userName")));
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [user, setUser] = useState({});
@@ -64,11 +65,11 @@ const Header = ({ call }) => {
         }
     }
     const path = [
-        { icon: AiFillHome, component: t('layout.main.home',{ns: 'layout'}), path: '/' },
-        { icon: AiFillInfoCircle, component: t('layout.main.introduce',{ns: 'layout'}), path: '/introduce' },
-        { icon: AiFillDollarCircle, component: t('layout.main.discount',{ns: 'layout'}), path: '/discount' },
-        { icon: RiUserAddFill, component: t('layout.main.recruit',{ns: 'layout'}), path: '/recruit' },
-        { icon: AiFillContacts, component: t('layout.main.contact',{ns: 'layout'}), path: '/contact' },
+        { icon: AiFillHome, component: t('layout.main.home', { ns: 'layout' }), path: '/' },
+        { icon: AiFillInfoCircle, component: t('layout.main.introduce', { ns: 'layout' }), path: '/introduce' },
+        { icon: AiFillDollarCircle, component: t('layout.main.discount', { ns: 'layout' }), path: '/discount' },
+        { icon: RiUserAddFill, component: t('layout.main.recruit', { ns: 'layout' }), path: '/recruit' },
+        { icon: AiFillContacts, component: t('layout.main.contact', { ns: 'layout' }), path: '/contact' },
     ];
     const showModal = () => {
         setIsModalOpen(true);
@@ -98,7 +99,7 @@ const Header = ({ call }) => {
                     to="/account"
                 >
                     <FaUserEdit />
-                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.account_information',{ns: 'layout'})}</span>
+                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.account_information', { ns: 'layout' })}</span>
                 </Link>
             ),
         },
@@ -111,7 +112,7 @@ const Header = ({ call }) => {
                     to="/account/order"
                 >
                     <BsCartFill />
-                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.manager_order',{ns: 'layout'})}</span>
+                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.manager_order', { ns: 'layout' })}</span>
                 </Link>
             ),
         },
@@ -124,7 +125,7 @@ const Header = ({ call }) => {
                     to="/account/noti"
                 >
                     <BsFillBellFill />
-                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.notification',{ns: 'layout'})}</span>
+                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.notification', { ns: 'layout' })}</span>
                 </Link>
             ),
         },
@@ -137,7 +138,7 @@ const Header = ({ call }) => {
                     to="/account/news"
                 >
                     <BsNewspaper />
-                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.feed',{ns: 'layout'})}</span>
+                    <span style={{ marginLeft: 8 }}>{t('layout.main.account.feed', { ns: 'layout' })}</span>
                 </Link>
             ),
         },
@@ -172,6 +173,9 @@ const Header = ({ call }) => {
                 console.log(err);
                 
             }
+        }
+        if(JSON.parse(localStorage.getItem("userAuth")) !== null) {
+            setUserAuth(JSON.parse(localStorage.getItem("userAuth")));
         }
     }
     const getProductApi = async () => {
@@ -208,6 +212,8 @@ const Header = ({ call }) => {
     const handleLogoutWith = async (type) => {
         try {
             const logout = await signOut(auth);
+            localStorage.removeItem("userAuth");
+            setUserAuth(null);
             toastNotification('success', 'Tài khoản của bạn đã được đăng xuất !', 1000);
         }
         catch (err) {
@@ -234,7 +240,7 @@ const Header = ({ call }) => {
                     >
                         <input
                             type="text"
-                            placeholder={t('common.search_product',{ns: 'common'})}
+                            placeholder={t('common.search_product', { ns: 'common' })}
                             value={searchText}
                             onChange={handleChangeSearchText}
                         />
@@ -283,7 +289,7 @@ const Header = ({ call }) => {
                     </section>
                     <section className={clsx(style.navFunction)}>
                         {
-                            (userName === null) ?
+                            (userName === null && userAuth === null) ?
                                 (
                                     <Link to="/signin" className={clsx(style.signSystem)}>
                                         <div className={clsx(style.signSystem__head)}>
@@ -302,19 +308,41 @@ const Header = ({ call }) => {
                                             placement="bottom"
                                         >
                                             <section className={clsx(style.signSystem)}>
-                                                <div className={clsx(style.signSystem__head)}>
-                                                    {
-                                                        !user?.img
-                                                            ?
-                                                            <img src={images.header.user} alt="img" />
-                                                            :
-                                                            <img src={`data:image/png;base64,${user.img}`} alt="img" />
-                                                    }
-                                                </div>
-                                                <div className={clsx(style.signSystem__body)}>
-                                                    <p>{t('common.hello',{ns: 'common'})}</p>
-                                                    <p>{userName}</p>
-                                                </div>
+                                                {
+                                                    userAuth ?
+                                                        <>
+                                                            <div className={clsx(style.signSystem__head)}>
+                                                                {
+                                                                    !userAuth?.photoURL
+                                                                        ?
+                                                                        <img src={images.header.user} alt="img" />
+                                                                        :
+                                                                        <img src={userAuth.photoURL} alt="img" />
+                                                                }
+                                                            </div>
+                                                            <div className={clsx(style.signSystem__body)}>
+                                                                <p>{t('common.hello', { ns: 'common' })}</p>
+                                                                <p>{userAuth.displayName}</p>
+                                                            </div>
+                                                        </>
+                                                        :
+                                                        <>
+                                                            <div className={clsx(style.signSystem__head)}>
+                                                                {
+                                                                    !user?.img
+                                                                        ?
+                                                                        <img src={images.header.user} alt="img" />
+                                                                        :
+                                                                        <img src={`data:image/png;base64,${user.img}`} alt="img" />
+                                                                }
+                                                            </div>
+                                                            <div className={clsx(style.signSystem__body)}>
+                                                                <p>{t('common.hello', { ns: 'common' })}</p>
+                                                                <p>{userName}</p>
+                                                            </div>
+                                                        </>
+                                                }
+
                                             </section>
                                         </Dropdown>
                                         <section className={clsx(style.logoutQuestion)}>
@@ -349,8 +377,8 @@ const Header = ({ call }) => {
                                 <img src={images.header.cart} alt="cart" />
                             </div>
                             <div className={clsx(style.cart__body)}>
-                                <p>{t('common.cart',{ns: 'common'})}</p>
-                                <p>{`(${(product.length === 0) ? 0 : product.length}) ${t('common.product',{ns: 'common'})}`}</p>
+                                <p>{t('common.cart', { ns: 'common' })}</p>
+                                <p>{`(${(product.length === 0) ? 0 : product.length}) ${t('common.product', { ns: 'common' })}`}</p>
                             </div>
                         </Link>
                         <div>
@@ -387,7 +415,7 @@ const Header = ({ call }) => {
                 <nav className={clsx(style.navHeaderPage)}>
                     <section className={clsx(style.navHeaderPage__category)}>
                         <BiCategory className={clsx(style.icon)} />
-                        <h1>{t('common.product_portfolio',{ns: 'common'})}</h1>
+                        <h1>{t('common.product_portfolio', { ns: 'common' })}</h1>
                     </section>
                     <section className={clsx(style.navHeaderPage__path)}>
                         <ul className={clsx(style.pathList)}>

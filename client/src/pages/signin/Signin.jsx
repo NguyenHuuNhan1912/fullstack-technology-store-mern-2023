@@ -32,7 +32,7 @@ import { QuantityCart } from "layouts/AppLayout/AppLayout";
 
 // Authentication with google and facebook
 import { auth, fbProvider, ggProvider } from '../../firebase/config';
-import { signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
 
 const Signin = () => {
     let navi = useNavigate();
@@ -85,23 +85,41 @@ const Signin = () => {
     const handleLoginWithFacebook = async () => {
         try {
             const result = await signInWithPopup(auth, fbProvider);
-            toastNotification('success', 'Đăng nhập với Facebook thành cồng !', 1000);
+            toastNotification('success', 'Đăng nhập với Facebook thành công !', 1000);
         }
         catch (err) {
             console.log(`Error: ${err}`);
         }
     }
+
+    auth.onAuthStateChanged((user) => {
+        console.log({ user });
+        if (user) {
+            localStorage.setItem("userAuth", JSON.stringify(user));
+            updateQuantityCart();
+            navi('/');
+        }
+    })
 
     const handleLoginWithGoogle = async () => {
         try {
             const result = await signInWithPopup(auth, ggProvider);
-            toastNotification('success', 'Đăng nhập với Google thành cồng !', 1000);
+            toastNotification('success', 'Đăng nhập với Google thành công !', 1000);
         }
         catch (err) {
             console.log(`Error: ${err}`);
         }
     }
 
+    const handleLogoutWith = async (type) => {
+        try {
+            const logout = await signOut(auth);
+            toastNotification('success', 'Tài khoản của bạn đã được đăng xuất !', 1000);
+        }
+        catch (err) {
+            console.log(`Error: ${err}`);
+        }
+    }
     return (
         <section className={clsx(style.signin)}>
             <SelectSpeed />
@@ -171,6 +189,7 @@ const Signin = () => {
                                     <FaGoogle className={clsx(style.icon)} />
                                     <span>google</span>
                                 </div>
+                                <button onClick={handleLogoutWith}>Logout google</button>
                             </div>
                         </section>
                     </form>
