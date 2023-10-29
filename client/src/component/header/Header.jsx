@@ -37,7 +37,7 @@ import { signOut } from 'firebase/auth'
 
 
 const Header = ({ call }) => {
-    const [userAuth, setUserAuth] = useState(null);
+const [userAuth, setUserAuth] = useState(null);
     const [userName, setUserName] = useState(JSON.parse(localStorage.getItem("userName")));
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [user, setUser] = useState({});
@@ -171,10 +171,10 @@ const Header = ({ call }) => {
             }
             catch (err) {
                 console.log(err);
-                
+
             }
         }
-        if(JSON.parse(localStorage.getItem("userAuth")) !== null) {
+if(JSON.parse(localStorage.getItem("userAuth")) !== null) {
             setUserAuth(JSON.parse(localStorage.getItem("userAuth")));
         }
     }
@@ -212,7 +212,7 @@ const Header = ({ call }) => {
     const handleLogoutWith = async (type) => {
         try {
             const logout = await signOut(auth);
-            localStorage.removeItem("userAuth");
+localStorage.removeItem("userAuth");
             setUserAuth(null);
             toastNotification('success', 'Tài khoản của bạn đã được đăng xuất !', 1000);
         }
@@ -308,7 +308,7 @@ const Header = ({ call }) => {
                                             placement="bottom"
                                         >
                                             <section className={clsx(style.signSystem)}>
-                                                {
+{
                                                     userAuth ?
                                                         <>
                                                             <div className={clsx(style.signSystem__head)}>
@@ -327,20 +327,21 @@ const Header = ({ call }) => {
                                                         </>
                                                         :
                                                         <>
-                                                            <div className={clsx(style.signSystem__head)}>
-                                                                {
-                                                                    !user?.img
-                                                                        ?
-                                                                        <img src={images.header.user} alt="img" />
-                                                                        :
-                                                                        <img src={`data:image/png;base64,${user.img}`} alt="img" />
-                                                                }
-                                                            </div>
-                                                            <div className={clsx(style.signSystem__body)}>
-                                                                <p>{t('common.hello', { ns: 'common' })}</p>
-                                                                <p>{userName}</p>
-                                                            </div>
-                                                        </>
+                                                <div className={clsx(style.signSystem__head)}>
+                                                    {
+                                                        !user?.img
+                                                            ?
+                                                            <img src={images.header.user} alt="img" />
+                                                            :
+                                                            <img src={`data:image/png;base64,${user.img}`} alt="img" />
+                                                    }
+                                                </div>
+                                                <div className={clsx(style.signSystem__body)}>
+                                                    <p>{t('common.hello', { ns: 'common' })}</p>
+                                                    
+                                                    <p>{userName}</p>
+                                                </div>
+</>
                                                 }
 
                                             </section>
