@@ -19,7 +19,11 @@ import contactApi from 'api/modules/contact.api';
 // Module
 import toastNotification from 'handler/toast.handler';
 
+// Translate
+import { useTranslation } from 'react-i18next';
+
 const Contact = () => {
+    const {t} = useTranslation(['validate', 'btn']);
     const postApi = async (values) => {
         try {
             await contactApi.create(values);
@@ -36,10 +40,10 @@ const Contact = () => {
             content: '',
         },
         validationSchema: Yup.object({
-            name: Yup.string().required("Họ tên không thể để trống").min(4, "Tên phải ít nhất 5 kí tự"),
-            numberPhone: Yup.string().required("Số điện thoại không thể để trống").matches(/((09|03|07|08|05)+([0-9]{8})\b)/g, "Số điện thoại không đúng định dạng"),
-            email: Yup.string().required("Email không thể để trống").matches(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm, "Email không đúng định dạng"),
-            content: Yup.string().required("Nội dung không thể để trống"),
+            name: Yup.string().required(t('validate.error.fullname.not_empty')).min(4, t('validate.error.fullname.at_least_5_character')),
+            numberPhone: Yup.string().required(t('validate.error.number_phone.not_number_phone')).matches(/((09|03|07|08|05)+([0-9]{8})\b)/g, t('validate.error.number_phone.invalid')),
+            email: Yup.string().required(t('validate.error.email.not_empty_email')).matches(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm, t('validate.error.email.invalid')),
+            content: Yup.string().required(t('validate.error.content.not_empty_content')),
         }),
         onSubmit: (values, { resetForm }) => {
             postApi(values);
@@ -56,7 +60,7 @@ const Contact = () => {
                     <Col md={12} xs={24}>
                         <form className={clsx(style.contact__form)} onSubmit={formik.handleSubmit}>
                             <section className={clsx(style.formGroup)}>
-                                <h1>Liên hệ với chúng tôi</h1>
+                                <h1>{t('validate.form.contact.title')}</h1>
                             </section>
                             <section className={clsx(style.formGroup)}>
                                 <input
@@ -64,7 +68,7 @@ const Contact = () => {
                                     name="name"
                                     value={formik.values.name}
                                     onChange={formik.handleChange}
-                                    placeholder="Nhập họ tên(*)"
+                                    placeholder={`${t('validate.form.contact.place.fullname')} (*)`}
                                     autoComplete='off'
                                 />
                                 {formik.errors.name && <p className={clsx(style.errMsg)}>{formik.errors.name}</p>}
@@ -75,7 +79,7 @@ const Contact = () => {
                                     name="numberPhone"
                                     value={formik.values.numberPhone}
                                     onChange={formik.handleChange}
-                                    placeholder="Nhập số điện thoại(*)"
+                                    placeholder={`${t('validate.form.contact.place.number_phone')} (*)`}
                                     autoComplete='off'
                                 />
                                 {formik.errors.numberPhone && <p className={clsx(style.errMsg)}>{formik.errors.numberPhone}</p>}
@@ -86,7 +90,7 @@ const Contact = () => {
                                     name="email"
                                     value={formik.values.email}
                                     onChange={formik.handleChange}
-                                    placeholder="Nhập email cá nhân(*)"
+                                    placeholder={`${t('validate.form.contact.place.private_email')} (*)`}
                                     autoComplete='off'
                                 />
                                 {formik.errors.email && <p className={clsx(style.errMsg)}>{formik.errors.email}</p>}
@@ -98,7 +102,7 @@ const Contact = () => {
                                     rows="3"
                                     value={formik.values.content}
                                     onChange={formik.handleChange}
-                                    placeholder="Nhập nội dung(*)"
+                                    placeholder={`${t('validate.form.contact.place.content')} (*)`}
                                     autoComplete='off'
                                 >
                                 </textarea>
@@ -108,7 +112,7 @@ const Contact = () => {
                                 <input
                                     type="submit"
                                     name="submit"
-                                    value="Gửi"
+                                    value={t('btn.send',{ns: 'btn'})}
                                     className={clsx(style.submit)}
                                 />
                             </section>

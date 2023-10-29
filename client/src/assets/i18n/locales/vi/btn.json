@@ -16,6 +16,7 @@
         "add": "Thêm",
         "delete": "Xóa",
         "pay": "Thanh toán",
-        "back_home": "Về trang chủ"
+        "back_home": "Về trang chủ",
+        "sign_out": "Đăng xuất"
     }
 }
