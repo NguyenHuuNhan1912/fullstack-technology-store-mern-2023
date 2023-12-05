@@ -37,6 +37,16 @@
                     color: white;
                 }
 
+                .importFile {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid grey;
+                    border-radius: 5px;
+                    color: white;
+                   background-color: $backgroundMain;
+                }
+
                 .addProduct {
                     button {
                         width: 100%;

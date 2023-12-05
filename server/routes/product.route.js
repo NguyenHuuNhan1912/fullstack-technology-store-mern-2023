@@ -13,6 +13,10 @@ router
   .get(product.filtersName)
 
 router
+  .route('/filtersProductDetail')
+  .get(product.filtersProductDetail)
+
+router
   .route('/:id')
   .put(product.updateOne)
   .delete(product.deleteOne)

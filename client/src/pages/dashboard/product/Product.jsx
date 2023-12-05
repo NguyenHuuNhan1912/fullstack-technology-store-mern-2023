@@ -6,10 +6,10 @@ import style from './product.module.scss';
 import images from 'assets/images';
 
 // Icon
-import { AiFillPlusCircle } from 'react-icons/ai';
-import { FaSearchPlus } from 'react-icons/fa';
-import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
+import { FaSearchPlus, FaFileImport } from 'react-icons/fa';
+import { AiFillEdit, AiFillDelete, AiFillPlusCircle } from 'react-icons/ai';
 import { RiDeleteBack2Fill } from 'react-icons/ri';
+import { FaFileExport } from "react-icons/fa";
 
 // Antd
 import { Row, Col } from 'antd';
@@ -36,6 +36,8 @@ import { Bars } from 'react-loader-spinner';
 // Module
 import toastNotification from 'handler/toast.handler';
 
+// Excel
+import * as XLSX from 'xlsx'
 // Variables global
 var DEFAULT_SKIP = 0;
 var DEFAULT_LIMIT = 15;
@@ -43,6 +45,7 @@ var DEFAULT_TYPE = '';
 var DEFAULT_PRICE = '';
 
 const Product = () => {
+  const [excelData, setExcelData] = useState(null);
   const [product, setProduct] = useState([]);
   const [productField, setProductField] = useState({});
   const [category, setCategory] = useState([]);
@@ -63,6 +66,37 @@ const Product = () => {
     limit: 0,
     totalProduct: 0,
   })
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const data = e.target.result;
+      // Parse the Excel data
+      const workbook = XLSX.read(data, { type: 'binary' });
+      const sheetName = workbook.SheetNames[0];
+      const sheet = workbook.Sheets[sheetName];
+      const excelArray = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      setExcelData(excelArray);
+    };
+    reader.readAsBinaryString(file);
+  };
+  const handleCheck = () => {
+    console.log(excelData);
+  }
+  const exportToExcel = () => {
+    const ws = XLSX.utils.aoa_to_sheet(excelData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const fileName = 'data_export.xlsx';
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    a.click();
+  };
   const [searchProduct, setSearchProduct] = useState('');
   const handleSearch = (e) => {
     setSearchProduct(e.target.value);
@@ -285,7 +319,7 @@ const Product = () => {
                 <Row gutter={[20, 20]}>
                   <Col xl={24}>
                     <section className={clsx(style.dbProduct__upload)}>
-                      <Row gutter={[20, 20]}>
+                      <Row gutter={[20, 20]} align={'middle'}>
                         <Col xl={6}>
                           <div className={clsx(style.formGroup)}>
                             <input
@@ -321,6 +355,26 @@ const Product = () => {
                               <option value="low">Từ thấp đến cao</option>
                               <option value="hight">Từ cao đến thấp</option>
                             </select>
+                          </div>
+                        </Col>
+                        <Col xl={6}>
+                          <div className={clsx(style.formGroup)}>
+                            <section className={clsx(style.addProduct)}>
+                              <button className={clsx(style.file)}>
+                                <FaFileImport />
+                                <span>Import Excel File</span>
+                              </button>
+                            </section>
+                          </div>
+                        </Col>
+                        <Col xl={6}>
+                          <div className={clsx(style.formGroup)}>
+                            <section className={clsx(style.addProduct)}>
+                              <button className={clsx(style.file)}>
+                                <FaFileExport />
+                                <span>Export Excel file</span>
+                              </button>
+                            </section>
                           </div>
                         </Col>
                         <Col xl={6}>

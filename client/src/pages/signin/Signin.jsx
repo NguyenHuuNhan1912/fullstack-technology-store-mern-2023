@@ -189,7 +189,6 @@ const Signin = () => {
                                     <FaGoogle className={clsx(style.icon)} />
                                     <span>google</span>
                                 </div>
-                                <button onClick={handleLogoutWith}>Logout google</button>
                             </div>
                         </section>
                     </form>

@@ -186,3 +186,32 @@ export const filtersName = async (req, res) => {
     res.status(500).json({ msg: "Internal server error!!!" });
   }
 }
+
+const checkValidParams = (req) => {
+  let params = {};
+  if(req.query.type) params.type = req.query.type;
+  if(req.query.brand) params.brand = req.query.brand;
+  if(req.query.fromPrice && req.query.toPrice) {
+    params.price = {
+      $gte: Number(req.query.fromPrice),
+      $lte: Number(req.query.toPrice)
+    }
+  }
+  if(req.query.ram) params["information.ram"] = { $regex: new RegExp(req.query.ram, "i") };
+  if(req.query.screen) params["information.screen"] = {$regex: new RegExp(req.query.screen, "i")};
+  console.log(params);
+  return params;
+}
+
+export const filtersProductDetail = async (req, res) => {
+  console.log("--- Filters Product Detail ---");
+  let paramsProductDetail = checkValidParams(req);
+  try {
+      await Product.find(paramsProductDetail).then(products => {
+      res.send({products: products});
+    })
+  }
+  catch (err) {
+    res.status(500).json({ msg: "Internal server error!!!" });
+  }
+}
